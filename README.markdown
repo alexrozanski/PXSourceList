@@ -18,17 +18,20 @@ There are only a few steps involved:
 
 There is also an example project bundled with the source to see how the control is used.
 
+##Screenshots
+![alt text][3]
+
 ##How the control works
 I have tried to structure PXSourceList in a way such that it fits common Cocoa design patterns and therefore makes it easier to use.
 
 PXSourceList adapts the delegate and data source design patterns, and extends those of the `NSOutlineViewDelegate` and `NSOutlineViewDataSource`, much in the way that these extend the appropriate `NSTableView` protocols.
 
-If you want more information have a look at the [Outline View Programming Topics for Cocoa][3] – the Source List delegate and data source implementation work in much the same way, but with methods added and removed, as detailed in the documentation.
+If you want more information have a look at the [Outline View Programming Topics for Cocoa][4] – the Source List delegate and data source implementation work in much the same way, but with methods added and removed, as detailed in the documentation.
 
 ##Documentation
-Documentation is available for PXSourceList, downloadable [here][4]. Provided in the ZIP file is a folder containing HTML documentation, or a docset which can be opened in Xcode and which is then searchable from the Xcode Developer Documentation.
+Documentation is available for PXSourceList, downloadable [here][5]. Provided in the ZIP file is a folder containing HTML documentation, or a docset which can be opened in Xcode and which is then searchable from the Xcode Developer Documentation.
 
-If you feel that any areas of the documentation are lacking or missing, please feel free to [let me know][5], which will be much appreciated.
+If you feel that any areas of the documentation are lacking or missing, please feel free to [let me know][6], which will be much appreciated.
 
 **Note:** the documentation for the Source List notifications can be found in the `NSObject(PXSourceListNotifications)` reference, which is linked to from the documentation index page.
 
@@ -39,22 +42,23 @@ If you feel that any areas of the documentation are lacking or missing, please f
 
 ##Attribution
 
-I was spurred along the way by many sources, but in particular [BWToolkit][6] by Brandon Walkin and Fraser Kuyvenhoven, which gave me the idea of how to handle the Source List delegate and data source methods.
+I was spurred along the way by many sources, but in particular [BWToolkit][7] by Brandon Walkin and Fraser Kuyvenhoven, which gave me the idea of how to handle the Source List delegate and data source methods.
 
-Also Brian Dunagan's post on [Source List badging][7] and determining state for the various colours was a great help when I came to the drawing code for that.
+Also Brian Dunagan's post on [Source List badging][8] and determining state for the various colours was a great help when I came to the drawing code for that.
 
-The documentation was created using [Doxygen][8] and [appledoc][9], thanks of which go to the developers of both.
+The documentation was created using [Doxygen][9] and [appledoc][10], thanks of which go to the developers of both.
 
-The icons used in the demo project bundled with the source code are from the [Fugue icon set][10] by Yusuke Kamiyamane.
+The icons used in the demo project bundled with the source code are from the [Fugue icon set][11] by Yusuke Kamiyamane.
 
 
   [1]: http://perspx.com/wp-content/uploads/2010/01/PXSourceList_0-7_Documentation.zip
   [2]: http://developer.apple.com/Mac/library/documentation/UserExperience/Conceptual/AppleHIGuidelines/XHIGWindows/XHIGWindows.html#//apple_ref/doc/uid/20000961-CHDDIGDE
-  [3]: http://developer.apple.com/mac/library/DOCUMENTATION/Cocoa/Conceptual/OutlineView/Articles/UsingOutlineDataSource.html
-  [4]: http://perspx.com/wp-content/uploads/2010/01/PXSourceList_0-7_Documentation.zip
-  [5]: http://perspx.com/contact
-  [6]: http://brandonwalkin.com/bwtoolkit/
-  [7]: http://www.bdunagan.com/2008/11/10/cocoa-tutorial-source-list-badges-part-2/
-  [8]: http://www.doxygen.org/
-  [9]: http://www.gentlebytes.com/freeware/appledoc/
-  [10]: http://www.pinvoke.com/
+  [3]: http://perspx.com/wp-content/uploads/2010/01/pxsourcelist.jpg
+  [4]: http://developer.apple.com/mac/library/DOCUMENTATION/Cocoa/Conceptual/OutlineView/Articles/UsingOutlineDataSource.html
+  [5]: http://perspx.com/wp-content/uploads/2010/01/PXSourceList_0-7_Documentation.zip
+  [6]: http://perspx.com/contact
+  [7]: http://brandonwalkin.com/bwtoolkit/
+  [8]: http://www.bdunagan.com/2008/11/10/cocoa-tutorial-source-list-badges-part-2/
+  [9]: http://www.doxygen.org/
+  [10]: http://www.gentlebytes.com/freeware/appledoc/
+  [11]: http://www.pinvoke.com/
