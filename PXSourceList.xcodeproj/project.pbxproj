@@ -179,7 +179,6 @@
 				8D1107290486CEB800E47090 /* Resources */,
 				8D11072C0486CEB800E47090 /* Sources */,
 				8D11072E0486CEB800E47090 /* Frameworks */,
-				D205F09310F7D40E004C6545 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -226,22 +225,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		D205F09310F7D40E004C6545 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "DOXYGEN=/Users/alexrozanski/Development/Xcode/OSX/Documentation/doxygen\nDOXYFILE=$SOURCE_ROOT/Doxyfile\n\nAPPLEDOC=/Users/alexrozanski/Development/Xcode/osx/Documentation/appledoc\nSTRIPDTAGS=/Users/alexrozanski/Development/Xcode/osx/Documentation/StripDoxygenTags\n\n#THE OUTPUT DIRECTORY HAS ITS CONTENTS REMOVED ON BUILD!\n\n#$APPLEDOC -p \"$PROJECT_NAME\" -i $SOURCE_ROOT -o $SOURCE_ROOT/documentation/output -t \"/Library/Application Support/appledoc\"  -c $SOURCE_ROOT/Doxyfile --date-time-template \"Last updated: %Y-%m-%d\" --xhtml\n\n#Strip the Doxygen tags\n\n#$STRIPDTAGS -i $SOURCE_ROOT -o /Users/alexrozanski/Development/Xcode/osx/Github/PXSourceList\n";
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		8D11072C0486CEB800E47090 /* Sources */ = {
