@@ -18,9 +18,9 @@
 		D2456CAD10F8F7F500B8045C /* playlist.png in Resources */ = {isa = PBXBuildFile; fileRef = D2456CA710F8F7F500B8045C /* playlist.png */; };
 		D2456CAE10F8F7F500B8045C /* playlistFolder.png in Resources */ = {isa = PBXBuildFile; fileRef = D2456CA810F8F7F500B8045C /* playlistFolder.png */; };
 		D2456CAF10F8F7F500B8045C /* podcasts.png in Resources */ = {isa = PBXBuildFile; fileRef = D2456CA910F8F7F500B8045C /* podcasts.png */; };
-		D2456D1A10F9093800B8045C /* PXSourceList.m in Sources */ = {isa = PBXBuildFile; fileRef = D2456D1910F9093800B8045C /* PXSourceList.m */; };
+		D2456D8C10F90D3B00B8045C /* SourceListItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D2456D8B10F90D3B00B8045C /* SourceListItem.m */; };
+		D2456D8D10F90D4A00B8045C /* PXSourceList.m in Sources */ = {isa = PBXBuildFile; fileRef = D2EA6EC110D9205A00402758 /* PXSourceList.m */; };
 		D265C2D710E3814B00A1E824 /* TODO.rtf in Resources */ = {isa = PBXBuildFile; fileRef = D265C2D610E3814B00A1E824 /* TODO.rtf */; };
-		D2EA6EC210D9205A00402758 /* PXSourceList.m in Sources */ = {isa = PBXBuildFile; fileRef = D2EA6EC110D9205A00402758 /* PXSourceList.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,7 +44,7 @@
 		D2456CA710F8F7F500B8045C /* playlist.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = playlist.png; path = Resources/playlist.png; sourceTree = "<group>"; };
 		D2456CA810F8F7F500B8045C /* playlistFolder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = playlistFolder.png; path = Resources/playlistFolder.png; sourceTree = "<group>"; };
 		D2456CA910F8F7F500B8045C /* podcasts.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = podcasts.png; path = Resources/podcasts.png; sourceTree = "<group>"; };
-		D2456D1910F9093800B8045C /* PXSourceList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PXSourceList.m; path = Classes/PXSourceList.m; sourceTree = "<group>"; };
+		D2456D8B10F90D3B00B8045C /* SourceListItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SourceListItem.m; path = Classes/SourceListItem.m; sourceTree = "<group>"; };
 		D265C2D610E3814B00A1E824 /* TODO.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = TODO.rtf; sourceTree = "<group>"; };
 		D2EA6EC010D9205A00402758 /* PXSourceList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PXSourceList.h; path = Classes/PXSourceList.h; sourceTree = "<group>"; };
 		D2EA6EC110D9205A00402758 /* PXSourceList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PXSourceList.m; path = Classes/PXSourceList.m; sourceTree = "<group>"; };
@@ -70,7 +70,7 @@
 				D205EDF510F7A693004C6545 /* AppDelegate.h */,
 				D205EDF610F7A693004C6545 /* AppDelegate.m */,
 				D205EE7D10F7B5AB004C6545 /* SourceListItem.h */,
-				D2456D1910F9093800B8045C /* PXSourceList.m */,
+				D2456D8B10F90D3B00B8045C /* SourceListItem.m */,
 				D2EA702910D92EB300402758 /* PXSourceList */,
 			);
 			name = Classes;
@@ -232,9 +232,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D11072D0486CEB800E47090 /* main.m in Sources */,
-				D2EA6EC210D9205A00402758 /* PXSourceList.m in Sources */,
+				D2456D8D10F90D4A00B8045C /* PXSourceList.m in Sources */,
 				D205EDF710F7A693004C6545 /* AppDelegate.m in Sources */,
-				D2456D1A10F9093800B8045C /* PXSourceList.m in Sources */,
+				D2456D8C10F90D3B00B8045C /* SourceListItem.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
