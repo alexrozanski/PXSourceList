@@ -1,0 +1,353 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 45;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
+		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
+		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
+		D205EDF010F7A609004C6545 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = D205EDEF10F7A609004C6545 /* MainMenu.xib */; };
+		D205EDF710F7A693004C6545 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D205EDF610F7A693004C6545 /* AppDelegate.m */; };
+		D2456CAA10F8F7F500B8045C /* audiobooks.png in Resources */ = {isa = PBXBuildFile; fileRef = D2456CA410F8F7F500B8045C /* audiobooks.png */; };
+		D2456CAB10F8F7F500B8045C /* movies.png in Resources */ = {isa = PBXBuildFile; fileRef = D2456CA510F8F7F500B8045C /* movies.png */; };
+		D2456CAC10F8F7F500B8045C /* music.png in Resources */ = {isa = PBXBuildFile; fileRef = D2456CA610F8F7F500B8045C /* music.png */; };
+		D2456CAD10F8F7F500B8045C /* playlist.png in Resources */ = {isa = PBXBuildFile; fileRef = D2456CA710F8F7F500B8045C /* playlist.png */; };
+		D2456CAE10F8F7F500B8045C /* playlistFolder.png in Resources */ = {isa = PBXBuildFile; fileRef = D2456CA810F8F7F500B8045C /* playlistFolder.png */; };
+		D2456CAF10F8F7F500B8045C /* podcasts.png in Resources */ = {isa = PBXBuildFile; fileRef = D2456CA910F8F7F500B8045C /* podcasts.png */; };
+		D2456D1A10F9093800B8045C /* PXSourceList.m in Sources */ = {isa = PBXBuildFile; fileRef = D2456D1910F9093800B8045C /* PXSourceList.m */; };
+		D265C2D710E3814B00A1E824 /* TODO.rtf in Resources */ = {isa = PBXBuildFile; fileRef = D265C2D610E3814B00A1E824 /* TODO.rtf */; };
+		D2EA6EC210D9205A00402758 /* PXSourceList.m in Sources */ = {isa = PBXBuildFile; fileRef = D2EA6EC110D9205A00402758 /* PXSourceList.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		089C165DFE840E0CC02AAC07 /* InfoPlist.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = InfoPlist.strings; path = Resources/English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
+		13E42FB307B3F0F600E4EEF1 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
+		256AC3F00F4B6AF500CF3369 /* PXSourceList_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PXSourceList_Prefix.pch; sourceTree = "<group>"; };
+		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
+		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
+		8D1107310486CEB800E47090 /* PXSourceList-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "PXSourceList-Info.plist"; sourceTree = "<group>"; };
+		8D1107320486CEB800E47090 /* PXSourceList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PXSourceList.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D205EDDD10F7A1EE004C6545 /* README.markdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.markdown; sourceTree = "<group>"; };
+		D205EDEF10F7A609004C6545 /* MainMenu.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = MainMenu.xib; path = Resources/MainMenu.xib; sourceTree = "<group>"; };
+		D205EDF510F7A693004C6545 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = Classes/AppDelegate.h; sourceTree = "<group>"; };
+		D205EDF610F7A693004C6545 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = Classes/AppDelegate.m; sourceTree = "<group>"; };
+		D205EE7D10F7B5AB004C6545 /* SourceListItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SourceListItem.h; path = Classes/SourceListItem.h; sourceTree = "<group>"; };
+		D2456CA410F8F7F500B8045C /* audiobooks.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = audiobooks.png; path = Resources/audiobooks.png; sourceTree = "<group>"; };
+		D2456CA510F8F7F500B8045C /* movies.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = movies.png; path = Resources/movies.png; sourceTree = "<group>"; };
+		D2456CA610F8F7F500B8045C /* music.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = music.png; path = Resources/music.png; sourceTree = "<group>"; };
+		D2456CA710F8F7F500B8045C /* playlist.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = playlist.png; path = Resources/playlist.png; sourceTree = "<group>"; };
+		D2456CA810F8F7F500B8045C /* playlistFolder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = playlistFolder.png; path = Resources/playlistFolder.png; sourceTree = "<group>"; };
+		D2456CA910F8F7F500B8045C /* podcasts.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = podcasts.png; path = Resources/podcasts.png; sourceTree = "<group>"; };
+		D2456D1910F9093800B8045C /* PXSourceList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PXSourceList.m; path = Classes/PXSourceList.m; sourceTree = "<group>"; };
+		D265C2D610E3814B00A1E824 /* TODO.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = TODO.rtf; sourceTree = "<group>"; };
+		D2EA6EC010D9205A00402758 /* PXSourceList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PXSourceList.h; path = Classes/PXSourceList.h; sourceTree = "<group>"; };
+		D2EA6EC110D9205A00402758 /* PXSourceList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PXSourceList.m; path = Classes/PXSourceList.m; sourceTree = "<group>"; };
+		D2EA6EFF10D925AA00402758 /* PXSourceListDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PXSourceListDataSource.h; path = Classes/PXSourceListDataSource.h; sourceTree = "<group>"; };
+		D2EA6F0010D925AA00402758 /* PXSourceListDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PXSourceListDelegate.h; path = Classes/PXSourceListDelegate.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8D11072E0486CEB800E47090 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		080E96DDFE201D6D7F000001 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				D205EDF510F7A693004C6545 /* AppDelegate.h */,
+				D205EDF610F7A693004C6545 /* AppDelegate.m */,
+				D205EE7D10F7B5AB004C6545 /* SourceListItem.h */,
+				D2456D1910F9093800B8045C /* PXSourceList.m */,
+				D2EA702910D92EB300402758 /* PXSourceList */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+		1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */,
+			);
+			name = "Linked Frameworks";
+			sourceTree = "<group>";
+		};
+		1058C7A2FEA54F0111CA2CBB /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				29B97324FDCFA39411CA2CEA /* AppKit.framework */,
+				13E42FB307B3F0F600E4EEF1 /* CoreData.framework */,
+				29B97325FDCFA39411CA2CEA /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		19C28FACFE9D520D11CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8D1107320486CEB800E47090 /* PXSourceList.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		29B97314FDCFA39411CA2CEA /* PXSourceList */ = {
+			isa = PBXGroup;
+			children = (
+				D265C2D610E3814B00A1E824 /* TODO.rtf */,
+				D205EDDD10F7A1EE004C6545 /* README.markdown */,
+				080E96DDFE201D6D7F000001 /* Classes */,
+				29B97315FDCFA39411CA2CEA /* Other Sources */,
+				29B97317FDCFA39411CA2CEA /* Resources */,
+				29B97323FDCFA39411CA2CEA /* Frameworks */,
+				19C28FACFE9D520D11CA2CBB /* Products */,
+			);
+			name = PXSourceList;
+			sourceTree = "<group>";
+		};
+		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+				256AC3F00F4B6AF500CF3369 /* PXSourceList_Prefix.pch */,
+				29B97316FDCFA39411CA2CEA /* main.m */,
+			);
+			name = "Other Sources";
+			sourceTree = "<group>";
+		};
+		29B97317FDCFA39411CA2CEA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				D27B7D2710E0C925004D7DBC /* Icons */,
+				8D1107310486CEB800E47090 /* PXSourceList-Info.plist */,
+				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
+				D205EDEF10F7A609004C6545 /* MainMenu.xib */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */,
+				1058C7A2FEA54F0111CA2CBB /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D27B7D2710E0C925004D7DBC /* Icons */ = {
+			isa = PBXGroup;
+			children = (
+				D2456CA410F8F7F500B8045C /* audiobooks.png */,
+				D2456CA510F8F7F500B8045C /* movies.png */,
+				D2456CA610F8F7F500B8045C /* music.png */,
+				D2456CA710F8F7F500B8045C /* playlist.png */,
+				D2456CA810F8F7F500B8045C /* playlistFolder.png */,
+				D2456CA910F8F7F500B8045C /* podcasts.png */,
+			);
+			name = Icons;
+			sourceTree = "<group>";
+		};
+		D2EA702910D92EB300402758 /* PXSourceList */ = {
+			isa = PBXGroup;
+			children = (
+				D2EA6EC010D9205A00402758 /* PXSourceList.h */,
+				D2EA6EC110D9205A00402758 /* PXSourceList.m */,
+				D2EA6EFF10D925AA00402758 /* PXSourceListDataSource.h */,
+				D2EA6F0010D925AA00402758 /* PXSourceListDelegate.h */,
+			);
+			name = PXSourceList;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8D1107260486CEB800E47090 /* PXSourceList */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "PXSourceList" */;
+			buildPhases = (
+				8D1107290486CEB800E47090 /* Resources */,
+				8D11072C0486CEB800E47090 /* Sources */,
+				8D11072E0486CEB800E47090 /* Frameworks */,
+				D205F09310F7D40E004C6545 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PXSourceList;
+			productInstallPath = "$(HOME)/Applications";
+			productName = PXSourceList;
+			productReference = 8D1107320486CEB800E47090 /* PXSourceList.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		29B97313FDCFA39411CA2CEA /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "PXSourceList" */;
+			compatibilityVersion = "Xcode 3.1";
+			hasScannedForEncodings = 1;
+			mainGroup = 29B97314FDCFA39411CA2CEA /* PXSourceList */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8D1107260486CEB800E47090 /* PXSourceList */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8D1107290486CEB800E47090 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */,
+				D265C2D710E3814B00A1E824 /* TODO.rtf in Resources */,
+				D205EDF010F7A609004C6545 /* MainMenu.xib in Resources */,
+				D2456CAA10F8F7F500B8045C /* audiobooks.png in Resources */,
+				D2456CAB10F8F7F500B8045C /* movies.png in Resources */,
+				D2456CAC10F8F7F500B8045C /* music.png in Resources */,
+				D2456CAD10F8F7F500B8045C /* playlist.png in Resources */,
+				D2456CAE10F8F7F500B8045C /* playlistFolder.png in Resources */,
+				D2456CAF10F8F7F500B8045C /* podcasts.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		D205F09310F7D40E004C6545 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "DOXYGEN=/Users/alexrozanski/Development/Xcode/OSX/Documentation/doxygen\nDOXYFILE=$SOURCE_ROOT/Doxyfile\n\nAPPLEDOC=/Users/alexrozanski/Development/Xcode/osx/Documentation/appledoc\nSTRIPDTAGS=/Users/alexrozanski/Development/Xcode/osx/Documentation/StripDoxygenTags\n\n#THE OUTPUT DIRECTORY HAS ITS CONTENTS REMOVED ON BUILD!\n\n#$APPLEDOC -p \"$PROJECT_NAME\" -i $SOURCE_ROOT -o $SOURCE_ROOT/documentation/output -t \"/Library/Application Support/appledoc\"  -c $SOURCE_ROOT/Doxyfile --date-time-template \"Last updated: %Y-%m-%d\" --xhtml\n\n#Strip the Doxygen tags\n\n#$STRIPDTAGS -i $SOURCE_ROOT -o /Users/alexrozanski/Development/Xcode/osx/Github/PXSourceList\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8D11072C0486CEB800E47090 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8D11072D0486CEB800E47090 /* main.m in Sources */,
+				D2EA6EC210D9205A00402758 /* PXSourceList.m in Sources */,
+				D205EDF710F7A693004C6545 /* AppDelegate.m in Sources */,
+				D2456D1A10F9093800B8045C /* PXSourceList.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		089C165CFE840E0CC02AAC07 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				089C165DFE840E0CC02AAC07 /* InfoPlist.strings */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		C01FCF4B08A954540054247B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = PXSourceList_Prefix.pch;
+				INFOPLIST_FILE = "PXSourceList-Info.plist";
+				INSTALL_PATH = "$(HOME)/Applications";
+				PRODUCT_NAME = PXSourceList;
+			};
+			name = Debug;
+		};
+		C01FCF4C08A954540054247B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = PXSourceList_Prefix.pch;
+				INFOPLIST_FILE = "PXSourceList-Info.plist";
+				INSTALL_PATH = "$(HOME)/Applications";
+				PRODUCT_NAME = PXSourceList;
+			};
+			name = Release;
+		};
+		C01FCF4F08A954540054247B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PREBINDING = NO;
+				SDKROOT = macosx10.6;
+			};
+			name = Debug;
+		};
+		C01FCF5008A954540054247B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				PREBINDING = NO;
+				SDKROOT = macosx10.5;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "PXSourceList" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C01FCF4B08A954540054247B /* Debug */,
+				C01FCF4C08A954540054247B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "PXSourceList" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C01FCF4F08A954540054247B /* Debug */,
+				C01FCF5008A954540054247B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 29B97313FDCFA39411CA2CEA /* Project object */;
+}
