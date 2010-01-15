@@ -275,20 +275,16 @@
 								<string>D27B7D2710E0C925004D7DBC</string>
 								<string>089C165CFE840E0CC02AAC07</string>
 								<string>1C37FBAC04509CD000000102</string>
-								<string>D2456D9010F90D5000B8045C</string>
-								<string>D2456D9110F90D5000B8045C</string>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>33</integer>
-									<integer>31</integer>
-									<integer>29</integer>
-									<integer>28</integer>
+									<integer>2</integer>
+									<integer>0</integer>
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-							<string>{{0, 10}, {259, 624}}</string>
+							<string>{{0, 1}, {259, 624}}</string>
 						</dict>
 						<key>PBXTopSmartGroupGIDs</key>
 						<array/>
@@ -325,7 +321,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>D2EA6EDA10D9255200402758</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>PXSourceList.m</string>
+								<string>README.markdown</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -333,11 +329,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>D2EA6EDB10D9255200402758</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>PXSourceList.m</string>
+										<string>README.markdown</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>D2456DA410F90D5B00B8045C</string>
+										<string>D2456DF310F9116000B8045C</string>
 										<key>history</key>
 										<array>
 											<string>D27B7D5B10E11399004D7DBC</string>
@@ -360,13 +356,13 @@
 											<string>D2456CB110F8F80F00B8045C</string>
 											<string>D2456CE210F9059100B8045C</string>
 											<string>D2456CF310F905AD00B8045C</string>
-											<string>D2456D0610F907AB00B8045C</string>
 											<string>D2456D0710F907AB00B8045C</string>
 											<string>D2456D0810F907AB00B8045C</string>
 											<string>D2456D6110F90CE000B8045C</string>
 											<string>D2456D9210F90D5000B8045C</string>
 											<string>D2456D9310F90D5000B8045C</string>
-											<string>D2456DA310F90D5800B8045C</string>
+											<string>D2456DF110F9116000B8045C</string>
+											<string>D2456DF210F9116000B8045C</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -380,18 +376,18 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 0}, {865, 420}}</string>
+								<string>{{0, 0}, {865, 406}}</string>
 								<key>RubberWindowFrame</key>
 								<string>4 74 1146 683 0 0 1280 778 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
 							<key>Proportion</key>
-							<string>420pt</string>
+							<string>406pt</string>
 						</dict>
 						<dict>
 							<key>Proportion</key>
-							<string>217pt</string>
+							<string>231pt</string>
 							<key>Tabs</key>
 							<array>
 								<dict>
@@ -405,7 +401,7 @@
 									<key>GeometryConfiguration</key>
 									<dict>
 										<key>Frame</key>
-										<string>{{10, 27}, {865, 190}}</string>
+										<string>{{10, 27}, {865, 204}}</string>
 										<key>RubberWindowFrame</key>
 										<string>4 74 1146 683 0 0 1280 778 </string>
 									</dict>
@@ -510,11 +506,11 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>D2456D9610F90D5000B8045C</string>
+				<string>D2456DF410F9116000B8045C</string>
 				<string>1CA23ED40692098700951B8B</string>
-				<string>D2456D9710F90D5000B8045C</string>
+				<string>D2456DF510F9116000B8045C</string>
 				<string>D2EA6EDA10D9255200402758</string>
-				<string>D2456D9810F90D5000B8045C</string>
+				<string>D2456DF610F9116000B8045C</string>
 				<string>1CA23EDF0692099D00951B8B</string>
 				<string>1CA23EE00692099D00951B8B</string>
 				<string>1CA23EE10692099D00951B8B</string>
@@ -702,8 +698,6 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>D2456DA110F90D5600B8045C</string>
-		<string>D2456DA210F90D5600B8045C</string>
 		<string>/Users/alexrozanski/Development/Xcode/OSX/Github/PXSourceList/PXSourceList.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
