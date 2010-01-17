@@ -29,8 +29,6 @@
 - (BOOL)sourceList:(PXSourceList*)aSourceList itemHasIcon:(id)item;
 - (NSImage*)sourceList:(PXSourceList*)aSourceList iconForItem:(id)item;
 
-- (NSMenu*)sourceList:(PXSourceList*)aSourceList contextMenuForItem:(id)item;
-
 //The rest of these methods are basically "wrappers" for the NSOutlineViewDataSource methods
 - (id)sourceList:(PXSourceList*)aSourceList itemForPersistentObject:(id)object;
 - (id)sourceList:(PXSourceList*)aSourceList persistentObjectForItem:(id)item;

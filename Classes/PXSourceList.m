@@ -25,10 +25,6 @@
 #define BADGE_SELECTED_HIDDEN_TEXT_COLOR		[NSColor colorWithCalibratedWhite:(170/255.0) alpha:1]
 #define BADGE_FONT								[NSFont boldSystemFontOfSize:11]
 
-#define RIGHT_CLICKED_BGCOLOR					[NSColor colorWithCalibratedRed:(207/255.0) green:(221/255.0) blue:(247/255.0) alpha:1]
-#define RIGHT_CLICKED_OUTLINE_COLOR				[NSColor colorWithCalibratedRed:(84/255.0) green:(101/255.0) blue:(226/255.0) alpha:1]
-#define RIGHT_CLICKED_SELECTED_OUTLINE_COLOR	[NSColor whiteColor]
-
 //Delegate notification constants
 NSString * const PXSLSelectionIsChangingNotification = @"PXSourceListSelectionIsChanging";
 NSString * const PXSLSelectionDidChangeNotification = @"PXSourceListSelectionDidChange";
@@ -349,31 +345,7 @@ NSString * const PXSLDeleteKeyPressedOnRowsNotification = @"PXSourceListDeleteKe
 #pragma mark Drawing
 
 - (void)drawRow:(NSInteger)rowIndex clipRect:(NSRect)clipRect
-{
-	//If the row has been right-clicked...
-	if(_isRowRightClicked&&_rightClickedRowIndex==rowIndex)
-	{
-		NSRect rowRect = [self rectOfRow:rowIndex];
-		NSUInteger selectedRow = [[self selectedRowIndexes] firstIndex];
-		NSBezierPath *roundRectPath = [NSBezierPath bezierPathWithRoundedRect:NSInsetRect(rowRect, 2,2)
-																	  xRadius:5
-																	  yRadius:5];
-		[roundRectPath setLineWidth:2];
-		
-		if(_rightClickedRowIndex==selectedRow)
-		{
-			[RIGHT_CLICKED_SELECTED_OUTLINE_COLOR set];
-			[roundRectPath stroke];
-		}
-		else
-		{
-			[RIGHT_CLICKED_BGCOLOR set];
-			[roundRectPath fill];
-			[RIGHT_CLICKED_OUTLINE_COLOR set];
-			[roundRectPath stroke];
-		}
-	}
-	
+{	
 	[super drawRow:rowIndex clipRect:clipRect];
 	
 	id item = [self itemAtRow:rowIndex];
@@ -564,43 +536,6 @@ NSString * const PXSLDeleteKeyPressedOnRowsNotification = @"PXSourceListDeleteKe
 	[super keyDown:theEvent];
 }
 
-#pragma mark Context Menu Handling
-
-- (void)rightMouseDown:(NSEvent*)event
-{
-	NSInteger selectedRow = [self rowAtPoint:[self convertPoint:[event locationInWindow] fromView:nil]];
-	
-	if(selectedRow!=-1&&![self isGroupItem:[self itemAtRow:selectedRow]])
-	{
-		if([_secondaryDataSource respondsToSelector:@selector(sourceList:contextMenuForItem:)])
-		{
-			NSMenu *contextMenu = [_secondaryDataSource sourceList:self contextMenuForItem:[self itemAtRow:selectedRow]];
-			
-			if(contextMenu!=nil)
-			{
-				[contextMenu setDelegate:self];
-				
-				//Row needs to be redrawn with round selection rectangle
-				_isRowRightClicked = YES;
-				_rightClickedRowIndex = selectedRow;
-				
-				//Let's be economical
-				[self setNeedsDisplayInRect:[self rectOfRow:selectedRow]];
-				
-				[NSMenu popUpContextMenu:contextMenu withEvent:event forView:self];
-			}
-		}
-	}
-}
-
-- (void)menuDidClose:(NSMenu *)menu
-{
-	_isRowRightClicked = NO;
-	
-	//Row needs to be redrawn to clear round selection rectangle
-	[self setNeedsDisplayInRect:[self rectOfRow:_rightClickedRowIndex]];
-}
-
 //MARK: -
 
 #pragma mark NSOutlineView Data Source methods
@@ -747,6 +682,13 @@ NSString * const PXSLDeleteKeyPressedOnRowsNotification = @"PXSourceListDeleteKe
 	
 	//Return the default table column
 	return [[[self tableColumns] objectAtIndex:0] dataCellForRow:row];
+}
+
+- (void)outlineView:(NSOutlineView *)outlineView willDisplayCell:(id)cell forTableColumn:(NSTableColumn *)tableColumn item:(id)item
+{
+	if([_secondaryDelegate respondsToSelector:@selector(sourceList:willDisplayCell:forItem:)]) {
+		[_secondaryDelegate sourceList:self willDisplayCell:cell forItem:item];
+	}
 }
 
 - (BOOL)outlineView:(NSOutlineView *)outlineView shouldSelectItem:(id)item

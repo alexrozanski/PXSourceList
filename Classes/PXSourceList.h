@@ -17,8 +17,6 @@
 	id <PXSourceListDataSource> _secondaryDataSource;	//Used to store the publicly visible data source
 	
 	NSSize _iconSize;									//The size of icons in the Source List. Defaults to 16x16
-	BOOL _isRowRightClicked;							//Whether an item has been right-clicked
-	NSUInteger _rightClickedRowIndex;					//The index of the item that has been right-clicked
 }
 	
 @property NSSize iconSize;

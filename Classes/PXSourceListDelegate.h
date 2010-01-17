@@ -29,6 +29,7 @@
 
 - (CGFloat)sourceList:(PXSourceList*)aSourceList heightOfRowByItem:(id)item;
 
+- (NSCell*)sourceList:(PXSourceList*)aSourceList willDisplayCell:(id)cell forItem:(id)item;
 - (NSCell*)sourceList:(PXSourceList*)aSourceList dataCellForItem:(id)item;
 
 @end
