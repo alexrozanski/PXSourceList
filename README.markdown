@@ -4,6 +4,8 @@ A Source List control for use with the Mac OS X 10.5 SDK or above.
 
 [Download the documentation][1]
 
+`PXSourceList` is licensed under the New BSD License.
+
 ##Intention
 [Source Lists][2] are used in a lot of Mac OS X applications, but the support for such controls is quite primitive – at best you create an Outline View with Source List highlighting, but none of the features such as badging are built in by default. `PXSourceList` is a reusable control – within the context of Source Lists – which makes creating applications with Source Lists a much easier process.
 
@@ -35,6 +37,10 @@ If you feel that any areas of the documentation are lacking or missing, please f
 
 **Note:** the documentation for the Source List notifications can be found in the `NSObject(PXSourceListNotifications)` reference, which is linked to from the documentation index page.
 
+###Documentation Revision History
+17th Jan - PXSourceList Documentation [version 0.7.1][7] released    
+9th Jan - PXSourceList Documentation [version 0.7][8] released
+
 ##Known Issues
 
   - Calling `delegate` or `dataSource` on the Source List returns the Source List instance. This is, unfortunately, a side effect of how delegate and data source methods are handled within the Source List – I hope to work around it in the future.
@@ -42,23 +48,24 @@ If you feel that any areas of the documentation are lacking or missing, please f
 
 ##Attribution
 
-I was spurred along the way by many sources, but in particular [BWToolkit][7] by Brandon Walkin and Fraser Kuyvenhoven, which gave me the idea of how to handle the Source List delegate and data source methods.
+I was spurred along the way by many sources, but in particular [BWToolkit][9] by Brandon Walkin and Fraser Kuyvenhoven, which gave me the idea of how to handle the Source List delegate and data source methods.
 
-Also Brian Dunagan's post on [Source List badging][8] and determining state for the various colours was a great help when I came to the drawing code for that.
+Also Brian Dunagan's post on [Source List badging][10] and determining state for the various colours was a great help when I came to the drawing code for that.
 
-The documentation was created using [Doxygen][9] and [appledoc][10], thanks of which go to the developers of both.
+The documentation was created using [Doxygen][11] and [appledoc][12], thanks of which go to the developers of both.
 
-The icons used in the demo project bundled with the source code are from the [Fugue icon set][11] by Yusuke Kamiyamane.
+The icons used in the demo project bundled with the source code are from the [Fugue icon set][13] by Yusuke Kamiyamane.
 
-
-  [1]: http://perspx.com/wp-content/uploads/2010/01/PXSourceList_0-7_Documentation.zip
+  [1]: http://perspx.com/software/PXSourceList/#docs
   [2]: http://developer.apple.com/Mac/library/documentation/UserExperience/Conceptual/AppleHIGuidelines/XHIGWindows/XHIGWindows.html#//apple_ref/doc/uid/20000961-CHDDIGDE
   [3]: http://perspx.com/wp-content/uploads/2010/01/pxsourcelist.jpg
   [4]: http://developer.apple.com/mac/library/DOCUMENTATION/Cocoa/Conceptual/OutlineView/Articles/UsingOutlineDataSource.html
-  [5]: http://perspx.com/wp-content/uploads/2010/01/PXSourceList_0-7_Documentation.zip
+  [5]: http://perspx.com/software/PXSourceList/#docs
   [6]: http://perspx.com/contact
-  [7]: http://brandonwalkin.com/bwtoolkit/
-  [8]: http://www.bdunagan.com/2008/11/10/cocoa-tutorial-source-list-badges-part-2/
-  [9]: http://www.doxygen.org/
-  [10]: http://www.gentlebytes.com/freeware/appledoc/
-  [11]: http://www.pinvoke.com/
+  [7]: http://perspx.com/wp-content/uploads/2010/01/PXSourceList_0-7-1_Documentation.zip
+  [8]: http://perspx.com/wp-content/uploads/2010/01/PXSourceList_0-7_Documentation.zip
+  [9]: http://brandonwalkin.com/bwtoolkit/
+  [10]: http://www.bdunagan.com/2008/11/10/cocoa-tutorial-source-list-badges-part-2/
+  [11]: http://www.doxygen.org/
+  [12]: http://www.gentlebytes.com/freeware/appledoc/
+  [13]: http://www.pinvoke.com/
