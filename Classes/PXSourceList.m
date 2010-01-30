@@ -283,9 +283,18 @@ NSString * const PXSLDeleteKeyPressedOnRowsNotification = @"PXSourceListDeleteKe
 
 	if([self isGroupItem:item])
 	{	
-		return NSMakeRect(NSMinX(cellFrame),
+		NSRect rowRect = [self rectOfRow:row];
+		CGFloat minX = NSMinX(cellFrame);
+		
+		//Set the origin x-coord; if there are no children of the group at current, there will still be a 
+		//margin to the left of the cell (in cellFrame), which we don't want
+		if([self isGroupAlwaysExpanded:[self itemAtRow:row]]) {
+			minX = 7;
+		}
+		
+		return NSMakeRect(minX,
 						  NSMidY(cellFrame)-(cellSize.height/2.0),
-						  NSWidth(cellFrame),
+						  NSWidth(rowRect)-minX,
 						  cellSize.height);
 	}
 	else
