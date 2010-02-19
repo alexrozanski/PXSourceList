@@ -17,8 +17,7 @@
 @synthesize badgeValue;
 @synthesize children;
 
-//MARK: -
-
+#pragma mark -
 #pragma mark Init/Dealloc
 
 - (id)init
@@ -62,8 +61,7 @@
 	[super dealloc];
 }
 
-//MARK: -
-
+#pragma mark -
 #pragma mark Custom Accessors
 
 - (BOOL)hasBadge

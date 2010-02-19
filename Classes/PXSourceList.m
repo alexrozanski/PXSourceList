@@ -34,6 +34,7 @@ NSString * const PXSLItemWillCollapseNotification = @"PXSourceListItemWillCollap
 NSString * const PXSLItemDidCollapseNotification = @"PXSourceListItemDidCollapse";
 NSString * const PXSLDeleteKeyPressedOnRowsNotification = @"PXSourceListDeleteKeyPressedOnRows";
 
+#pragma mark -
 @interface PXSourceList ()
 
 - (NSSize)sizeOfBadgeAtRow:(NSInteger)rowIndex;
@@ -42,9 +43,7 @@ NSString * const PXSLDeleteKeyPressedOnRowsNotification = @"PXSourceListDeleteKe
 
 @end
 
-
-//MARK: -
-
+#pragma mark -
 @implementation PXSourceList
 
 @synthesize iconSize = _iconSize;
@@ -81,8 +80,7 @@ NSString * const PXSLDeleteKeyPressedOnRowsNotification = @"PXSourceListDeleteKe
 	[super dealloc];
 }
 
-//MARK: -
-
+#pragma mark -
 #pragma mark Custom Accessors
 
 - (void)setDelegate:(id<PXSourceListDelegate>)aDelegate
@@ -131,8 +129,7 @@ NSString * const PXSLDeleteKeyPressedOnRowsNotification = @"PXSourceListDeleteKe
 	}
 }
 
-//MARK: -
-
+#pragma mark -
 #pragma mark Data Management
 
 - (void)reloadData
@@ -221,8 +218,7 @@ NSString * const PXSLDeleteKeyPressedOnRowsNotification = @"PXSourceListDeleteKe
 	return NSNotFound;
 }
 
-//MARK: -
-
+#pragma mark -
 #pragma mark Selection Handling
 
 - (void)selectRowIndexes:(NSIndexSet*)indexes byExtendingSelection:(BOOL)extend
@@ -258,8 +254,7 @@ NSString * const PXSLDeleteKeyPressedOnRowsNotification = @"PXSourceListDeleteKe
 	free(selectedIndexes);
 }
 
-//MARK: -
-
+#pragma mark -
 #pragma mark Layout
 
 - (NSRect)frameOfOutlineCellAtRow:(NSInteger)row
@@ -349,8 +344,7 @@ NSString * const PXSLDeleteKeyPressedOnRowsNotification = @"PXSourceListDeleteKe
 }
 
 
-//MARK: -
-
+#pragma mark -
 #pragma mark Drawing
 
 - (void)drawRow:(NSInteger)rowIndex clipRect:(NSRect)clipRect
@@ -490,8 +484,7 @@ NSString * const PXSLDeleteKeyPressedOnRowsNotification = @"PXSourceListDeleteKe
 	[badgeAttrString release];
 }
 
-//MARK: -
-
+#pragma mark -
 #pragma mark Keyboard Handling
 
 - (void)keyDown:(NSEvent *)theEvent
@@ -545,8 +538,7 @@ NSString * const PXSLDeleteKeyPressedOnRowsNotification = @"PXSourceListDeleteKe
 	[super keyDown:theEvent];
 }
 
-//MARK: -
-
+#pragma mark -
 #pragma mark NSOutlineView Data Source methods
 
 - (NSInteger)outlineView:(NSOutlineView *)outlineView numberOfChildrenOfItem:(id)item
@@ -651,8 +643,7 @@ NSString * const PXSLDeleteKeyPressedOnRowsNotification = @"PXSourceListDeleteKe
 }
 
 
-//MARK: -
-
+#pragma mark -
 #pragma mark NSOutlineView Delegate methods
 
 - (BOOL)outlineView:(NSOutlineView *)outlineView shouldExpandItem:(id)item
@@ -772,8 +763,7 @@ NSString * const PXSLDeleteKeyPressedOnRowsNotification = @"PXSourceListDeleteKe
 	return [self isGroupItem:item];
 }
 
-//MARK: -
-
+#pragma mark -
 #pragma mark Notification handling
 
 /* Notification wrappers */
@@ -830,5 +820,3 @@ NSString * const PXSLDeleteKeyPressedOnRowsNotification = @"PXSourceListDeleteKe
 }
 
 @end
-
-//MARK: -

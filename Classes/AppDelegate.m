@@ -7,13 +7,11 @@
 //
 
 #import "AppDelegate.h"
-
 #import "SourceListItem.h"
 
 @implementation AppDelegate
 
-//MARK: -
-
+#pragma mark -
 #pragma mark Init/Dealloc
 
 - (void)awakeFromNib
@@ -69,8 +67,7 @@
 	[super dealloc];
 }
 
-//MARK: -
-
+#pragma mark -
 #pragma mark Source List Data Source Methods
 
 - (NSUInteger)sourceList:(PXSourceList*)sourceList numberOfChildrenOfItem:(id)item
@@ -138,8 +135,7 @@
 	return [item icon];
 }
 
-//MARK: -
-
+#pragma mark -
 #pragma mark Source List Delegate Methods
 
 - (BOOL)sourceList:(PXSourceList*)aSourceList isGroupAlwaysExpanded:(id)group
