@@ -10,6 +10,10 @@
 
 #import "PXSourceList.h"
 
+#ifndef MAC_OS_X_VERSION_10_6
+@protocol NSApplicationDelegate <NSObject> @end
+#endif
+
 @interface AppDelegate : NSObject <NSApplicationDelegate, PXSourceListDataSource, PXSourceListDelegate> {
 	IBOutlet PXSourceList *sourceList;
 	IBOutlet NSTextField *selectedItemLabel;
