@@ -372,13 +372,19 @@ NSString * const PXSLDeleteKeyPressedOnRowsNotification = @"PXSourceListDeleteKe
 				if(icon!=nil)
 				{
 					[icon setFlipped:[self isFlipped]];
-					NSSize iconSize = [icon size]; 
-					NSRect drawRect = NSMakeRect(NSMidX(iconRect)-(iconSize.width/2.0),
-												 NSMidY(iconRect)-(iconSize.height/2.0),
-												 iconSize.width,
-												 iconSize.height);
+					NSSize actualIconSize = [icon size];
 					
-					[icon drawInRect:drawRect fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1];
+					//If the icon is *smaller* than the size retrieved from the -iconSize property, make sure we
+					//reduce the size of the rectangle to draw the icon in, so that it is not stretched.
+					if((actualIconSize.width<iconSize.width)||(actualIconSize.height<iconSize.height))
+					{
+						iconRect = NSMakeRect(NSMidX(iconRect)-(actualIconSize.width/2.0),
+													 NSMidY(iconRect)-(actualIconSize.height/2.0),
+													 actualIconSize.width,
+													 actualIconSize.height);
+					}
+					
+					[icon drawInRect:iconRect fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1];
 				}
 			}
 		}
