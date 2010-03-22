@@ -15,6 +15,7 @@
 @optional
 //Extra methods
 - (BOOL)sourceList:(PXSourceList*)aSourceList isGroupAlwaysExpanded:(id)group;
+- (NSMenu*)sourceList:(PXSourceList*)aSourceList menuForEvent:(NSEvent*)theEvent item:(id)item;
 
 //Basically NSOutlineViewDelegate wrapper methods
 - (BOOL)sourceList:(PXSourceList*)aSourceList shouldSelectItem:(id)item;

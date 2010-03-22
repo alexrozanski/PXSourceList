@@ -135,6 +135,20 @@
 	return [item icon];
 }
 
+- (NSMenu*)sourceList:(PXSourceList*)aSourceList menuForEvent:(NSEvent*)theEvent item:(id)item
+{
+	if ([theEvent type] == NSRightMouseDown || ([theEvent type] == NSLeftMouseDown && ([theEvent modifierFlags] & NSControlKeyMask) == NSControlKeyMask)) {
+		NSMenu * m = [[NSMenu alloc] init];
+		if (item != nil) {
+			[m addItemWithTitle:[item title] action:nil keyEquivalent:@""];
+		} else {
+			[m addItemWithTitle:@"clicked outside" action:nil keyEquivalent:@""];
+		}
+		return [m autorelease];
+	}
+	return nil;
+}
+
 #pragma mark -
 #pragma mark Source List Delegate Methods
 

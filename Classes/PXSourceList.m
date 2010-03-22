@@ -545,6 +545,25 @@ NSString * const PXSLDeleteKeyPressedOnRowsNotification = @"PXSourceListDeleteKe
 }
 
 #pragma mark -
+#pragma mark Menu Handling
+
+
+- (NSMenu *)menuForEvent:(NSEvent *)theEvent
+{
+	NSMenu * m = nil;
+	if([_secondaryDelegate respondsToSelector:@selector(sourceList:menuForEvent:item:)]) {
+		NSPoint clickPoint = [self convertPoint:[theEvent locationInWindow] fromView:nil];
+		NSInteger row = [self rowAtPoint:clickPoint];
+		id clickedItem = [self itemAtRow:row];
+		m = [_secondaryDelegate sourceList:self menuForEvent:theEvent item:clickedItem];
+	}
+	if (m == nil) {
+		m = [super menuForEvent:theEvent];
+	}
+	return m;
+}
+
+#pragma mark -
 #pragma mark NSOutlineView Data Source methods
 
 - (NSInteger)outlineView:(NSOutlineView *)outlineView numberOfChildrenOfItem:(id)item
