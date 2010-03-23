@@ -151,9 +151,35 @@ NSString * const PXSLDeleteKeyPressedOnRowsNotification = @"PXSourceListDeleteKe
 		
 	}
 	
-	//Select the first non-group row if no rows are selected, and empty selection is disallowed
-	if(![self allowsEmptySelection]&&[self numberOfSelectedRows]==0)
+	//If there are selected rows and the item hierarchy has changed, make sure a Group row isn't
+	//selected
+	if([self numberOfSelectedRows]>0) {
+		NSIndexSet *selectedIndexes = [self selectedRowIndexes];
+		NSUInteger firstSelectedRow = [selectedIndexes firstIndex];
+		
+		//Is a group item selected?
+		if([self isGroupItem:[self itemAtRow:firstSelectedRow]]) {
+			//Work backwards to find the first non-group row
+			BOOL foundRow = NO;
+			for(NSUInteger i=firstSelectedRow;i>0;i--)
+			{
+				if(![self isGroupItem:[self itemAtRow:i]]) {
+					[self selectRowIndexes:[NSIndexSet indexSetWithIndex:i] byExtendingSelection:NO];
+					foundRow = YES;
+					break;
+				}
+			}
+			
+			//If there is no non-group row preceding the currently selected group item, remove the selection
+			//from the Source List
+			if(!foundRow) {
+				[self deselectAll:self];
+			}
+		}
+	}
+	else if(![self allowsEmptySelection]&&[self numberOfSelectedRows]==0)
 	{
+		//Select the first non-group row if no rows are selected, and empty selection is disallowed
 		for(NSUInteger i=0;i<[self numberOfRows];i++)
 		{
 			if(![self isGroupItem:[self itemAtRow:i]]) {
