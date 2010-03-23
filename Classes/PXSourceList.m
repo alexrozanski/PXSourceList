@@ -691,7 +691,7 @@ NSString * const PXSLDeleteKeyPressedOnRowsNotification = @"PXSourceListDeleteKe
 	}
 	
 	if([_secondaryDelegate respondsToSelector:@selector(sourceList:shouldCollapseItem:)]) {
-		return [_secondaryDelegate sourceList:self shouldExpandItem:item];
+		return [_secondaryDelegate sourceList:self shouldCollapseItem:item];
 	}
 	
 	return YES;
