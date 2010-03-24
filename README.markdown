@@ -56,7 +56,7 @@ The documentation was created using [Doxygen][10] and [appledoc][11], thanks of 
 The icons used in the demo project bundled with the source code are from the [Fugue icon set][12] by Yusuke Kamiyamane.
 
 
-  [1]: http://perspx.com/software/PXSourceList/#docs
+  [1]: http://github.com/Perspx/PXSourceList/downloads
   [2]: http://developer.apple.com/Mac/library/documentation/UserExperience/Conceptual/AppleHIGuidelines/XHIGWindows/XHIGWindows.html#//apple_ref/doc/uid/20000961-CHDDIGDE
   [3]: http://perspx.com/wp-content/uploads/2010/01/pxsourcelist.jpg
   [4]: http://developer.apple.com/mac/library/DOCUMENTATION/Cocoa/Conceptual/OutlineView/Articles/UsingOutlineDataSource.html
