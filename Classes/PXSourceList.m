@@ -301,10 +301,11 @@ NSString * const PXSLDeleteKeyPressedOnRowsNotification = @"PXSourceListDeleteKe
 	NSCell *cell = [self preparedCellAtColumn:column row:row];
 	NSSize cellSize = [cell cellSize];
 	NSRect cellFrame = [super frameOfCellAtColumn:column row:row];
+	
+	NSRect rowRect = [self rectOfRow:row];
 
 	if([self isGroupItem:item])
 	{	
-		NSRect rowRect = [self rectOfRow:row];
 		CGFloat minX = NSMinX(cellFrame);
 		
 		//Set the origin x-coord; if there are no children of the group at current, there will still be a 
@@ -334,8 +335,8 @@ NSString * const PXSLDeleteKeyPressedOnRowsNotification = @"PXSourceListDeleteKe
 		}
 		
 		return NSMakeRect(leftIndent,
-						  NSMidY(cellFrame)-(cellSize.height/2.0),
-						  NSWidth(cellFrame)-rightIndent-leftIndent,
+						  NSMidY(rowRect)-(cellSize.height/2.0),
+						  NSWidth(rowRect)-rightIndent-leftIndent,
 						  cellSize.height);
 	}
 }
