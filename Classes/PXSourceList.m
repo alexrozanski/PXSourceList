@@ -102,7 +102,7 @@ NSString * const PXSLDeleteKeyPressedOnRowsNotification = @"PXSourceListDeleteKe
 	[self registerDelegateToReceiveNotification:PXSLItemWillCollapseNotification
 								   withSelector:@selector(sourceListItemWillCollapse:)];
 	[self registerDelegateToReceiveNotification:PXSLItemDidCollapseNotification
-								   withSelector:@selector(sourceListItemWillCollapse:)];
+								   withSelector:@selector(sourceListItemDidCollapse:)];
 	[self registerDelegateToReceiveNotification:PXSLDeleteKeyPressedOnRowsNotification
 								   withSelector:@selector(sourceListDeleteKeyPressedOnRows:)];
 }
