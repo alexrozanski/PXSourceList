@@ -57,7 +57,7 @@ The icons used in the demo project bundled with the source code are from the [Fu
 
 
   [1]: http://github.com/Perspx/PXSourceList/downloads
-  [2]: http://developer.apple.com/Mac/library/documentation/UserExperience/Conceptual/AppleHIGuidelines/XHIGWindows/XHIGWindows.html#//apple_ref/doc/uid/20000961-CHDDIGDE
+  [2]: http://developer.apple.com/library/mac/#documentation/UserExperience/Conceptual/AppleHIGuidelines/XHIGWindows/XHIGWindows.html#//apple_ref/doc/uid/20000961-CHDDIGDE
   [3]: http://perspx.com/wp-content/uploads/2010/01/pxsourcelist.jpg
   [4]: http://developer.apple.com/mac/library/DOCUMENTATION/Cocoa/Conceptual/OutlineView/Articles/UsingOutlineDataSource.html
   [5]: http://github.com/Perspx/PXSourceList/downloads
