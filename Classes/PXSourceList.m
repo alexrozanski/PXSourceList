@@ -5,7 +5,8 @@
 //  Created by Alex Rozanski on 05/09/2009.
 //  Copyright 2009-10 Alex Rozanski http://perspx.com
 //
-
+//  GC-enabled code revised by Stefan Vogt http://byteproject.net
+//
 
 #import "PXSourceList.h"
 
@@ -50,7 +51,7 @@ NSString * const PXSLDeleteKeyPressedOnRowsNotification = @"PXSourceListDeleteKe
 @dynamic dataSource;
 @dynamic delegate;
 
-#pragma mark Init/Dealloc
+#pragma mark Init/Dealloc/Finalize
 
 - (id)initWithCoder:(NSCoder*)decoder
 {	
@@ -68,6 +69,7 @@ NSString * const PXSLDeleteKeyPressedOnRowsNotification = @"PXSourceListDeleteKe
 	return self;
 }
 
+#ifndef __OBJC_GC__
 - (void)dealloc
 {
 	//Remove ourselves as the delegate and data source to be safe
@@ -79,6 +81,19 @@ NSString * const PXSLDeleteKeyPressedOnRowsNotification = @"PXSourceListDeleteKe
 	
 	[super dealloc];
 }
+#else
+- (void)finalize
+{
+	//Remove ourselves as the delegate and data source to be safe
+	[super setDataSource:nil];
+	[super setDelegate:nil];
+	
+	//Unregister the delegate from receiving notifications
+	[[NSNotificationCenter defaultCenter] removeObserver:_secondaryDelegate name:nil object:self];
+	
+	[super finalize];
+}
+#endif
 
 #pragma mark -
 #pragma mark Custom Accessors
@@ -298,14 +313,14 @@ NSString * const PXSLDeleteKeyPressedOnRowsNotification = @"PXSourceListDeleteKe
 {
 	id item = [self itemAtRow:row];
 	
-  NSCell *cell = [self preparedCellAtColumn:column row:row];
-  NSSize cellSize = [cell cellSize];
-  if (!([cell type] == NSImageCellType) && !([cell type] == NSTextCellType))
-    cellSize = [cell cellSizeForBounds:[super frameOfCellAtColumn:column row:row]];
+	NSCell *cell = [self preparedCellAtColumn:column row:row];
+	NSSize cellSize = [cell cellSize];
+	if (!([cell type] == NSImageCellType) && !([cell type] == NSTextCellType))
+		cellSize = [cell cellSizeForBounds:[super frameOfCellAtColumn:column row:row]];
 	NSRect cellFrame = [super frameOfCellAtColumn:column row:row];
 	
 	NSRect rowRect = [self rectOfRow:row];
-
+	
 	if([self isGroupItem:item])
 	{	
 		CGFloat minX = NSMinX(cellFrame);
@@ -367,7 +382,9 @@ NSString * const PXSLDeleteKeyPressedOnRowsNotification = @"PXSourceListDeleteKe
 		width = MIN_BADGE_WIDTH;
 	}
 	
+#ifndef __OBJC_GC__
 	[badgeAttrString release];
+#endif 	
 	
 	return NSMakeSize(width, BADGE_HEIGHT);
 }
@@ -408,9 +425,9 @@ NSString * const PXSLDeleteKeyPressedOnRowsNotification = @"PXSourceListDeleteKe
 					if((actualIconSize.width<iconSize.width)||(actualIconSize.height<iconSize.height))
 					{
 						iconRect = NSMakeRect(NSMidX(iconRect)-(actualIconSize.width/2.0),
-													 NSMidY(iconRect)-(actualIconSize.height/2.0),
-													 actualIconSize.width,
-													 actualIconSize.height);
+											  NSMidY(iconRect)-(actualIconSize.height/2.0),
+											  actualIconSize.width,
+											  actualIconSize.height);
 					}
 					
 					[icon drawInRect:iconRect fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1];
@@ -515,8 +532,10 @@ NSString * const PXSLDeleteKeyPressedOnRowsNotification = @"PXSourceListDeleteKe
 										 NSMidY(badgeFrame)-(stringSize.height/2.0));	//Center in the badge frame
 	[badgeAttrString drawAtPoint:badgeTextPoint];
 	
+#ifndef __OBJC_GC__
 	[attributes release];
 	[badgeAttrString release];
+#endif
 }
 
 #pragma mark -
@@ -551,7 +570,7 @@ NSString * const PXSLDeleteKeyPressedOnRowsNotification = @"PXSourceListDeleteKe
 						if(newRow<0||newRow==[self numberOfRows])
 							break;
 					} while([self isGroupItem:[self itemAtRow:newRow]]);
-
+					
 					
 					[self selectRowIndexes:[NSIndexSet indexSetWithIndex:newRow] byExtendingSelection:NO];
 					return;
