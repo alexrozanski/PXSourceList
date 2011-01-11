@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4CC5EA2D12DC8205001F282E /* PXSourceList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CC5EA2A12DC81ED001F282E /* PXSourceList.framework */; };
+		4CC5EA3212DC8224001F282E /* PXSourceList.m in Sources */ = {isa = PBXBuildFile; fileRef = D2EA6EC110D9205A00402758 /* PXSourceList.m */; };
+		4CC5EA4C12DC8339001F282E /* PXSourceList.h in Headers */ = {isa = PBXBuildFile; fileRef = D2EA6EC010D9205A00402758 /* PXSourceList.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4CC5EA4D12DC8339001F282E /* PXSourceListDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = D2EA6EFF10D925AA00402758 /* PXSourceListDataSource.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4CC5EA4E12DC8339001F282E /* PXSourceListDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = D2EA6F0010D925AA00402758 /* PXSourceListDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
@@ -19,9 +24,18 @@
 		D2456CAE10F8F7F500B8045C /* playlistFolder.png in Resources */ = {isa = PBXBuildFile; fileRef = D2456CA810F8F7F500B8045C /* playlistFolder.png */; };
 		D2456CAF10F8F7F500B8045C /* podcasts.png in Resources */ = {isa = PBXBuildFile; fileRef = D2456CA910F8F7F500B8045C /* podcasts.png */; };
 		D2456D8C10F90D3B00B8045C /* SourceListItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D2456D8B10F90D3B00B8045C /* SourceListItem.m */; };
-		D2456D8D10F90D4A00B8045C /* PXSourceList.m in Sources */ = {isa = PBXBuildFile; fileRef = D2EA6EC110D9205A00402758 /* PXSourceList.m */; };
 		D265C2D710E3814B00A1E824 /* TODO.rtf in Resources */ = {isa = PBXBuildFile; fileRef = D265C2D610E3814B00A1E824 /* TODO.rtf */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		4CC5EA2F12DC8209001F282E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4CC5EA2912DC81ED001F282E /* PXSourceList */;
+			remoteInfo = PXSourceList;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		089C165DFE840E0CC02AAC07 /* InfoPlist.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = InfoPlist.strings; path = Resources/English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -31,6 +45,7 @@
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
+		4CC5EA2A12DC81ED001F282E /* PXSourceList.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PXSourceList.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D1107310486CEB800E47090 /* PXSourceList-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "PXSourceList-Info.plist"; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* PXSourceList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PXSourceList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D205EDDD10F7A1EE004C6545 /* README.markdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.markdown; sourceTree = "<group>"; };
@@ -53,11 +68,19 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		4CC5EA2812DC81ED001F282E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8D11072E0486CEB800E47090 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
+				4CC5EA2D12DC8205001F282E /* PXSourceList.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -98,6 +121,7 @@
 			isa = PBXGroup;
 			children = (
 				8D1107320486CEB800E47090 /* PXSourceList.app */,
+				4CC5EA2A12DC81ED001F282E /* PXSourceList.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -171,10 +195,41 @@
 		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		4CC5EA2512DC81ED001F282E /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4CC5EA4C12DC8339001F282E /* PXSourceList.h in Headers */,
+				4CC5EA4D12DC8339001F282E /* PXSourceListDataSource.h in Headers */,
+				4CC5EA4E12DC8339001F282E /* PXSourceListDelegate.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
-		8D1107260486CEB800E47090 /* PXSourceList */ = {
+		4CC5EA2912DC81ED001F282E /* PXSourceList */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "PXSourceList" */;
+			buildConfigurationList = 4CC5EA4B12DC8264001F282E /* Build configuration list for PBXNativeTarget "PXSourceList" */;
+			buildPhases = (
+				4CC5EA2512DC81ED001F282E /* Headers */,
+				4CC5EA2612DC81ED001F282E /* Resources */,
+				4CC5EA2712DC81ED001F282E /* Sources */,
+				4CC5EA2812DC81ED001F282E /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PXSourceList;
+			productName = PXSourceList;
+			productReference = 4CC5EA2A12DC81ED001F282E /* PXSourceList.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		8D1107260486CEB800E47090 /* PXSourceListDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "PXSourceListDemo" */;
 			buildPhases = (
 				8D11072C0486CEB800E47090 /* Sources */,
 				8D1107290486CEB800E47090 /* Resources */,
@@ -183,8 +238,9 @@
 			buildRules = (
 			);
 			dependencies = (
+				4CC5EA3012DC8209001F282E /* PBXTargetDependency */,
 			);
-			name = PXSourceList;
+			name = PXSourceListDemo;
 			productInstallPath = "$(HOME)/Applications";
 			productName = PXSourceList;
 			productReference = 8D1107320486CEB800E47090 /* PXSourceList.app */;
@@ -197,17 +253,32 @@
 			isa = PBXProject;
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "PXSourceList" */;
 			compatibilityVersion = "Xcode 3.1";
+			developmentRegion = English;
 			hasScannedForEncodings = 1;
+			knownRegions = (
+				English,
+				Japanese,
+				French,
+				German,
+			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* PXSourceList */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				8D1107260486CEB800E47090 /* PXSourceList */,
+				8D1107260486CEB800E47090 /* PXSourceListDemo */,
+				4CC5EA2912DC81ED001F282E /* PXSourceList */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		4CC5EA2612DC81ED001F282E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8D1107290486CEB800E47090 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -227,18 +298,33 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		4CC5EA2712DC81ED001F282E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4CC5EA3212DC8224001F282E /* PXSourceList.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8D11072C0486CEB800E47090 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				8D11072D0486CEB800E47090 /* main.m in Sources */,
-				D2456D8D10F90D4A00B8045C /* PXSourceList.m in Sources */,
 				D205EDF710F7A693004C6545 /* AppDelegate.m in Sources */,
 				D2456D8C10F90D3B00B8045C /* SourceListItem.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		4CC5EA3012DC8209001F282E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4CC5EA2912DC81ED001F282E /* PXSourceList */;
+			targetProxy = 4CC5EA2F12DC8209001F282E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		089C165CFE840E0CC02AAC07 /* InfoPlist.strings */ = {
@@ -252,11 +338,69 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		4CC5EA2B12DC81ED001F282E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				FRAMEWORK_VERSION = A;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
+				INFOPLIST_FILE = "PXSourceList-Info.plist";
+				INSTALL_PATH = "$(HOME)/Library/Frameworks";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					AppKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = PXSourceList;
+			};
+			name = Debug;
+		};
+		4CC5EA2C12DC81ED001F282E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				FRAMEWORK_VERSION = A;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
+				INFOPLIST_FILE = "PXSourceList-Info.plist";
+				INSTALL_PATH = "$(HOME)/Library/Frameworks";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					AppKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = PXSourceList;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
 		C01FCF4B08A954540054247B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/build/Debug\"",
+				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_MODEL_TUNING = G5;
@@ -274,6 +418,10 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/build/Debug\"",
+				);
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = PXSourceList_Prefix.pch;
@@ -312,7 +460,16 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "PXSourceList" */ = {
+		4CC5EA4B12DC8264001F282E /* Build configuration list for PBXNativeTarget "PXSourceList" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4CC5EA2B12DC81ED001F282E /* Debug */,
+				4CC5EA2C12DC81ED001F282E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "PXSourceListDemo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C01FCF4B08A954540054247B /* Debug */,
