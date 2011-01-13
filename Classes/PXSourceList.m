@@ -69,7 +69,6 @@ NSString * const PXSLDeleteKeyPressedOnRowsNotification = @"PXSourceListDeleteKe
 	return self;
 }
 
-#ifndef __OBJC_GC__
 - (void)dealloc
 {
 	//Remove ourselves as the delegate and data source to be safe
@@ -81,7 +80,7 @@ NSString * const PXSLDeleteKeyPressedOnRowsNotification = @"PXSourceListDeleteKe
 	
 	[super dealloc];
 }
-#else
+
 - (void)finalize
 {
 	//Remove ourselves as the delegate and data source to be safe
@@ -93,7 +92,6 @@ NSString * const PXSLDeleteKeyPressedOnRowsNotification = @"PXSourceListDeleteKe
 	
 	[super finalize];
 }
-#endif
 
 #pragma mark -
 #pragma mark Custom Accessors
@@ -382,9 +380,7 @@ NSString * const PXSLDeleteKeyPressedOnRowsNotification = @"PXSourceListDeleteKe
 		width = MIN_BADGE_WIDTH;
 	}
 	
-#ifndef __OBJC_GC__
 	[badgeAttrString release];
-#endif 	
 	
 	return NSMakeSize(width, BADGE_HEIGHT);
 }
@@ -532,10 +528,8 @@ NSString * const PXSLDeleteKeyPressedOnRowsNotification = @"PXSourceListDeleteKe
 										 NSMidY(badgeFrame)-(stringSize.height/2.0));	//Center in the badge frame
 	[badgeAttrString drawAtPoint:badgeTextPoint];
 	
-#ifndef __OBJC_GC__
 	[attributes release];
 	[badgeAttrString release];
-#endif
 }
 
 #pragma mark -
