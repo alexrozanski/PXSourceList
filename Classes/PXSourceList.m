@@ -403,7 +403,7 @@ NSString * const PXSLDeleteKeyPressedOnRowsNotification = @"PXSourceListDeleteKe
 			NSRect cellFrame = [self frameOfCellAtColumn:0 row:rowIndex];
 			NSSize iconSize = [self iconSize];
 			NSRect iconRect = NSMakeRect(NSMinX(cellFrame)-iconSize.width-ICON_SPACING,
-										 NSMidY(cellFrame)-(iconSize.width/2.0),
+										 NSMidY(cellFrame)-(iconSize.width/2.0f),
 										 iconSize.width,
 										 iconSize.height);
 			
@@ -413,20 +413,23 @@ NSString * const PXSLDeleteKeyPressedOnRowsNotification = @"PXSourceListDeleteKe
 				
 				if(icon!=nil)
 				{
-					[icon setFlipped:[self isFlipped]];
 					NSSize actualIconSize = [icon size];
 					
 					//If the icon is *smaller* than the size retrieved from the -iconSize property, make sure we
 					//reduce the size of the rectangle to draw the icon in, so that it is not stretched.
 					if((actualIconSize.width<iconSize.width)||(actualIconSize.height<iconSize.height))
 					{
-						iconRect = NSMakeRect(NSMidX(iconRect)-(actualIconSize.width/2.0),
-											  NSMidY(iconRect)-(actualIconSize.height/2.0),
+						iconRect = NSMakeRect(NSMidX(iconRect)-(actualIconSize.width/2.0f),
+											  NSMidY(iconRect)-(actualIconSize.height/2.0f),
 											  actualIconSize.width,
 											  actualIconSize.height);
 					}
 					
-					[icon drawInRect:iconRect fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1];
+					[icon drawInRect:iconRect
+							fromRect:NSZeroRect
+						   operation:NSCompositeSourceOver
+							fraction:1
+					  respectFlipped:YES hints:nil];
 				}
 			}
 		}
