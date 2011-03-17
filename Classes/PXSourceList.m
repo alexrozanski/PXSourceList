@@ -8,6 +8,8 @@
 //  GC-enabled code revised by Stefan Vogt http://byteproject.net
 //
 
+#import <CoreServices/CoreServices.h>
+
 #import "PXSourceList.h"
 
 //Layout constants
@@ -50,6 +52,23 @@ NSString * const PXSLDeleteKeyPressedOnRowsNotification = @"PXSourceListDeleteKe
 @synthesize iconSize = _iconSize;
 @dynamic dataSource;
 @dynamic delegate;
+
+
+static BOOL _PXUsingLeopard = NO;
+
++ (void)initialize
+{
+    SInt32 majorVersion = 0;
+    SInt32 minorVersion = 0;
+    
+    Gestalt(gestaltSystemVersionMajor, &majorVersion);
+    Gestalt(gestaltSystemVersionMinor, &minorVersion);
+    
+    if(majorVersion == 10 && minorVersion <= 5) {
+        _PXUsingLeopard = YES;
+    }
+}
+
 
 #pragma mark Init/Dealloc/Finalize
 
@@ -425,11 +444,20 @@ NSString * const PXSLDeleteKeyPressedOnRowsNotification = @"PXSourceListDeleteKe
 											  actualIconSize.height);
 					}
 					
-					[icon drawInRect:iconRect
-							fromRect:NSZeroRect
-						   operation:NSCompositeSourceOver
-							fraction:1
-					  respectFlipped:YES hints:nil];
+                    if(_PXUsingLeopard) {
+                        [icon setFlipped:[self isFlipped]];
+                        [icon drawInRect:iconRect
+                                fromRect:NSZeroRect
+                               operation:NSCompositeSourceOver
+                                fraction:1];
+                    }
+                    else {
+                        [icon drawInRect:iconRect
+                                fromRect:NSZeroRect
+                               operation:NSCompositeSourceOver
+                                fraction:1
+                          respectFlipped:YES hints:nil];
+                    }
 				}
 			}
 		}
