@@ -90,4 +90,11 @@
 	return icon!=nil;
 }
 
+#pragma mark -
+#pragma mark Custom Accessors
+
+- (NSString *)description
+{
+	return [NSString stringWithFormat:@"<%@: %p | identifier = %@ | title = %@ >", [self class], self, self.identifier, self.title];
+}
 @end
