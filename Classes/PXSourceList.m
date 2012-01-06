@@ -583,7 +583,7 @@ NSString * const PXSLDeleteKeyPressedOnRowsNotification = @"PXSourceListDeleteKe
 					return;
 				}
 			}
-			else if(firstKey==NSDeleteCharacter||firstKey==NSBackspaceCharacter)
+			else if(firstKey==NSDeleteCharacter||firstKey==NSBackspaceCharacter||firstKey==0xf728)
 			{	
 				//Post the notification
 				[[NSNotificationCenter defaultCenter] postNotificationName:PXSLDeleteKeyPressedOnRowsNotification
