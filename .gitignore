@@ -1,5 +1,19 @@
+# Mac OS X
 .DS_Store
-build/
+
+# From http://github.com/github/gitignore
+# Xcode
+build/*
 *.pbxuser
-*.perspective
+!default.pbxuser
+*.mode1v3
+!default.mode1v3
+*.mode2v3
+!default.mode2v3
 *.perspectivev3
+!default.perspectivev3
+*.xcworkspace
+!default.xcworkspace
+xcuserdata
+profile
+*.moved-aside
