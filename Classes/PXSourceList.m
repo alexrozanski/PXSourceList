@@ -38,6 +38,8 @@ NSString * const PXSLDeleteKeyPressedOnRowsNotification = @"PXSourceListDeleteKe
 #pragma mark -
 @interface PXSourceList ()
 
+- (void)PXSL_setup;
+
 - (NSSize)sizeOfBadgeAtRow:(NSInteger)rowIndex;
 - (void)drawBadgeForRow:(NSInteger)rowIndex inRect:(NSRect)badgeFrame;
 - (void)registerDelegateToReceiveNotification:(NSString*)notification withSelector:(SEL)selector;
@@ -51,22 +53,35 @@ NSString * const PXSLDeleteKeyPressedOnRowsNotification = @"PXSourceListDeleteKe
 @dynamic dataSource;
 @dynamic delegate;
 
-#pragma mark Init/Dealloc/Finalize
+#pragma mark - Setup/Teardown
 
 - (id)initWithCoder:(NSCoder*)decoder
 {	
-	if(self=[super initWithCoder:decoder])
-	{
-		[self setDelegate:(id<PXSourceListDelegate>)[super delegate]];
-		[super setDelegate:self];
-		
-		[self setDataSource:(id<PXSourceListDataSource>)[super dataSource]];
-		[super setDataSource:self];
-		
-		_iconSize = NSMakeSize(16,16);
+	if(self=[super initWithCoder:decoder]) {
+        [self PXSL_setup];
 	}
 	
 	return self;
+}
+
+- (id)initWithFrame:(NSRect)frameRect
+{
+    if((self = [super initWithFrame:frameRect])) {
+        [self PXSL_setup];
+    }
+    
+    return self;
+}
+
+- (void)PXSL_setup
+{
+    [self setDelegate:(id<PXSourceListDelegate>)[super delegate]];
+    [super setDelegate:self];
+    
+    [self setDataSource:(id<PXSourceListDataSource>)[super dataSource]];
+    [super setDataSource:self];
+    
+    _iconSize = NSMakeSize(16,16);
 }
 
 - (void)dealloc
@@ -302,8 +317,14 @@ NSString * const PXSLDeleteKeyPressedOnRowsNotification = @"PXSourceListDeleteKe
 	if([self isGroupAlwaysExpanded:[self itemAtRow:row]]) {
 		return NSZeroRect;
 	}
-	
-	return [super frameOfOutlineCellAtRow:row];
+    
+    NSRect frame = [super frameOfOutlineCellAtRow:row];
+    
+    if([self levelForRow:row] > 0) {
+        frame.origin.x = [self levelForRow:row] * [self indentationPerLevel];
+    }
+    
+    return frame;
 }
 
 
@@ -385,6 +406,11 @@ NSString * const PXSLDeleteKeyPressedOnRowsNotification = @"PXSourceListDeleteKe
 	return NSMakeSize(width, BADGE_HEIGHT);
 }
 
+- (void)viewDidMoveToSuperview
+{
+    //If set to YES, this will cause display issues in Lion where the right part of the outline view is cut off
+    [self setAutoresizesOutlineColumn:NO];
+}
 
 #pragma mark -
 #pragma mark Drawing
