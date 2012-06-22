@@ -3,16 +3,16 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 45;
+	objectVersion = 46;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
-		D213027C14B9AFE200AAFF85 /* PXSourceList.h in Headers */ = {isa = PBXBuildFile; fileRef = D213027814B9AFE200AAFF85 /* PXSourceList.h */; };
+		D213027C14B9AFE200AAFF85 /* PXSourceList.h in Headers */ = {isa = PBXBuildFile; fileRef = D213027814B9AFE200AAFF85 /* PXSourceList.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D213027D14B9AFE200AAFF85 /* PXSourceList.m in Sources */ = {isa = PBXBuildFile; fileRef = D213027914B9AFE200AAFF85 /* PXSourceList.m */; };
 		D213027E14B9AFE200AAFF85 /* PXSourceList.m in Sources */ = {isa = PBXBuildFile; fileRef = D213027914B9AFE200AAFF85 /* PXSourceList.m */; };
-		D213027F14B9AFE200AAFF85 /* PXSourceListDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = D213027A14B9AFE200AAFF85 /* PXSourceListDataSource.h */; };
-		D213028014B9AFE200AAFF85 /* PXSourceListDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = D213027B14B9AFE200AAFF85 /* PXSourceListDelegate.h */; };
+		D213027F14B9AFE200AAFF85 /* PXSourceListDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = D213027A14B9AFE200AAFF85 /* PXSourceListDataSource.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D213028014B9AFE200AAFF85 /* PXSourceListDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = D213027B14B9AFE200AAFF85 /* PXSourceListDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D213028B14B9B01F00AAFF85 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D213028814B9B01F00AAFF85 /* AppDelegate.m */; };
 		D213028C14B9B01F00AAFF85 /* SourceListItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D213028A14B9B01F00AAFF85 /* SourceListItem.m */; };
 		D213028E14B9B02A00AAFF85 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D213028D14B9B02A00AAFF85 /* main.m */; };
@@ -258,8 +258,11 @@
 /* Begin PBXProject section */
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0440;
+			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "PXSourceList" */;
-			compatibilityVersion = "Xcode 3.1";
+			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 1;
 			knownRegions = (
@@ -353,22 +356,22 @@
 				DYLIB_CURRENT_VERSION = 1;
 				FRAMEWORK_VERSION = A;
 				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_ENABLE_OBJC_GC = supported;
 				GCC_MODEL_TUNING = G5;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
 				INFOPLIST_FILE = "PXSourceList/PXSourceList-Info.plist";
-				INSTALL_PATH = "@executable_path/../Frameworks";
+				INSTALL_PATH = "@loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,
 					"-framework",
 					AppKit,
 				);
-				PREBINDING = NO;
 				PRODUCT_NAME = PXSourceList;
+				SDKROOT = macosx;
 			};
 			name = Debug;
 		};
@@ -381,22 +384,21 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				FRAMEWORK_VERSION = A;
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_ENABLE_OBJC_GC = supported;
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
 				INFOPLIST_FILE = "PXSourceList/PXSourceList-Info.plist";
-				INSTALL_PATH = "@executable_path/../Frameworks";
+				INSTALL_PATH = "@loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,
 					"-framework",
 					AppKit,
 				);
-				PREBINDING = NO;
 				PRODUCT_NAME = PXSourceList;
-				SDKROOT = macosx10.5;
+				SDKROOT = macosx;
 				ZERO_LINK = NO;
 			};
 			name = Release;
@@ -411,14 +413,15 @@
 					"\"$(SRCROOT)/build/Debug\"",
 				);
 				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_MODEL_TUNING = G5;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Demo Project/PXSourceListDemo_Prefix.pch";
 				INFOPLIST_FILE = "Demo Project/PXSourceListDemo-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = PXSourceList;
+				SDKROOT = macosx;
 			};
 			name = Debug;
 		};
@@ -437,8 +440,9 @@
 				GCC_PREFIX_HEADER = "Demo Project/PXSourceListDemo_Prefix.pch";
 				INFOPLIST_FILE = "Demo Project/PXSourceListDemo-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = PXSourceList;
-				SDKROOT = macosx10.5;
+				SDKROOT = macosx;
 			};
 			name = Release;
 		};
@@ -446,12 +450,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
+				COMBINE_HIDPI_IMAGES = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PREBINDING = NO;
 				SDKROOT = macosx;
 				VALID_ARCHS = "i386 x86_64";
 			};
@@ -461,10 +465,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
+				COMBINE_HIDPI_IMAGES = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				PREBINDING = NO;
 				SDKROOT = macosx;
 				VALID_ARCHS = "i386 x86_64";
 			};
