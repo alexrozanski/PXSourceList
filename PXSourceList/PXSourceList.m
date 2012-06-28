@@ -389,7 +389,7 @@ NSString * const PXSLDeleteKeyPressedOnRowsNotification = @"PXSourceListDeleteKe
 		return NSZeroSize;
 	}
 	
-	NSAttributedString *badgeAttrString = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"%d", [self badgeValueForItem:rowItem]]
+	NSAttributedString *badgeAttrString = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"%ld", [self badgeValueForItem:rowItem]]
 																		  attributes:[NSDictionary dictionaryWithObjectsAndKeys:BADGE_FONT, NSFontAttributeName, nil]];
 	
 	NSSize stringSize = [badgeAttrString size];
@@ -560,7 +560,7 @@ NSString * const PXSLDeleteKeyPressedOnRowsNotification = @"PXSourceListDeleteKe
 	[badgePath fill];
 	
 	//Draw the badge text
-	NSAttributedString *badgeAttrString = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"%d", [self badgeValueForItem:rowItem]] 
+	NSAttributedString *badgeAttrString = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"%ld", [self badgeValueForItem:rowItem]]
 																		  attributes:attributes];
 	NSSize stringSize = [badgeAttrString size];
 	NSPoint badgeTextPoint = NSMakePoint(NSMidX(badgeFrame)-(stringSize.width/2.0),		//Center in the badge frame
