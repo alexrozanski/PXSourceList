@@ -38,4 +38,10 @@
 - (BOOL)sourceList:(PXSourceList*)aSourceList acceptDrop:(id < NSDraggingInfo >)info item:(id)item childIndex:(NSInteger)index;
 - (NSArray *)sourceList:(PXSourceList*)aSourceList namesOfPromisedFilesDroppedAtDestination:(NSURL *)dropDestination forDraggedItems:(NSArray *)items;
 
+//Drag and drop methods added for 10.7
+- (id <NSPasteboardWriting>)sourceList:(PXSourceList *)aSourceList pasteboardWriterForItem:(id)item;
+- (void)sourceList:(PXSourceList *)aSourceList draggingSession:(NSDraggingSession *)session willBeginAtPoint:(NSPoint)screenPoint forItems:(NSArray *)draggedItems;
+- (void)sourceList:(PXSourceList *)aSourceList draggingSession:(NSDraggingSession *)session endedAtPoint:(NSPoint)screenPoint operation:(NSDragOperation)operation;
+- (void)sourceList:(PXSourceList *)aSourceList updateDraggingItemsForDrag:(id <NSDraggingInfo>)draggingInfo;
+
 @end
