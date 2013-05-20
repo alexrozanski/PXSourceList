@@ -72,7 +72,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 
   [1]: http://github.com/Perspx/PXSourceList/downloads
-  [2]: http://developer.apple.com/library/mac/#documentation/UserExperience/Conceptual/AppleHIGuidelines/Windows/Windows.html#//apple_ref/doc/uid/20000961-TP9
+  [2]: http://developer.apple.com/library/mac/documentation/UserExperience/Conceptual/AppleHIGuidelines/Windows/Windows.html#//apple_ref/doc/uid/20000961-CHDDIGDE
   [3]: http://perspx.com/wp-content/uploads/2010/01/pxsourcelist.jpg
   [4]: http://developer.apple.com/mac/library/DOCUMENTATION/Cocoa/Conceptual/OutlineView/Articles/UsingOutlineDataSource.html
   [5]: http://github.com/Perspx/PXSourceList/downloads
