@@ -5,8 +5,6 @@
 //  Created by Alex Rozanski on 08/01/2010.
 //  Copyright 2010 Alex Rozanski http://perspx.com
 //
-//  GC-enabled code revised by Stefan Vogt http://byteproject.net
-//
 
 #import "SourceListItem.h"
 
@@ -20,7 +18,7 @@
 @synthesize children;
 
 #pragma mark -
-#pragma mark Init/Dealloc/Finalize
+#pragma mark Init/Dealloc
 
 - (id)init
 {
@@ -43,7 +41,7 @@
 
 + (id)itemWithTitle:(NSString*)aTitle identifier:(NSString*)anIdentifier icon:(NSImage*)anIcon
 {
-	SourceListItem *item = [[[SourceListItem alloc] init] autorelease];
+	SourceListItem *item = [[SourceListItem alloc] init];
 	
 	[item setTitle:aTitle];
 	[item setIdentifier:anIdentifier];
@@ -52,25 +50,7 @@
 	return item;
 }
 
-- (void)dealloc
-{
-	[title release];
-	[identifier release];
-	[icon release];
-	[children release];
-	
-	[super dealloc];
-}
 
-- (void)finalize
-{
-	title = nil;
-	identifier = nil;
-	icon = nil;
-	children = nil;
-	
-	[super finalize];
-}
 
 #pragma mark -
 #pragma mark Custom Accessors

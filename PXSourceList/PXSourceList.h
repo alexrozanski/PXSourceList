@@ -26,8 +26,8 @@
 	
 @property (nonatomic, assign) NSSize iconSize;
 	
-@property (assign) id<PXSourceListDataSource> dataSource;
-@property (assign) id<PXSourceListDelegate> delegate;
+@property (weak) id<PXSourceListDataSource> dataSource;
+@property (weak) id<PXSourceListDelegate> delegate;
 
 - (NSUInteger)numberOfGroups;							//Returns the number of groups in the Source List
 - (BOOL)isGroupItem:(id)item;							//Returns whether `item` is a group

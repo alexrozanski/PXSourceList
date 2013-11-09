@@ -5,8 +5,6 @@
 //  Created by Alex Rozanski on 05/09/2009.
 //  Copyright 2009-10 Alex Rozanski http://perspx.com
 //
-//  GC-enabled code revised by Stefan Vogt http://byteproject.net
-//
 
 #import "PXSourceList.h"
 
@@ -93,20 +91,8 @@ NSString * const PXSLDeleteKeyPressedOnRowsNotification = @"PXSourceListDeleteKe
 	//Unregister the delegate from receiving notifications
 	[[NSNotificationCenter defaultCenter] removeObserver:_secondaryDelegate name:nil object:self];
 	
-	[super dealloc];
 }
 
-- (void)finalize
-{
-	//Remove ourselves as the delegate and data source to be safe
-	[super setDataSource:nil];
-	[super setDelegate:nil];
-	
-	//Unregister the delegate from receiving notifications
-	[[NSNotificationCenter defaultCenter] removeObserver:_secondaryDelegate name:nil object:self];
-	
-	[super finalize];
-}
 
 #pragma mark -
 #pragma mark Custom Accessors
@@ -401,7 +387,6 @@ NSString * const PXSLDeleteKeyPressedOnRowsNotification = @"PXSourceListDeleteKe
 		width = MIN_BADGE_WIDTH;
 	}
 	
-	[badgeAttrString release];
 	
 	return NSMakeSize(width, BADGE_HEIGHT);
 }
@@ -567,8 +552,6 @@ NSString * const PXSLDeleteKeyPressedOnRowsNotification = @"PXSourceListDeleteKe
 										 NSMidY(badgeFrame)-(stringSize.height/2.0));	//Center in the badge frame
 	[badgeAttrString drawAtPoint:badgeTextPoint];
 	
-	[attributes release];
-	[badgeAttrString release];
 }
 
 #pragma mark -

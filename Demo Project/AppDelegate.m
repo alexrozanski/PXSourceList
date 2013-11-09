@@ -60,12 +60,6 @@
 	[sourceList reloadData];
 }
 
-- (void)dealloc
-{
-	[sourceListItems release];
-	
-	[super dealloc];
-}
 
 #pragma mark -
 #pragma mark Source List Data Source Methods
@@ -144,7 +138,7 @@
 		} else {
 			[m addItemWithTitle:@"clicked outside" action:nil keyEquivalent:@""];
 		}
-		return [m autorelease];
+		return m;
 	}
 	return nil;
 }

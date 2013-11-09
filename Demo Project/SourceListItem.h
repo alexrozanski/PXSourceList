@@ -36,7 +36,7 @@
 
 @property (nonatomic, copy) NSString *title;
 @property (nonatomic, copy) NSString *identifier;
-@property (nonatomic, retain) NSImage *icon;
+@property (nonatomic, strong) NSImage *icon;
 @property NSInteger badgeValue;
 
 @property (nonatomic, copy) NSArray *children;
