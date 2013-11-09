@@ -39,12 +39,6 @@ NSString * const PXSLDeleteKeyPressedOnRowsNotification = @"PXSourceListDeleteKe
 @property (weak, nonatomic) id <PXSourceListDelegate> secondaryDelegate;		//Used to store the publicly visible delegate.
 @property (weak, nonatomic) id <PXSourceListDataSource> secondaryDataSource;	//Used to store the publicly visible data source.
 
-- (void)PXSL_setup;
-
-- (NSSize)sizeOfBadgeAtRow:(NSInteger)rowIndex;
-- (void)drawBadgeForRow:(NSInteger)rowIndex inRect:(NSRect)badgeFrame;
-- (void)registerDelegateToReceiveNotification:(NSString*)notification withSelector:(SEL)selector;
-
 @end
 
 #pragma mark -
