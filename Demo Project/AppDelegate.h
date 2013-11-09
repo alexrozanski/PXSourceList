@@ -14,11 +14,6 @@
 @protocol NSApplicationDelegate <NSObject> @end
 #endif
 
-@interface AppDelegate : NSObject <NSApplicationDelegate, PXSourceListDataSource, PXSourceListDelegate> {
-	IBOutlet PXSourceList *sourceList;
-	IBOutlet NSTextField *selectedItemLabel;
-	
-	NSMutableArray *sourceListItems;
-}
+@interface AppDelegate : NSObject <NSApplicationDelegate, PXSourceListDataSource, PXSourceListDelegate>
 
 @end

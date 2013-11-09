@@ -17,12 +17,6 @@
 #endif
 
 @interface PXSourceList: NSOutlineView <NSOutlineViewDelegate, NSOutlineViewDataSource>
-{
-	id <PXSourceListDelegate> _secondaryDelegate;		//Used to store the publicly visible delegate
-	id <PXSourceListDataSource> _secondaryDataSource;	//Used to store the publicly visible data source
-	
-	NSSize _iconSize;									//The size of icons in the Source List. Defaults to 16x16
-}
 	
 @property (nonatomic, assign) NSSize iconSize;
 	

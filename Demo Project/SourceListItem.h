@@ -25,14 +25,7 @@
  
  */
 
-@interface SourceListItem : NSObject {
-	NSString *title;
-	NSString *identifier;
-	NSImage *icon;
-	NSInteger badgeValue;
-	
-	NSArray *children;
-}
+@interface SourceListItem : NSObject
 
 @property (nonatomic, copy) NSString *title;
 @property (nonatomic, copy) NSString *identifier;

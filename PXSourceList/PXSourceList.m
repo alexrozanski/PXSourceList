@@ -36,6 +36,9 @@ NSString * const PXSLDeleteKeyPressedOnRowsNotification = @"PXSourceListDeleteKe
 #pragma mark -
 @interface PXSourceList ()
 
+@property (weak, nonatomic) id <PXSourceListDelegate> secondaryDelegate;		//Used to store the publicly visible delegate.
+@property (weak, nonatomic) id <PXSourceListDataSource> secondaryDataSource;	//Used to store the publicly visible data source.
+
 - (void)PXSL_setup;
 
 - (NSSize)sizeOfBadgeAtRow:(NSInteger)rowIndex;
@@ -47,7 +50,6 @@ NSString * const PXSLDeleteKeyPressedOnRowsNotification = @"PXSourceListDeleteKe
 #pragma mark -
 @implementation PXSourceList
 
-@synthesize iconSize = _iconSize;
 @dynamic dataSource;
 @dynamic delegate;
 

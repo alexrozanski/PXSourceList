@@ -11,12 +11,6 @@
 
 @implementation SourceListItem
 
-@synthesize title;
-@synthesize identifier;
-@synthesize icon;
-@synthesize badgeValue;
-@synthesize children;
-
 #pragma mark -
 #pragma mark Init/Dealloc
 
@@ -24,7 +18,7 @@
 {
 	if(self=[super init])
 	{
-		badgeValue = -1;	//We don't want a badge value by default
+		_badgeValue = -1;	//We don't want a badge value by default
 	}
 	
 	return self;
@@ -57,17 +51,17 @@
 
 - (BOOL)hasBadge
 {
-	return badgeValue!=-1;
+	return self.badgeValue!=-1;
 }
 
 - (BOOL)hasChildren
 {
-	return [children count]>0;
+	return [self.children count]>0;
 }
 
 - (BOOL)hasIcon
 {
-	return icon!=nil;
+	return self.icon!=nil;
 }
 
 #pragma mark -

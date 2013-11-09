@@ -9,6 +9,15 @@
 #import "AppDelegate.h"
 #import "SourceListItem.h"
 
+@interface AppDelegate ()
+
+@property (weak, nonatomic) IBOutlet PXSourceList *sourceList;
+@property (weak, nonatomic) IBOutlet NSTextField *selectedItemLabel;
+
+@property (strong, nonatomic) NSMutableArray *sourceListItems;
+
+@end
+
 @implementation AppDelegate
 
 #pragma mark -
@@ -16,9 +25,9 @@
 
 - (void)awakeFromNib
 {
-	[selectedItemLabel setStringValue:@"(none)"];
+	[self.selectedItemLabel setStringValue:@"(none)"];
 	
-	sourceListItems = [[NSMutableArray alloc] init];
+	self.sourceListItems = [[NSMutableArray alloc] init];
 	
 	//Set up the "Library" parent item and children
 	SourceListItem *libraryItem = [SourceListItem itemWithTitle:@"LIBRARY" identifier:@"library"];
@@ -54,10 +63,10 @@
 	[playlistsItem setChildren:[NSArray arrayWithObjects:playlist1Item, playlistGroup,playlist2Item,
 								playlist3Item, nil]];
 	
-	[sourceListItems addObject:libraryItem];
-	[sourceListItems addObject:playlistsItem];
+	[self.sourceListItems addObject:libraryItem];
+	[self.sourceListItems addObject:playlistsItem];
 	
-	[sourceList reloadData];
+	[self.sourceList reloadData];
 }
 
 
@@ -68,7 +77,7 @@
 {
 	//Works the same way as the NSOutlineView data source: `nil` means a parent item
 	if(item==nil) {
-		return [sourceListItems count];
+		return [self.sourceListItems count];
 	}
 	else {
 		return [[item children] count];
@@ -80,7 +89,7 @@
 {
 	//Works the same way as the NSOutlineView data source: `nil` means a parent item
 	if(item==nil) {
-		return [sourceListItems objectAtIndex:index];
+		return [self.sourceListItems objectAtIndex:index];
 	}
 	else {
 		return [[item children] objectAtIndex:index];
@@ -157,18 +166,18 @@
 
 - (void)sourceListSelectionDidChange:(NSNotification *)notification
 {
-	NSIndexSet *selectedIndexes = [sourceList selectedRowIndexes];
+	NSIndexSet *selectedIndexes = [self.sourceList selectedRowIndexes];
 	
 	//Set the label text to represent the new selection
 	if([selectedIndexes count]>1)
-		[selectedItemLabel setStringValue:@"(multiple)"];
+		[self.selectedItemLabel setStringValue:@"(multiple)"];
 	else if([selectedIndexes count]==1) {
-		NSString *identifier = [[sourceList itemAtRow:[selectedIndexes firstIndex]] identifier];
+		NSString *identifier = [[self.sourceList itemAtRow:[selectedIndexes firstIndex]] identifier];
 		
-		[selectedItemLabel setStringValue:identifier];
+		[self.selectedItemLabel setStringValue:identifier];
 	}
 	else {
-		[selectedItemLabel setStringValue:@"(none)"];
+		[self.selectedItemLabel setStringValue:@"(none)"];
 	}
 }
 
