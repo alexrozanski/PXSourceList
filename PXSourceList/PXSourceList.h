@@ -18,7 +18,8 @@
 @property (weak) id<PXSourceListDataSource> dataSource;
 @property (weak) id<PXSourceListDelegate> delegate;
 
-- (NSUInteger)numberOfGroups;							//Returns the number of groups in the Source List
+@property (readonly) NSUInteger numberOfGroups;
+
 - (BOOL)isGroupItem:(id)item;							//Returns whether `item` is a group
 - (BOOL)isGroupAlwaysExpanded:(id)group;				//Returns whether `group` is displayed as always expanded
 
