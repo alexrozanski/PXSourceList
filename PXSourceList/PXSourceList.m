@@ -9,20 +9,20 @@
 #import "PXSourceList.h"
 
 //Layout constants
-#define MIN_BADGE_WIDTH							22.0		//The minimum badge width for each item (default 22.0)
-#define BADGE_HEIGHT							14.0		//The badge height for each item (default 14.0)
-#define BADGE_MARGIN							5.0			//The spacing between the badge and the cell for that row
-#define ROW_RIGHT_MARGIN						5.0			//The spacing between the right edge of the badge and the edge of the table column
-#define ICON_SPACING							2.0			//The spacing between the icon and it's adjacent cell
-#define DISCLOSURE_TRIANGLE_SPACE				18.0		//The indentation reserved for disclosure triangles for non-group items
+static const CGFloat minBadgeWidth = 22.0;              // The minimum badge width for each item (default 22.0).
+static const CGFloat badgeHeight = 14.0;                // The badge height for each item (default 14.0).
+static const CGFloat badgeMargin = 5.0;                 // The spacing between the badge and the cell for that row.
+static const CGFloat rowRightMargin = 5.0;              // The spacing between the right edge of the badge and the edge of the table column.
+static const CGFloat iconSpacing = 2.0;                 // The spacing between the icon and it's adjacent cell.
+static const CGFloat disclosureTriangleSpace = 18.0;    // The indentation reserved for disclosure triangles for non-group items.
 
 //Drawing constants
-#define BADGE_BACKGROUND_COLOR					[NSColor colorWithCalibratedRed:(152/255.0) green:(168/255.0) blue:(202/255.0) alpha:1]
-#define BADGE_HIDDEN_BACKGROUND_COLOR			[NSColor colorWithDeviceWhite:(180/255.0) alpha:1]
-#define BADGE_SELECTED_TEXT_COLOR				[NSColor keyboardFocusIndicatorColor]
-#define BADGE_SELECTED_UNFOCUSED_TEXT_COLOR		[NSColor colorWithCalibratedRed:(153/255.0) green:(169/255.0) blue:(203/255.0) alpha:1]
-#define BADGE_SELECTED_HIDDEN_TEXT_COLOR		[NSColor colorWithCalibratedWhite:(170/255.0) alpha:1]
-#define BADGE_FONT								[NSFont boldSystemFontOfSize:11]
+static inline NSColor *badgeBackgroundColor() { return [NSColor colorWithCalibratedRed:(152/255.0) green:(168/255.0) blue:(202/255.0) alpha:1]; }
+static inline NSColor *badgeHiddenBackgroundColor() { return [NSColor colorWithDeviceWhite:(180/255.0) alpha:1]; }
+static inline NSColor *badgeSelectedTextColor() { return [NSColor keyboardFocusIndicatorColor]; }
+static inline NSColor *badgeSelectedUnfocusedTextColor() { return [NSColor colorWithCalibratedRed:(153/255.0) green:(169/255.0) blue:(203/255.0) alpha:1]; }
+static inline NSColor *badgeSelectedHiddenTextColor() { return [NSColor colorWithCalibratedWhite:(170/255.0) alpha:1]; }
+static inline NSFont *badgeFont() { return [NSFont boldSystemFontOfSize:11]; }
 
 //Delegate notification constants
 NSString * const PXSLSelectionIsChangingNotification = @"PXSourceListSelectionIsChanging";
@@ -345,16 +345,16 @@ NSString * const PXSLDeleteKeyPressedOnRowsNotification = @"PXSourceListDeleteKe
 	}
 	else
 	{
-		CGFloat leftIndent = [self levelForRow:row]*[self indentationPerLevel]+DISCLOSURE_TRIANGLE_SPACE;
+		CGFloat leftIndent = [self levelForRow:row]*[self indentationPerLevel]+disclosureTriangleSpace;
 		
 		//Calculate space left for a badge if need be
-		CGFloat rightIndent = [self sizeOfBadgeAtRow:row].width+ROW_RIGHT_MARGIN;
+		CGFloat rightIndent = [self sizeOfBadgeAtRow:row].width+rowRightMargin;
 		
 		//Allow space for an icon if need be
 		if(![self isGroupItem:item]&&[_secondaryDataSource respondsToSelector:@selector(sourceList:itemHasIcon:)])
 		{
 			if([_secondaryDataSource sourceList:self itemHasIcon:item]) {
-				leftIndent += [self iconSize].width+(ICON_SPACING*2);
+				leftIndent += [self iconSize].width+(iconSpacing*2);
 			}
 		}
 		
@@ -378,19 +378,19 @@ NSString * const PXSLDeleteKeyPressedOnRowsNotification = @"PXSourceListDeleteKe
 	}
 	
 	NSAttributedString *badgeAttrString = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"%ld", (long)[self badgeValueForItem:rowItem]]
-																		  attributes:[NSDictionary dictionaryWithObjectsAndKeys:BADGE_FONT, NSFontAttributeName, nil]];
+																		  attributes:[NSDictionary dictionaryWithObjectsAndKeys:badgeFont(), NSFontAttributeName, nil]];
 	
 	NSSize stringSize = [badgeAttrString size];
 	
 	//Calculate the width needed to display the text or the minimum width if it's smaller
-	CGFloat width = stringSize.width+(2*BADGE_MARGIN);
+	CGFloat width = stringSize.width+(2*badgeMargin);
 	
-	if(width<MIN_BADGE_WIDTH) {
-		width = MIN_BADGE_WIDTH;
+	if(width<minBadgeWidth) {
+		width = minBadgeWidth;
 	}
 	
 	
-	return NSMakeSize(width, BADGE_HEIGHT);
+	return NSMakeSize(width, badgeHeight);
 }
 
 - (void)viewDidMoveToSuperview
@@ -415,7 +415,7 @@ NSString * const PXSLDeleteKeyPressedOnRowsNotification = @"PXSourceListDeleteKe
 		{
 			NSRect cellFrame = [self frameOfCellAtColumn:0 row:rowIndex];
 			NSSize iconSize = [self iconSize];
-			NSRect iconRect = NSMakeRect(NSMinX(cellFrame)-iconSize.width-ICON_SPACING,
+			NSRect iconRect = NSMakeRect(NSMinX(cellFrame)-iconSize.width-iconSpacing,
 										 NSMidY(cellFrame)-(iconSize.height/2.0f),
 										 iconSize.width,
 										 iconSize.height);
@@ -464,7 +464,7 @@ NSString * const PXSLDeleteKeyPressedOnRowsNotification = @"PXSourceListDeleteKe
 		NSRect rowRect = [self rectOfRow:rowIndex];
 		NSSize badgeSize = [self sizeOfBadgeAtRow:rowIndex];
 		
-		NSRect badgeFrame = NSMakeRect(NSMaxX(rowRect)-badgeSize.width-ROW_RIGHT_MARGIN,
+		NSRect badgeFrame = NSMakeRect(NSMaxX(rowRect)-badgeSize.width-rowRightMargin,
 									   NSMidY(rowRect)-(badgeSize.height/2.0),
 									   badgeSize.width,
 									   badgeSize.height);
@@ -478,8 +478,8 @@ NSString * const PXSLDeleteKeyPressedOnRowsNotification = @"PXSourceListDeleteKe
 	id rowItem = [self itemAtRow:rowIndex];
 	
 	NSBezierPath *badgePath = [NSBezierPath bezierPathWithRoundedRect:badgeFrame
-															  xRadius:(BADGE_HEIGHT/2.0)
-															  yRadius:(BADGE_HEIGHT/2.0)];
+															  xRadius:(badgeHeight/2.0)
+															  yRadius:(badgeHeight/2.0)];
 	
 	//Get window and control state to determine colours used
 	BOOL isVisible = [[NSApp mainWindow] isVisible];
@@ -498,16 +498,16 @@ NSString * const PXSLDeleteKeyPressedOnRowsNotification = @"PXSourceListDeleteKe
 		NSColor *textColor;
 		
 		if(isVisible && (isFocused || rowBeingEdited==rowIndex)) {
-			textColor = BADGE_SELECTED_TEXT_COLOR;
+			textColor = badgeSelectedTextColor();
 		}
 		else if(isVisible && !isFocused) {
-			textColor = BADGE_SELECTED_UNFOCUSED_TEXT_COLOR;
+			textColor = badgeSelectedUnfocusedTextColor();
 		}
 		else {
-			textColor = BADGE_SELECTED_HIDDEN_TEXT_COLOR;
+			textColor = badgeSelectedHiddenTextColor();
 		}
 		
-		attributes = [[NSDictionary alloc] initWithObjectsAndKeys:BADGE_FONT, NSFontAttributeName,
+		attributes = [[NSDictionary alloc] initWithObjectsAndKeys:badgeFont(), NSFontAttributeName,
 					  textColor, NSForegroundColorAttributeName, nil];
 	}
 	else
@@ -521,10 +521,10 @@ NSString * const PXSLDeleteKeyPressedOnRowsNotification = @"PXSourceListDeleteKe
 				backgroundColor = [_secondaryDataSource sourceList:self badgeBackgroundColorForItem:rowItem];
 				
 				if(backgroundColor==nil)
-					backgroundColor = BADGE_BACKGROUND_COLOR;
+					backgroundColor = badgeBackgroundColor();
 			}
 			else { //Otherwise use the default (purple-blue colour)
-				backgroundColor = BADGE_BACKGROUND_COLOR;
+				backgroundColor = badgeBackgroundColor();
 			}
 			
 			//If the delegate wants a custom badge text colour..
@@ -536,10 +536,10 @@ NSString * const PXSLDeleteKeyPressedOnRowsNotification = @"PXSourceListDeleteKe
 			}
 		}
 		else { //Gray colour
-			backgroundColor = BADGE_HIDDEN_BACKGROUND_COLOR;
+			backgroundColor = badgeHiddenBackgroundColor();
 		}
 		
-		attributes = [[NSDictionary alloc] initWithObjectsAndKeys:BADGE_FONT, NSFontAttributeName,
+		attributes = [[NSDictionary alloc] initWithObjectsAndKeys:badgeFont(), NSFontAttributeName,
 					  badgeColor, NSForegroundColorAttributeName, nil];
 	}
 	
