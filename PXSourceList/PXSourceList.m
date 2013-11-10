@@ -650,6 +650,40 @@ static NSArray *px_allProtocolMethods(Protocol *protocol)
 	return m;
 }
 
+#pragma mark - Method Forwarding
+
+
++ (NSDictionary *)methodNameMappingsForProtocol:(Protocol *)protocol
+{
+    NSMutableDictionary *methodNameMappings = [[NSMutableDictionary alloc] init];
+    NSArray *protocolMethods = px_allProtocolMethods(protocol);
+
+    NSString *outlineViewSearchString = @"outlineView";
+    NSUInteger letterVOffset = [outlineViewSearchString rangeOfString:@"V"].location;
+    NSCharacterSet *uppercaseLetterCharacterSet = [NSCharacterSet uppercaseLetterCharacterSet];
+
+    for (NSDictionary *methodInfo in protocolMethods) {
+        NSString *methodName = methodInfo[protocolMethodNameKey];
+
+        NSRange outlineViewStringRange = [methodName rangeOfString:outlineViewSearchString options:NSCaseInsensitiveSearch];
+
+        // If for some reason we can't map the method name, try to fail gracefully.
+        if (outlineViewStringRange.location == NSNotFound) {
+            NSLog(@"PXSourceList: couldn't map method %@ from %@", methodName, NSStringFromProtocol(protocol));
+            continue;
+        }
+
+        BOOL isOCapitalized = [uppercaseLetterCharacterSet characterIsMember:[methodName characterAtIndex:outlineViewStringRange.location]];
+        BOOL isVCapitalized = [uppercaseLetterCharacterSet characterIsMember:[methodName characterAtIndex:outlineViewStringRange.location + letterVOffset]];
+        NSString *forwardingMethodName = [methodName stringByReplacingCharactersInRange:outlineViewStringRange
+                                                                             withString:[NSString stringWithFormat:@"%@ource%@ist", isOCapitalized ? @"S" : @"s", isVCapitalized ? @"L" : @"l"]];
+
+        [methodNameMappings setObject:forwardingMethodName forKey:methodName];
+    }
+
+    return methodNameMappings;
+}
+
 #pragma mark -
 #pragma mark NSOutlineView Data Source methods
 
