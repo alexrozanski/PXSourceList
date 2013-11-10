@@ -83,6 +83,18 @@ static NSArray *px_allProtocolMethods(Protocol *protocol)
 {
     [self addEntriesToMethodForwardingMap:[self methodNameMappingsForProtocol:@protocol(NSOutlineViewDelegate)]];
     [self addEntriesToMethodForwardingMap:[self methodNameMappingsForProtocol:@protocol(NSOutlineViewDataSource)]];
+
+    // Blacklist certain methods from being forwarded.
+    [self removeEntryFromMethodForwardingMapWithSelector:@selector(outlineView:shouldSelectTableColumn:)];
+    [self removeEntryFromMethodForwardingMapWithSelector:@selector(outlineView:shouldReorderColumn:toColumn:)];
+    [self removeEntryFromMethodForwardingMapWithSelector:@selector(outlineView:mouseDownInHeaderOfTableColumn:)];
+    [self removeEntryFromMethodForwardingMapWithSelector:@selector(outlineView:didClickTableColumn:)];
+    [self removeEntryFromMethodForwardingMapWithSelector:@selector(outlineView:didDragTableColumn:)];
+    [self removeEntryFromMethodForwardingMapWithSelector:@selector(outlineView:sizeToFitWidthOfColumn:)];
+    [self removeEntryFromMethodForwardingMapWithSelector:@selector(outlineView:shouldReorderColumn:toColumn:)];
+    [self removeEntryFromMethodForwardingMapWithSelector:@selector(outlineViewColumnDidMove:)];
+    [self removeEntryFromMethodForwardingMapWithSelector:@selector(outlineViewColumnDidResize:)];
+    [self removeEntryFromMethodForwardingMapWithSelector:@selector(outlineView:isGroupItem:)];
 }
 
 - (id)initWithCoder:(NSCoder*)decoder
@@ -687,6 +699,11 @@ static NSArray *px_allProtocolMethods(Protocol *protocol)
 + (void)addEntriesToMethodForwardingMap:(NSDictionary *)entries
 {
     [(NSMutableDictionary *)[self methodForwardingMap] addEntriesFromDictionary:entries];
+}
+
++ (void)removeEntryFromMethodForwardingMapWithSelector:(SEL)selector
+{
+    [(NSMutableDictionary *)[self methodForwardingMap] removeObjectForKey:NSStringFromSelector(selector)];
 }
 
 + (NSDictionary *)methodNameMappingsForProtocol:(Protocol *)protocol
