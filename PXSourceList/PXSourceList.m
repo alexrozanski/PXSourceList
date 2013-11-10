@@ -743,6 +743,20 @@ static NSArray *px_allProtocolMethods(Protocol *protocol)
              NSStringFromSelector(@selector(outlineView:isGroupItem:))];
 }
 
++ (NSDictionary *)customMethodNameMappings
+{
+    return @{NSStringFromSelector(@selector(outlineView:objectValueForTableColumn:byItem:)): NSStringFromSelector(@selector(sourceList:objectValueForItem:)),
+             NSStringFromSelector(@selector(outlineView:setObjectValue:forTableColumn:byItem:)): NSStringFromSelector(@selector(sourceList:setObjectValue:forItem:)),
+             NSStringFromSelector(@selector(outlineView:viewForTableColumn:item:)): NSStringFromSelector(@selector(sourceList:viewForItem:)),
+             NSStringFromSelector(@selector(outlineView:willDisplayCell:forTableColumn:item:)): NSStringFromSelector(@selector(sourceList:willDisplayCell:forItem:)),
+             NSStringFromSelector(@selector(outlineView:shouldEditTableColumn:item:)): NSStringFromSelector(@selector(sourceList:shouldEditItem:)),
+             NSStringFromSelector(@selector(outlineView:toolTipForCell:rect:tableColumn:item:mouseLocation:)): NSStringFromSelector(@selector(sourceList:tooltipForCell:rect:item:mouseLocation:)),
+             NSStringFromSelector(@selector(outlineView:typeSelectStringForTableColumn:item:)): NSStringFromSelector(@selector(sourceList:typeSelectStringForItem:)),
+             NSStringFromSelector(@selector(outlineView:shouldShowCellExpansionForTableColumn:item:)): NSStringFromSelector(@selector(sourceList:shouldShowCellExpansionForItem:)),
+             NSStringFromSelector(@selector(outlineView:shouldTrackCell:forTableColumn:item:)): NSStringFromSelector(@selector(sourceList:shouldTrackCell:forItem:)),
+             NSStringFromSelector(@selector(outlineView:dataCellForTableColumn:item:)): NSStringFromSelector(@selector(sourceList:dataCellForItem:))};
+}
+
 - (BOOL)getForwardingObject:(id*)outObject andForwardingSelector:(SEL*)outSelector forSelector:(SEL)selector
 {
     NSDictionary *methodForwardingMap = [[self class] methodForwardingMap];
