@@ -675,6 +675,20 @@ static NSArray *px_allProtocolMethods(Protocol *protocol)
     return [forwardingObject respondsToSelector:forwardingSelector];
 }
 
+- (void)forwardInvocation:(NSInvocation *)anInvocation
+{
+    id forwardingObject;
+    SEL forwardingSelector = NULL;
+
+    if(![self getForwardingObject:&forwardingObject andForwardingSelector:&forwardingSelector forSelector:anInvocation.selector]) {
+        [super forwardInvocation:anInvocation];
+        return;
+    }
+
+    anInvocation.selector = forwardingSelector;
+    [anInvocation invokeWithTarget:forwardingObject];
+}
+
 + (NSDictionary *)methodForwardingMap
 {
     static NSMutableDictionary *_methodForwardingMap = nil;
