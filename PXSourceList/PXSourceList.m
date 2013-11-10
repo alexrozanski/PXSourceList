@@ -7,6 +7,7 @@
 //
 
 #import "PXSourceList.h"
+#import <objc/runtime.h>
 
 //Layout constants
 static const CGFloat minBadgeWidth = 22.0;              // The minimum badge width for each item (default 22.0).
@@ -32,6 +33,32 @@ NSString * const PXSLItemDidExpandNotification = @"PXSourceListItemDidExpand";
 NSString * const PXSLItemWillCollapseNotification = @"PXSourceListItemWillCollapse";
 NSString * const PXSLItemDidCollapseNotification = @"PXSourceListItemDidCollapse";
 NSString * const PXSLDeleteKeyPressedOnRowsNotification = @"PXSourceListDeleteKeyPressedOnRows";
+
+
+// Internal constants.
+static NSString * const protocolMethodNameKey = @"methodName";
+static NSString * const protocolArgumentTypesKey = @"types";
+
+static NSArray *px_allProtocolMethods(Protocol *protocol)
+{
+    NSMutableArray *methodList = [[NSMutableArray alloc] init];
+
+    // We have 4 permutations as protocol_copyMethodDescriptionList() takes two BOOL arguments for the types of methods to return.
+    for (NSUInteger i = 0; i < 4; ++i) {
+        unsigned int numberOfMethodDescriptions = 0;
+        struct objc_method_description *methodDescriptions = protocol_copyMethodDescriptionList(protocol, (i / 2) % 2, i % 2, &numberOfMethodDescriptions);
+
+        for (unsigned int j = 0; j < numberOfMethodDescriptions; ++j) {
+            struct objc_method_description methodDescription = methodDescriptions[j];
+            [methodList addObject:@{protocolMethodNameKey: NSStringFromSelector(methodDescription.name),
+                                    protocolArgumentTypesKey: [NSString stringWithUTF8String:methodDescription.types]}];
+        }
+
+        free(methodDescriptions);
+    }
+
+    return methodList;
+}
 
 #pragma mark -
 @interface PXSourceList ()
