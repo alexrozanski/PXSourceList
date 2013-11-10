@@ -808,38 +808,7 @@ static NSArray *px_allProtocolMethods(Protocol *protocol)
     return YES;
 }
 
-#pragma mark -
-#pragma mark NSOutlineView Data Source methods
-
-- (NSInteger)outlineView:(NSOutlineView *)outlineView numberOfChildrenOfItem:(id)item
-{	
-	if([_secondaryDataSource conformsToProtocol:@protocol(PXSourceListDataSource)]) {
-		return [_secondaryDataSource sourceList:self numberOfChildrenOfItem:item];
-	}
-	
-	return 0;
-}
-
-
-- (id)outlineView:(NSOutlineView *)outlineView child:(NSInteger)index ofItem:(id)item
-{	
-	if([_secondaryDataSource conformsToProtocol:@protocol(PXSourceListDataSource)]) {
-		return [_secondaryDataSource sourceList:self child:index ofItem:item];
-	}
-	
-	return nil;
-}
-
-
-- (BOOL)outlineView:(NSOutlineView *)outlineView isItemExpandable:(id)item
-{	
-	if([_secondaryDataSource conformsToProtocol:@protocol(PXSourceListDataSource)]) {
-		return [_secondaryDataSource sourceList:self isItemExpandable:item];
-	}
-	
-	return NO;
-}
-
+#pragma mark - Custom NSOutlineView Data Source Method Implementations
 
 - (id)outlineView:(NSOutlineView *)outlineView objectValueForTableColumn:(NSTableColumn *)tableColumn byItem:(id)item
 {
@@ -858,101 +827,7 @@ static NSArray *px_allProtocolMethods(Protocol *protocol)
 	}
 }
 
-
-- (id)outlineView:(NSOutlineView *)outlineView itemForPersistentObject:(id)object
-{
-	if([_secondaryDataSource respondsToSelector:@selector(sourceList:itemForPersistentObject:)]) {
-		return [_secondaryDataSource sourceList:self itemForPersistentObject:object];
-	}
-	
-	return nil;
-}
-
-- (id)outlineView:(NSOutlineView *)outlineView persistentObjectForItem:(id)item
-{
-	if([_secondaryDataSource respondsToSelector:@selector(sourceList:persistentObjectForItem:)]) {
-		return [_secondaryDataSource sourceList:self persistentObjectForItem:item];
-	}
-	
-	return nil;
-}
-
-- (BOOL)outlineView:(NSOutlineView *)outlineView writeItems:(NSArray *)items toPasteboard:(NSPasteboard *)pasteboard
-{
-	if([_secondaryDataSource respondsToSelector:@selector(sourceList:writeItems:toPasteboard:)]) {
-		return [_secondaryDataSource sourceList:self writeItems:items toPasteboard:pasteboard];
-	}
-	
-	return NO;
-}
-
-- (NSDragOperation)outlineView:(NSOutlineView *)outlineView validateDrop:(id <NSDraggingInfo>)info proposedItem:(id)item proposedChildIndex:(NSInteger)index
-{
-	if([_secondaryDataSource respondsToSelector:@selector(sourceList:validateDrop:proposedItem:proposedChildIndex:)]) {
-		return [_secondaryDataSource sourceList:self validateDrop:info proposedItem:item proposedChildIndex:index];
-	}
-	
-	return NSDragOperationNone;
-}
-
-- (BOOL)outlineView:(NSOutlineView *)outlineView acceptDrop:(id <NSDraggingInfo>)info item:(id)item childIndex:(NSInteger)index
-{
-	if([_secondaryDataSource respondsToSelector:@selector(sourceList:acceptDrop:item:childIndex:)]) {
-		return [_secondaryDataSource sourceList:self acceptDrop:info item:item childIndex:index];
-	}
-	
-	return NO;
-}
-- (NSArray *)outlineView:(NSOutlineView *)outlineView namesOfPromisedFilesDroppedAtDestination:(NSURL *)dropDestination forDraggedItems:(NSArray *)items
-{
-	if([_secondaryDataSource respondsToSelector:@selector(sourceList:namesOfPromisedFilesDroppedAtDestination:forDraggedItems:)]) {
-		return [_secondaryDataSource sourceList:self namesOfPromisedFilesDroppedAtDestination:dropDestination forDraggedItems:items];
-	}
-	
-	return nil;
-}
-
-- (id <NSPasteboardWriting>)outlineView:(NSOutlineView *)outlineView pasteboardWriterForItem:(id)item
-{
-    if ([_secondaryDataSource respondsToSelector:@selector(sourceList:pasteboardWriterForItem:)]) {
-        return [_secondaryDataSource sourceList:self pasteboardWriterForItem:item];
-    }
-
-    return nil;
-}
-- (void)outlineView:(NSOutlineView *)outlineView draggingSession:(NSDraggingSession *)session willBeginAtPoint:(NSPoint)screenPoint forItems:(NSArray *)draggedItems
-{
-    if ([_secondaryDataSource respondsToSelector:@selector(sourceList:draggingSession:willBeginAtPoint:forItems:)]) {
-        return [_secondaryDataSource sourceList:self draggingSession:session willBeginAtPoint:screenPoint forItems:draggedItems];
-    }
-    
-}
-
-- (void)outlineView:(NSOutlineView *)outlineView draggingSession:(NSDraggingSession *)session endedAtPoint:(NSPoint)screenPoint operation:(NSDragOperation)operation
-{
-    if ([_secondaryDataSource respondsToSelector:@selector(sourceList:draggingSession:endedAtPoint:operation:)]) {
-        return [_secondaryDataSource sourceList:self draggingSession:session endedAtPoint:screenPoint operation:operation];
-    }
-}
-
-- (void)outlineView:(NSOutlineView *)outlineView updateDraggingItemsForDrag:(id <NSDraggingInfo>)draggingInfo
-{
-    if ([_secondaryDataSource respondsToSelector:@selector(sourceList:updateDraggingItemsForDrag:)]) {
-        return [_secondaryDataSource sourceList:self updateDraggingItemsForDrag:draggingInfo];
-    }
-}
-
-#pragma mark -
-#pragma mark NSOutlineView Delegate methods
-
-- (BOOL)outlineView:(NSOutlineView *)outlineView shouldExpandItem:(id)item
-{
-	if([_secondaryDelegate respondsToSelector:@selector(sourceList:shouldExpandItem:)]) {
-		return [_secondaryDelegate sourceList:self shouldExpandItem:item];
-	}
-	
-	return YES;
-}
+#pragma mark - Custom NSOutlineView Delegate Method Implementations
 
 - (BOOL)outlineView:(NSOutlineView *)outlineView shouldCollapseItem:(id)item
 {
@@ -1036,25 +911,6 @@ static NSArray *px_allProtocolMethods(Protocol *protocol)
 	}
 	
 	return YES;
-}
-
-
-- (BOOL)outlineView:(NSOutlineView *)outlineView shouldTrackCell:(NSCell *)cell forTableColumn:(NSTableColumn *)tableColumn item:(id)item
-{	
-	if([_secondaryDelegate respondsToSelector:@selector(sourceList:shouldTrackCell:forItem:)]) {
-		return [_secondaryDelegate sourceList:self shouldTrackCell:cell forItem:item];
-	}
-	
-	return NO;
-}
-
-- (CGFloat)outlineView:(NSOutlineView *)outlineView heightOfRowByItem:(id)item
-{
-	if([_secondaryDelegate respondsToSelector:@selector(sourceList:heightOfRowByItem:)]) {
-		return [_secondaryDelegate sourceList:self heightOfRowByItem:item];
-	}	
-	
-	return [self rowHeight];
 }
 
 - (BOOL)outlineView:(NSOutlineView *)outlineView isGroupItem:(id)item
