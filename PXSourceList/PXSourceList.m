@@ -105,9 +105,6 @@ static NSArray *px_allProtocolMethods(Protocol *protocol)
 
 - (void)PXSL_setup
 {
-    [super setDelegate:self];
-    [super setDataSource:self];
-    
     _iconSize = NSMakeSize(16,16);
 }
 
@@ -149,7 +146,8 @@ static NSArray *px_allProtocolMethods(Protocol *protocol)
 								   withSelector:@selector(sourceListDeleteKeyPressedOnRows:)];
 
     [super setDelegate:nil];
-    [super setDelegate:self];
+    if (aDelegate)
+        [super setDelegate:self];
 }
 
 
@@ -158,7 +156,8 @@ static NSArray *px_allProtocolMethods(Protocol *protocol)
 	_secondaryDataSource = aDataSource;
 
     [super setDataSource:nil];
-    [super setDataSource:self];
+    if (aDataSource)
+        [super setDataSource:self];
 
 	[self reloadData];
 }
