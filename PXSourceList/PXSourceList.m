@@ -105,10 +105,7 @@ static NSArray *px_allProtocolMethods(Protocol *protocol)
 
 - (void)PXSL_setup
 {
-    [self setDelegate:(id<PXSourceListDelegate>)[super delegate]];
     [super setDelegate:self];
-    
-    [self setDataSource:(id<PXSourceListDataSource>)[super dataSource]];
     [super setDataSource:self];
     
     _iconSize = NSMakeSize(16,16);
@@ -122,7 +119,6 @@ static NSArray *px_allProtocolMethods(Protocol *protocol)
 	
 	//Unregister the delegate from receiving notifications
 	[[NSNotificationCenter defaultCenter] removeObserver:_secondaryDelegate name:nil object:self];
-	
 }
 
 
@@ -151,13 +147,19 @@ static NSArray *px_allProtocolMethods(Protocol *protocol)
 								   withSelector:@selector(sourceListItemDidCollapse:)];
 	[self registerDelegateToReceiveNotification:PXSLDeleteKeyPressedOnRowsNotification
 								   withSelector:@selector(sourceListDeleteKeyPressedOnRows:)];
+
+    [super setDelegate:nil];
+    [super setDelegate:self];
 }
 
 
 - (void)setDataSource:(id<PXSourceListDataSource>)aDataSource
 {
 	_secondaryDataSource = aDataSource;
-	
+
+    [super setDataSource:nil];
+    [super setDataSource:self];
+
 	[self reloadData];
 }
 
