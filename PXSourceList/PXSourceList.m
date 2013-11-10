@@ -39,6 +39,9 @@ NSString * const PXSLDeleteKeyPressedOnRowsNotification = @"PXSourceListDeleteKe
 static NSString * const protocolMethodNameKey = @"methodName";
 static NSString * const protocolArgumentTypesKey = @"types";
 
+static NSString * const forwardingMapForwardingMethodNameKey = @"methodName";
+static NSString * const forwardingMapOriginatingProtocolKey = @"originatingProtocol";
+
 static NSArray *px_allProtocolMethods(Protocol *protocol)
 {
     NSMutableArray *methodList = [[NSMutableArray alloc] init];
@@ -672,6 +675,8 @@ static NSMutableDictionary * _forwardingMethodMap;
     NSUInteger letterVOffset = [outlineViewSearchString rangeOfString:@"V"].location;
     NSCharacterSet *uppercaseLetterCharacterSet = [NSCharacterSet uppercaseLetterCharacterSet];
 
+    NSString *protocolName = NSStringFromProtocol(protocol);
+
     for (NSDictionary *methodInfo in protocolMethods) {
         NSString *methodName = methodInfo[protocolMethodNameKey];
 
@@ -679,7 +684,7 @@ static NSMutableDictionary * _forwardingMethodMap;
 
         // If for some reason we can't map the method name, try to fail gracefully.
         if (outlineViewStringRange.location == NSNotFound) {
-            NSLog(@"PXSourceList: couldn't map method %@ from %@", methodName, NSStringFromProtocol(protocol));
+            NSLog(@"PXSourceList: couldn't map method %@ from %@", methodName, protocolName);
             continue;
         }
 
@@ -688,7 +693,9 @@ static NSMutableDictionary * _forwardingMethodMap;
         NSString *forwardingMethodName = [methodName stringByReplacingCharactersInRange:outlineViewStringRange
                                                                              withString:[NSString stringWithFormat:@"%@ource%@ist", isOCapitalized ? @"S" : @"s", isVCapitalized ? @"L" : @"l"]];
 
-        [methodNameMappings setObject:forwardingMethodName forKey:methodName];
+        [methodNameMappings setObject:@{forwardingMapForwardingMethodNameKey: forwardingMethodName,
+                                        forwardingMapOriginatingProtocolKey: protocolName}
+                               forKey:methodName];
     }
 
     return methodNameMappings;
