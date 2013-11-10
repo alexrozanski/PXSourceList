@@ -74,7 +74,17 @@ static NSArray *px_allProtocolMethods(Protocol *protocol)
 @dynamic dataSource;
 @dynamic delegate;
 
+static NSMutableDictionary * _forwardingMethodMap;
+
 #pragma mark - Setup/Teardown
+
++ (void)initialize
+{
+    _forwardingMethodMap = [[NSMutableDictionary alloc] init];
+
+    [_forwardingMethodMap addEntriesFromDictionary:[self methodNameMappingsForProtocol:@protocol(NSOutlineViewDelegate)]];
+    [_forwardingMethodMap addEntriesFromDictionary:[self methodNameMappingsForProtocol:@protocol(NSOutlineViewDataSource)]];
+}
 
 - (id)initWithCoder:(NSCoder*)decoder
 {	
