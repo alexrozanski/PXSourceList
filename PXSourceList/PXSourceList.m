@@ -697,35 +697,45 @@ static NSArray *px_allProtocolMethods(Protocol *protocol)
 {
     NSMutableDictionary *methodNameMappings = [[NSMutableDictionary alloc] init];
     NSArray *protocolMethods = px_allProtocolMethods(protocol);
-
-    NSString *outlineViewSearchString = @"outlineView";
-    NSUInteger letterVOffset = [outlineViewSearchString rangeOfString:@"V"].location;
-    NSCharacterSet *uppercaseLetterCharacterSet = [NSCharacterSet uppercaseLetterCharacterSet];
-
     NSString *protocolName = NSStringFromProtocol(protocol);
 
     for (NSDictionary *methodInfo in protocolMethods) {
         NSString *methodName = methodInfo[protocolMethodNameKey];
-
-        NSRange outlineViewStringRange = [methodName rangeOfString:outlineViewSearchString options:NSCaseInsensitiveSearch];
-
-        // If for some reason we can't map the method name, try to fail gracefully.
-        if (outlineViewStringRange.location == NSNotFound) {
+        NSString *mappedMethodName = [self mappedMethodNameForMethodName:methodName];
+        if (!mappedMethodName) {
             NSLog(@"PXSourceList: couldn't map method %@ from %@", methodName, protocolName);
             continue;
         }
 
-        BOOL isOCapitalized = [uppercaseLetterCharacterSet characterIsMember:[methodName characterAtIndex:outlineViewStringRange.location]];
-        BOOL isVCapitalized = [uppercaseLetterCharacterSet characterIsMember:[methodName characterAtIndex:outlineViewStringRange.location + letterVOffset]];
-        NSString *forwardingMethodName = [methodName stringByReplacingCharactersInRange:outlineViewStringRange
-                                                                             withString:[NSString stringWithFormat:@"%@ource%@ist", isOCapitalized ? @"S" : @"s", isVCapitalized ? @"L" : @"l"]];
-
-        [methodNameMappings setObject:@{forwardingMapForwardingMethodNameKey: forwardingMethodName,
+        [methodNameMappings setObject:@{forwardingMapForwardingMethodNameKey: mappedMethodName,
                                         forwardingMapOriginatingProtocolKey: protocolName}
                                forKey:methodName];
     }
 
     return methodNameMappings;
+}
+
++ (NSString *)mappedMethodNameForMethodName:(NSString *)methodName
+{
+    NSString *customMappedName = [self customMethodNameMappings][methodName];
+    if (customMappedName)
+        return customMappedName;
+
+    NSString *outlineViewSearchString = @"outlineView";
+    NSUInteger letterVOffset = [outlineViewSearchString rangeOfString:@"V"].location;
+    NSCharacterSet *uppercaseLetterCharacterSet = [NSCharacterSet uppercaseLetterCharacterSet];
+
+    NSRange outlineViewStringRange = [methodName rangeOfString:outlineViewSearchString options:NSCaseInsensitiveSearch];
+
+    // If for some reason we can't map the method name, try to fail gracefully.
+    if (outlineViewStringRange.location == NSNotFound)
+        return nil;
+
+    BOOL isOCapitalized = [uppercaseLetterCharacterSet characterIsMember:[methodName characterAtIndex:outlineViewStringRange.location]];
+    BOOL isVCapitalized = [uppercaseLetterCharacterSet characterIsMember:[methodName characterAtIndex:outlineViewStringRange.location + letterVOffset]];
+    return [methodName stringByReplacingCharactersInRange:outlineViewStringRange
+                                               withString:[NSString stringWithFormat:@"%@ource%@ist", isOCapitalized ? @"S" : @"s", isVCapitalized ? @"L" : @"l"]];
+
 }
 
 // These methods won't have mappings created for them.
