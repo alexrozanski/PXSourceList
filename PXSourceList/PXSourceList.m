@@ -665,6 +665,19 @@ static NSMutableDictionary * _forwardingMethodMap;
 
 #pragma mark - Method Forwarding
 
+- (BOOL)respondsToSelector:(SEL)aSelector
+{
+    if(![_forwardingMethodMap objectForKey:NSStringFromSelector(aSelector)])
+        return [super respondsToSelector:aSelector];
+
+    id forwardingObject;
+    SEL forwardingSelector = NULL;
+
+    if(![self getForwardingObject:&forwardingObject andForwardingSelector:&forwardingSelector forSelector:aSelector])
+        return [super respondsToSelector:aSelector];
+
+    return [forwardingObject respondsToSelector:forwardingSelector];
+}
 
 + (NSDictionary *)methodNameMappingsForProtocol:(Protocol *)protocol
 {
@@ -699,6 +712,32 @@ static NSMutableDictionary * _forwardingMethodMap;
     }
 
     return methodNameMappings;
+}
+
+- (BOOL)getForwardingObject:(id*)outObject andForwardingSelector:(SEL*)outSelector forSelector:(SEL)selector
+{
+    NSDictionary *forwardingInfo = _forwardingMethodMap[NSStringFromSelector(selector)];
+    if (!forwardingInfo)
+        return NO;
+
+    NSString *originatingProtocol = forwardingInfo[forwardingMapOriginatingProtocolKey];
+
+    id forwardingObject;
+    if ([originatingProtocol isEqualToString:NSStringFromProtocol(@protocol(NSOutlineViewDelegate))])
+        forwardingObject = self.secondaryDelegate;
+    else if ([originatingProtocol isEqualToString:NSStringFromProtocol(@protocol(NSOutlineViewDataSource))])
+        forwardingObject = self.secondaryDataSource;
+
+    if (!forwardingObject)
+        return NO;
+
+    if (outObject)
+        *outObject = forwardingObject;
+
+    if (outSelector)
+        *outSelector = NSSelectorFromString(forwardingInfo[forwardingMapForwardingMethodNameKey]);
+
+    return YES;
 }
 
 #pragma mark -
