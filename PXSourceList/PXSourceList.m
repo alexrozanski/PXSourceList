@@ -77,16 +77,12 @@ static NSArray *px_allProtocolMethods(Protocol *protocol)
 @dynamic dataSource;
 @dynamic delegate;
 
-static NSMutableDictionary * _forwardingMethodMap;
-
 #pragma mark - Setup/Teardown
 
 + (void)initialize
 {
-    _forwardingMethodMap = [[NSMutableDictionary alloc] init];
-
-    [_forwardingMethodMap addEntriesFromDictionary:[self methodNameMappingsForProtocol:@protocol(NSOutlineViewDelegate)]];
-    [_forwardingMethodMap addEntriesFromDictionary:[self methodNameMappingsForProtocol:@protocol(NSOutlineViewDataSource)]];
+    [self addEntriesToMethodForwardingMap:[self methodNameMappingsForProtocol:@protocol(NSOutlineViewDelegate)]];
+    [self addEntriesToMethodForwardingMap:[self methodNameMappingsForProtocol:@protocol(NSOutlineViewDataSource)]];
 }
 
 - (id)initWithCoder:(NSCoder*)decoder
@@ -667,7 +663,7 @@ static NSMutableDictionary * _forwardingMethodMap;
 
 - (BOOL)respondsToSelector:(SEL)aSelector
 {
-    if(![_forwardingMethodMap objectForKey:NSStringFromSelector(aSelector)])
+    if(![[[self class] methodForwardingMap] objectForKey:NSStringFromSelector(aSelector)])
         return [super respondsToSelector:aSelector];
 
     id forwardingObject;
@@ -677,6 +673,20 @@ static NSMutableDictionary * _forwardingMethodMap;
         return [super respondsToSelector:aSelector];
 
     return [forwardingObject respondsToSelector:forwardingSelector];
+}
+
++ (NSDictionary *)methodForwardingMap
+{
+    static NSMutableDictionary *_methodForwardingMap = nil;
+    if (!_methodForwardingMap)
+        _methodForwardingMap = [[NSMutableDictionary alloc] init];
+
+    return _methodForwardingMap;
+}
+
++ (void)addEntriesToMethodForwardingMap:(NSDictionary *)entries
+{
+    [(NSMutableDictionary *)[self methodForwardingMap] addEntriesFromDictionary:entries];
 }
 
 + (NSDictionary *)methodNameMappingsForProtocol:(Protocol *)protocol
@@ -716,7 +726,8 @@ static NSMutableDictionary * _forwardingMethodMap;
 
 - (BOOL)getForwardingObject:(id*)outObject andForwardingSelector:(SEL*)outSelector forSelector:(SEL)selector
 {
-    NSDictionary *forwardingInfo = _forwardingMethodMap[NSStringFromSelector(selector)];
+    NSDictionary *methodForwardingMap = [[self class] methodForwardingMap];
+    NSDictionary *forwardingInfo = methodForwardingMap[NSStringFromSelector(selector)];
     if (!forwardingInfo)
         return NO;
 
