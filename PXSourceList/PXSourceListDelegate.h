@@ -26,6 +26,12 @@
 - (BOOL)sourceList:(PXSourceList*)aSourceList shouldSelectItem:(id)item;
 - (NSIndexSet*)sourceList:(PXSourceList*)aSourceList selectionIndexesForProposedSelection:(NSIndexSet *)proposedSelectionIndexes;
 
+- (NSString *)sourceList:(PXSourceList *)sourceList toolTipForCell:(NSCell *)cell rect:(NSRectPointer)rect item:(id)item mouseLocation:(NSPoint)mouseLocation;
+
+- (NSString *)sourceList:(PXSourceList *)sourceList typeSelectStringForItem:(id)item;
+- (id)sourceList:(PXSourceList *)sourceList nextTypeSelectMatchFromItem:(id)startItem toItem:(id)endItem forString:(NSString *)searchString;
+- (BOOL)sourceList:(PXSourceList *)sourceList shouldTypeSelectForEvent:(NSEvent *)event withCurrentSearchString:(NSString *)searchString;
+
 - (BOOL)sourceList:(PXSourceList*)aSourceList shouldEditItem:(id)item;
 
 - (BOOL)sourceList:(PXSourceList*)aSourceList shouldTrackCell:(NSCell *)cell forItem:(id)item;
