@@ -15,10 +15,10 @@
 @required
 - (NSUInteger)sourceList:(PXSourceList*)sourceList numberOfChildrenOfItem:(id)item;
 - (id)sourceList:(PXSourceList*)aSourceList child:(NSUInteger)index ofItem:(id)item;
-- (id)sourceList:(PXSourceList*)aSourceList objectValueForItem:(id)item;
 - (BOOL)sourceList:(PXSourceList*)aSourceList isItemExpandable:(id)item;
 
 @optional
+- (id)sourceList:(PXSourceList*)aSourceList objectValueForItem:(id)item;
 - (void)sourceList:(PXSourceList*)aSourceList setObjectValue:(id)object forItem:(id)item;
 
 - (BOOL)sourceList:(PXSourceList*)aSourceList itemHasBadge:(id)item;
