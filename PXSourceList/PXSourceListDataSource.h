@@ -32,6 +32,7 @@
 //The rest of these methods are basically "wrappers" for the NSOutlineViewDataSource methods
 - (id)sourceList:(PXSourceList*)aSourceList itemForPersistentObject:(id)object;
 - (id)sourceList:(PXSourceList*)aSourceList persistentObjectForItem:(id)item;
+- (void)sourceList:(PXSourceList *)outlineView sortDescriptorsDidChange:(NSArray *)oldDescriptors;
 
 - (BOOL)sourceList:(PXSourceList*)aSourceList writeItems:(NSArray *)items toPasteboard:(NSPasteboard *)pboard;
 - (NSDragOperation)sourceList:(PXSourceList*)sourceList validateDrop:(id < NSDraggingInfo >)info proposedItem:(id)item proposedChildIndex:(NSInteger)index;
