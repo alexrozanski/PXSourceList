@@ -18,6 +18,11 @@
 - (NSMenu*)sourceList:(PXSourceList*)aSourceList menuForEvent:(NSEvent*)theEvent item:(id)item;
 
 //Basically NSOutlineViewDelegate wrapper methods
+- (NSView *)sourceList:(PXSourceList *)aSourceList viewForItem:(id)item;
+- (NSTableRowView *)sourceList:(PXSourceList *)aSourceList rowViewForItem:(id)item;
+- (void)sourceList:(PXSourceList *)aSourceList didAddRowView:(NSTableRowView *)rowView forRow:(NSInteger)row;
+- (void)sourceList:(PXSourceList *)aSourceList didRemoveRowView:(NSTableRowView *)rowView forRow:(NSInteger)row;
+
 - (BOOL)sourceList:(PXSourceList*)aSourceList shouldSelectItem:(id)item;
 - (NSIndexSet*)sourceList:(PXSourceList*)aSourceList selectionIndexesForProposedSelection:(NSIndexSet *)proposedSelectionIndexes;
 
