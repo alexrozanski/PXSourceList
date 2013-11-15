@@ -411,10 +411,7 @@ static NSArray *px_allProtocolMethods(Protocol *protocol)
 
     self.reusableBadgeCell.integerValue = [self badgeValueForItem:rowItem];
 
-    NSSize badgeSize = [self.reusableBadgeCell cellSize];
-    badgeSize.width = fmax(badgeSize.width, minBadgeWidth);
-
-	return badgeSize;
+	return NSMakeSize(fmax(self.reusableBadgeCell.cellSize.width, minBadgeWidth), badgeHeight);
 }
 
 - (void)viewDidMoveToSuperview
@@ -502,6 +499,8 @@ static NSArray *px_allProtocolMethods(Protocol *protocol)
     id rowItem = [self itemAtRow:rowIndex];
 
     self.reusableBadgeCell.integerValue = [self badgeValueForItem:rowItem];
+    self.reusableBadgeCell.highlighted = [self.selectedRowIndexes containsIndex:rowIndex];
+
     [self.reusableBadgeCell drawWithFrame:badgeFrame inView:self];
 }
 
