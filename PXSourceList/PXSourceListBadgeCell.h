@@ -10,4 +10,7 @@
 
 @interface PXSourceListBadgeCell : NSCell
 
+@property (strong, nonatomic) NSColor *badgeColor;
+@property (strong, nonatomic) NSColor *textColor;
+
 @end

@@ -8,6 +8,7 @@
 
 #import "PXSourceList.h"
 #import <objc/runtime.h>
+#import "PXSourceListBadgeCell.h"
 
 //Layout constants
 static const CGFloat minBadgeWidth = 22.0;              // The minimum badge width for each item (default 22.0).
@@ -16,14 +17,6 @@ static const CGFloat badgeMargin = 5.0;                 // The spacing between t
 static const CGFloat rowRightMargin = 5.0;              // The spacing between the right edge of the badge and the edge of the table column.
 static const CGFloat iconSpacing = 2.0;                 // The spacing between the icon and it's adjacent cell.
 static const CGFloat disclosureTriangleSpace = 18.0;    // The indentation reserved for disclosure triangles for non-group items.
-
-//Drawing constants
-static inline NSColor *badgeBackgroundColor() { return [NSColor colorWithCalibratedRed:(152/255.0) green:(168/255.0) blue:(202/255.0) alpha:1]; }
-static inline NSColor *badgeHiddenBackgroundColor() { return [NSColor colorWithDeviceWhite:(180/255.0) alpha:1]; }
-static inline NSColor *badgeSelectedTextColor() { return [NSColor keyboardFocusIndicatorColor]; }
-static inline NSColor *badgeSelectedUnfocusedTextColor() { return [NSColor colorWithCalibratedRed:(153/255.0) green:(169/255.0) blue:(203/255.0) alpha:1]; }
-static inline NSColor *badgeSelectedHiddenTextColor() { return [NSColor colorWithCalibratedWhite:(170/255.0) alpha:1]; }
-static inline NSFont *badgeFont() { return [NSFont boldSystemFontOfSize:11]; }
 
 //Delegate notification constants
 NSString * const PXSLSelectionIsChangingNotification = @"PXSourceListSelectionIsChanging";
@@ -68,6 +61,7 @@ static NSArray *px_allProtocolMethods(Protocol *protocol)
 
 @property (weak, nonatomic) id <PXSourceListDelegate> secondaryDelegate;		//Used to store the publicly visible delegate.
 @property (weak, nonatomic) id <PXSourceListDataSource> secondaryDataSource;	//Used to store the publicly visible data source.
+@property (strong, readonly) PXSourceListBadgeCell *reusableBadgeCell;
 
 @end
 
@@ -76,6 +70,7 @@ static NSArray *px_allProtocolMethods(Protocol *protocol)
 
 @dynamic dataSource;
 @dynamic delegate;
+@synthesize reusableBadgeCell = _reusableBadgeCell;
 
 #pragma mark - Setup/Teardown
 
@@ -174,6 +169,14 @@ static NSArray *px_allProtocolMethods(Protocol *protocol)
 		_iconSize.width = _iconSize.width * (rowHeight/_iconSize.height);
 		_iconSize.height = rowHeight;
 	}
+}
+
+- (PXSourceListBadgeCell *)reusableBadgeCell
+{
+    if (!_reusableBadgeCell)
+        _reusableBadgeCell = [[PXSourceListBadgeCell alloc] init];
+
+    return _reusableBadgeCell;
 }
 
 #pragma mark -
@@ -402,26 +405,16 @@ static NSArray *px_allProtocolMethods(Protocol *protocol)
 - (NSSize)sizeOfBadgeAtRow:(NSInteger)rowIndex
 {
 	id rowItem = [self itemAtRow:rowIndex];
-	
-	//Make sure that the item has a badge
-	if(![self itemHasBadge:rowItem]) {
+
+	if (![self itemHasBadge:rowItem])
 		return NSZeroSize;
-	}
-	
-	NSAttributedString *badgeAttrString = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"%ld", (long)[self badgeValueForItem:rowItem]]
-																		  attributes:[NSDictionary dictionaryWithObjectsAndKeys:badgeFont(), NSFontAttributeName, nil]];
-	
-	NSSize stringSize = [badgeAttrString size];
-	
-	//Calculate the width needed to display the text or the minimum width if it's smaller
-	CGFloat width = stringSize.width+(2*badgeMargin);
-	
-	if(width<minBadgeWidth) {
-		width = minBadgeWidth;
-	}
-	
-	
-	return NSMakeSize(width, badgeHeight);
+
+    self.reusableBadgeCell.integerValue = [self badgeValueForItem:rowItem];
+
+    NSSize badgeSize = [self.reusableBadgeCell cellSize];
+    badgeSize.width = fmax(badgeSize.width, minBadgeWidth);
+
+	return badgeSize;
 }
 
 - (void)viewDidMoveToSuperview
@@ -506,85 +499,10 @@ static NSArray *px_allProtocolMethods(Protocol *protocol)
 
 - (void)drawBadgeForRow:(NSInteger)rowIndex inRect:(NSRect)badgeFrame
 {
-	id rowItem = [self itemAtRow:rowIndex];
-	
-	NSBezierPath *badgePath = [NSBezierPath bezierPathWithRoundedRect:badgeFrame
-															  xRadius:(badgeHeight/2.0)
-															  yRadius:(badgeHeight/2.0)];
-	
-	//Get window and control state to determine colours used
-	BOOL isVisible = [[NSApp mainWindow] isVisible];
-	BOOL isFocused = [[[self window] firstResponder] isEqual:self];
-	NSInteger rowBeingEdited = [self editedRow];
-	
-	//Set the attributes based on the row state
-	NSDictionary *attributes;
-	NSColor *backgroundColor;
-	
-	if([[self selectedRowIndexes] containsIndex:rowIndex])
-	{
-		backgroundColor = [NSColor whiteColor];
-		
-		//Set the text color based on window and control state
-		NSColor *textColor;
-		
-		if(isVisible && (isFocused || rowBeingEdited==rowIndex)) {
-			textColor = badgeSelectedTextColor();
-		}
-		else if(isVisible && !isFocused) {
-			textColor = badgeSelectedUnfocusedTextColor();
-		}
-		else {
-			textColor = badgeSelectedHiddenTextColor();
-		}
-		
-		attributes = [[NSDictionary alloc] initWithObjectsAndKeys:badgeFont(), NSFontAttributeName,
-					  textColor, NSForegroundColorAttributeName, nil];
-	}
-	else
-	{
-		//Set the text colour based on window and control state
-		NSColor *badgeColor = [NSColor whiteColor];
-		
-		if(isVisible) {
-			//If the data source returns a custom colour..
-			if([_secondaryDataSource respondsToSelector:@selector(sourceList:badgeBackgroundColorForItem:)]) {
-				backgroundColor = [_secondaryDataSource sourceList:self badgeBackgroundColorForItem:rowItem];
-				
-				if(backgroundColor==nil)
-					backgroundColor = badgeBackgroundColor();
-			}
-			else { //Otherwise use the default (purple-blue colour)
-				backgroundColor = badgeBackgroundColor();
-			}
-			
-			//If the delegate wants a custom badge text colour..
-			if([_secondaryDataSource respondsToSelector:@selector(sourceList:badgeTextColorForItem:)]) {
-				badgeColor = [_secondaryDataSource sourceList:self badgeTextColorForItem:rowItem];
-				
-				if(badgeColor==nil)
-					badgeColor = [NSColor whiteColor];
-			}
-		}
-		else { //Gray colour
-			backgroundColor = badgeHiddenBackgroundColor();
-		}
-		
-		attributes = [[NSDictionary alloc] initWithObjectsAndKeys:badgeFont(), NSFontAttributeName,
-					  badgeColor, NSForegroundColorAttributeName, nil];
-	}
-	
-	[backgroundColor set];
-	[badgePath fill];
-	
-	//Draw the badge text
-	NSAttributedString *badgeAttrString = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"%ld", (long)[self badgeValueForItem:rowItem]]
-																		  attributes:attributes];
-	NSSize stringSize = [badgeAttrString size];
-	NSPoint badgeTextPoint = NSMakePoint(NSMidX(badgeFrame)-(stringSize.width/2.0),		//Center in the badge frame
-										 NSMidY(badgeFrame)-(stringSize.height/2.0));	//Center in the badge frame
-	[badgeAttrString drawAtPoint:badgeTextPoint];
-	
+    id rowItem = [self itemAtRow:rowIndex];
+
+    self.reusableBadgeCell.integerValue = [self badgeValueForItem:rowItem];
+    [self.reusableBadgeCell drawWithFrame:badgeFrame inView:self];
 }
 
 #pragma mark -
