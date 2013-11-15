@@ -23,6 +23,12 @@
 		D21302C814B9B25700AAFF85 /* playlist.png in Resources */ = {isa = PBXBuildFile; fileRef = D21302C214B9B25700AAFF85 /* playlist.png */; };
 		D21302C914B9B25700AAFF85 /* playlistFolder.png in Resources */ = {isa = PBXBuildFile; fileRef = D21302C314B9B25700AAFF85 /* playlistFolder.png */; };
 		D21302CA14B9B25700AAFF85 /* podcasts.png in Resources */ = {isa = PBXBuildFile; fileRef = D21302C414B9B25700AAFF85 /* podcasts.png */; };
+		D23A17591836AD790027F0D0 /* PXSourceListBadge.h in Headers */ = {isa = PBXBuildFile; fileRef = D23A17571836AD790027F0D0 /* PXSourceListBadge.h */; };
+		D23A175A1836AD790027F0D0 /* PXSourceListBadge.m in Sources */ = {isa = PBXBuildFile; fileRef = D23A17581836AD790027F0D0 /* PXSourceListBadge.m */; };
+		D23A175B1836AD790027F0D0 /* PXSourceListBadge.m in Sources */ = {isa = PBXBuildFile; fileRef = D23A17581836AD790027F0D0 /* PXSourceListBadge.m */; };
+		D23A175E1836AE280027F0D0 /* PXSourceListBadgeCell.h in Headers */ = {isa = PBXBuildFile; fileRef = D23A175C1836AE280027F0D0 /* PXSourceListBadgeCell.h */; };
+		D23A175F1836AE280027F0D0 /* PXSourceListBadgeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D23A175D1836AE280027F0D0 /* PXSourceListBadgeCell.m */; };
+		D23A17601836AE280027F0D0 /* PXSourceListBadgeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D23A175D1836AE280027F0D0 /* PXSourceListBadgeCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +69,10 @@
 		D21302C314B9B25700AAFF85 /* playlistFolder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = playlistFolder.png; path = "Demo Project/Images/playlistFolder.png"; sourceTree = "<group>"; };
 		D21302C414B9B25700AAFF85 /* podcasts.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = podcasts.png; path = "Demo Project/Images/podcasts.png"; sourceTree = "<group>"; };
 		D21302CB14B9B2FC00AAFF85 /* PXSourceListDemo_Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PXSourceListDemo_Prefix.pch; path = "Demo Project/PXSourceListDemo_Prefix.pch"; sourceTree = "<group>"; };
+		D23A17571836AD790027F0D0 /* PXSourceListBadge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PXSourceListBadge.h; path = PXSourceList/PXSourceListBadge.h; sourceTree = "<group>"; };
+		D23A17581836AD790027F0D0 /* PXSourceListBadge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PXSourceListBadge.m; path = PXSourceList/PXSourceListBadge.m; sourceTree = "<group>"; };
+		D23A175C1836AE280027F0D0 /* PXSourceListBadgeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PXSourceListBadgeCell.h; path = PXSourceList/PXSourceListBadgeCell.h; sourceTree = "<group>"; };
+		D23A175D1836AE280027F0D0 /* PXSourceListBadgeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PXSourceListBadgeCell.m; path = PXSourceList/PXSourceListBadgeCell.m; sourceTree = "<group>"; };
 		D265C2D610E3814B00A1E824 /* TODO.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = TODO.rtf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -92,6 +102,10 @@
 				D213027914B9AFE200AAFF85 /* PXSourceList.m */,
 				D213027A14B9AFE200AAFF85 /* PXSourceListDataSource.h */,
 				D213027B14B9AFE200AAFF85 /* PXSourceListDelegate.h */,
+				D23A17571836AD790027F0D0 /* PXSourceListBadge.h */,
+				D23A17581836AD790027F0D0 /* PXSourceListBadge.m */,
+				D23A175C1836AE280027F0D0 /* PXSourceListBadgeCell.h */,
+				D23A175D1836AE280027F0D0 /* PXSourceListBadgeCell.m */,
 				D21302BA14B9B1DC00AAFF85 /* Supporting Files */,
 			);
 			name = PXSourceList;
@@ -207,7 +221,9 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D23A175E1836AE280027F0D0 /* PXSourceListBadgeCell.h in Headers */,
 				D213027C14B9AFE200AAFF85 /* PXSourceList.h in Headers */,
+				D23A17591836AD790027F0D0 /* PXSourceListBadge.h in Headers */,
 				D213027F14B9AFE200AAFF85 /* PXSourceListDataSource.h in Headers */,
 				D213028014B9AFE200AAFF85 /* PXSourceListDelegate.h in Headers */,
 			);
@@ -310,6 +326,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D23A17601836AE280027F0D0 /* PXSourceListBadgeCell.m in Sources */,
+				D23A175B1836AD790027F0D0 /* PXSourceListBadge.m in Sources */,
 				D213027E14B9AFE200AAFF85 /* PXSourceList.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -318,8 +336,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D23A175F1836AE280027F0D0 /* PXSourceListBadgeCell.m in Sources */,
 				D213027D14B9AFE200AAFF85 /* PXSourceList.m in Sources */,
 				D213028B14B9B01F00AAFF85 /* AppDelegate.m in Sources */,
+				D23A175A1836AD790027F0D0 /* PXSourceListBadge.m in Sources */,
 				D213028C14B9B01F00AAFF85 /* SourceListItem.m in Sources */,
 				D213028E14B9B02A00AAFF85 /* main.m in Sources */,
 			);
