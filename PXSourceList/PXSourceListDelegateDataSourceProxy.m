@@ -11,34 +11,11 @@
 #import <objc/runtime.h>
 #import "PXSourceList.h"
 #import "PXSourceListPrivateConstants.h"
+#import "PXSourceListRuntimeAdditions.h"
 
 // Internal constants.
-static NSString * const protocolMethodNameKey = @"methodName";
-static NSString * const protocolArgumentTypesKey = @"types";
-
 static NSString * const forwardingMapForwardingMethodNameKey = @"methodName";
 static NSString * const forwardingMapOriginatingProtocolKey = @"originatingProtocol";
-
-static NSArray *px_allProtocolMethods(Protocol *protocol)
-{
-    NSMutableArray *methodList = [[NSMutableArray alloc] init];
-
-    // We have 4 permutations as protocol_copyMethodDescriptionList() takes two BOOL arguments for the types of methods to return.
-    for (NSUInteger i = 0; i < 4; ++i) {
-        unsigned int numberOfMethodDescriptions = 0;
-        struct objc_method_description *methodDescriptions = protocol_copyMethodDescriptionList(protocol, (i / 2) % 2, i % 2, &numberOfMethodDescriptions);
-
-        for (unsigned int j = 0; j < numberOfMethodDescriptions; ++j) {
-            struct objc_method_description methodDescription = methodDescriptions[j];
-            [methodList addObject:@{protocolMethodNameKey: NSStringFromSelector(methodDescription.name),
-                                    protocolArgumentTypesKey: [NSString stringWithUTF8String:methodDescription.types]}];
-        }
-
-        free(methodDescriptions);
-    }
-
-    return methodList;
-}
 
 @implementation PXSourceListDelegateDataSourceProxy
 
@@ -152,7 +129,7 @@ static NSArray *px_allProtocolMethods(Protocol *protocol)
     NSString *protocolName = NSStringFromProtocol(protocol);
 
     for (NSDictionary *methodInfo in protocolMethods) {
-        NSString *methodName = methodInfo[protocolMethodNameKey];
+        NSString *methodName = methodInfo[px_protocolMethodNameKey];
         NSString *mappedMethodName = [self mappedMethodNameForMethodName:methodName];
         if (!mappedMethodName) {
             NSLog(@"PXSourceList: couldn't map method %@ from %@", methodName, protocolName);

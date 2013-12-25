@@ -33,6 +33,9 @@
 		D2CD7D48186B02630003E038 /* PXSourceListDelegateDataSourceProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = D2CD7D46186B02630003E038 /* PXSourceListDelegateDataSourceProxy.m */; };
 		D2CD7D49186B02630003E038 /* PXSourceListDelegateDataSourceProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = D2CD7D46186B02630003E038 /* PXSourceListDelegateDataSourceProxy.m */; };
 		D2CD7D4D186B0FBC0003E038 /* PXSourceListPrivateConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = D2CD7D4B186B0FBC0003E038 /* PXSourceListPrivateConstants.h */; };
+		D2CD7D52186B10FD0003E038 /* PXSourceListRuntimeAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = D2CD7D50186B10FD0003E038 /* PXSourceListRuntimeAdditions.h */; };
+		D2CD7D53186B10FD0003E038 /* PXSourceListRuntimeAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = D2CD7D51186B10FD0003E038 /* PXSourceListRuntimeAdditions.m */; };
+		D2CD7D54186B10FD0003E038 /* PXSourceListRuntimeAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = D2CD7D51186B10FD0003E038 /* PXSourceListRuntimeAdditions.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +84,8 @@
 		D2CD7D45186B02630003E038 /* PXSourceListDelegateDataSourceProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PXSourceListDelegateDataSourceProxy.h; path = PXSourceList/PXSourceListDelegateDataSourceProxy.h; sourceTree = "<group>"; };
 		D2CD7D46186B02630003E038 /* PXSourceListDelegateDataSourceProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PXSourceListDelegateDataSourceProxy.m; path = PXSourceList/PXSourceListDelegateDataSourceProxy.m; sourceTree = "<group>"; };
 		D2CD7D4B186B0FBC0003E038 /* PXSourceListPrivateConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PXSourceListPrivateConstants.h; path = PXSourceList/PXSourceListPrivateConstants.h; sourceTree = "<group>"; };
+		D2CD7D50186B10FD0003E038 /* PXSourceListRuntimeAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PXSourceListRuntimeAdditions.h; path = PXSourceList/PXSourceListRuntimeAdditions.h; sourceTree = "<group>"; };
+		D2CD7D51186B10FD0003E038 /* PXSourceListRuntimeAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PXSourceListRuntimeAdditions.m; path = PXSourceList/PXSourceListRuntimeAdditions.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -228,6 +233,8 @@
 				D2CD7D4B186B0FBC0003E038 /* PXSourceListPrivateConstants.h */,
 				D2CD7D45186B02630003E038 /* PXSourceListDelegateDataSourceProxy.h */,
 				D2CD7D46186B02630003E038 /* PXSourceListDelegateDataSourceProxy.m */,
+				D2CD7D50186B10FD0003E038 /* PXSourceListRuntimeAdditions.h */,
+				D2CD7D51186B10FD0003E038 /* PXSourceListRuntimeAdditions.m */,
 			);
 			name = Private;
 			sourceTree = "<group>";
@@ -243,6 +250,7 @@
 				D23A175E1836AE280027F0D0 /* PXSourceListBadgeCell.h in Headers */,
 				D213027C14B9AFE200AAFF85 /* PXSourceList.h in Headers */,
 				D2CD7D47186B02630003E038 /* PXSourceListDelegateDataSourceProxy.h in Headers */,
+				D2CD7D52186B10FD0003E038 /* PXSourceListRuntimeAdditions.h in Headers */,
 				D23A17591836AD790027F0D0 /* PXSourceListBadge.h in Headers */,
 				D213027F14B9AFE200AAFF85 /* PXSourceListDataSource.h in Headers */,
 				D213028014B9AFE200AAFF85 /* PXSourceListDelegate.h in Headers */,
@@ -350,6 +358,7 @@
 				D2CD7D49186B02630003E038 /* PXSourceListDelegateDataSourceProxy.m in Sources */,
 				D23A175B1836AD790027F0D0 /* PXSourceListBadge.m in Sources */,
 				D213027E14B9AFE200AAFF85 /* PXSourceList.m in Sources */,
+				D2CD7D54186B10FD0003E038 /* PXSourceListRuntimeAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -358,6 +367,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D23A175F1836AE280027F0D0 /* PXSourceListBadgeCell.m in Sources */,
+				D2CD7D53186B10FD0003E038 /* PXSourceListRuntimeAdditions.m in Sources */,
 				D213027D14B9AFE200AAFF85 /* PXSourceList.m in Sources */,
 				D213028B14B9B01F00AAFF85 /* AppDelegate.m in Sources */,
 				D23A175A1836AD790027F0D0 /* PXSourceListBadge.m in Sources */,
