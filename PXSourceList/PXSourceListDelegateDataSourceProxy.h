@@ -11,7 +11,7 @@
 @protocol PXSourceListDelegate;
 @protocol PXSourceListDataSource;
 
-@interface PXSourceListDelegateDataSourceProxy : NSObject
+@interface PXSourceListDelegateDataSourceProxy : NSObject <NSOutlineViewDelegate, NSOutlineViewDataSource>
 
 @property (weak, nonatomic) id <PXSourceListDelegate> delegate;
 @property (weak, nonatomic) id <PXSourceListDataSource> dataSource;

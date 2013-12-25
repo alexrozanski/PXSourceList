@@ -9,6 +9,7 @@
 #import "PXSourceList.h"
 #import <objc/runtime.h>
 #import "PXSourceListBadgeCell.h"
+#import "PXSourceListDelegateDataSourceProxy.h"
 
 //Layout constants
 static const CGFloat minBadgeWidth = 22.0;              // The minimum badge width for each item (default 22.0).
@@ -59,8 +60,7 @@ static NSArray *px_allProtocolMethods(Protocol *protocol)
 #pragma mark -
 @interface PXSourceList ()
 
-@property (weak, nonatomic) id <PXSourceListDelegate> secondaryDelegate;		//Used to store the publicly visible delegate.
-@property (weak, nonatomic) id <PXSourceListDataSource> secondaryDataSource;	//Used to store the publicly visible data source.
+@property (strong, nonatomic) PXSourceListDelegateDataSourceProxy *delegateDataSourceProxy;
 @property (strong, readonly) PXSourceListBadgeCell *reusableBadgeCell;
 
 @end
@@ -101,6 +101,7 @@ static NSArray *px_allProtocolMethods(Protocol *protocol)
 - (void)PXSL_setup
 {
     _iconSize = NSMakeSize(16,16);
+    _delegateDataSourceProxy = [[PXSourceListDelegateDataSourceProxy alloc] init];
 }
 
 - (void)dealloc
@@ -110,7 +111,7 @@ static NSArray *px_allProtocolMethods(Protocol *protocol)
 	[super setDelegate:nil];
 	
 	//Unregister the delegate from receiving notifications
-	[[NSNotificationCenter defaultCenter] removeObserver:_secondaryDelegate name:nil object:self];
+	[[NSNotificationCenter defaultCenter] removeObserver:self.delegateDataSourceProxy.delegate name:nil object:self];
 }
 
 
@@ -120,9 +121,9 @@ static NSArray *px_allProtocolMethods(Protocol *protocol)
 - (void)setDelegate:(id<PXSourceListDelegate>)aDelegate
 {
 	//Unregister the old delegate from receiving notifications
-	[[NSNotificationCenter defaultCenter] removeObserver:_secondaryDelegate name:nil object:self];
+	[[NSNotificationCenter defaultCenter] removeObserver:self.delegateDataSourceProxy.delegate name:nil object:self];
 	
-	_secondaryDelegate = aDelegate;
+	self.delegateDataSourceProxy.delegate = aDelegate;
 	
 	//Register the new delegate to receive notifications
 	[self registerDelegateToReceiveNotification:PXSLSelectionIsChangingNotification
@@ -148,7 +149,7 @@ static NSArray *px_allProtocolMethods(Protocol *protocol)
 
 - (void)setDataSource:(id<PXSourceListDataSource>)aDataSource
 {
-	_secondaryDataSource = aDataSource;
+	self.delegateDataSourceProxy.dataSource = aDataSource;
 
     [super setDataSource:nil];
     if (aDataSource)
@@ -187,12 +188,12 @@ static NSArray *px_allProtocolMethods(Protocol *protocol)
 	[super reloadData];
 	
 	//Expand items that are displayed as always expanded
-	if([_secondaryDataSource conformsToProtocol:@protocol(PXSourceListDataSource)] &&
-	   [_secondaryDelegate respondsToSelector:@selector(sourceList:isGroupAlwaysExpanded:)])
+	if([self.delegateDataSourceProxy.dataSource conformsToProtocol:@protocol(PXSourceListDataSource)] &&
+	   [self.delegateDataSourceProxy.delegate respondsToSelector:@selector(sourceList:isGroupAlwaysExpanded:)])
 	{
 		for(NSUInteger i=0;i<[self numberOfGroups];i++)
 		{
-			id item = [_secondaryDataSource sourceList:self child:i ofItem:nil];
+			id item = [self.delegateDataSourceProxy.dataSource sourceList:self child:i ofItem:nil];
 			
 			if([self isGroupAlwaysExpanded:item]) {
 				[self expandItem:item expandChildren:NO];
@@ -242,8 +243,8 @@ static NSArray *px_allProtocolMethods(Protocol *protocol)
 
 - (NSUInteger)numberOfGroups
 {	
-	if([_secondaryDataSource respondsToSelector:@selector(sourceList:numberOfChildrenOfItem:)]) {
-		return [_secondaryDataSource sourceList:self numberOfChildrenOfItem:nil];
+	if([self.delegateDataSourceProxy.dataSource respondsToSelector:@selector(sourceList:numberOfChildrenOfItem:)]) {
+		return [self.delegateDataSourceProxy.dataSource sourceList:self numberOfChildrenOfItem:nil];
 	}
 	
 	return 0;
@@ -262,8 +263,8 @@ static NSArray *px_allProtocolMethods(Protocol *protocol)
 	//Make sure that the item IS a group to prevent unwanted queries sent to the data source
 	if([self isGroupItem:group]) {
 		//Query the data source
-		if([_secondaryDelegate respondsToSelector:@selector(sourceList:isGroupAlwaysExpanded:)]) {
-			return [_secondaryDelegate sourceList:self isGroupAlwaysExpanded:group];
+		if([self.delegateDataSourceProxy.delegate respondsToSelector:@selector(sourceList:isGroupAlwaysExpanded:)]) {
+			return [self.delegateDataSourceProxy.delegate sourceList:self isGroupAlwaysExpanded:group];
 		}
 	}
 	
@@ -273,8 +274,8 @@ static NSArray *px_allProtocolMethods(Protocol *protocol)
 
 - (BOOL)itemHasBadge:(id)item
 {
-	if([_secondaryDataSource respondsToSelector:@selector(sourceList:itemHasBadge:)]) {
-		return [_secondaryDataSource sourceList:self itemHasBadge:item];
+	if([self.delegateDataSourceProxy.dataSource respondsToSelector:@selector(sourceList:itemHasBadge:)]) {
+		return [self.delegateDataSourceProxy.dataSource sourceList:self itemHasBadge:item];
 	}
 	
 	return NO;
@@ -287,8 +288,8 @@ static NSArray *px_allProtocolMethods(Protocol *protocol)
 		return NSNotFound;
 	}
 	
-	if([_secondaryDataSource respondsToSelector:@selector(sourceList:badgeValueForItem:)]) {
-		return [_secondaryDataSource sourceList:self badgeValueForItem:item];
+	if([self.delegateDataSourceProxy.dataSource respondsToSelector:@selector(sourceList:badgeValueForItem:)]) {
+		return [self.delegateDataSourceProxy.dataSource sourceList:self badgeValueForItem:item];
 	}
 	
 	return NSNotFound;
@@ -385,9 +386,9 @@ static NSArray *px_allProtocolMethods(Protocol *protocol)
 		CGFloat rightIndent = [self sizeOfBadgeAtRow:row].width+rowRightMargin;
 		
 		//Allow space for an icon if need be
-		if(![self isGroupItem:item]&&[_secondaryDataSource respondsToSelector:@selector(sourceList:itemHasIcon:)])
+		if(![self isGroupItem:item] && [self.delegateDataSourceProxy.dataSource respondsToSelector:@selector(sourceList:itemHasIcon:)])
 		{
-			if([_secondaryDataSource sourceList:self itemHasIcon:item]) {
+			if([self.delegateDataSourceProxy.dataSource sourceList:self itemHasIcon:item]) {
 				leftIndent += [self iconSize].width+(iconSpacing*2);
 			}
 		}
@@ -430,9 +431,9 @@ static NSArray *px_allProtocolMethods(Protocol *protocol)
 	id item = [self itemAtRow:rowIndex];
 	
 	//Draw an icon if the item has one
-	if(![self isGroupItem:item]&&[_secondaryDataSource respondsToSelector:@selector(sourceList:itemHasIcon:)])
+	if(![self isGroupItem:item] && [self.delegateDataSourceProxy.dataSource respondsToSelector:@selector(sourceList:itemHasIcon:)])
 	{
-		if([_secondaryDataSource sourceList:self itemHasIcon:item])
+		if([self.delegateDataSourceProxy.dataSource sourceList:self itemHasIcon:item])
 		{
 			NSRect cellFrame = [self frameOfCellAtColumn:0 row:rowIndex];
 			NSSize iconSize = [self iconSize];
@@ -441,9 +442,9 @@ static NSArray *px_allProtocolMethods(Protocol *protocol)
 										 iconSize.width,
 										 iconSize.height);
 			
-			if([_secondaryDataSource respondsToSelector:@selector(sourceList:iconForItem:)])
+			if([self.delegateDataSourceProxy.dataSource respondsToSelector:@selector(sourceList:iconForItem:)])
 			{
-				NSImage *icon = [_secondaryDataSource sourceList:self iconForItem:item];
+				NSImage *icon = [self.delegateDataSourceProxy.dataSource sourceList:self iconForItem:item];
 				
 				if(icon!=nil)
 				{
@@ -565,11 +566,11 @@ static NSArray *px_allProtocolMethods(Protocol *protocol)
 - (NSMenu *)menuForEvent:(NSEvent *)theEvent
 {
 	NSMenu * m = nil;
-	if([_secondaryDelegate respondsToSelector:@selector(sourceList:menuForEvent:item:)]) {
+	if([self.delegateDataSourceProxy.delegate respondsToSelector:@selector(sourceList:menuForEvent:item:)]) {
 		NSPoint clickPoint = [self convertPoint:[theEvent locationInWindow] fromView:nil];
 		NSInteger row = [self rowAtPoint:clickPoint];
 		id clickedItem = [self itemAtRow:row];
-		m = [_secondaryDelegate sourceList:self menuForEvent:theEvent item:clickedItem];
+		m = [self.delegateDataSourceProxy.delegate sourceList:self menuForEvent:theEvent item:clickedItem];
 	}
 	if (m == nil) {
 		m = [super menuForEvent:theEvent];
@@ -710,9 +711,9 @@ static NSArray *px_allProtocolMethods(Protocol *protocol)
 
     id forwardingObject;
     if ([originatingProtocol isEqualToString:NSStringFromProtocol(@protocol(NSOutlineViewDelegate))])
-        forwardingObject = self.secondaryDelegate;
+        forwardingObject = self.self.delegateDataSourceProxy.delegate;
     else if ([originatingProtocol isEqualToString:NSStringFromProtocol(@protocol(NSOutlineViewDataSource))])
-        forwardingObject = self.secondaryDataSource;
+        forwardingObject = self.delegateDataSourceProxy.dataSource;
 
     if (!forwardingObject)
         return NO;
@@ -730,8 +731,8 @@ static NSArray *px_allProtocolMethods(Protocol *protocol)
 
 - (id)outlineView:(NSOutlineView *)outlineView objectValueForTableColumn:(NSTableColumn *)tableColumn byItem:(id)item
 {
-	if([_secondaryDataSource conformsToProtocol:@protocol(PXSourceListDataSource)]) {
-		return [_secondaryDataSource sourceList:self objectValueForItem:item];
+	if([self.delegateDataSourceProxy.dataSource conformsToProtocol:@protocol(PXSourceListDataSource)]) {
+		return [self.delegateDataSourceProxy.dataSource sourceList:self objectValueForItem:item];
 	}
 	
 	return nil;
@@ -740,8 +741,8 @@ static NSArray *px_allProtocolMethods(Protocol *protocol)
 
 - (void)outlineView:(NSOutlineView *)outlineView setObjectValue:(id)object forTableColumn:(NSTableColumn *)tableColumn byItem:(id)item
 {	
-	if([_secondaryDataSource conformsToProtocol:@protocol(PXSourceListDataSource)]) {
-		[_secondaryDataSource sourceList:self setObjectValue:object forItem:item];
+	if([self.delegateDataSourceProxy.dataSource conformsToProtocol:@protocol(PXSourceListDataSource)]) {
+		[self.delegateDataSourceProxy.dataSource sourceList:self setObjectValue:object forItem:item];
 	}
 }
 
@@ -757,8 +758,8 @@ static NSArray *px_allProtocolMethods(Protocol *protocol)
 		}
 	}
 	
-	if([_secondaryDelegate respondsToSelector:@selector(sourceList:shouldCollapseItem:)]) {
-		return [_secondaryDelegate sourceList:self shouldCollapseItem:item];
+	if([self.delegateDataSourceProxy.delegate respondsToSelector:@selector(sourceList:shouldCollapseItem:)]) {
+		return [self.delegateDataSourceProxy.delegate sourceList:self shouldCollapseItem:item];
 	}
 	
 	return YES;
@@ -766,8 +767,8 @@ static NSArray *px_allProtocolMethods(Protocol *protocol)
 
 - (NSCell *)outlineView:(NSOutlineView *)outlineView dataCellForTableColumn:(NSTableColumn *)tableColumn item:(id)item
 {
-	if([_secondaryDelegate respondsToSelector:@selector(sourceList:dataCellForItem:)]) {
-		return [_secondaryDelegate sourceList:self dataCellForItem:item];
+	if([self.delegateDataSourceProxy.delegate respondsToSelector:@selector(sourceList:dataCellForItem:)]) {
+		return [self.delegateDataSourceProxy.delegate sourceList:self dataCellForItem:item];
 	}
 	
 	NSInteger row = [self rowForItem:item];
@@ -778,8 +779,8 @@ static NSArray *px_allProtocolMethods(Protocol *protocol)
 
 - (void)outlineView:(NSOutlineView *)outlineView willDisplayCell:(id)cell forTableColumn:(NSTableColumn *)tableColumn item:(id)item
 {
-	if([_secondaryDelegate respondsToSelector:@selector(sourceList:willDisplayCell:forItem:)]) {
-		[_secondaryDelegate sourceList:self willDisplayCell:cell forItem:item];
+	if([self.delegateDataSourceProxy.delegate respondsToSelector:@selector(sourceList:willDisplayCell:forItem:)]) {
+		[self.delegateDataSourceProxy.delegate sourceList:self willDisplayCell:cell forItem:item];
 	}
 }
 
@@ -787,8 +788,8 @@ static NSArray *px_allProtocolMethods(Protocol *protocol)
 {	
 	//Make sure that the item isn't a group as they can't be selected
 	if(![self isGroupItem:item]) {		
-		if([_secondaryDelegate respondsToSelector:@selector(sourceList:shouldSelectItem:)]) {
-			return [_secondaryDelegate sourceList:self shouldSelectItem:item];
+		if([self.delegateDataSourceProxy.delegate respondsToSelector:@selector(sourceList:shouldSelectItem:)]) {
+			return [self.delegateDataSourceProxy.delegate sourceList:self shouldSelectItem:item];
 		}
 	}
 	else {
@@ -810,8 +811,8 @@ static NSArray *px_allProtocolMethods(Protocol *protocol)
 		}
 	}
 	
-	if([_secondaryDelegate respondsToSelector:@selector(sourceList:selectionIndexesForProposedSelection:)]) {
-		return [_secondaryDelegate sourceList:self selectionIndexesForProposedSelection:proposedSelectionIndexes];
+	if([self.delegateDataSourceProxy.delegate respondsToSelector:@selector(sourceList:selectionIndexesForProposedSelection:)]) {
+		return [self.delegateDataSourceProxy.delegate sourceList:self selectionIndexesForProposedSelection:proposedSelectionIndexes];
 	}
 	
 	//Since we implement this method, something must be returned to the outline view
@@ -824,8 +825,8 @@ static NSArray *px_allProtocolMethods(Protocol *protocol)
 	if([self isGroupItem:item])
 		return NO;
 	
-	if([_secondaryDelegate respondsToSelector:@selector(sourceList:shouldEditItem:)]) {
-		return [_secondaryDelegate sourceList:self shouldEditItem:item];
+	if([self.delegateDataSourceProxy.delegate respondsToSelector:@selector(sourceList:shouldEditItem:)]) {
+		return [self.delegateDataSourceProxy.delegate sourceList:self shouldEditItem:item];
 	}
 	
 	return YES;
@@ -884,8 +885,8 @@ static NSArray *px_allProtocolMethods(Protocol *protocol)
 	NSNotificationCenter *defaultCenter = [NSNotificationCenter defaultCenter];
 	
 	//Set the delegate as a receiver of the notification if it implements the notification method
-	if([_secondaryDelegate respondsToSelector:selector]) {
-		[defaultCenter addObserver:_secondaryDelegate
+	if([self.delegateDataSourceProxy.delegate respondsToSelector:selector]) {
+		[defaultCenter addObserver:self.delegateDataSourceProxy.delegate
 						  selector:selector
 							  name:notification
 							object:self];
