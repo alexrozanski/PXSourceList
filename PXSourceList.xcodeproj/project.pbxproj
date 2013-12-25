@@ -32,6 +32,7 @@
 		D2CD7D47186B02630003E038 /* PXSourceListDelegateDataSourceProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = D2CD7D45186B02630003E038 /* PXSourceListDelegateDataSourceProxy.h */; };
 		D2CD7D48186B02630003E038 /* PXSourceListDelegateDataSourceProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = D2CD7D46186B02630003E038 /* PXSourceListDelegateDataSourceProxy.m */; };
 		D2CD7D49186B02630003E038 /* PXSourceListDelegateDataSourceProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = D2CD7D46186B02630003E038 /* PXSourceListDelegateDataSourceProxy.m */; };
+		D2CD7D4D186B0FBC0003E038 /* PXSourceListPrivateConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = D2CD7D4B186B0FBC0003E038 /* PXSourceListPrivateConstants.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +80,7 @@
 		D265C2D610E3814B00A1E824 /* TODO.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = TODO.rtf; sourceTree = "<group>"; };
 		D2CD7D45186B02630003E038 /* PXSourceListDelegateDataSourceProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PXSourceListDelegateDataSourceProxy.h; path = PXSourceList/PXSourceListDelegateDataSourceProxy.h; sourceTree = "<group>"; };
 		D2CD7D46186B02630003E038 /* PXSourceListDelegateDataSourceProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PXSourceListDelegateDataSourceProxy.m; path = PXSourceList/PXSourceListDelegateDataSourceProxy.m; sourceTree = "<group>"; };
+		D2CD7D4B186B0FBC0003E038 /* PXSourceListPrivateConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PXSourceListPrivateConstants.h; path = PXSourceList/PXSourceListPrivateConstants.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -223,6 +225,7 @@
 		D2CD7D4A186B02690003E038 /* Private */ = {
 			isa = PBXGroup;
 			children = (
+				D2CD7D4B186B0FBC0003E038 /* PXSourceListPrivateConstants.h */,
 				D2CD7D45186B02630003E038 /* PXSourceListDelegateDataSourceProxy.h */,
 				D2CD7D46186B02630003E038 /* PXSourceListDelegateDataSourceProxy.m */,
 			);
@@ -236,6 +239,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2CD7D4D186B0FBC0003E038 /* PXSourceListPrivateConstants.h in Headers */,
 				D23A175E1836AE280027F0D0 /* PXSourceListBadgeCell.h in Headers */,
 				D213027C14B9AFE200AAFF85 /* PXSourceList.h in Headers */,
 				D2CD7D47186B02630003E038 /* PXSourceListDelegateDataSourceProxy.h in Headers */,

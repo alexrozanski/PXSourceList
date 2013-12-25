@@ -10,6 +10,7 @@
 
 #import <objc/runtime.h>
 #import "PXSourceList.h"
+#import "PXSourceListPrivateConstants.h"
 
 // Internal constants.
 static NSString * const protocolMethodNameKey = @"methodName";
@@ -55,6 +56,37 @@ static NSArray *px_allProtocolMethods(Protocol *protocol)
     _sourceList = sourceList;
 
     return self;
+}
+
+#pragma mark - Accessors
+
+- (void)setDelegate:(id<PXSourceListDelegate>)delegate
+{
+    if (self.delegate)
+        [[NSNotificationCenter defaultCenter] removeObserver:self.delegate name:nil object:self];
+
+    _delegate = delegate;
+
+    //Register the new delegate to receive notifications
+	[self registerDelegateToReceiveNotification:PXSLSelectionIsChangingNotification
+								   withSelector:@selector(sourceListSelectionIsChanging:)];
+	[self registerDelegateToReceiveNotification:PXSLSelectionDidChangeNotification
+								   withSelector:@selector(sourceListSelectionDidChange:)];
+	[self registerDelegateToReceiveNotification:PXSLItemWillExpandNotification
+								   withSelector:@selector(sourceListItemWillExpand:)];
+	[self registerDelegateToReceiveNotification:PXSLItemDidExpandNotification
+								   withSelector:@selector(sourceListItemDidExpand:)];
+	[self registerDelegateToReceiveNotification:PXSLItemWillCollapseNotification
+								   withSelector:@selector(sourceListItemWillCollapse:)];
+	[self registerDelegateToReceiveNotification:PXSLItemDidCollapseNotification
+								   withSelector:@selector(sourceListItemDidCollapse:)];
+	[self registerDelegateToReceiveNotification:PXSLDeleteKeyPressedOnRowsNotification
+								   withSelector:@selector(sourceListDeleteKeyPressedOnRows:)];
+}
+
+- (void)setDataSource:(id<PXSourceListDataSource>)dataSource
+{
+    _dataSource = dataSource;
 }
 
 #pragma mark - Method Forwarding
@@ -212,6 +244,61 @@ static NSArray *px_allProtocolMethods(Protocol *protocol)
         *outSelector = NSSelectorFromString(forwardingInfo[forwardingMapForwardingMethodNameKey]);
     
     return YES;
+}
+
+#pragma mark - Notifications
+
+- (void)registerDelegateToReceiveNotification:(NSString*)notification withSelector:(SEL)selector
+{
+	NSNotificationCenter *defaultCenter = [NSNotificationCenter defaultCenter];
+
+	//Set the delegate as a receiver of the notification if it implements the notification method
+	if([self.delegate respondsToSelector:selector]) {
+		[defaultCenter addObserver:self.delegate
+						  selector:selector
+							  name:notification
+							object:self];
+	}
+}
+
+/* Notification wrappers */
+- (void)outlineViewSelectionIsChanging:(NSNotification *)notification
+{
+	[[NSNotificationCenter defaultCenter] postNotificationName:PXSLSelectionIsChangingNotification object:self];
+}
+
+
+- (void)outlineViewSelectionDidChange:(NSNotification *)notification
+{
+	[[NSNotificationCenter defaultCenter] postNotificationName:PXSLSelectionDidChangeNotification object:self];
+}
+
+- (void)outlineViewItemWillExpand:(NSNotification *)notification
+{
+	[[NSNotificationCenter defaultCenter] postNotificationName:PXSLItemWillExpandNotification
+														object:self
+													  userInfo:[notification userInfo]];
+}
+
+- (void)outlineViewItemDidExpand:(NSNotification *)notification
+{
+	[[NSNotificationCenter defaultCenter] postNotificationName:PXSLItemDidExpandNotification
+														object:self
+													  userInfo:[notification userInfo]];
+}
+
+- (void)outlineViewItemWillCollapse:(NSNotification *)notification
+{
+	[[NSNotificationCenter defaultCenter] postNotificationName:PXSLItemWillCollapseNotification
+														object:self
+													  userInfo:[notification userInfo]];
+}
+
+- (void)outlineViewItemDidCollapse:(NSNotification *)notification
+{
+	[[NSNotificationCenter defaultCenter] postNotificationName:PXSLItemDidCollapseNotification
+														object:self
+													  userInfo:[notification userInfo]];
 }
 
 @end
