@@ -16,6 +16,9 @@ static inline NSColor *badgeSelectedUnfocusedTextColor() { return [NSColor color
 static inline NSColor *badgeSelectedHiddenTextColor() { return [NSColor colorWithCalibratedWhite:(170/255.0) alpha:1]; }
 static inline NSFont *badgeFont() { return [NSFont boldSystemFontOfSize:11]; }
 
+// Sizing constants.
+static const CGFloat badgeLeftAndRightPadding = 5.0;
+
 @implementation PXSourceListBadgeCell
 
 - (id)init
@@ -77,7 +80,10 @@ static inline NSFont *badgeFont() { return [NSFont boldSystemFontOfSize:11]; }
 
 - (NSSize)cellSize
 {
-    return self.badgeString.size;
+    NSSize size = self.badgeString.size;
+    size.width += 2 * badgeLeftAndRightPadding;
+
+    return size;
 }
 
 - (NSAttributedString *)badgeString
