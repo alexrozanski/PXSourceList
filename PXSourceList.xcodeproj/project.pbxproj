@@ -33,6 +33,7 @@
 		D263128C186EFC5C0036501C /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = D263128A186EFC5C0036501C /* MainMenu.xib */; };
 		D263128E186EFC630036501C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D263128D186EFC630036501C /* Images.xcassets */; };
 		D2631293186EFC830036501C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D2631292186EFC830036501C /* main.m */; };
+		D2631299186EFD8E0036501C /* PXSourceList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CC5EA2A12DC81ED001F282E /* PXSourceList.framework */; };
 		D2CD7D47186B02630003E038 /* PXSourceListDelegateDataSourceProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = D2CD7D45186B02630003E038 /* PXSourceListDelegateDataSourceProxy.h */; };
 		D2CD7D49186B02630003E038 /* PXSourceListDelegateDataSourceProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = D2CD7D46186B02630003E038 /* PXSourceListDelegateDataSourceProxy.m */; };
 		D2CD7D4D186B0FBC0003E038 /* PXSourceListPrivateConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = D2CD7D4B186B0FBC0003E038 /* PXSourceListPrivateConstants.h */; };
@@ -42,6 +43,13 @@
 
 /* Begin PBXContainerItemProxy section */
 		4CC5EA2F12DC8209001F282E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4CC5EA2912DC81ED001F282E;
+			remoteInfo = PXSourceList;
+		};
+		D2631297186EFD8B0036501C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
 			proxyType = 1;
@@ -123,6 +131,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2631299186EFD8E0036501C /* PXSourceList.framework in Frameworks */,
 				D263123D186EF9F00036501C /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -376,6 +385,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				D2631298186EFD8B0036501C /* PBXTargetDependency */,
 			);
 			name = ViewBasedSourceList;
 			productName = ViewBasedSourceList;
@@ -486,6 +496,11 @@
 			isa = PBXTargetDependency;
 			target = 4CC5EA2912DC81ED001F282E /* PXSourceList */;
 			targetProxy = 4CC5EA2F12DC8209001F282E /* PBXContainerItemProxy */;
+		};
+		D2631298186EFD8B0036501C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4CC5EA2912DC81ED001F282E /* PXSourceList */;
+			targetProxy = D2631297186EFD8B0036501C /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
