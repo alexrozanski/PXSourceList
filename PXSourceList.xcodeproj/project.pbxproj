@@ -12,29 +12,27 @@
 		D213027E14B9AFE200AAFF85 /* PXSourceList.m in Sources */ = {isa = PBXBuildFile; fileRef = D213027914B9AFE200AAFF85 /* PXSourceList.m */; };
 		D213027F14B9AFE200AAFF85 /* PXSourceListDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = D213027A14B9AFE200AAFF85 /* PXSourceListDataSource.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D213028014B9AFE200AAFF85 /* PXSourceListDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = D213027B14B9AFE200AAFF85 /* PXSourceListDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D213028E14B9B02A00AAFF85 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D213028D14B9B02A00AAFF85 /* main.m */; };
-		D21302BE14B9B24C00AAFF85 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = D21302BD14B9B24C00AAFF85 /* MainMenu.xib */; };
-		D21302C514B9B25700AAFF85 /* audiobooks.png in Resources */ = {isa = PBXBuildFile; fileRef = D21302BF14B9B25700AAFF85 /* audiobooks.png */; };
-		D21302C614B9B25700AAFF85 /* movies.png in Resources */ = {isa = PBXBuildFile; fileRef = D21302C014B9B25700AAFF85 /* movies.png */; };
-		D21302C714B9B25700AAFF85 /* music.png in Resources */ = {isa = PBXBuildFile; fileRef = D21302C114B9B25700AAFF85 /* music.png */; };
-		D21302C814B9B25700AAFF85 /* playlist.png in Resources */ = {isa = PBXBuildFile; fileRef = D21302C214B9B25700AAFF85 /* playlist.png */; };
-		D21302C914B9B25700AAFF85 /* playlistFolder.png in Resources */ = {isa = PBXBuildFile; fileRef = D21302C314B9B25700AAFF85 /* playlistFolder.png */; };
-		D21302CA14B9B25700AAFF85 /* podcasts.png in Resources */ = {isa = PBXBuildFile; fileRef = D21302C414B9B25700AAFF85 /* podcasts.png */; };
-		D21C599E186EF89D00A8ECB3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D213028814B9B01F00AAFF85 /* AppDelegate.m */; };
-		D21C599F186EF8A200A8ECB3 /* SourceListItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D213028A14B9B01F00AAFF85 /* SourceListItem.m */; };
 		D21C59A0186EF8B200A8ECB3 /* PXSourceList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CC5EA2A12DC81ED001F282E /* PXSourceList.framework */; };
 		D23A17591836AD790027F0D0 /* PXSourceListBadge.h in Headers */ = {isa = PBXBuildFile; fileRef = D23A17571836AD790027F0D0 /* PXSourceListBadge.h */; };
 		D23A175B1836AD790027F0D0 /* PXSourceListBadge.m in Sources */ = {isa = PBXBuildFile; fileRef = D23A17581836AD790027F0D0 /* PXSourceListBadge.m */; };
 		D23A175E1836AE280027F0D0 /* PXSourceListBadgeCell.h in Headers */ = {isa = PBXBuildFile; fileRef = D23A175C1836AE280027F0D0 /* PXSourceListBadgeCell.h */; };
 		D23A17601836AE280027F0D0 /* PXSourceListBadgeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D23A175D1836AE280027F0D0 /* PXSourceListBadgeCell.m */; };
 		D263123D186EF9F00036501C /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D263123C186EF9F00036501C /* Cocoa.framework */; };
-		D2631243186EF9F00036501C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D2631241186EF9F00036501C /* InfoPlist.strings */; };
-		D2631245186EF9F00036501C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D2631244186EF9F00036501C /* main.m */; };
-		D2631249186EF9F00036501C /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = D2631247186EF9F00036501C /* Credits.rtf */; };
-		D263124C186EF9F00036501C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D263124B186EF9F00036501C /* AppDelegate.m */; };
-		D263124F186EF9F00036501C /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = D263124D186EF9F00036501C /* MainMenu.xib */; };
-		D2631251186EF9F00036501C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2631250186EF9F00036501C /* Images.xcassets */; };
-		D263126B186EFB1C0036501C /* SourceListItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D213028A14B9B01F00AAFF85 /* SourceListItem.m */; };
+		D263126E186EFBB30036501C /* SourceListItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D263126D186EFBB30036501C /* SourceListItem.m */; };
+		D263126F186EFBB30036501C /* SourceListItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D263126D186EFBB30036501C /* SourceListItem.m */; };
+		D2631272186EFBBF0036501C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D2631271186EFBBF0036501C /* AppDelegate.m */; };
+		D2631274186EFBC50036501C /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = D2631273186EFBC50036501C /* MainMenu.xib */; };
+		D263127B186EFBD20036501C /* audiobooks.png in Resources */ = {isa = PBXBuildFile; fileRef = D2631275186EFBD20036501C /* audiobooks.png */; };
+		D263127C186EFBD20036501C /* movies.png in Resources */ = {isa = PBXBuildFile; fileRef = D2631276186EFBD20036501C /* movies.png */; };
+		D263127D186EFBD20036501C /* music.png in Resources */ = {isa = PBXBuildFile; fileRef = D2631277186EFBD20036501C /* music.png */; };
+		D263127E186EFBD20036501C /* playlist.png in Resources */ = {isa = PBXBuildFile; fileRef = D2631278186EFBD20036501C /* playlist.png */; };
+		D263127F186EFBD20036501C /* playlistFolder.png in Resources */ = {isa = PBXBuildFile; fileRef = D2631279186EFBD20036501C /* playlistFolder.png */; };
+		D2631280186EFBD20036501C /* podcasts.png in Resources */ = {isa = PBXBuildFile; fileRef = D263127A186EFBD20036501C /* podcasts.png */; };
+		D2631282186EFBDC0036501C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D2631281186EFBDC0036501C /* main.m */; };
+		D2631289186EFC4E0036501C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D2631288186EFC4E0036501C /* AppDelegate.m */; };
+		D263128C186EFC5C0036501C /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = D263128A186EFC5C0036501C /* MainMenu.xib */; };
+		D263128E186EFC630036501C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D263128D186EFC630036501C /* Images.xcassets */; };
+		D2631293186EFC830036501C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D2631292186EFC830036501C /* main.m */; };
 		D2CD7D47186B02630003E038 /* PXSourceListDelegateDataSourceProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = D2CD7D45186B02630003E038 /* PXSourceListDelegateDataSourceProxy.h */; };
 		D2CD7D49186B02630003E038 /* PXSourceListDelegateDataSourceProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = D2CD7D46186B02630003E038 /* PXSourceListDelegateDataSourceProxy.m */; };
 		D2CD7D4D186B0FBC0003E038 /* PXSourceListPrivateConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = D2CD7D4B186B0FBC0003E038 /* PXSourceListPrivateConstants.h */; };
@@ -64,38 +62,38 @@
 		D213027914B9AFE200AAFF85 /* PXSourceList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PXSourceList.m; path = PXSourceList/PXSourceList.m; sourceTree = "<group>"; };
 		D213027A14B9AFE200AAFF85 /* PXSourceListDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PXSourceListDataSource.h; path = PXSourceList/PXSourceListDataSource.h; sourceTree = "<group>"; };
 		D213027B14B9AFE200AAFF85 /* PXSourceListDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PXSourceListDelegate.h; path = PXSourceList/PXSourceListDelegate.h; sourceTree = "<group>"; };
-		D213028714B9B01F00AAFF85 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = "Demo Project/AppDelegate.h"; sourceTree = "<group>"; };
-		D213028814B9B01F00AAFF85 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = "Demo Project/AppDelegate.m"; sourceTree = "<group>"; };
-		D213028914B9B01F00AAFF85 /* SourceListItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SourceListItem.h; path = "Demo Project/SourceListItem.h"; sourceTree = "<group>"; };
-		D213028A14B9B01F00AAFF85 /* SourceListItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SourceListItem.m; path = "Demo Project/SourceListItem.m"; sourceTree = "<group>"; };
-		D213028D14B9B02A00AAFF85 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = "Demo Project/main.m"; sourceTree = "<group>"; };
-		D21302B614B9B16400AAFF85 /* PXSourceListDemo-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "PXSourceListDemo-Info.plist"; path = "Demo Project/PXSourceListDemo-Info.plist"; sourceTree = "<group>"; };
 		D21302B814B9B17200AAFF85 /* PXSourceList-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "PXSourceList-Info.plist"; path = "PXSourceList/PXSourceList-Info.plist"; sourceTree = "<group>"; };
-		D21302BC14B9B23700AAFF85 /* English */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = English; path = "Demo Project/English.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
-		D21302BD14B9B24C00AAFF85 /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MainMenu.xib; path = "Demo Project/MainMenu.xib"; sourceTree = "<group>"; };
-		D21302BF14B9B25700AAFF85 /* audiobooks.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = audiobooks.png; path = "Demo Project/Images/audiobooks.png"; sourceTree = "<group>"; };
-		D21302C014B9B25700AAFF85 /* movies.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = movies.png; path = "Demo Project/Images/movies.png"; sourceTree = "<group>"; };
-		D21302C114B9B25700AAFF85 /* music.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = music.png; path = "Demo Project/Images/music.png"; sourceTree = "<group>"; };
-		D21302C214B9B25700AAFF85 /* playlist.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = playlist.png; path = "Demo Project/Images/playlist.png"; sourceTree = "<group>"; };
-		D21302C314B9B25700AAFF85 /* playlistFolder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = playlistFolder.png; path = "Demo Project/Images/playlistFolder.png"; sourceTree = "<group>"; };
-		D21302C414B9B25700AAFF85 /* podcasts.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = podcasts.png; path = "Demo Project/Images/podcasts.png"; sourceTree = "<group>"; };
-		D21302CB14B9B2FC00AAFF85 /* PXSourceListDemo_Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PXSourceListDemo_Prefix.pch; path = "Demo Project/PXSourceListDemo_Prefix.pch"; sourceTree = "<group>"; };
 		D23A17571836AD790027F0D0 /* PXSourceListBadge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PXSourceListBadge.h; path = PXSourceList/PXSourceListBadge.h; sourceTree = "<group>"; };
 		D23A17581836AD790027F0D0 /* PXSourceListBadge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PXSourceListBadge.m; path = PXSourceList/PXSourceListBadge.m; sourceTree = "<group>"; };
 		D23A175C1836AE280027F0D0 /* PXSourceListBadgeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PXSourceListBadgeCell.h; path = PXSourceList/PXSourceListBadgeCell.h; sourceTree = "<group>"; };
 		D23A175D1836AE280027F0D0 /* PXSourceListBadgeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PXSourceListBadgeCell.m; path = PXSourceList/PXSourceListBadgeCell.m; sourceTree = "<group>"; };
 		D263123B186EF9F00036501C /* ViewBasedSourceList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ViewBasedSourceList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D263123C186EF9F00036501C /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
-		D2631240186EF9F00036501C /* ViewBasedSourceList-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ViewBasedSourceList-Info.plist"; sourceTree = "<group>"; };
-		D2631242186EF9F00036501C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		D2631244186EF9F00036501C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		D2631246186EF9F00036501C /* ViewBasedSourceList-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ViewBasedSourceList-Prefix.pch"; sourceTree = "<group>"; };
-		D2631248186EF9F00036501C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
-		D263124A186EF9F00036501C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = ViewBasedSourceList/AppDelegate.h; sourceTree = "<group>"; };
-		D263124B186EF9F00036501C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = ViewBasedSourceList/AppDelegate.m; sourceTree = "<group>"; };
-		D263124E186EF9F00036501C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		D2631250186EF9F00036501C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = ViewBasedSourceList/Images.xcassets; sourceTree = "<group>"; };
 		D2631257186EF9F10036501C /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		D263126C186EFBB30036501C /* SourceListItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SourceListItem.h; path = Examples/SharedCode/SourceListItem.h; sourceTree = "<group>"; };
+		D263126D186EFBB30036501C /* SourceListItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SourceListItem.m; path = Examples/SharedCode/SourceListItem.m; sourceTree = "<group>"; };
+		D2631270186EFBBF0036501C /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = Examples/CellBasedSourceList/AppDelegate.h; sourceTree = "<group>"; };
+		D2631271186EFBBF0036501C /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = Examples/CellBasedSourceList/AppDelegate.m; sourceTree = "<group>"; };
+		D2631273186EFBC50036501C /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MainMenu.xib; path = Examples/CellBasedSourceList/MainMenu.xib; sourceTree = "<group>"; };
+		D2631275186EFBD20036501C /* audiobooks.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = audiobooks.png; path = Examples/CellBasedSourceList/Images/audiobooks.png; sourceTree = "<group>"; };
+		D2631276186EFBD20036501C /* movies.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = movies.png; path = Examples/CellBasedSourceList/Images/movies.png; sourceTree = "<group>"; };
+		D2631277186EFBD20036501C /* music.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = music.png; path = Examples/CellBasedSourceList/Images/music.png; sourceTree = "<group>"; };
+		D2631278186EFBD20036501C /* playlist.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = playlist.png; path = Examples/CellBasedSourceList/Images/playlist.png; sourceTree = "<group>"; };
+		D2631279186EFBD20036501C /* playlistFolder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = playlistFolder.png; path = Examples/CellBasedSourceList/Images/playlistFolder.png; sourceTree = "<group>"; };
+		D263127A186EFBD20036501C /* podcasts.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = podcasts.png; path = Examples/CellBasedSourceList/Images/podcasts.png; sourceTree = "<group>"; };
+		D2631281186EFBDC0036501C /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Examples/CellBasedSourceList/main.m; sourceTree = "<group>"; };
+		D2631283186EFBE50036501C /* PXSourceListDemo_Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PXSourceListDemo_Prefix.pch; path = Examples/CellBasedSourceList/PXSourceListDemo_Prefix.pch; sourceTree = "<group>"; };
+		D2631284186EFBEB0036501C /* PXSourceListDemo-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "PXSourceListDemo-Info.plist"; path = "Examples/CellBasedSourceList/PXSourceListDemo-Info.plist"; sourceTree = "<group>"; };
+		D2631286186EFBFA0036501C /* English */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = English; path = Examples/CellBasedSourceList/English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		D2631287186EFC4E0036501C /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = Examples/ViewBasedSourceList/AppDelegate.h; sourceTree = "<group>"; };
+		D2631288186EFC4E0036501C /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = Examples/ViewBasedSourceList/AppDelegate.m; sourceTree = "<group>"; };
+		D263128B186EFC5C0036501C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Examples/ViewBasedSourceList/Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		D263128D186EFC630036501C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Examples/ViewBasedSourceList/Images.xcassets; sourceTree = "<group>"; };
+		D263128F186EFC6D0036501C /* ViewBasedSourceList-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "ViewBasedSourceList-Info.plist"; path = "Examples/ViewBasedSourceList/ViewBasedSourceList-Info.plist"; sourceTree = SOURCE_ROOT; };
+		D2631291186EFC7C0036501C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = Examples/ViewBasedSourceList/en.lproj/InfoPlist.strings; sourceTree = SOURCE_ROOT; };
+		D2631292186EFC830036501C /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Examples/ViewBasedSourceList/main.m; sourceTree = SOURCE_ROOT; };
+		D2631294186EFC890036501C /* ViewBasedSourceList-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "ViewBasedSourceList-Prefix.pch"; path = "Examples/ViewBasedSourceList/ViewBasedSourceList-Prefix.pch"; sourceTree = SOURCE_ROOT; };
+		D2631296186EFC910036501C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = Examples/ViewBasedSourceList/en.lproj/Credits.rtf; sourceTree = SOURCE_ROOT; };
 		D265C2D610E3814B00A1E824 /* TODO.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = TODO.rtf; sourceTree = "<group>"; };
 		D2CD7D45186B02630003E038 /* PXSourceListDelegateDataSourceProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PXSourceListDelegateDataSourceProxy.h; path = PXSourceList/PXSourceListDelegateDataSourceProxy.h; sourceTree = "<group>"; };
 		D2CD7D46186B02630003E038 /* PXSourceListDelegateDataSourceProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PXSourceListDelegateDataSourceProxy.m; path = PXSourceList/PXSourceListDelegateDataSourceProxy.m; sourceTree = "<group>"; };
@@ -193,10 +191,10 @@
 		29B97315FDCFA39411CA2CEA /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				D21302CB14B9B2FC00AAFF85 /* PXSourceListDemo_Prefix.pch */,
-				D21302B614B9B16400AAFF85 /* PXSourceListDemo-Info.plist */,
-				D21302BB14B9B23700AAFF85 /* InfoPlist.strings */,
-				D213028D14B9B02A00AAFF85 /* main.m */,
+				D2631281186EFBDC0036501C /* main.m */,
+				D2631283186EFBE50036501C /* PXSourceListDemo_Prefix.pch */,
+				D2631284186EFBEB0036501C /* PXSourceListDemo-Info.plist */,
+				D2631285186EFBFA0036501C /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -204,7 +202,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				D21302BD14B9B24C00AAFF85 /* MainMenu.xib */,
+				D2631273186EFBC50036501C /* MainMenu.xib */,
 				D27B7D2710E0C925004D7DBC /* Icons */,
 			);
 			name = Resources;
@@ -242,8 +240,8 @@
 		D21C599D186EF84900A8ECB3 /* Cell-based Source List */ = {
 			isa = PBXGroup;
 			children = (
-				D213028714B9B01F00AAFF85 /* AppDelegate.h */,
-				D213028814B9B01F00AAFF85 /* AppDelegate.m */,
+				D2631270186EFBBF0036501C /* AppDelegate.h */,
+				D2631271186EFBBF0036501C /* AppDelegate.m */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97315FDCFA39411CA2CEA /* Supporting Files */,
 			);
@@ -253,10 +251,10 @@
 		D2631236186EF9CB0036501C /* View-based Source List */ = {
 			isa = PBXGroup;
 			children = (
-				D263124A186EF9F00036501C /* AppDelegate.h */,
-				D263124B186EF9F00036501C /* AppDelegate.m */,
-				D263124D186EF9F00036501C /* MainMenu.xib */,
-				D2631250186EF9F00036501C /* Images.xcassets */,
+				D2631287186EFC4E0036501C /* AppDelegate.h */,
+				D2631288186EFC4E0036501C /* AppDelegate.m */,
+				D263128A186EFC5C0036501C /* MainMenu.xib */,
+				D263128D186EFC630036501C /* Images.xcassets */,
 				D263123F186EF9F00036501C /* Supporting Files */,
 			);
 			name = "View-based Source List";
@@ -265,11 +263,11 @@
 		D263123F186EF9F00036501C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				D2631240186EF9F00036501C /* ViewBasedSourceList-Info.plist */,
-				D2631241186EF9F00036501C /* InfoPlist.strings */,
-				D2631244186EF9F00036501C /* main.m */,
-				D2631246186EF9F00036501C /* ViewBasedSourceList-Prefix.pch */,
-				D2631247186EF9F00036501C /* Credits.rtf */,
+				D263128F186EFC6D0036501C /* ViewBasedSourceList-Info.plist */,
+				D2631290186EFC7C0036501C /* InfoPlist.strings */,
+				D2631292186EFC830036501C /* main.m */,
+				D2631294186EFC890036501C /* ViewBasedSourceList-Prefix.pch */,
+				D2631295186EFC910036501C /* Credits.rtf */,
 			);
 			name = "Supporting Files";
 			path = ViewBasedSourceList;
@@ -278,8 +276,8 @@
 		D263126A186EFAFE0036501C /* Shared Code */ = {
 			isa = PBXGroup;
 			children = (
-				D213028914B9B01F00AAFF85 /* SourceListItem.h */,
-				D213028A14B9B01F00AAFF85 /* SourceListItem.m */,
+				D263126C186EFBB30036501C /* SourceListItem.h */,
+				D263126D186EFBB30036501C /* SourceListItem.m */,
 			);
 			name = "Shared Code";
 			sourceTree = "<group>";
@@ -287,12 +285,12 @@
 		D27B7D2710E0C925004D7DBC /* Icons */ = {
 			isa = PBXGroup;
 			children = (
-				D21302BF14B9B25700AAFF85 /* audiobooks.png */,
-				D21302C014B9B25700AAFF85 /* movies.png */,
-				D21302C114B9B25700AAFF85 /* music.png */,
-				D21302C214B9B25700AAFF85 /* playlist.png */,
-				D21302C314B9B25700AAFF85 /* playlistFolder.png */,
-				D21302C414B9B25700AAFF85 /* podcasts.png */,
+				D2631275186EFBD20036501C /* audiobooks.png */,
+				D2631276186EFBD20036501C /* movies.png */,
+				D2631277186EFBD20036501C /* music.png */,
+				D2631278186EFBD20036501C /* playlist.png */,
+				D2631279186EFBD20036501C /* playlistFolder.png */,
+				D263127A186EFBD20036501C /* podcasts.png */,
 			);
 			name = Icons;
 			sourceTree = "<group>";
@@ -427,13 +425,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D21302BE14B9B24C00AAFF85 /* MainMenu.xib in Resources */,
-				D21302C514B9B25700AAFF85 /* audiobooks.png in Resources */,
-				D21302C614B9B25700AAFF85 /* movies.png in Resources */,
-				D21302C714B9B25700AAFF85 /* music.png in Resources */,
-				D21302C814B9B25700AAFF85 /* playlist.png in Resources */,
-				D21302C914B9B25700AAFF85 /* playlistFolder.png in Resources */,
-				D21302CA14B9B25700AAFF85 /* podcasts.png in Resources */,
+				D2631274186EFBC50036501C /* MainMenu.xib in Resources */,
+				D263127E186EFBD20036501C /* playlist.png in Resources */,
+				D263127D186EFBD20036501C /* music.png in Resources */,
+				D263127F186EFBD20036501C /* playlistFolder.png in Resources */,
+				D2631280186EFBD20036501C /* podcasts.png in Resources */,
+				D263127B186EFBD20036501C /* audiobooks.png in Resources */,
+				D263127C186EFBD20036501C /* movies.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -441,10 +439,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D2631243186EF9F00036501C /* InfoPlist.strings in Resources */,
-				D2631251186EF9F00036501C /* Images.xcassets in Resources */,
-				D2631249186EF9F00036501C /* Credits.rtf in Resources */,
-				D263124F186EF9F00036501C /* MainMenu.xib in Resources */,
+				D263128E186EFC630036501C /* Images.xcassets in Resources */,
+				D263128C186EFC5C0036501C /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -467,9 +463,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D21C599E186EF89D00A8ECB3 /* AppDelegate.m in Sources */,
-				D21C599F186EF8A200A8ECB3 /* SourceListItem.m in Sources */,
-				D213028E14B9B02A00AAFF85 /* main.m in Sources */,
+				D263126E186EFBB30036501C /* SourceListItem.m in Sources */,
+				D2631282186EFBDC0036501C /* main.m in Sources */,
+				D2631272186EFBBF0036501C /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -477,9 +473,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D263124C186EF9F00036501C /* AppDelegate.m in Sources */,
-				D2631245186EF9F00036501C /* main.m in Sources */,
-				D263126B186EFB1C0036501C /* SourceListItem.m in Sources */,
+				D263126F186EFBB30036501C /* SourceListItem.m in Sources */,
+				D2631293186EFC830036501C /* main.m in Sources */,
+				D2631289186EFC4E0036501C /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -494,37 +490,36 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		D21302BB14B9B23700AAFF85 /* InfoPlist.strings */ = {
+		D2631285186EFBFA0036501C /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				D21302BC14B9B23700AAFF85 /* English */,
+				D2631286186EFBFA0036501C /* English */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		D2631241186EF9F00036501C /* InfoPlist.strings */ = {
+		D263128A186EFC5C0036501C /* MainMenu.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				D2631242186EF9F00036501C /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		D2631247186EF9F00036501C /* Credits.rtf */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D2631248186EF9F00036501C /* en */,
-			);
-			name = Credits.rtf;
-			sourceTree = "<group>";
-		};
-		D263124D186EF9F00036501C /* MainMenu.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D263124E186EF9F00036501C /* Base */,
+				D263128B186EFC5C0036501C /* Base */,
 			);
 			name = MainMenu.xib;
-			path = ViewBasedSourceList;
+			sourceTree = "<group>";
+		};
+		D2631290186EFC7C0036501C /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D2631291186EFC7C0036501C /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		D2631295186EFC910036501C /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D2631296186EFC910036501C /* en */,
+			);
+			name = Credits.rtf;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -605,8 +600,8 @@
 				GCC_MODEL_TUNING = G5;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Demo Project/PXSourceListDemo_Prefix.pch";
-				INFOPLIST_FILE = "Demo Project/PXSourceListDemo-Info.plist";
+				GCC_PREFIX_HEADER = Examples/CellBasedSourceList/CellBasedSourceList_Prefix.pch;
+				INFOPLIST_FILE = "Examples/CellBasedSourceList/CellBasedSourceList-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = PXSourceList;
@@ -628,8 +623,8 @@
 				GCC_ENABLE_OBJC_GC = unsupported;
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Demo Project/PXSourceListDemo_Prefix.pch";
-				INFOPLIST_FILE = "Demo Project/PXSourceListDemo-Info.plist";
+				GCC_PREFIX_HEADER = Examples/CellBasedSourceList/CellBasedSourceList_Prefix.pch;
+				INFOPLIST_FILE = "Examples/CellBasedSourceList/CellBasedSourceList-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = PXSourceList;
@@ -684,7 +679,7 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "ViewBasedSourceList/ViewBasedSourceList-Prefix.pch";
+				GCC_PREFIX_HEADER = "Examples/ViewBasedSourceList/ViewBasedSourceList-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -695,7 +690,7 @@
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
-				INFOPLIST_FILE = "ViewBasedSourceList/ViewBasedSourceList-Info.plist";
+				INFOPLIST_FILE = "Examples/ViewBasedSourceList/ViewBasedSourceList-Info.plist";
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
@@ -724,13 +719,13 @@
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "ViewBasedSourceList/ViewBasedSourceList-Prefix.pch";
+				GCC_PREFIX_HEADER = "Examples/ViewBasedSourceList/ViewBasedSourceList-Prefix.pch";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
-				INFOPLIST_FILE = "ViewBasedSourceList/ViewBasedSourceList-Info.plist";
+				INFOPLIST_FILE = "Examples/ViewBasedSourceList/ViewBasedSourceList-Info.plist";
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
