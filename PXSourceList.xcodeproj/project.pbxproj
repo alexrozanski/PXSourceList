@@ -9,12 +9,9 @@
 /* Begin PBXBuildFile section */
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
 		D213027C14B9AFE200AAFF85 /* PXSourceList.h in Headers */ = {isa = PBXBuildFile; fileRef = D213027814B9AFE200AAFF85 /* PXSourceList.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D213027D14B9AFE200AAFF85 /* PXSourceList.m in Sources */ = {isa = PBXBuildFile; fileRef = D213027914B9AFE200AAFF85 /* PXSourceList.m */; };
 		D213027E14B9AFE200AAFF85 /* PXSourceList.m in Sources */ = {isa = PBXBuildFile; fileRef = D213027914B9AFE200AAFF85 /* PXSourceList.m */; };
 		D213027F14B9AFE200AAFF85 /* PXSourceListDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = D213027A14B9AFE200AAFF85 /* PXSourceListDataSource.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D213028014B9AFE200AAFF85 /* PXSourceListDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = D213027B14B9AFE200AAFF85 /* PXSourceListDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D213028B14B9B01F00AAFF85 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D213028814B9B01F00AAFF85 /* AppDelegate.m */; };
-		D213028C14B9B01F00AAFF85 /* SourceListItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D213028A14B9B01F00AAFF85 /* SourceListItem.m */; };
 		D213028E14B9B02A00AAFF85 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D213028D14B9B02A00AAFF85 /* main.m */; };
 		D21302BE14B9B24C00AAFF85 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = D21302BD14B9B24C00AAFF85 /* MainMenu.xib */; };
 		D21302C514B9B25700AAFF85 /* audiobooks.png in Resources */ = {isa = PBXBuildFile; fileRef = D21302BF14B9B25700AAFF85 /* audiobooks.png */; };
@@ -23,18 +20,17 @@
 		D21302C814B9B25700AAFF85 /* playlist.png in Resources */ = {isa = PBXBuildFile; fileRef = D21302C214B9B25700AAFF85 /* playlist.png */; };
 		D21302C914B9B25700AAFF85 /* playlistFolder.png in Resources */ = {isa = PBXBuildFile; fileRef = D21302C314B9B25700AAFF85 /* playlistFolder.png */; };
 		D21302CA14B9B25700AAFF85 /* podcasts.png in Resources */ = {isa = PBXBuildFile; fileRef = D21302C414B9B25700AAFF85 /* podcasts.png */; };
+		D21C599E186EF89D00A8ECB3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D213028814B9B01F00AAFF85 /* AppDelegate.m */; };
+		D21C599F186EF8A200A8ECB3 /* SourceListItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D213028A14B9B01F00AAFF85 /* SourceListItem.m */; };
+		D21C59A0186EF8B200A8ECB3 /* PXSourceList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CC5EA2A12DC81ED001F282E /* PXSourceList.framework */; };
 		D23A17591836AD790027F0D0 /* PXSourceListBadge.h in Headers */ = {isa = PBXBuildFile; fileRef = D23A17571836AD790027F0D0 /* PXSourceListBadge.h */; };
-		D23A175A1836AD790027F0D0 /* PXSourceListBadge.m in Sources */ = {isa = PBXBuildFile; fileRef = D23A17581836AD790027F0D0 /* PXSourceListBadge.m */; };
 		D23A175B1836AD790027F0D0 /* PXSourceListBadge.m in Sources */ = {isa = PBXBuildFile; fileRef = D23A17581836AD790027F0D0 /* PXSourceListBadge.m */; };
 		D23A175E1836AE280027F0D0 /* PXSourceListBadgeCell.h in Headers */ = {isa = PBXBuildFile; fileRef = D23A175C1836AE280027F0D0 /* PXSourceListBadgeCell.h */; };
-		D23A175F1836AE280027F0D0 /* PXSourceListBadgeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D23A175D1836AE280027F0D0 /* PXSourceListBadgeCell.m */; };
 		D23A17601836AE280027F0D0 /* PXSourceListBadgeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D23A175D1836AE280027F0D0 /* PXSourceListBadgeCell.m */; };
 		D2CD7D47186B02630003E038 /* PXSourceListDelegateDataSourceProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = D2CD7D45186B02630003E038 /* PXSourceListDelegateDataSourceProxy.h */; };
-		D2CD7D48186B02630003E038 /* PXSourceListDelegateDataSourceProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = D2CD7D46186B02630003E038 /* PXSourceListDelegateDataSourceProxy.m */; };
 		D2CD7D49186B02630003E038 /* PXSourceListDelegateDataSourceProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = D2CD7D46186B02630003E038 /* PXSourceListDelegateDataSourceProxy.m */; };
 		D2CD7D4D186B0FBC0003E038 /* PXSourceListPrivateConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = D2CD7D4B186B0FBC0003E038 /* PXSourceListPrivateConstants.h */; };
 		D2CD7D52186B10FD0003E038 /* PXSourceListRuntimeAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = D2CD7D50186B10FD0003E038 /* PXSourceListRuntimeAdditions.h */; };
-		D2CD7D53186B10FD0003E038 /* PXSourceListRuntimeAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = D2CD7D51186B10FD0003E038 /* PXSourceListRuntimeAdditions.m */; };
 		D2CD7D54186B10FD0003E038 /* PXSourceListRuntimeAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = D2CD7D51186B10FD0003E038 /* PXSourceListRuntimeAdditions.m */; };
 /* End PBXBuildFile section */
 
@@ -100,6 +96,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D21C59A0186EF8B200A8ECB3 /* PXSourceList.framework in Frameworks */,
 				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -157,7 +154,7 @@
 				D265C2D610E3814B00A1E824 /* TODO.rtf */,
 				D205EDDD10F7A1EE004C6545 /* README.markdown */,
 				080E96DDFE201D6D7F000001 /* PXSourceList */,
-				D213027714B9AFCA00AAFF85 /* Demo Project */,
+				D213027714B9AFCA00AAFF85 /* Example Projects */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
 			);
@@ -193,7 +190,23 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		D213027714B9AFCA00AAFF85 /* Demo Project */ = {
+		D213027714B9AFCA00AAFF85 /* Example Projects */ = {
+			isa = PBXGroup;
+			children = (
+				D21C599D186EF84900A8ECB3 /* Cell-based Source List */,
+			);
+			name = "Example Projects";
+			sourceTree = "<group>";
+		};
+		D21302BA14B9B1DC00AAFF85 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D21302B814B9B17200AAFF85 /* PXSourceList-Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D21C599D186EF84900A8ECB3 /* Cell-based Source List */ = {
 			isa = PBXGroup;
 			children = (
 				D213028714B9B01F00AAFF85 /* AppDelegate.h */,
@@ -203,15 +216,7 @@
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97315FDCFA39411CA2CEA /* Supporting Files */,
 			);
-			name = "Demo Project";
-			sourceTree = "<group>";
-		};
-		D21302BA14B9B1DC00AAFF85 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				D21302B814B9B17200AAFF85 /* PXSourceList-Info.plist */,
-			);
-			name = "Supporting Files";
+			name = "Cell-based Source List";
 			sourceTree = "<group>";
 		};
 		D27B7D2710E0C925004D7DBC /* Icons */ = {
@@ -278,9 +283,9 @@
 			productReference = 4CC5EA2A12DC81ED001F282E /* PXSourceList.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		8D1107260486CEB800E47090 /* PXSourceListDemo */ = {
+		8D1107260486CEB800E47090 /* CellBasedSourceList */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "PXSourceListDemo" */;
+			buildConfigurationList = C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "CellBasedSourceList" */;
 			buildPhases = (
 				8D11072C0486CEB800E47090 /* Sources */,
 				8D1107290486CEB800E47090 /* Resources */,
@@ -291,7 +296,7 @@
 			dependencies = (
 				4CC5EA3012DC8209001F282E /* PBXTargetDependency */,
 			);
-			name = PXSourceListDemo;
+			name = CellBasedSourceList;
 			productInstallPath = "$(HOME)/Applications";
 			productName = PXSourceList;
 			productReference = 8D1107320486CEB800E47090 /* PXSourceList.app */;
@@ -319,7 +324,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				8D1107260486CEB800E47090 /* PXSourceListDemo */,
+				8D1107260486CEB800E47090 /* CellBasedSourceList */,
 				4CC5EA2912DC81ED001F282E /* PXSourceList */,
 			);
 		};
@@ -366,13 +371,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D23A175F1836AE280027F0D0 /* PXSourceListBadgeCell.m in Sources */,
-				D2CD7D53186B10FD0003E038 /* PXSourceListRuntimeAdditions.m in Sources */,
-				D213027D14B9AFE200AAFF85 /* PXSourceList.m in Sources */,
-				D213028B14B9B01F00AAFF85 /* AppDelegate.m in Sources */,
-				D23A175A1836AD790027F0D0 /* PXSourceListBadge.m in Sources */,
-				D213028C14B9B01F00AAFF85 /* SourceListItem.m in Sources */,
-				D2CD7D48186B02630003E038 /* PXSourceListDelegateDataSourceProxy.m in Sources */,
+				D21C599E186EF89D00A8ECB3 /* AppDelegate.m in Sources */,
+				D21C599F186EF8A200A8ECB3 /* SourceListItem.m in Sources */,
 				D213028E14B9B02A00AAFF85 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -544,7 +544,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "PXSourceListDemo" */ = {
+		C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "CellBasedSourceList" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C01FCF4B08A954540054247B /* Debug */,
