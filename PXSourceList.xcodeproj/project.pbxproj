@@ -34,6 +34,7 @@
 		D263124C186EF9F00036501C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D263124B186EF9F00036501C /* AppDelegate.m */; };
 		D263124F186EF9F00036501C /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = D263124D186EF9F00036501C /* MainMenu.xib */; };
 		D2631251186EF9F00036501C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2631250186EF9F00036501C /* Images.xcassets */; };
+		D263126B186EFB1C0036501C /* SourceListItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D213028A14B9B01F00AAFF85 /* SourceListItem.m */; };
 		D2CD7D47186B02630003E038 /* PXSourceListDelegateDataSourceProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = D2CD7D45186B02630003E038 /* PXSourceListDelegateDataSourceProxy.h */; };
 		D2CD7D49186B02630003E038 /* PXSourceListDelegateDataSourceProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = D2CD7D46186B02630003E038 /* PXSourceListDelegateDataSourceProxy.m */; };
 		D2CD7D4D186B0FBC0003E038 /* PXSourceListPrivateConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = D2CD7D4B186B0FBC0003E038 /* PXSourceListPrivateConstants.h */; };
@@ -225,6 +226,7 @@
 			children = (
 				D2631236186EF9CB0036501C /* View-based Source List */,
 				D21C599D186EF84900A8ECB3 /* Cell-based Source List */,
+				D263126A186EFAFE0036501C /* Shared Code */,
 			);
 			name = "Example Projects";
 			sourceTree = "<group>";
@@ -242,8 +244,6 @@
 			children = (
 				D213028714B9B01F00AAFF85 /* AppDelegate.h */,
 				D213028814B9B01F00AAFF85 /* AppDelegate.m */,
-				D213028914B9B01F00AAFF85 /* SourceListItem.h */,
-				D213028A14B9B01F00AAFF85 /* SourceListItem.m */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97315FDCFA39411CA2CEA /* Supporting Files */,
 			);
@@ -273,6 +273,15 @@
 			);
 			name = "Supporting Files";
 			path = ViewBasedSourceList;
+			sourceTree = "<group>";
+		};
+		D263126A186EFAFE0036501C /* Shared Code */ = {
+			isa = PBXGroup;
+			children = (
+				D213028914B9B01F00AAFF85 /* SourceListItem.h */,
+				D213028A14B9B01F00AAFF85 /* SourceListItem.m */,
+			);
+			name = "Shared Code";
 			sourceTree = "<group>";
 		};
 		D27B7D2710E0C925004D7DBC /* Icons */ = {
@@ -470,6 +479,7 @@
 			files = (
 				D263124C186EF9F00036501C /* AppDelegate.m in Sources */,
 				D2631245186EF9F00036501C /* main.m in Sources */,
+				D263126B186EFB1C0036501C /* SourceListItem.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
