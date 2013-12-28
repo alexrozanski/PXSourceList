@@ -18,6 +18,14 @@ static inline NSFont *badgeFont() { return [NSFont boldSystemFontOfSize:11]; }
 
 @implementation PXSourceListBadgeCell
 
+- (id)init
+{
+    if (!(self = [super initTextCell:@""]))
+        return nil;
+
+    return self;
+}
+
 - (void)drawWithFrame:(NSRect)cellFrame inView:(NSView *)controlView
 {
     CGFloat borderRadius = NSHeight(cellFrame)/2.0f;
