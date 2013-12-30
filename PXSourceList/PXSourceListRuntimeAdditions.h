@@ -10,7 +10,7 @@
 #import <objc/runtime.h>
 
 extern NSString * const px_protocolMethodNameKey;
-extern NSString * const px_protocolArgumentTypesKey;
+extern NSString * const px_protocolMethodArgumentTypesKey;
 extern NSString * const px_protocolIsRequiredMethodKey;
 
 NSArray *px_allProtocolMethods(Protocol *protocol);

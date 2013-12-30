@@ -9,7 +9,7 @@
 #import "PXSourceListRuntimeAdditions.h"
 
 NSString * const px_protocolMethodNameKey = @"methodName";
-NSString * const px_protocolArgumentTypesKey = @"types";
+NSString * const px_protocolMethodArgumentTypesKey = @"types";
 NSString * const px_protocolIsRequiredMethodKey = @"isRequired";
 
 NSArray *px_allProtocolMethods(Protocol *protocol)
@@ -26,7 +26,7 @@ NSArray *px_allProtocolMethods(Protocol *protocol)
         for (unsigned int j = 0; j < numberOfMethodDescriptions; ++j) {
             struct objc_method_description methodDescription = methodDescriptions[j];
             [methodList addObject:@{px_protocolMethodNameKey: NSStringFromSelector(methodDescription.name),
-                                    px_protocolArgumentTypesKey: [NSString stringWithUTF8String:methodDescription.types],
+                                    px_protocolMethodArgumentTypesKey: [NSString stringWithUTF8String:methodDescription.types],
                                     px_protocolIsRequiredMethodKey: @(isRequiredMethod)}];
         }
 
