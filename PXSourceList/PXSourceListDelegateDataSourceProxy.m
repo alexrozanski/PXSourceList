@@ -17,10 +17,16 @@
 static NSString * const forwardingMapForwardingMethodNameKey = @"methodName";
 static NSString * const forwardingMapForwardedArgumentIndexesKey = @"forwardedArgumentIndexes";
 
+static NSArray * __outlineViewDelegateMethods = nil;
+static NSArray * __outlineViewDataSourceMethods = nil;
+
 @implementation PXSourceListDelegateDataSourceProxy
 
 + (void)initialize
 {
+    __outlineViewDelegateMethods = px_methodNamesForProtocol(@protocol(NSOutlineViewDelegate));
+    __outlineViewDataSourceMethods = px_methodNamesForProtocol(@protocol(NSOutlineViewDataSource));
+
     // Add the custom mappings first before we add the 'regular' mappings.
     [self addCustomMethodNameMappings];
 
@@ -150,25 +156,6 @@ static NSString * const forwardingMapForwardedArgumentIndexesKey = @"forwardedAr
 
 #pragma mark - Method Forwarding
 
-+ (NSArray *)outlineViewDelegateMethods
-{
-    static NSArray *_delegateMethods = nil;
-    if (!_delegateMethods)
-        _delegateMethods = px_methodNamesForProtocol(@protocol(NSOutlineViewDelegate));
-
-    return _delegateMethods;
-}
-
-
-+ (NSArray *)outlineViewDataSourceMethods
-{
-    static NSArray *_dataSourceMethods = nil;
-    if (!_dataSourceMethods)
-        _dataSourceMethods = px_methodNamesForProtocol(@protocol(NSOutlineViewDataSource));
-
-    return _dataSourceMethods;
-}
-
 + (NSMutableDictionary *)methodForwardingMap
 {
     static NSMutableDictionary *_methodForwardingMap = nil;
@@ -231,10 +218,10 @@ static NSString * const forwardingMapForwardedArgumentIndexesKey = @"forwardedAr
 
 - (id)forwardingObjectForSelector:(SEL)selector
 {
-    if ([[[self class] outlineViewDataSourceMethods] containsObject:NSStringFromSelector(selector)])
+    if ([__outlineViewDataSourceMethods containsObject:NSStringFromSelector(selector)])
         return self.dataSource;
 
-    if ([[[self class] outlineViewDelegateMethods] containsObject:NSStringFromSelector(selector)])
+    if ([__outlineViewDelegateMethods containsObject:NSStringFromSelector(selector)])
         return self.delegate;
 
     return nil;
@@ -316,9 +303,9 @@ static NSString * const forwardingMapForwardedArgumentIndexesKey = @"forwardedAr
         return NO;
 
     id forwardingObject;
-    if ([[[self class] outlineViewDelegateMethods] containsObject:originalMethodName])
+    if ([__outlineViewDelegateMethods containsObject:originalMethodName])
         forwardingObject = self.delegate;
-    else if ([[[self class] outlineViewDataSourceMethods] containsObject:originalMethodName])
+    else if ([__outlineViewDataSourceMethods containsObject:originalMethodName])
         forwardingObject = self.dataSource;
 
     if (!forwardingObject)
