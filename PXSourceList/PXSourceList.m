@@ -126,6 +126,16 @@ NSString * const PXSLDeleteKeyPressedOnRowsNotification = @"PXSourceListDeleteKe
     return _reusableBadgeCell;
 }
 
+- (BOOL)floatsGroupRows
+{
+    return NO;
+}
+
+- (void)setFloatsGroupRows:(BOOL)value
+{
+    [super setFloatsGroupRows:NO];
+}
+
 #pragma mark -
 #pragma mark Data Management
 
