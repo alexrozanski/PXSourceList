@@ -18,6 +18,7 @@ static NSString * const forwardingMapForwardedArgumentIndexesKey = @"forwardedAr
 
 static NSArray * __outlineViewDelegateMethods = nil;
 static NSArray * __outlineViewDataSourceMethods = nil;
+static NSArray * __requiredOutlineViewDataSourceMethods = nil;
 
 // Cache the PXSourceListDelegate and PXSourceListDataSource method names so that if these methods are invoked on
 // us, we can quickly forward them to the delegate and dataSource using -forwardingTargetForSelector: without going
@@ -36,6 +37,11 @@ static NSArray * __fastPathForwardingDataSourceMethods = nil;
     __outlineViewDataSourceMethods = px_methodNamesForProtocol(@protocol(NSOutlineViewDataSource));
     __fastPathForwardingDelegateMethods = px_methodNamesForProtocol(@protocol(PXSourceListDelegate));
     __fastPathForwardingDataSourceMethods = px_methodNamesForProtocol(@protocol(PXSourceListDataSource));
+
+    __requiredOutlineViewDataSourceMethods = @[NSStringFromSelector(@selector(outlineView:numberOfChildrenOfItem:)),
+                                               NSStringFromSelector(@selector(outlineView:child:ofItem:)),
+                                               NSStringFromSelector(@selector(outlineView:isItemExpandable:)),
+                                               NSStringFromSelector(@selector(outlineView:objectValueForTableColumn:byItem:))];
 
     // Add the custom mappings first before we add the 'regular' mappings.
     [self addCustomMethodNameMappings];
@@ -95,6 +101,9 @@ static NSArray * __fastPathForwardingDataSourceMethods = nil;
 
     NSString *methodName = NSStringFromSelector(aSelector);
 
+    if ([__requiredOutlineViewDataSourceMethods containsObject:methodName])
+        return YES;
+
     if ([__fastPathForwardingDelegateMethods containsObject:methodName])
         return [self.delegate respondsToSelector:aSelector];
     if ([__fastPathForwardingDataSourceMethods containsObject:methodName])
@@ -133,6 +142,16 @@ static NSArray * __fastPathForwardingDataSourceMethods = nil;
     NSArray *forwardedArgumentIndexes = forwardingInformation[forwardingMapForwardedArgumentIndexesKey];
     anInvocation.selector = forwardingSelector;
 
+    NSMethodSignature *methodSignature = [forwardingObject methodSignatureForSelector:forwardingSelector];
+
+    /* Catch the case where we have advertised ourselves as responding to a selector required by NSOutlineView
+       for a valid dataSource but the corresponding PXSourceListDataSource method isn't implemented by the dataSource.
+     */
+    if ([__requiredOutlineViewDataSourceMethods containsObject:NSStringFromSelector(sourceSelector)]
+        && ![self.dataSource respondsToSelector:forwardingSelector]) {
+        return;
+    }
+
     /* Modify the arguments in the invocation if the source and target selector arguments are different.
 
        The forwardedArgumentIndexes array contains the indexes of arguments in the original invocation that we want
@@ -145,8 +164,6 @@ static NSArray * __fastPathForwardingDataSourceMethods = nil;
 
      */
     if (forwardedArgumentIndexes) {
-        NSMethodSignature *methodSignature = [forwardingObject methodSignatureForSelector:forwardingSelector];
-
         // self and _cmd are arguments 0 and 1.
         NSUInteger invocationArgumentIndex = 2;
         for (NSNumber *newArgumentIndex in forwardedArgumentIndexes) {
