@@ -13,8 +13,8 @@
 		D213027F14B9AFE200AAFF85 /* PXSourceListDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = D213027A14B9AFE200AAFF85 /* PXSourceListDataSource.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D213028014B9AFE200AAFF85 /* PXSourceListDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = D213027B14B9AFE200AAFF85 /* PXSourceListDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D21C59A0186EF8B200A8ECB3 /* PXSourceList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CC5EA2A12DC81ED001F282E /* PXSourceList.framework */; };
-		D23A17591836AD790027F0D0 /* PXSourceListBadge.h in Headers */ = {isa = PBXBuildFile; fileRef = D23A17571836AD790027F0D0 /* PXSourceListBadge.h */; };
-		D23A175B1836AD790027F0D0 /* PXSourceListBadge.m in Sources */ = {isa = PBXBuildFile; fileRef = D23A17581836AD790027F0D0 /* PXSourceListBadge.m */; };
+		D23A17591836AD790027F0D0 /* PXSourceListBadgeView.h in Headers */ = {isa = PBXBuildFile; fileRef = D23A17571836AD790027F0D0 /* PXSourceListBadgeView.h */; };
+		D23A175B1836AD790027F0D0 /* PXSourceListBadgeView.m in Sources */ = {isa = PBXBuildFile; fileRef = D23A17581836AD790027F0D0 /* PXSourceListBadgeView.m */; };
 		D23A175E1836AE280027F0D0 /* PXSourceListBadgeCell.h in Headers */ = {isa = PBXBuildFile; fileRef = D23A175C1836AE280027F0D0 /* PXSourceListBadgeCell.h */; };
 		D23A17601836AE280027F0D0 /* PXSourceListBadgeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D23A175D1836AE280027F0D0 /* PXSourceListBadgeCell.m */; };
 		D263123D186EF9F00036501C /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D263123C186EF9F00036501C /* Cocoa.framework */; };
@@ -71,8 +71,8 @@
 		D213027A14B9AFE200AAFF85 /* PXSourceListDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PXSourceListDataSource.h; path = PXSourceList/PXSourceListDataSource.h; sourceTree = "<group>"; };
 		D213027B14B9AFE200AAFF85 /* PXSourceListDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PXSourceListDelegate.h; path = PXSourceList/PXSourceListDelegate.h; sourceTree = "<group>"; };
 		D21302B814B9B17200AAFF85 /* PXSourceList-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "PXSourceList-Info.plist"; path = "PXSourceList/PXSourceList-Info.plist"; sourceTree = "<group>"; };
-		D23A17571836AD790027F0D0 /* PXSourceListBadge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PXSourceListBadge.h; path = PXSourceList/PXSourceListBadge.h; sourceTree = "<group>"; };
-		D23A17581836AD790027F0D0 /* PXSourceListBadge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PXSourceListBadge.m; path = PXSourceList/PXSourceListBadge.m; sourceTree = "<group>"; };
+		D23A17571836AD790027F0D0 /* PXSourceListBadgeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PXSourceListBadgeView.h; path = PXSourceList/PXSourceListBadgeView.h; sourceTree = "<group>"; };
+		D23A17581836AD790027F0D0 /* PXSourceListBadgeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PXSourceListBadgeView.m; path = PXSourceList/PXSourceListBadgeView.m; sourceTree = "<group>"; };
 		D23A175C1836AE280027F0D0 /* PXSourceListBadgeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PXSourceListBadgeCell.h; path = PXSourceList/PXSourceListBadgeCell.h; sourceTree = "<group>"; };
 		D23A175D1836AE280027F0D0 /* PXSourceListBadgeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PXSourceListBadgeCell.m; path = PXSourceList/PXSourceListBadgeCell.m; sourceTree = "<group>"; };
 		D263123B186EF9F00036501C /* ViewBasedSourceList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ViewBasedSourceList.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -146,8 +146,8 @@
 				D213027914B9AFE200AAFF85 /* PXSourceList.m */,
 				D213027A14B9AFE200AAFF85 /* PXSourceListDataSource.h */,
 				D213027B14B9AFE200AAFF85 /* PXSourceListDelegate.h */,
-				D23A17571836AD790027F0D0 /* PXSourceListBadge.h */,
-				D23A17581836AD790027F0D0 /* PXSourceListBadge.m */,
+				D23A17571836AD790027F0D0 /* PXSourceListBadgeView.h */,
+				D23A17581836AD790027F0D0 /* PXSourceListBadgeView.m */,
 				D23A175C1836AE280027F0D0 /* PXSourceListBadgeCell.h */,
 				D23A175D1836AE280027F0D0 /* PXSourceListBadgeCell.m */,
 				D2CD7D4A186B02690003E038 /* Private */,
@@ -328,7 +328,7 @@
 				D213027C14B9AFE200AAFF85 /* PXSourceList.h in Headers */,
 				D2CD7D47186B02630003E038 /* PXSourceListDelegateDataSourceProxy.h in Headers */,
 				D2CD7D52186B10FD0003E038 /* PXSourceListRuntimeAdditions.h in Headers */,
-				D23A17591836AD790027F0D0 /* PXSourceListBadge.h in Headers */,
+				D23A17591836AD790027F0D0 /* PXSourceListBadgeView.h in Headers */,
 				D213027F14B9AFE200AAFF85 /* PXSourceListDataSource.h in Headers */,
 				D213028014B9AFE200AAFF85 /* PXSourceListDelegate.h in Headers */,
 			);
@@ -463,7 +463,7 @@
 			files = (
 				D23A17601836AE280027F0D0 /* PXSourceListBadgeCell.m in Sources */,
 				D2CD7D49186B02630003E038 /* PXSourceListDelegateDataSourceProxy.m in Sources */,
-				D23A175B1836AD790027F0D0 /* PXSourceListBadge.m in Sources */,
+				D23A175B1836AD790027F0D0 /* PXSourceListBadgeView.m in Sources */,
 				D213027E14B9AFE200AAFF85 /* PXSourceList.m in Sources */,
 				D2CD7D54186B10FD0003E038 /* PXSourceListRuntimeAdditions.m in Sources */,
 			);
@@ -784,6 +784,7 @@
 				D2631266186EF9F10036501C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
