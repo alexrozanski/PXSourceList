@@ -7,9 +7,11 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "PXSourceList.h"
 
-@interface AppDelegate : NSObject <NSApplicationDelegate>
+@interface AppDelegate : NSObject <NSApplicationDelegate, PXSourceListDataSource, PXSourceListDelegate>
 
 @property (assign) IBOutlet NSWindow *window;
+@property (assign) IBOutlet PXSourceList *sourceList;
 
 @end
