@@ -17,6 +17,8 @@
 		D23A175B1836AD790027F0D0 /* PXSourceListBadgeView.m in Sources */ = {isa = PBXBuildFile; fileRef = D23A17581836AD790027F0D0 /* PXSourceListBadgeView.m */; };
 		D23A175E1836AE280027F0D0 /* PXSourceListBadgeCell.h in Headers */ = {isa = PBXBuildFile; fileRef = D23A175C1836AE280027F0D0 /* PXSourceListBadgeCell.h */; };
 		D23A17601836AE280027F0D0 /* PXSourceListBadgeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D23A175D1836AE280027F0D0 /* PXSourceListBadgeCell.m */; };
+		D251F6F5187317C000FED7C9 /* PXSourceListTableCellView.h in Headers */ = {isa = PBXBuildFile; fileRef = D251F6F3187317C000FED7C9 /* PXSourceListTableCellView.h */; };
+		D251F6F6187317C000FED7C9 /* PXSourceListTableCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = D251F6F4187317C000FED7C9 /* PXSourceListTableCellView.m */; };
 		D263123D186EF9F00036501C /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D263123C186EF9F00036501C /* Cocoa.framework */; };
 		D263126E186EFBB30036501C /* SourceListItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D263126D186EFBB30036501C /* SourceListItem.m */; };
 		D263126F186EFBB30036501C /* SourceListItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D263126D186EFBB30036501C /* SourceListItem.m */; };
@@ -75,6 +77,8 @@
 		D23A17581836AD790027F0D0 /* PXSourceListBadgeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PXSourceListBadgeView.m; path = PXSourceList/PXSourceListBadgeView.m; sourceTree = "<group>"; };
 		D23A175C1836AE280027F0D0 /* PXSourceListBadgeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PXSourceListBadgeCell.h; path = PXSourceList/PXSourceListBadgeCell.h; sourceTree = "<group>"; };
 		D23A175D1836AE280027F0D0 /* PXSourceListBadgeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PXSourceListBadgeCell.m; path = PXSourceList/PXSourceListBadgeCell.m; sourceTree = "<group>"; };
+		D251F6F3187317C000FED7C9 /* PXSourceListTableCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PXSourceListTableCellView.h; path = PXSourceList/PXSourceListTableCellView.h; sourceTree = "<group>"; };
+		D251F6F4187317C000FED7C9 /* PXSourceListTableCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PXSourceListTableCellView.m; path = PXSourceList/PXSourceListTableCellView.m; sourceTree = "<group>"; };
 		D263123B186EF9F00036501C /* ViewBasedSourceList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ViewBasedSourceList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D263123C186EF9F00036501C /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		D2631257186EF9F10036501C /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -150,6 +154,8 @@
 				D23A17581836AD790027F0D0 /* PXSourceListBadgeView.m */,
 				D23A175C1836AE280027F0D0 /* PXSourceListBadgeCell.h */,
 				D23A175D1836AE280027F0D0 /* PXSourceListBadgeCell.m */,
+				D251F6F3187317C000FED7C9 /* PXSourceListTableCellView.h */,
+				D251F6F4187317C000FED7C9 /* PXSourceListTableCellView.m */,
 				D2CD7D4A186B02690003E038 /* Private */,
 				D21302BA14B9B1DC00AAFF85 /* Supporting Files */,
 			);
@@ -324,6 +330,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D2CD7D4D186B0FBC0003E038 /* PXSourceListPrivateConstants.h in Headers */,
+				D251F6F5187317C000FED7C9 /* PXSourceListTableCellView.h in Headers */,
 				D23A175E1836AE280027F0D0 /* PXSourceListBadgeCell.h in Headers */,
 				D213027C14B9AFE200AAFF85 /* PXSourceList.h in Headers */,
 				D2CD7D47186B02630003E038 /* PXSourceListDelegateDataSourceProxy.h in Headers */,
@@ -466,6 +473,7 @@
 				D23A175B1836AD790027F0D0 /* PXSourceListBadgeView.m in Sources */,
 				D213027E14B9AFE200AAFF85 /* PXSourceList.m in Sources */,
 				D2CD7D54186B10FD0003E038 /* PXSourceListRuntimeAdditions.m in Sources */,
+				D251F6F6187317C000FED7C9 /* PXSourceListTableCellView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
