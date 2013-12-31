@@ -10,6 +10,8 @@
 
 #import "PXSourceListDelegate.h"
 #import "PXSourceListDataSource.h"
+#import "PXSourceListBadgeView.h"
+#import "PXSourceListTableCellView.h"
 
 @interface PXSourceList: NSOutlineView <NSOutlineViewDelegate, NSOutlineViewDataSource>
 	
