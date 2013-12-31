@@ -524,25 +524,6 @@ NSString * const PXSLDeleteKeyPressedOnRowsNotification = @"PXSourceListDeleteKe
 	return m;
 }
 
-#pragma mark - Custom NSOutlineView Data Source Method Implementations
-
-- (id)outlineView:(NSOutlineView *)outlineView objectValueForTableColumn:(NSTableColumn *)tableColumn byItem:(id)item
-{
-	if([self.delegateDataSourceProxy.dataSource conformsToProtocol:@protocol(PXSourceListDataSource)]) {
-		return [self.delegateDataSourceProxy.dataSource sourceList:self objectValueForItem:item];
-	}
-	
-	return nil;
-}
-
-
-- (void)outlineView:(NSOutlineView *)outlineView setObjectValue:(id)object forTableColumn:(NSTableColumn *)tableColumn byItem:(id)item
-{	
-	if([self.delegateDataSourceProxy.dataSource conformsToProtocol:@protocol(PXSourceListDataSource)]) {
-		[self.delegateDataSourceProxy.dataSource sourceList:self setObjectValue:object forItem:item];
-	}
-}
-
 #pragma mark - Custom NSOutlineView Delegate Method Implementations
 
 - (BOOL)outlineView:(NSOutlineView *)outlineView shouldCollapseItem:(id)item

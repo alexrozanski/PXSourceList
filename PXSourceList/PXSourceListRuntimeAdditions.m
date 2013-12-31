@@ -35,3 +35,13 @@ NSArray *px_allProtocolMethods(Protocol *protocol)
 
     return methodList;
 }
+
+NSArray *px_methodNamesForProtocol(Protocol *protocol)
+{
+    NSMutableArray *methodNames = [[NSMutableArray alloc] init];
+
+    for (NSDictionary *methodInfo in px_allProtocolMethods(protocol))
+        [methodNames addObject:methodInfo[px_protocolMethodNameKey]];
+
+    return methodNames;
+}

@@ -15,12 +15,16 @@
 
 // Internal constants.
 static NSString * const forwardingMapForwardingMethodNameKey = @"methodName";
-static NSString * const forwardingMapOriginatingProtocolKey = @"originatingProtocol";
+static NSString * const forwardingMapForwardedArgumentIndexesKey = @"forwardedArgumentIndexes";
 
 @implementation PXSourceListDelegateDataSourceProxy
 
 + (void)initialize
 {
+    // Add the custom mappings first before we add the 'regular' mappings.
+    [self addCustomMethodNameMappings];
+
+    // Now add the 'regular' mappings.
     [self addEntriesToMethodForwardingMap:[self methodNameMappingsForProtocol:@protocol(NSOutlineViewDelegate)]];
     [self addEntriesToMethodForwardingMap:[self methodNameMappingsForProtocol:@protocol(NSOutlineViewDataSource)]];
 }
@@ -66,45 +70,106 @@ static NSString * const forwardingMapOriginatingProtocolKey = @"originatingProto
     _dataSource = dataSource;
 }
 
-#pragma mark - Method Forwarding
+#pragma mark - NSObject Overrides
 
 - (BOOL)respondsToSelector:(SEL)aSelector
 {
     if ([self.sourceList respondsToSelector:aSelector])
         return YES;
 
-    if(![[[self class] methodForwardingMap] objectForKey:NSStringFromSelector(aSelector)])
+    id forwardingObject = [self forwardingObjectForSelector:aSelector];
+    NSDictionary *forwardingInformation = [[self class] forwardingInformationForSelector:aSelector];
+
+    if(!forwardingObject || !forwardingInformation)
         return [super respondsToSelector:aSelector];
 
-    id forwardingObject;
-    SEL forwardingSelector = NULL;
-
-    if(![self getForwardingObject:&forwardingObject andForwardingSelector:&forwardingSelector forSelector:aSelector])
-        return [super respondsToSelector:aSelector];
-
-    return [forwardingObject respondsToSelector:forwardingSelector];
+    return [forwardingObject respondsToSelector:NSSelectorFromString(forwardingInformation[forwardingMapForwardingMethodNameKey])];
 }
 
 - (void)forwardInvocation:(NSInvocation *)anInvocation
 {
-    id forwardingObject;
-    SEL forwardingSelector = NULL;
+    SEL sourceSelector = anInvocation.selector;
 
-    if ([self.sourceList respondsToSelector:anInvocation.selector]) {
+    // Give the Source List a chance to handle the selector first (this is a bit of a hack for the time being
+    // and should be changed).
+    if ([self.sourceList respondsToSelector:sourceSelector]) {
         [anInvocation invokeWithTarget:self.sourceList];
         return;
     }
 
-    if(![self getForwardingObject:&forwardingObject andForwardingSelector:&forwardingSelector forSelector:anInvocation.selector]) {
+    id forwardingObject = [self forwardingObjectForSelector:sourceSelector];
+    NSDictionary *forwardingInformation = [[self class] forwardingInformationForSelector:sourceSelector];
+
+    if(!forwardingObject || !forwardingInformation) {
         [super forwardInvocation:anInvocation];
         return;
     }
 
+    SEL forwardingSelector = NSSelectorFromString(forwardingInformation[forwardingMapForwardingMethodNameKey]);
+
+    NSArray *forwardedArgumentIndexes = forwardingInformation[forwardingMapForwardedArgumentIndexesKey];
     anInvocation.selector = forwardingSelector;
+
+    /* Modify the arguments in the invocation if the source and target selector arguments are different.
+
+       The forwardedArgumentIndexes array contains the indexes of arguments in the original invocation that we want
+       to use in our modified invocation. E.g. @[@0, @2] means take the first and third arguments and only use them
+       when forwarding. We want to do this when the forwarded selector has a different number of arguments to the
+       source selector (see +addCustomMethodNameMappings).
+     
+       Note that this implementation only works if the arguments in `forwardedArgumentIndexes` are monotonically
+       increasing (which is good enough for now).
+
+     */
+    if (forwardedArgumentIndexes) {
+        NSMethodSignature *methodSignature = [forwardingObject methodSignatureForSelector:forwardingSelector];
+
+        // self and _cmd are arguments 0 and 1.
+        NSUInteger invocationArgumentIndex = 2;
+        for (NSNumber *newArgumentIndex in forwardedArgumentIndexes) {
+            NSInteger forwardedArgumentIndex = newArgumentIndex.integerValue;
+
+            // Handle the case where we want to use (for example) the third argument from the original invocation
+            // as the second argument of our modified invocation.
+            if (invocationArgumentIndex != forwardedArgumentIndex) {
+                NSUInteger argumentSize = 0;
+                NSGetSizeAndAlignment([methodSignature getArgumentTypeAtIndex:invocationArgumentIndex], &argumentSize, NULL);
+
+                void *argument = malloc(argumentSize);
+                [anInvocation getArgument:argument atIndex:forwardedArgumentIndex + 2]; // Take self and _cmd into account again.
+                [anInvocation setArgument:argument atIndex:invocationArgumentIndex];
+                free(argument);
+            }
+
+            invocationArgumentIndex++;
+        }
+    }
+
     [anInvocation invokeWithTarget:forwardingObject];
 }
 
-+ (NSDictionary *)methodForwardingMap
+#pragma mark - Method Forwarding
+
++ (NSArray *)outlineViewDelegateMethods
+{
+    static NSArray *_delegateMethods = nil;
+    if (!_delegateMethods)
+        _delegateMethods = px_methodNamesForProtocol(@protocol(NSOutlineViewDelegate));
+
+    return _delegateMethods;
+}
+
+
++ (NSArray *)outlineViewDataSourceMethods
+{
+    static NSArray *_dataSourceMethods = nil;
+    if (!_dataSourceMethods)
+        _dataSourceMethods = px_methodNamesForProtocol(@protocol(NSOutlineViewDataSource));
+
+    return _dataSourceMethods;
+}
+
++ (NSMutableDictionary *)methodForwardingMap
 {
     static NSMutableDictionary *_methodForwardingMap = nil;
     if (!_methodForwardingMap)
@@ -116,9 +181,11 @@ static NSString * const forwardingMapOriginatingProtocolKey = @"originatingProto
 + (void)addEntriesToMethodForwardingMap:(NSDictionary *)entries
 {
     NSArray *methodForwardingBlacklist = [self methodForwardingBlacklist];
+    NSMutableDictionary *methodForwardingMap = [self methodForwardingMap];
+
     for (NSString *key in entries) {
-        if (![methodForwardingBlacklist containsObject:key])
-            ((NSMutableDictionary*)[self methodForwardingMap])[key] = entries[key];
+        if (![methodForwardingBlacklist containsObject:key] && !methodForwardingMap[key])
+            methodForwardingMap[key] = entries[key];
     }
 }
 
@@ -136,8 +203,7 @@ static NSString * const forwardingMapOriginatingProtocolKey = @"originatingProto
             continue;
         }
 
-        [methodNameMappings setObject:@{forwardingMapForwardingMethodNameKey: mappedMethodName,
-                                        forwardingMapOriginatingProtocolKey: protocolName}
+        [methodNameMappings setObject:@{forwardingMapForwardingMethodNameKey: mappedMethodName}
                                forKey:methodName];
     }
 
@@ -146,10 +212,6 @@ static NSString * const forwardingMapOriginatingProtocolKey = @"originatingProto
 
 + (NSString *)mappedMethodNameForMethodName:(NSString *)methodName
 {
-    NSString *customMappedName = [self customMethodNameMappings][methodName];
-    if (customMappedName)
-        return customMappedName;
-
     NSString *outlineViewSearchString = @"outlineView";
     NSUInteger letterVOffset = [outlineViewSearchString rangeOfString:@"V"].location;
     NSCharacterSet *uppercaseLetterCharacterSet = [NSCharacterSet uppercaseLetterCharacterSet];
@@ -167,6 +229,22 @@ static NSString * const forwardingMapOriginatingProtocolKey = @"originatingProto
 
 }
 
+- (id)forwardingObjectForSelector:(SEL)selector
+{
+    if ([[[self class] outlineViewDataSourceMethods] containsObject:NSStringFromSelector(selector)])
+        return self.dataSource;
+
+    if ([[[self class] outlineViewDelegateMethods] containsObject:NSStringFromSelector(selector)])
+        return self.delegate;
+
+    return nil;
+}
+
++ (NSDictionary *)forwardingInformationForSelector:(SEL)selector
+{
+    return [[self methodForwardingMap] objectForKey:NSStringFromSelector(selector)];
+}
+
 // These methods won't have mappings created for them.
 + (NSArray *)methodForwardingBlacklist
 {
@@ -182,33 +260,65 @@ static NSString * const forwardingMapOriginatingProtocolKey = @"originatingProto
              NSStringFromSelector(@selector(outlineView:isGroupItem:))];
 }
 
-+ (NSDictionary *)customMethodNameMappings
+/* Add custom mappings for method names which can't have "outlineView" simply replaced with "sourceList".
+ 
+   For example, -outlineView:objectValueForTableColumn:byItem: should be forwarded to -sourceList:objectValueForItem:. We also only want to
+   forward the 1st and 3rd arguments when invoking this second selector.
+
+ */
++ (void)addCustomMethodNameMappings
 {
-    return @{NSStringFromSelector(@selector(outlineView:objectValueForTableColumn:byItem:)): NSStringFromSelector(@selector(sourceList:objectValueForItem:)),
-             NSStringFromSelector(@selector(outlineView:setObjectValue:forTableColumn:byItem:)): NSStringFromSelector(@selector(sourceList:setObjectValue:forItem:)),
-             NSStringFromSelector(@selector(outlineView:viewForTableColumn:item:)): NSStringFromSelector(@selector(sourceList:viewForItem:)),
-             NSStringFromSelector(@selector(outlineView:willDisplayCell:forTableColumn:item:)): NSStringFromSelector(@selector(sourceList:willDisplayCell:forItem:)),
-             NSStringFromSelector(@selector(outlineView:shouldEditTableColumn:item:)): NSStringFromSelector(@selector(sourceList:shouldEditItem:)),
-             NSStringFromSelector(@selector(outlineView:toolTipForCell:rect:tableColumn:item:mouseLocation:)): NSStringFromSelector(@selector(sourceList:tooltipForCell:rect:item:mouseLocation:)),
-             NSStringFromSelector(@selector(outlineView:typeSelectStringForTableColumn:item:)): NSStringFromSelector(@selector(sourceList:typeSelectStringForItem:)),
-             NSStringFromSelector(@selector(outlineView:shouldShowCellExpansionForTableColumn:item:)): NSStringFromSelector(@selector(sourceList:shouldShowCellExpansionForItem:)),
-             NSStringFromSelector(@selector(outlineView:shouldTrackCell:forTableColumn:item:)): NSStringFromSelector(@selector(sourceList:shouldTrackCell:forItem:)),
-             NSStringFromSelector(@selector(outlineView:dataCellForTableColumn:item:)): NSStringFromSelector(@selector(sourceList:dataCellForItem:))};
+    [self addCustomMethodNameMappingFromSelector:@selector(outlineView:objectValueForTableColumn:byItem:)
+                                      toSelector:@selector(sourceList:objectValueForItem:)
+                        forwardedArgumentIndexes:@[@0, @2]];
+    [self addCustomMethodNameMappingFromSelector:@selector(outlineView:setObjectValue:forTableColumn:byItem:)
+                                      toSelector:@selector(sourceList:setObjectValue:forItem:)
+                        forwardedArgumentIndexes:@[@0, @1, @3]];
+    [self addCustomMethodNameMappingFromSelector:@selector(outlineView:viewForTableColumn:item:)
+                                      toSelector:@selector(sourceList:viewForItem:)
+                        forwardedArgumentIndexes:@[@0, @2]];
+    [self addCustomMethodNameMappingFromSelector:@selector(outlineView:willDisplayCell:forTableColumn:item:)
+                                      toSelector:@selector(sourceList:willDisplayCell:forItem:)
+                        forwardedArgumentIndexes:@[@0, @1, @3]];
+    [self addCustomMethodNameMappingFromSelector:@selector(outlineView:shouldEditTableColumn:item:)
+                                      toSelector:@selector(sourceList:shouldEditItem:)
+                        forwardedArgumentIndexes:@[@0, @2]];
+    [self addCustomMethodNameMappingFromSelector:@selector(outlineView:toolTipForCell:rect:tableColumn:item:mouseLocation:)
+                                      toSelector:@selector(sourceList:tooltipForCell:rect:item:mouseLocation:)
+                        forwardedArgumentIndexes:@[@0, @1, @2, @4, @5]];
+    [self addCustomMethodNameMappingFromSelector:@selector(outlineView:typeSelectStringForTableColumn:item:)
+                                      toSelector:@selector(sourceList:typeSelectStringForItem:)
+                        forwardedArgumentIndexes:@[@0, @2]];
+    [self addCustomMethodNameMappingFromSelector:@selector(outlineView:shouldShowCellExpansionForTableColumn:item:)
+                                      toSelector:@selector(sourceList:shouldShowCellExpansionForItem:)
+                        forwardedArgumentIndexes:@[@0, @2]];
+    [self addCustomMethodNameMappingFromSelector:@selector(outlineView:shouldTrackCell:forTableColumn:item:)
+                                      toSelector:@selector(sourceList:shouldTrackCell:forItem:)
+                        forwardedArgumentIndexes:@[@0, @1, @3]];
+    [self addCustomMethodNameMappingFromSelector:@selector(outlineView:dataCellForTableColumn:item:)
+                                      toSelector:@selector(sourceList:dataCellForItem:)
+                        forwardedArgumentIndexes:@[@0, @2]];
+}
+
++ (void)addCustomMethodNameMappingFromSelector:(SEL)fromSelector toSelector:(SEL)toSelector forwardedArgumentIndexes:(NSArray *)argumentIndexes
+{
+    [[self methodForwardingMap] setObject:@{forwardingMapForwardingMethodNameKey: NSStringFromSelector(toSelector),
+                                            forwardingMapForwardedArgumentIndexesKey: argumentIndexes}
+                                   forKey:NSStringFromSelector(fromSelector)];
 }
 
 - (BOOL)getForwardingObject:(id*)outObject andForwardingSelector:(SEL*)outSelector forSelector:(SEL)selector
 {
     NSDictionary *methodForwardingMap = [[self class] methodForwardingMap];
-    NSDictionary *forwardingInfo = methodForwardingMap[NSStringFromSelector(selector)];
+    NSString *originalMethodName = NSStringFromSelector(selector);
+    NSDictionary *forwardingInfo = methodForwardingMap[originalMethodName];
     if (!forwardingInfo)
         return NO;
 
-    NSString *originatingProtocol = forwardingInfo[forwardingMapOriginatingProtocolKey];
-
     id forwardingObject;
-    if ([originatingProtocol isEqualToString:NSStringFromProtocol(@protocol(NSOutlineViewDelegate))])
+    if ([[[self class] outlineViewDelegateMethods] containsObject:originalMethodName])
         forwardingObject = self.delegate;
-    else if ([originatingProtocol isEqualToString:NSStringFromProtocol(@protocol(NSOutlineViewDataSource))])
+    else if ([[[self class] outlineViewDataSourceMethods] containsObject:originalMethodName])
         forwardingObject = self.dataSource;
 
     if (!forwardingObject)

@@ -14,3 +14,4 @@ extern NSString * const px_protocolMethodArgumentTypesKey;
 extern NSString * const px_protocolIsRequiredMethodKey;
 
 NSArray *px_allProtocolMethods(Protocol *protocol);
+NSArray *px_methodNamesForProtocol(Protocol *protocol);
