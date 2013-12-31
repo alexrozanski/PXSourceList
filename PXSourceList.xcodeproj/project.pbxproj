@@ -19,6 +19,7 @@
 		D23A17601836AE280027F0D0 /* PXSourceListBadgeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D23A175D1836AE280027F0D0 /* PXSourceListBadgeCell.m */; };
 		D251F6F5187317C000FED7C9 /* PXSourceListTableCellView.h in Headers */ = {isa = PBXBuildFile; fileRef = D251F6F3187317C000FED7C9 /* PXSourceListTableCellView.h */; };
 		D251F6F6187317C000FED7C9 /* PXSourceListTableCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = D251F6F4187317C000FED7C9 /* PXSourceListTableCellView.m */; };
+		D251F6FA1873240E00FED7C9 /* SourceListIcons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D251F6F91873240E00FED7C9 /* SourceListIcons.xcassets */; };
 		D263123D186EF9F00036501C /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D263123C186EF9F00036501C /* Cocoa.framework */; };
 		D263126E186EFBB30036501C /* SourceListItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D263126D186EFBB30036501C /* SourceListItem.m */; };
 		D263126F186EFBB30036501C /* SourceListItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D263126D186EFBB30036501C /* SourceListItem.m */; };
@@ -79,6 +80,7 @@
 		D23A175D1836AE280027F0D0 /* PXSourceListBadgeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PXSourceListBadgeCell.m; path = PXSourceList/PXSourceListBadgeCell.m; sourceTree = "<group>"; };
 		D251F6F3187317C000FED7C9 /* PXSourceListTableCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PXSourceListTableCellView.h; path = PXSourceList/PXSourceListTableCellView.h; sourceTree = "<group>"; };
 		D251F6F4187317C000FED7C9 /* PXSourceListTableCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PXSourceListTableCellView.m; path = PXSourceList/PXSourceListTableCellView.m; sourceTree = "<group>"; };
+		D251F6F91873240E00FED7C9 /* SourceListIcons.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = SourceListIcons.xcassets; path = Examples/ViewBasedSourceList/SourceListIcons.xcassets; sourceTree = "<group>"; };
 		D263123B186EF9F00036501C /* ViewBasedSourceList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ViewBasedSourceList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D263123C186EF9F00036501C /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		D2631257186EF9F10036501C /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -270,6 +272,7 @@
 				D2631288186EFC4E0036501C /* AppDelegate.m */,
 				D263128A186EFC5C0036501C /* MainMenu.xib */,
 				D263128D186EFC630036501C /* Images.xcassets */,
+				D251F6F91873240E00FED7C9 /* SourceListIcons.xcassets */,
 				D263123F186EF9F00036501C /* Supporting Files */,
 			);
 			name = "View-based Source List";
@@ -457,6 +460,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D263128E186EFC630036501C /* Images.xcassets in Resources */,
+				D251F6FA1873240E00FED7C9 /* SourceListIcons.xcassets in Resources */,
 				D263128C186EFC5C0036501C /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

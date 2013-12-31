@@ -53,7 +53,7 @@ Also Brian Dunagan's post on [Source List badging][9] and determining state for 
 
 The documentation was created using [Doxygen][10] and [appledoc][11], thanks of which go to the developers of both.
 
-The icons used in the demo project bundled with the source code are from the [Fugue icon set][12] by Yusuke Kamiyamane.
+The icons used in the example projects bundled with the source code are from the [Fugue icon set][12] by Yusuke Kamiyamane and the [Mimi Glyphs set][13] by Jeremy Salée.
 
 ##License
 PXSourceList is licensed under the New BSD License, as detailed below (adapted from OSI http://www.opensource.org/licenses/bsd-license.php):
@@ -83,3 +83,4 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
   [10]: http://www.doxygen.org/
   [11]: http://www.gentlebytes.com/freeware/appledoc/
   [12]: http://www.pinvoke.com/
+  [13]: http://salleedesign.com/resources/mimi-glyphs/
