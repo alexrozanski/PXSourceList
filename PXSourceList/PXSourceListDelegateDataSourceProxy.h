@@ -7,12 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "PXSourceList.h"
 
-@class PXSourceList;
-@protocol PXSourceListDelegate;
-@protocol PXSourceListDataSource;
-
-@interface PXSourceListDelegateDataSourceProxy : NSObject <NSOutlineViewDelegate, NSOutlineViewDataSource>
+@interface PXSourceListDelegateDataSourceProxy : NSObject <NSOutlineViewDelegate, NSOutlineViewDataSource, PXSourceListDelegate, PXSourceListDataSource>
 
 @property (weak, nonatomic) PXSourceList *sourceList;
 @property (weak, nonatomic) id <PXSourceListDelegate> delegate;

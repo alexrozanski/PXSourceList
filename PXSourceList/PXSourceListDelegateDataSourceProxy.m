@@ -9,7 +9,6 @@
 #import "PXSourceListDelegateDataSourceProxy.h"
 
 #import <objc/runtime.h>
-#import "PXSourceList.h"
 #import "PXSourceListPrivateConstants.h"
 #import "PXSourceListRuntimeAdditions.h"
 
@@ -20,12 +19,23 @@ static NSString * const forwardingMapForwardedArgumentIndexesKey = @"forwardedAr
 static NSArray * __outlineViewDelegateMethods = nil;
 static NSArray * __outlineViewDataSourceMethods = nil;
 
+// Cache the PXSourceListDelegate and PXSourceListDataSource method names so that if these methods are invoked on
+// us, we can quickly forward them to the delegate and dataSource using -forwardingTargetForSelector: without going
+// through -forwardInvocation:.
+static NSArray * __fastPathForwardingDelegateMethods = nil;
+static NSArray * __fastPathForwardingDataSourceMethods = nil;
+
+// We want to suppress the warnings for protocol methods not being implemented. As a proxy we will forward these
+// messages to the actual delegate and data source.
+#pragma clang diagnostic ignored "-Wprotocol"
 @implementation PXSourceListDelegateDataSourceProxy
 
 + (void)initialize
 {
     __outlineViewDelegateMethods = px_methodNamesForProtocol(@protocol(NSOutlineViewDelegate));
     __outlineViewDataSourceMethods = px_methodNamesForProtocol(@protocol(NSOutlineViewDataSource));
+    __fastPathForwardingDelegateMethods = px_methodNamesForProtocol(@protocol(PXSourceListDelegate));
+    __fastPathForwardingDataSourceMethods = px_methodNamesForProtocol(@protocol(PXSourceListDataSource));
 
     // Add the custom mappings first before we add the 'regular' mappings.
     [self addCustomMethodNameMappings];
@@ -82,6 +92,13 @@ static NSArray * __outlineViewDataSourceMethods = nil;
 {
     if ([self.sourceList respondsToSelector:aSelector])
         return YES;
+
+    NSString *methodName = NSStringFromSelector(aSelector);
+
+    if ([__fastPathForwardingDelegateMethods containsObject:methodName])
+        return [self.delegate respondsToSelector:aSelector];
+    if ([__fastPathForwardingDataSourceMethods containsObject:methodName])
+        return [self.dataSource respondsToSelector:aSelector];
 
     id forwardingObject = [self forwardingObjectForSelector:aSelector];
     NSDictionary *forwardingInformation = [[self class] forwardingInformationForSelector:aSelector];
@@ -152,6 +169,19 @@ static NSArray * __outlineViewDataSourceMethods = nil;
     }
 
     [anInvocation invokeWithTarget:forwardingObject];
+}
+
+- (id)forwardingTargetForSelector:(SEL)aSelector
+{
+    NSString *methodName = NSStringFromSelector(aSelector);
+
+    if ([__fastPathForwardingDelegateMethods containsObject:methodName])
+        return self.delegate;
+
+    if ([__fastPathForwardingDataSourceMethods containsObject:methodName])
+        return self.dataSource;
+
+    return nil;
 }
 
 #pragma mark - Method Forwarding

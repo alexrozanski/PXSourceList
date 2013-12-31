@@ -332,9 +332,9 @@ NSString * const PXSLDeleteKeyPressedOnRowsNotification = @"PXSourceListDeleteKe
 		CGFloat rightIndent = [self sizeOfBadgeAtRow:row].width+rowRightMargin;
 		
 		//Allow space for an icon if need be
-		if(![self isGroupItem:item] && [self.delegateDataSourceProxy.dataSource respondsToSelector:@selector(sourceList:itemHasIcon:)])
+		if(![self isGroupItem:item] && [self.delegateDataSourceProxy respondsToSelector:@selector(sourceList:itemHasIcon:)])
 		{
-			if([self.delegateDataSourceProxy.dataSource sourceList:self itemHasIcon:item]) {
+			if([self.delegateDataSourceProxy sourceList:self itemHasIcon:item]) {
 				leftIndent += [self iconSize].width+(iconSpacing*2);
 			}
 		}
@@ -377,9 +377,9 @@ NSString * const PXSLDeleteKeyPressedOnRowsNotification = @"PXSourceListDeleteKe
 	id item = [self itemAtRow:rowIndex];
 	
 	//Draw an icon if the item has one
-	if(![self isGroupItem:item] && [self.delegateDataSourceProxy.dataSource respondsToSelector:@selector(sourceList:itemHasIcon:)])
+	if(![self isGroupItem:item] && [self.delegateDataSourceProxy respondsToSelector:@selector(sourceList:itemHasIcon:)])
 	{
-		if([self.delegateDataSourceProxy.dataSource sourceList:self itemHasIcon:item])
+		if([self.delegateDataSourceProxy sourceList:self itemHasIcon:item])
 		{
 			NSRect cellFrame = [self frameOfCellAtColumn:0 row:rowIndex];
 			NSSize iconSize = [self iconSize];
@@ -388,9 +388,9 @@ NSString * const PXSLDeleteKeyPressedOnRowsNotification = @"PXSourceListDeleteKe
 										 iconSize.width,
 										 iconSize.height);
 			
-			if([self.delegateDataSourceProxy.dataSource respondsToSelector:@selector(sourceList:iconForItem:)])
+			if([self.delegateDataSourceProxy respondsToSelector:@selector(sourceList:iconForItem:)])
 			{
-				NSImage *icon = [self.delegateDataSourceProxy.dataSource sourceList:self iconForItem:item];
+				NSImage *icon = [self.delegateDataSourceProxy sourceList:self iconForItem:item];
 				
 				if(icon!=nil)
 				{
@@ -512,11 +512,11 @@ NSString * const PXSLDeleteKeyPressedOnRowsNotification = @"PXSourceListDeleteKe
 - (NSMenu *)menuForEvent:(NSEvent *)theEvent
 {
 	NSMenu * m = nil;
-	if([self.delegateDataSourceProxy.delegate respondsToSelector:@selector(sourceList:menuForEvent:item:)]) {
+	if([self.delegateDataSourceProxy respondsToSelector:@selector(sourceList:menuForEvent:item:)]) {
 		NSPoint clickPoint = [self convertPoint:[theEvent locationInWindow] fromView:nil];
 		NSInteger row = [self rowAtPoint:clickPoint];
 		id clickedItem = [self itemAtRow:row];
-		m = [self.delegateDataSourceProxy.delegate sourceList:self menuForEvent:theEvent item:clickedItem];
+		m = [self.delegateDataSourceProxy sourceList:self menuForEvent:theEvent item:clickedItem];
 	}
 	if (m == nil) {
 		m = [super menuForEvent:theEvent];
@@ -536,8 +536,8 @@ NSString * const PXSLDeleteKeyPressedOnRowsNotification = @"PXSourceListDeleteKe
 		}
 	}
 	
-	if([self.delegateDataSourceProxy.delegate respondsToSelector:@selector(sourceList:shouldCollapseItem:)]) {
-		return [self.delegateDataSourceProxy.delegate sourceList:self shouldCollapseItem:item];
+	if([self.delegateDataSourceProxy respondsToSelector:@selector(sourceList:shouldCollapseItem:)]) {
+		return [self.delegateDataSourceProxy sourceList:self shouldCollapseItem:item];
 	}
 	
 	return YES;
@@ -545,8 +545,8 @@ NSString * const PXSLDeleteKeyPressedOnRowsNotification = @"PXSourceListDeleteKe
 
 - (NSCell *)outlineView:(NSOutlineView *)outlineView dataCellForTableColumn:(NSTableColumn *)tableColumn item:(id)item
 {
-	if([self.delegateDataSourceProxy.delegate respondsToSelector:@selector(sourceList:dataCellForItem:)]) {
-		return [self.delegateDataSourceProxy.delegate sourceList:self dataCellForItem:item];
+	if([self.delegateDataSourceProxy respondsToSelector:@selector(sourceList:dataCellForItem:)]) {
+		return [self.delegateDataSourceProxy sourceList:self dataCellForItem:item];
 	}
 	
 	NSInteger row = [self rowForItem:item];
@@ -557,8 +557,8 @@ NSString * const PXSLDeleteKeyPressedOnRowsNotification = @"PXSourceListDeleteKe
 
 - (void)outlineView:(NSOutlineView *)outlineView willDisplayCell:(id)cell forTableColumn:(NSTableColumn *)tableColumn item:(id)item
 {
-	if([self.delegateDataSourceProxy.delegate respondsToSelector:@selector(sourceList:willDisplayCell:forItem:)]) {
-		[self.delegateDataSourceProxy.delegate sourceList:self willDisplayCell:cell forItem:item];
+	if([self.delegateDataSourceProxy respondsToSelector:@selector(sourceList:willDisplayCell:forItem:)]) {
+		[self.delegateDataSourceProxy sourceList:self willDisplayCell:cell forItem:item];
 	}
 }
 
@@ -566,8 +566,8 @@ NSString * const PXSLDeleteKeyPressedOnRowsNotification = @"PXSourceListDeleteKe
 {	
 	//Make sure that the item isn't a group as they can't be selected
 	if(![self isGroupItem:item]) {		
-		if([self.delegateDataSourceProxy.delegate respondsToSelector:@selector(sourceList:shouldSelectItem:)]) {
-			return [self.delegateDataSourceProxy.delegate sourceList:self shouldSelectItem:item];
+		if([self.delegateDataSourceProxy respondsToSelector:@selector(sourceList:shouldSelectItem:)]) {
+			return [self.delegateDataSourceProxy sourceList:self shouldSelectItem:item];
 		}
 	}
 	else {
@@ -589,8 +589,8 @@ NSString * const PXSLDeleteKeyPressedOnRowsNotification = @"PXSourceListDeleteKe
 		}
 	}
 	
-	if([self.delegateDataSourceProxy.delegate respondsToSelector:@selector(sourceList:selectionIndexesForProposedSelection:)]) {
-		return [self.delegateDataSourceProxy.delegate sourceList:self selectionIndexesForProposedSelection:proposedSelectionIndexes];
+	if([self.delegateDataSourceProxy respondsToSelector:@selector(sourceList:selectionIndexesForProposedSelection:)]) {
+		return [self.delegateDataSourceProxy sourceList:self selectionIndexesForProposedSelection:proposedSelectionIndexes];
 	}
 	
 	//Since we implement this method, something must be returned to the outline view
@@ -603,8 +603,8 @@ NSString * const PXSLDeleteKeyPressedOnRowsNotification = @"PXSourceListDeleteKe
 	if([self isGroupItem:item])
 		return NO;
 	
-	if([self.delegateDataSourceProxy.delegate respondsToSelector:@selector(sourceList:shouldEditItem:)]) {
-		return [self.delegateDataSourceProxy.delegate sourceList:self shouldEditItem:item];
+	if([self.delegateDataSourceProxy respondsToSelector:@selector(sourceList:shouldEditItem:)]) {
+		return [self.delegateDataSourceProxy sourceList:self shouldEditItem:item];
 	}
 	
 	return YES;
