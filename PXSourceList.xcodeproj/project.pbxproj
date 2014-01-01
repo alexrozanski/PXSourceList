@@ -122,7 +122,6 @@
 		D2631292186EFC830036501C /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Examples/ViewBasedSourceList/main.m; sourceTree = SOURCE_ROOT; };
 		D2631294186EFC890036501C /* ViewBasedSourceList-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "ViewBasedSourceList-Prefix.pch"; path = "Examples/ViewBasedSourceList/ViewBasedSourceList-Prefix.pch"; sourceTree = SOURCE_ROOT; };
 		D2631296186EFC910036501C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = Examples/ViewBasedSourceList/en.lproj/Credits.rtf; sourceTree = SOURCE_ROOT; };
-		D265C2D610E3814B00A1E824 /* TODO.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = TODO.rtf; sourceTree = "<group>"; };
 		D2CD7D45186B02630003E038 /* PXSourceListDelegateDataSourceProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PXSourceListDelegateDataSourceProxy.h; path = PXSourceList/PXSourceListDelegateDataSourceProxy.h; sourceTree = "<group>"; };
 		D2CD7D46186B02630003E038 /* PXSourceListDelegateDataSourceProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PXSourceListDelegateDataSourceProxy.m; path = PXSourceList/PXSourceListDelegateDataSourceProxy.m; sourceTree = "<group>"; };
 		D2CD7D4B186B0FBC0003E038 /* PXSourceListPrivateConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PXSourceListPrivateConstants.h; path = PXSourceList/PXSourceListPrivateConstants.h; sourceTree = "<group>"; };
@@ -209,7 +208,6 @@
 		29B97314FDCFA39411CA2CEA /* PXSourceList */ = {
 			isa = PBXGroup;
 			children = (
-				D265C2D610E3814B00A1E824 /* TODO.rtf */,
 				D205EDDD10F7A1EE004C6545 /* README.markdown */,
 				080E96DDFE201D6D7F000001 /* PXSourceList */,
 				D213027714B9AFCA00AAFF85 /* Example Projects */,
