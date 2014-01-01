@@ -139,6 +139,11 @@ NSString * const PXSLDeleteKeyPressedOnRowsNotification = @"PXSourceListDeleteKe
 #pragma mark -
 #pragma mark Data Management
 
+- (BOOL)isViewBasedSourceList
+{
+    return [self.delegateDataSourceProxy respondsToSelector:@selector(sourceList:viewForItem:)];
+}
+
 - (void)reloadData
 {
 	[super reloadData];
@@ -309,6 +314,9 @@ NSString * const PXSLDeleteKeyPressedOnRowsNotification = @"PXSourceListDeleteKe
 
 - (NSRect)frameOfCellAtColumn:(NSInteger)column row:(NSInteger)row
 {
+    if (self.isViewBasedSourceList)
+        return [super frameOfCellAtColumn:column row:row];
+
 	id item = [self itemAtRow:row];
 	
 	NSCell *cell = [self preparedCellAtColumn:column row:row];
