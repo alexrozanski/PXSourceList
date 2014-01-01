@@ -6,6 +6,20 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		D251F6FD187342DA00FED7C9 /* Documentation */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = D251F6FE187342DB00FED7C9 /* Build configuration list for PBXAggregateTarget "Documentation" */;
+			buildPhases = (
+				D251F7011873439600FED7C9 /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = Documentation;
+			productName = Documentation;
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
 		D213027C14B9AFE200AAFF85 /* PXSourceList.h in Headers */ = {isa = PBXBuildFile; fileRef = D213027814B9AFE200AAFF85 /* PXSourceList.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -429,6 +443,7 @@
 				8D1107260486CEB800E47090 /* CellBasedSourceList */,
 				D263123A186EF9F00036501C /* ViewBasedSourceList */,
 				4CC5EA2912DC81ED001F282E /* PXSourceList */,
+				D251F6FD187342DA00FED7C9 /* Documentation */,
 			);
 		};
 /* End PBXProject section */
@@ -466,6 +481,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		D251F7011873439600FED7C9 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Note: requires appledoc to be installed. See https://github.com/tomaz/appledoc for more information.\n\n# Thanks to http://stackoverflow.com/a/13871762/75245 for help with the parsing.\ninfoPlistLocation=${PROJECT_DIR}/`/usr/bin/xcrun xcodebuild -showBuildSettings -target \"PXSourceList\" 2>/dev/null | grep \"INFOPLIST_FILE\" | sed 's/[ ]*INFOPLIST_FILE = //'`\n\nversion=`/usr/libexec/Plistbuddy -c 'Print :CFBundleShortVersionString' $infoPlistLocation`\noutputPath=\"docs\"\nsourceDir=\"PXSourceList\"\n\n/usr/local/bin/appledoc \\\n--project-name \"${PROJECT_NAME}\" \\\n--project-company \"Alex Rozanski\" \\\n--project-version \"${version}\" \\\n--company-id \"com.alexrozanski\" \\\n--output \"${outputPath}\" \\\n--logformat \"xcode\" \\\n--keep-intermediate-files \\\n--no-install-docset \\\n--clean-output \\\n${sourceDir}";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		4CC5EA2712DC81ED001F282E /* Sources */ = {
@@ -685,6 +716,20 @@
 			};
 			name = Release;
 		};
+		D251F6FF187342DB00FED7C9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		D251F700187342DB00FED7C9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		D2631265186EF9F10036501C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -788,6 +833,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		D251F6FE187342DB00FED7C9 /* Build configuration list for PBXAggregateTarget "Documentation" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D251F6FF187342DB00FED7C9 /* Debug */,
+				D251F700187342DB00FED7C9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 		D2631264186EF9F10036501C /* Build configuration list for PBXNativeTarget "ViewBasedSourceList" */ = {
 			isa = XCConfigurationList;

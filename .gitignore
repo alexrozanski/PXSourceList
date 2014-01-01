@@ -1,3 +1,6 @@
+# We can always generate the documentation from source.
+docs/
+
 # Mac OS X
 .DS_Store
 
