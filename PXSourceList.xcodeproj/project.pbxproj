@@ -56,6 +56,7 @@
 		D2CD7D4D186B0FBC0003E038 /* PXSourceListPrivateConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = D2CD7D4B186B0FBC0003E038 /* PXSourceListPrivateConstants.h */; };
 		D2CD7D52186B10FD0003E038 /* PXSourceListRuntimeAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = D2CD7D50186B10FD0003E038 /* PXSourceListRuntimeAdditions.h */; };
 		D2CD7D54186B10FD0003E038 /* PXSourceListRuntimeAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = D2CD7D51186B10FD0003E038 /* PXSourceListRuntimeAdditions.m */; };
+		D2FF2953187AD32000CFEDD1 /* PhotoCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = D2FF2952187AD32000CFEDD1 /* PhotoCollection.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -127,6 +128,8 @@
 		D2CD7D4B186B0FBC0003E038 /* PXSourceListPrivateConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PXSourceListPrivateConstants.h; path = PXSourceList/PXSourceListPrivateConstants.h; sourceTree = "<group>"; };
 		D2CD7D50186B10FD0003E038 /* PXSourceListRuntimeAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PXSourceListRuntimeAdditions.h; path = PXSourceList/PXSourceListRuntimeAdditions.h; sourceTree = "<group>"; };
 		D2CD7D51186B10FD0003E038 /* PXSourceListRuntimeAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PXSourceListRuntimeAdditions.m; path = PXSourceList/PXSourceListRuntimeAdditions.m; sourceTree = "<group>"; };
+		D2FF2951187AD32000CFEDD1 /* PhotoCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PhotoCollection.h; path = Examples/ViewBasedSourceList/PhotoCollection.h; sourceTree = "<group>"; };
+		D2FF2952187AD32000CFEDD1 /* PhotoCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PhotoCollection.m; path = Examples/ViewBasedSourceList/PhotoCollection.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -285,6 +288,7 @@
 				D263128A186EFC5C0036501C /* MainMenu.xib */,
 				D263128D186EFC630036501C /* Images.xcassets */,
 				D251F6F91873240E00FED7C9 /* SourceListIcons.xcassets */,
+				D2FF2950187AD30200CFEDD1 /* Model */,
 				D263123F186EF9F00036501C /* Supporting Files */,
 			);
 			name = "View-based Source List";
@@ -335,6 +339,15 @@
 				D2CD7D51186B10FD0003E038 /* PXSourceListRuntimeAdditions.m */,
 			);
 			name = Private;
+			sourceTree = "<group>";
+		};
+		D2FF2950187AD30200CFEDD1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D2FF2951187AD32000CFEDD1 /* PhotoCollection.h */,
+				D2FF2952187AD32000CFEDD1 /* PhotoCollection.m */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -527,6 +540,7 @@
 				D263126F186EFBB30036501C /* SourceListItem.m in Sources */,
 				D2631293186EFC830036501C /* main.m in Sources */,
 				D2631289186EFC4E0036501C /* AppDelegate.m in Sources */,
+				D2FF2953187AD32000CFEDD1 /* PhotoCollection.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -839,6 +853,7 @@
 				D251F700187342DB00FED7C9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D2631264186EF9F10036501C /* Build configuration list for PBXNativeTarget "ViewBasedSourceList" */ = {
 			isa = XCConfigurationList;

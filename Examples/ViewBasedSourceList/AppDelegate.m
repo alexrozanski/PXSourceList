@@ -8,8 +8,11 @@
 
 #import "AppDelegate.h"
 #import "SourceListItem.h"
+#import "PhotoCollection.h"
 
 @interface AppDelegate ()
+@property (strong, nonatomic) NSMutableArray *libraryCollections;
+@property (strong, nonatomic) NSMutableArray *albums;
 @property (strong, nonatomic) NSMutableArray *sourceListItems;
 @end
 
@@ -17,6 +20,15 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
+    PhotoCollection *photosCollection = [PhotoCollection collectionWithTitle:@"Photos" numberOfItems:264];
+    PhotoCollection *eventsCollection = [PhotoCollection collectionWithTitle:@"Events" numberOfItems:689];
+    PhotoCollection *peopleCollection = [PhotoCollection collectionWithTitle:@"People" numberOfItems:135];
+    PhotoCollection *placesCollection = [PhotoCollection collectionWithTitle:@"Places" numberOfItems:28];
+
+    self.libraryCollections = [@[photosCollection, eventsCollection, peopleCollection, placesCollection] mutableCopy];
+    self.albums = [@[[PhotoCollection collectionWithTitle:@"Holiday Snaps" numberOfItems:200],
+                     [PhotoCollection collectionWithTitle:@"Graduation" numberOfItems:1050]] mutableCopy];
+
     self.sourceListItems = [[NSMutableArray alloc] init];
 
     NSImage *photosImage = [NSImage imageNamed:@"photos"];
@@ -31,14 +43,15 @@
     [albumImage setTemplate:YES];
 
     SourceListItem *libraryItem = [SourceListItem itemWithTitle:@"LIBRARY" identifier:nil];
-    libraryItem.children = @[[SourceListItem itemWithTitle:@"Photos" identifier:nil icon:photosImage],
-                             [SourceListItem itemWithTitle:@"Events" identifier:nil icon:eventsImage],
-                             [SourceListItem itemWithTitle:@"People" identifier:nil icon:peopleImage],
-                             [SourceListItem itemWithTitle:@"Places" identifier:nil icon:placesImage]];
+    libraryItem.children = @[[SourceListItem itemWithRepresentedObject:photosCollection icon:photosImage],
+                             [SourceListItem itemWithRepresentedObject:eventsCollection icon:eventsImage],
+                             [SourceListItem itemWithRepresentedObject:peopleCollection icon:peopleImage],
+                             [SourceListItem itemWithRepresentedObject:placesCollection icon:placesImage]];
 
     SourceListItem *albumsItem = [SourceListItem itemWithTitle:@"ALBUMS" identifier:nil];
-    albumsItem.children = @[[SourceListItem itemWithTitle:@"Holiday Snaps" identifier:nil icon:albumImage],
-                            [SourceListItem itemWithTitle:@"Graduation" identifier:nil icon:albumImage]];
+    for (PhotoCollection *collection in self.albums) {
+        [albumsItem addChildItem:[SourceListItem itemWithRepresentedObject:collection icon:albumImage]];
+    }
 
     [self.sourceListItems addObject:libraryItem];
     [self.sourceListItems addObject:albumsItem];
@@ -122,9 +135,12 @@
     cellView.textField.editable = isTitleEditable;
     cellView.textField.selectable = isTitleEditable;
 
-    cellView.textField.stringValue = sourceListItem.title;
+    PhotoCollection *collection = sourceListItem.representedObject;
+
+    cellView.textField.stringValue = sourceListItem.title ? sourceListItem.title : [sourceListItem.representedObject title];
     cellView.imageView.image = [item icon];
-    cellView.badgeView.hidden = [aSourceList levelForItem:item] == 0;
+    cellView.badgeView.hidden = !collection;
+    cellView.badgeView.badgeValue = collection.numberOfItems;
 
     return cellView;
 }
