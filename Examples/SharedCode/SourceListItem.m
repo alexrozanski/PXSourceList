@@ -8,8 +8,14 @@
 
 #import "SourceListItem.h"
 
+@interface SourceListItem () {
+    NSMutableArray *_children;
+}
+@end
 
 @implementation SourceListItem
+
+@synthesize children = _children;
 
 #pragma mark -
 #pragma mark Init/Dealloc
@@ -19,6 +25,7 @@
 	if(self=[super init])
 	{
 		_badgeValue = -1;	//We don't want a badge value by default
+        _children = [[NSMutableArray alloc] init];
 	}
 	
 	return self;
@@ -56,12 +63,22 @@
 
 - (BOOL)hasChildren
 {
-	return [self.children count]>0;
+	return _children.count > 0;
 }
 
 - (BOOL)hasIcon
 {
 	return self.icon!=nil;
+}
+
+- (NSArray *)children
+{
+    return [_children copy];
+}
+
+- (void)setChildren:(NSArray *)children
+{
+    _children = [children mutableCopy];
 }
 
 #pragma mark -
@@ -70,5 +87,15 @@
 - (NSString *)description
 {
 	return [NSString stringWithFormat:@"<%@: %p | identifier = %@ | title = %@ >", [self class], self, self.identifier, self.title];
+}
+
+- (void)addChildItem:(SourceListItem *)childItem
+{
+    [_children addObject:childItem];
+}
+
+- (void)removeChildItem:(SourceListItem *)childItem
+{
+    [_children removeObject:childItem];
 }
 @end

@@ -43,4 +43,7 @@
 - (BOOL)hasChildren;
 - (BOOL)hasIcon;
 
+- (void)addChildItem:(SourceListItem *)childItem;
+- (void)removeChildItem:(SourceListItem *)childItem;
+
 @end
