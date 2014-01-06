@@ -14,4 +14,6 @@
 @property (assign) IBOutlet NSWindow *window;
 @property (assign) IBOutlet PXSourceList *sourceList;
 
+- (IBAction)addButtonAction:(id)sender;
+
 @end

@@ -46,6 +46,24 @@
     [self.sourceList reloadData];
 }
 
+#pragma mark - Actions
+
+- (IBAction)addButtonAction:(id)sender
+{
+    NSImage *albumImage = [NSImage imageNamed:@"album"];
+    [albumImage setTemplate:YES];
+
+    SourceListItem *newItem = [SourceListItem itemWithTitle:@"New Album" identifier:nil icon:albumImage];
+    [self.sourceListItems[1] addChildItem:newItem];
+
+    NSUInteger childIndex = [[self.sourceListItems[1] children] indexOfObject:newItem];
+    [self.sourceList insertItemsAtIndexes:[NSIndexSet indexSetWithIndex:childIndex]
+                                 inParent:self.sourceListItems[1]
+                            withAnimation:NSTableViewAnimationEffectNone];
+
+    [self.sourceList editColumn:0 row:[self.sourceList rowForItem:newItem] withEvent:nil select:YES];
+}
+
 #pragma mark - PXSourceList Data Source
 
 - (NSUInteger)sourceList:(PXSourceList*)sourceList numberOfChildrenOfItem:(id)item
