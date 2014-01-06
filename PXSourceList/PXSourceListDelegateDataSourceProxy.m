@@ -62,6 +62,12 @@ static NSArray * __fastPathForwardingDataSourceMethods = nil;
     return self;
 }
 
+- (void)dealloc
+{
+    //Unregister the delegate from receiving notifications
+	[[NSNotificationCenter defaultCenter] removeObserver:self.delegate name:nil object:self.sourceList];
+}
+
 #pragma mark - Accessors
 
 - (void)setDelegate:(id<PXSourceListDelegate>)delegate
