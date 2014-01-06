@@ -16,4 +16,14 @@
     return [PXSourceListBadgeCell class];
 }
 
+- (void)setBadgeValue:(NSUInteger)badgeValue
+{
+    [self.cell setBadgeValue:badgeValue];
+}
+
+- (NSUInteger)badgeValue
+{
+    return [self.cell badgeValue];
+}
+
 @end

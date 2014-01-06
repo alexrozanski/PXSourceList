@@ -88,7 +88,7 @@ static const CGFloat badgeLeftAndRightPadding = 5.0;
 
 - (NSAttributedString *)badgeString
 {
-	return [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"%ld", self.integerValue]
+	return [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"%ld", self.badgeValue]
                                            attributes:@{NSFontAttributeName: badgeFont()}];
 }
 
