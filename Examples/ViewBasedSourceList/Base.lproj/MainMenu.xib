@@ -789,7 +789,7 @@
                                             <constraint firstAttribute="width" constant="30" id="52p-Vm-2Nb"/>
                                             <constraint firstAttribute="height" constant="21" id="ar8-y0-zCh"/>
                                         </constraints>
-                                        <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" image="NSRemoveTemplate" imagePosition="overlaps" alignment="center" controlSize="mini" state="on" imageScaling="proportionallyDown" inset="2" id="xbS-Ax-KfO">
+                                        <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" image="NSRemoveTemplate" imagePosition="overlaps" alignment="center" controlSize="mini" enabled="NO" state="on" imageScaling="proportionallyDown" inset="2" id="xbS-Ax-KfO">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="miniSystem"/>
                                         </buttonCell>
@@ -830,6 +830,7 @@
         </window>
         <customObject id="494" customClass="AppDelegate">
             <connections>
+                <outlet property="removeButton" destination="iQU-Dr-qPa" id="MfB-vx-DLY"/>
                 <outlet property="sourceList" destination="6cp-sB-vmV" id="0Ec-MJ-aU2"/>
                 <outlet property="window" destination="371" id="532"/>
             </connections>

@@ -64,6 +64,20 @@
     [self.sourceList editColumn:0 row:[self.sourceList rowForItem:newItem] withEvent:nil select:YES];
 }
 
+- (IBAction)removeButtonAction:(id)sender
+{
+    SourceListItem *selectedItem = [self.sourceList itemAtRow:self.sourceList.selectedRow];
+    SourceListItem *parentItem = self.sourceListItems[1];
+
+
+    [self.sourceList removeItemsAtIndexes:[NSIndexSet indexSetWithIndex:[parentItem.children indexOfObject:selectedItem]]
+                                 inParent:parentItem
+                            withAnimation:NSTableViewAnimationSlideUp];
+
+    // Only 'album' items can be deleted.
+    [parentItem removeChildItem:selectedItem];
+}
+
 #pragma mark - PXSourceList Data Source
 
 - (NSUInteger)sourceList:(PXSourceList*)sourceList numberOfChildrenOfItem:(id)item
@@ -113,6 +127,14 @@
     cellView.badgeView.hidden = [aSourceList levelForItem:item] == 0;
 
     return cellView;
+}
+
+- (void)sourceListSelectionDidChange:(NSNotification *)notification
+{
+    SourceListItem *selectedItem = [self.sourceList itemAtRow:self.sourceList.selectedRow];
+
+    // Only allow us to remove items in the 'albums' group.
+    self.removeButton.enabled = [[self.sourceListItems[1] children] containsObject:selectedItem];
 }
 
 @end
