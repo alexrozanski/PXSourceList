@@ -3,7 +3,8 @@
 //  PXSourceList
 //
 //  Created by Alex Rozanski on 05/09/2009.
-//  Copyright 2009-10 Alex Rozanski http://perspx.com
+//  Copyright 2009-14 Alex Rozanski http://alexrozanski.com and other contributors.
+//  This software is licensed under the New BSD License. Full details can be found in the README.
 //
 
 #import <Cocoa/Cocoa.h>
