@@ -150,12 +150,12 @@ NSString * const PXSLDeleteKeyPressedOnRowsNotification = @"PXSourceListDeleteKe
 	[super reloadData];
 	
 	//Expand items that are displayed as always expanded
-	if([self.delegateDataSourceProxy.dataSource conformsToProtocol:@protocol(PXSourceListDataSource)] &&
-	   [self.delegateDataSourceProxy.delegate respondsToSelector:@selector(sourceList:isGroupAlwaysExpanded:)])
+	if([self.delegateDataSourceProxy conformsToProtocol:@protocol(PXSourceListDataSource)] &&
+	   [self.delegateDataSourceProxy respondsToSelector:@selector(sourceList:isGroupAlwaysExpanded:)])
 	{
 		for(NSUInteger i=0;i<[self numberOfGroups];i++)
 		{
-			id item = [self.delegateDataSourceProxy.dataSource sourceList:self child:i ofItem:nil];
+			id item = [self.delegateDataSourceProxy sourceList:self child:i ofItem:nil];
 			
 			if([self isGroupAlwaysExpanded:item]) {
 				[self expandItem:item expandChildren:NO];
@@ -205,8 +205,8 @@ NSString * const PXSLDeleteKeyPressedOnRowsNotification = @"PXSourceListDeleteKe
 
 - (NSUInteger)numberOfGroups
 {	
-	if([self.delegateDataSourceProxy.dataSource respondsToSelector:@selector(sourceList:numberOfChildrenOfItem:)]) {
-		return [self.delegateDataSourceProxy.dataSource sourceList:self numberOfChildrenOfItem:nil];
+	if([self.delegateDataSourceProxy respondsToSelector:@selector(sourceList:numberOfChildrenOfItem:)]) {
+		return [self.delegateDataSourceProxy sourceList:self numberOfChildrenOfItem:nil];
 	}
 	
 	return 0;
@@ -225,8 +225,8 @@ NSString * const PXSLDeleteKeyPressedOnRowsNotification = @"PXSourceListDeleteKe
 	//Make sure that the item IS a group to prevent unwanted queries sent to the data source
 	if([self isGroupItem:group]) {
 		//Query the data source
-		if([self.delegateDataSourceProxy.delegate respondsToSelector:@selector(sourceList:isGroupAlwaysExpanded:)]) {
-			return [self.delegateDataSourceProxy.delegate sourceList:self isGroupAlwaysExpanded:group];
+		if([self.delegateDataSourceProxy respondsToSelector:@selector(sourceList:isGroupAlwaysExpanded:)]) {
+			return [self.delegateDataSourceProxy sourceList:self isGroupAlwaysExpanded:group];
 		}
 	}
 	
@@ -240,8 +240,8 @@ NSString * const PXSLDeleteKeyPressedOnRowsNotification = @"PXSourceListDeleteKe
     if (self.isViewBasedSourceList)
         return NO;
 
-	if([self.delegateDataSourceProxy.dataSource respondsToSelector:@selector(sourceList:itemHasBadge:)]) {
-		return [self.delegateDataSourceProxy.dataSource sourceList:self itemHasBadge:item];
+	if([self.delegateDataSourceProxy respondsToSelector:@selector(sourceList:itemHasBadge:)]) {
+		return [self.delegateDataSourceProxy sourceList:self itemHasBadge:item];
 	}
 	
 	return NO;
@@ -253,8 +253,8 @@ NSString * const PXSLDeleteKeyPressedOnRowsNotification = @"PXSourceListDeleteKe
     if (self.isViewBasedSourceList || ![self itemHasBadge:item])
         return NSNotFound;
 	
-	if([self.delegateDataSourceProxy.dataSource respondsToSelector:@selector(sourceList:badgeValueForItem:)]) {
-		return [self.delegateDataSourceProxy.dataSource sourceList:self badgeValueForItem:item];
+	if([self.delegateDataSourceProxy respondsToSelector:@selector(sourceList:badgeValueForItem:)]) {
+		return [self.delegateDataSourceProxy sourceList:self badgeValueForItem:item];
 	}
 	
 	return NSNotFound;
