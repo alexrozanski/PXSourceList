@@ -235,6 +235,10 @@ NSString * const PXSLDeleteKeyPressedOnRowsNotification = @"PXSourceListDeleteKe
 
 - (BOOL)itemHasBadge:(id)item
 {
+    // Since badges are managed by custom views and logic in view-based mode, we can't determine this.
+    if (self.isViewBasedSourceList)
+        return NO;
+
 	if([self.delegateDataSourceProxy.dataSource respondsToSelector:@selector(sourceList:itemHasBadge:)]) {
 		return [self.delegateDataSourceProxy.dataSource sourceList:self itemHasBadge:item];
 	}
@@ -243,11 +247,10 @@ NSString * const PXSLDeleteKeyPressedOnRowsNotification = @"PXSourceListDeleteKe
 }
 
 - (NSInteger)badgeValueForItem:(id)item
-{	
-	//Make sure that the item has a badge
-	if(![self itemHasBadge:item]) {
-		return NSNotFound;
-	}
+{
+    // Since badges are managed by custom views and logic in view-based mode, we can't determine this.
+    if (self.isViewBasedSourceList || ![self itemHasBadge:item])
+        return NSNotFound;
 	
 	if([self.delegateDataSourceProxy.dataSource respondsToSelector:@selector(sourceList:badgeValueForItem:)]) {
 		return [self.delegateDataSourceProxy.dataSource sourceList:self badgeValueForItem:item];
