@@ -108,7 +108,7 @@
  @warning This method only applies when using a Source List in cell-based mode. If sent to a Source List in view-based mode, this
  method returns `NO`.
  */
-- (BOOL)itemHasBadge:(id)item;							//Returns whether `item` has a badge
+- (BOOL)itemHasBadge:(id)item;
 
 /** Returns the integer value of the badge for a given item.
 
@@ -122,7 +122,7 @@
  @warning This method only applies when using a Source List in cell-based mode. If sent to a Source List in view-based mode, this
  method returns `NSNotFound`.
  */
-- (NSInteger)badgeValueForItem:(id)item;				//Returns the badge value for `item`
+- (NSInteger)badgeValueForItem:(id)item;
 
 @end
 
