@@ -765,10 +765,46 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>
                                     </scrollView>
+                                    <button translatesAutoresizingMaskIntoConstraints="NO" id="BEV-Wz-OdK">
+                                        <rect key="frame" x="1" y="2" width="30" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="30" id="BbI-az-zo0"/>
+                                            <constraint firstAttribute="height" constant="21" id="OSH-IM-U1Y"/>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="30" id="Se2-9v-bwa"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="ZeV-jh-DKY"/>
+                                        </constraints>
+                                        <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" image="NSAddTemplate" imagePosition="overlaps" alignment="center" controlSize="mini" state="on" imageScaling="proportionallyDown" inset="2" id="ZO1-1M-bSI">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="miniSystem"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="addButtonAction:" target="494" id="Rqx-I4-1lq"/>
+                                        </connections>
+                                    </button>
+                                    <button translatesAutoresizingMaskIntoConstraints="NO" id="iQU-Dr-qPa">
+                                        <rect key="frame" x="28" y="2" width="30" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="30" id="52p-Vm-2Nb"/>
+                                            <constraint firstAttribute="height" constant="21" id="ar8-y0-zCh"/>
+                                        </constraints>
+                                        <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" image="NSRemoveTemplate" imagePosition="overlaps" alignment="center" controlSize="mini" state="on" imageScaling="proportionallyDown" inset="2" id="xbS-Ax-KfO">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="miniSystem"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="removeButtonAction:" target="494" id="F9K-WH-sD1"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="Gyf-tN-jug" firstAttribute="leading" secondItem="5z6-z4-Eis" secondAttribute="leading" id="8on-dj-sEF"/>
+                                    <constraint firstItem="BEV-Wz-OdK" firstAttribute="leading" secondItem="5z6-z4-Eis" secondAttribute="leading" constant="1" id="BRA-XD-2Sl"/>
+                                    <constraint firstItem="iQU-Dr-qPa" firstAttribute="leading" secondItem="5z6-z4-Eis" secondAttribute="leading" constant="28" id="Ie2-h9-MID"/>
                                     <constraint firstAttribute="bottom" secondItem="Gyf-tN-jug" secondAttribute="bottom" id="OVF-uf-K7N"/>
+                                    <constraint firstAttribute="bottom" secondItem="BEV-Wz-OdK" secondAttribute="bottom" constant="2" id="VKt-iQ-iyA"/>
+                                    <constraint firstAttribute="bottom" secondItem="iQU-Dr-qPa" secondAttribute="bottom" constant="2" id="ZJR-zF-U9n"/>
                                     <constraint firstItem="Gyf-tN-jug" firstAttribute="top" secondItem="5z6-z4-Eis" secondAttribute="top" id="e1F-no-bdo"/>
                                     <constraint firstAttribute="trailing" secondItem="Gyf-tN-jug" secondAttribute="trailing" id="ipE-wL-Vti"/>
                                 </constraints>
@@ -802,5 +838,7 @@
     </objects>
     <resources>
         <image name="NSActionTemplate" width="14" height="14"/>
+        <image name="NSAddTemplate" width="8" height="8"/>
+        <image name="NSRemoveTemplate" width="8" height="8"/>
     </resources>
 </document>
