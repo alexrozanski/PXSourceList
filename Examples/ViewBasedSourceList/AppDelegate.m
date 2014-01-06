@@ -103,6 +103,11 @@
         cellView = [aSourceList makeViewWithIdentifier:@"MainCell" owner:nil];
     SourceListItem *sourceListItem = item;
 
+    // Don't allow us to double-click to edit the title for items in the "Library" group.
+    BOOL isTitleEditable = ![[self.sourceListItems[0] children] containsObject:item];
+    cellView.textField.editable = isTitleEditable;
+    cellView.textField.selectable = isTitleEditable;
+
     cellView.textField.stringValue = sourceListItem.title;
     cellView.imageView.image = [item icon];
     cellView.badgeView.hidden = [aSourceList levelForItem:item] == 0;
