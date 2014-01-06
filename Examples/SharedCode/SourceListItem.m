@@ -51,7 +51,18 @@
 	return item;
 }
 
+/* Associates an arbitrary object with the Source List item. This is useful for cases where we don't 
+   want to have to synchronise changes in our model object (such as the name) with the Source List item
+   and can instead read from them in the Source List data source methods directly. */
++ (id)itemWithRepresentedObject:(id)representedObject icon:(NSImage *)anIcon
+{
+    SourceListItem *item = [[SourceListItem alloc] init];
 
+    item.representedObject = representedObject;
+    item.icon = anIcon;
+
+    return item;
+}
 
 #pragma mark -
 #pragma mark Custom Accessors

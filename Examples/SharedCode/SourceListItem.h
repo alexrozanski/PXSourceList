@@ -28,6 +28,7 @@
 @interface SourceListItem : NSObject
 
 @property (nonatomic, copy) NSString *title;
+@property (nonatomic, weak) id representedObject;
 @property (nonatomic, copy) NSString *identifier;
 @property (nonatomic, strong) NSImage *icon;
 @property NSInteger badgeValue;
@@ -37,6 +38,7 @@
 //Convenience methods
 + (id)itemWithTitle:(NSString*)aTitle identifier:(NSString*)anIdentifier;
 + (id)itemWithTitle:(NSString*)aTitle identifier:(NSString*)anIdentifier icon:(NSImage*)anIcon;
++ (id)itemWithRepresentedObject:(id)representedObject icon:(NSImage *)anIcon;
 
 
 - (BOOL)hasBadge;
