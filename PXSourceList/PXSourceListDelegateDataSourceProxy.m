@@ -385,47 +385,47 @@ static NSArray * __fastPathForwardingDataSourceMethods = nil;
 		[defaultCenter addObserver:self.delegate
 						  selector:selector
 							  name:notification
-							object:self];
+							object:self.sourceList];
 	}
 }
 
 /* Notification wrappers */
 - (void)outlineViewSelectionIsChanging:(NSNotification *)notification
 {
-	[[NSNotificationCenter defaultCenter] postNotificationName:PXSLSelectionIsChangingNotification object:self];
+	[[NSNotificationCenter defaultCenter] postNotificationName:PXSLSelectionIsChangingNotification object:self.sourceList];
 }
 
 
 - (void)outlineViewSelectionDidChange:(NSNotification *)notification
 {
-	[[NSNotificationCenter defaultCenter] postNotificationName:PXSLSelectionDidChangeNotification object:self];
+	[[NSNotificationCenter defaultCenter] postNotificationName:PXSLSelectionDidChangeNotification object:self.sourceList];
 }
 
 - (void)outlineViewItemWillExpand:(NSNotification *)notification
 {
 	[[NSNotificationCenter defaultCenter] postNotificationName:PXSLItemWillExpandNotification
-														object:self
+														object:self.sourceList
 													  userInfo:[notification userInfo]];
 }
 
 - (void)outlineViewItemDidExpand:(NSNotification *)notification
 {
 	[[NSNotificationCenter defaultCenter] postNotificationName:PXSLItemDidExpandNotification
-														object:self
+														object:self.sourceList
 													  userInfo:[notification userInfo]];
 }
 
 - (void)outlineViewItemWillCollapse:(NSNotification *)notification
 {
 	[[NSNotificationCenter defaultCenter] postNotificationName:PXSLItemWillCollapseNotification
-														object:self
+														object:self.sourceList
 													  userInfo:[notification userInfo]];
 }
 
 - (void)outlineViewItemDidCollapse:(NSNotification *)notification
 {
 	[[NSNotificationCenter defaultCenter] postNotificationName:PXSLItemDidCollapseNotification
-														object:self
+														object:self.sourceList
 													  userInfo:[notification userInfo]];
 }
 
