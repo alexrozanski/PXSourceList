@@ -59,7 +59,7 @@ static const CGFloat badgeLeftAndRightPadding = 5.0;
 		NSColor *textColor = textColor = self.textColor ? self.textColor : [NSColor whiteColor];;
 
 		if(isMainWindowVisible)
-            backgroundColor = self.badgeColor ? self.badgeColor : badgeBackgroundColor();
+            backgroundColor = self.backgroundColor ? self.backgroundColor : badgeBackgroundColor();
 		else
 			backgroundColor = badgeHiddenBackgroundColor();
 

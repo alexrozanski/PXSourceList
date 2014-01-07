@@ -469,6 +469,10 @@ NSString * const PXSLDeleteKeyPressedOnRowsNotification = @"PXSourceListDeleteKe
     id rowItem = [self itemAtRow:rowIndex];
 
     self.reusableBadgeCell.badgeValue = [self badgeValueForItem:rowItem];
+    if ([self.delegateDataSourceProxy respondsToSelector:@selector(sourceList:badgeTextColorForItem:)])
+        self.reusableBadgeCell.textColor = [self.delegateDataSourceProxy sourceList:self badgeTextColorForItem:rowItem];
+    if ([self.delegateDataSourceProxy respondsToSelector:@selector(sourceList:badgeBackgroundColorForItem:)])
+        self.reusableBadgeCell.textColor = [self.delegateDataSourceProxy sourceList:self badgeBackgroundColorForItem:rowItem];
     self.reusableBadgeCell.highlighted = [self.selectedRowIndexes containsIndex:rowIndex];
 
     [self.reusableBadgeCell drawWithFrame:badgeFrame inView:self];

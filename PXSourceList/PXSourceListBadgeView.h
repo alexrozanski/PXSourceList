@@ -12,5 +12,7 @@
 @interface PXSourceListBadgeView : NSControl
 
 @property (assign, nonatomic) NSUInteger badgeValue;
+@property (strong, nonatomic) NSColor *textColor;
+@property (strong, nonatomic) NSColor *backgroundColor;
 
 @end
