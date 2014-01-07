@@ -110,4 +110,15 @@
 {
     [_children removeObject:childItem];
 }
+
+- (void)removeChildItems:(NSArray *)items
+{
+    [_children removeObjectsInArray:items];
+}
+
+- (void)insertChildItems:(NSArray *)items atIndexes:(NSIndexSet *)indexes
+{
+    [_children insertObjects:items atIndexes:indexes];
+}
+
 @end

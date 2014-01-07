@@ -48,5 +48,7 @@
 
 - (void)addChildItem:(SourceListItem *)childItem;
 - (void)removeChildItem:(SourceListItem *)childItem;
+- (void)removeChildItems:(NSArray *)items;
+- (void)insertChildItems:(NSArray *)items atIndexes:(NSIndexSet *)indexes;
 
 @end
