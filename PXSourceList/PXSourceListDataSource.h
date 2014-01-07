@@ -69,9 +69,87 @@
 ///---------------------------------------------------------------------------------------
 /// @name Working with Badges
 ///---------------------------------------------------------------------------------------
+
+/**
+ @brief Returns a Boolean specifying whether a given item shows a badge or not
+ @discussion This method can be implemented by the data source to specify whether a given item displays a badge or not. A badge is a rounded rectangle containing a number (the badge value), displayed to the right of a row's cell.
+
+ This method must be implemented for the other badge-related data source methods – sourceList:badgeValueForItem:, sourceList:badgeTextColorForItem: and sourceList:badgeBackgroundColorForItem: – to be called.
+
+ @param aSourceList The Source List that sent the message
+ @param item An item in the data source
+
+ @return `YES` if *item* should display a badge, or `NO` otherwise.
+ 
+ @warning This method is only used by the Source List when operating in cell-based mode. When the Source List is operating in view-based mode, the view for each cell is responsible for managing a badge, if applicable.
+
+ @see sourceList:badgeValueForItem:
+ @see sourceList:badgeTextColorForItem:
+ @see sourceList:badgeBackgroundColorForItem:
+
+ @since Requires the Mac OS X 10.5 SDK or above.
+ */
 - (BOOL)sourceList:(PXSourceList*)aSourceList itemHasBadge:(id)item;
+
+/**
+ @brief Returns an integer specifying the badge value for a particular item
+ @discussion This method can be implemented by the data source to specify a badge value for any particular item. If you want an item to display a badge, you must also implement sourceList:itemHasBadge: and return `YES` for that item. Returning `NO` for items in sourceList:itemHasBadge: means that this method will not be called for that item.
+
+ @param aSourceList The Source List that sent the message
+ @param item An item in the data source
+
+ @return The badge value for *item*.
+ 
+ @warning This method is only used by the Source List when operating in cell-based mode. When the Source List is operating in view-based mode, the view for each cell is responsible for managing a badge, if applicable.
+
+ @see sourceList:itemHasBadge:
+ @see sourceList:badgeTextColorForItem:
+ @see sourceList:badgeBackgroundColorForItem:
+
+ @since Requires the Mac OS X 10.5 SDK or above.
+ */
 - (NSInteger)sourceList:(PXSourceList*)aSourceList badgeValueForItem:(id)item;
+
+/**
+ @brief Returns a color that is used for the badge text color of an item in the Source List
+ @discussion This method can be implemented by the data source to specify a custom badge color for a particular item.
+
+ This method is only called for *item* if you return `YES` for *item* in sourceList:itemHasBadge:.
+
+ @param aSourceList The Source List that sent the message
+ @param item An item in the data source
+ 
+ @return An `NSColor` object to use for the text color of *item*'s badge or `nil` to use the default badge text color.
+ 
+ @warning This method is only used by the Source List when operating in cell-based mode. When the Source List is operating in view-based mode, the view for each cell is responsible for managing a badge, if applicable.
+
+ @see sourceList:itemHasBadge:
+ @see sourceList:badgeValueForItem:
+ @see sourceList:badgeBackgroundColorForItem:
+
+ @since Requires the Mac OS X 10.5 SDK or above.
+ */
 - (NSColor*)sourceList:(PXSourceList*)aSourceList badgeTextColorForItem:(id)item;
+
+/**
+ @brief Returns a color that is used for the badge background color of an item in the Source List
+ @discussion This method can be implemented by the data source to specify a custom badge background color for a particular item.
+
+ This method is only called for *item* if you return `YES` for *item* in sourceList:itemHasBadge:.
+
+ @param aSourceList The Source List that sent the message
+ @param item An item in the data source
+
+ @return An `NSColor` object to use for the background color of *item*'s badge or `nil` to use the default badge background color.
+ 
+ @warning This method is only used by the Source List when operating in cell-based mode. When the Source List is operating in view-based mode, the view for each cell is responsible for managing a badge, if applicable.
+
+ @see sourceList:itemHasBadge:
+ @see sourceList:badgeValueForItem:
+ @see sourceList:badgeTextColorForItem:
+
+ @since Requires the Mac OS X 10.5 SDK or above.
+ */
 - (NSColor*)sourceList:(PXSourceList*)aSourceList badgeBackgroundColorForItem:(id)item;
 
 ///---------------------------------------------------------------------------------------
