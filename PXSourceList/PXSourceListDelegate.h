@@ -32,6 +32,8 @@
  @param item An item in the data source
 
  @return The view to display for the specified item, or `nil` if you don't want to display a view for the item.
+ 
+ @warning This is a required method when using the Source List in view-based mode.
 
  @since Requires the Mac OS X 10.7 SDK or above.
  */
