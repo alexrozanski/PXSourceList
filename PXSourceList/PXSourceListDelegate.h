@@ -11,6 +11,9 @@
 
 @class PXSourceList;
 
+/**
+ The `PXSourceListDelegate` protocol defines methods that can be implemented by delegates of `PXSourceList` objects.
+ */
 @protocol PXSourceListDelegate <NSObject>
 
 @optional
@@ -19,6 +22,19 @@
 - (NSMenu*)sourceList:(PXSourceList*)aSourceList menuForEvent:(NSEvent*)theEvent item:(id)item;
 
 //Basically NSOutlineViewDelegate wrapper methods
+/**
+ @brief Returns the view used to display the given item
+ @discussion This method is analagous to `-outlineView:viewForTableColumn:item:` except the `NSTableColumn` parameter is omitted from this method (PXSourceList only makes use of a single table column). Aside from that, this method works in exactly the same way.
+ 
+ Unlike when using PXSourceList in cell-based mode where the icon and badge value for each item can be set up using the PXSourceListDataSource methods, it is in this method that you should set up the icon and badge for the view (if applicable) when using PXSourceList in view-based mode. You can make use of the PXSourceListTableCellView class which exposes an outlet for a PXSourceListBadgeView (the built in view class which displays badges), and the `textField` and `imageView` outlets (which are inherited from its superclass, `NSTableCellView`) for the item's label and icon, respectively.
+
+ @param aSourceList The Source List that sent the message
+ @param item An item in the data source
+
+ @return The view to display for the specified item, or `nil` if you don't want to display a view for the item.
+
+ @since Requires the Mac OS X 10.7 SDK or above.
+ */
 - (NSView *)sourceList:(PXSourceList *)aSourceList viewForItem:(id)item;
 - (NSTableRowView *)sourceList:(PXSourceList *)aSourceList rowViewForItem:(id)item;
 - (void)sourceList:(PXSourceList *)aSourceList didAddRowView:(NSTableRowView *)rowView forRow:(NSInteger)row;
