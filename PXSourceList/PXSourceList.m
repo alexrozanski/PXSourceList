@@ -392,6 +392,10 @@ NSString * const PXSLDeleteKeyPressedOnRowsNotification = @"PXSourceListDeleteKe
 - (void)drawRow:(NSInteger)rowIndex clipRect:(NSRect)clipRect
 {	
 	[super drawRow:rowIndex clipRect:clipRect];
+
+    // We only do drawing here if the Source List is cell-based.
+    if (self.isViewBasedSourceList)
+        return;
 	
 	id item = [self itemAtRow:rowIndex];
 	
