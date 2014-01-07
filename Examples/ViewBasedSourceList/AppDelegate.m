@@ -17,10 +17,16 @@
 @property (strong, nonatomic) NSMutableArray *sourceListItems;
 @end
 
+static NSString * const draggingType = @"SourceListExampleDraggingType";
+
 @implementation AppDelegate
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
+    // Used to support drag and drop in the source list.
+    [self.sourceList registerForDraggedTypes:@[draggingType]];
+
+    // Set up our data model.
     PhotoCollection *photosCollection = [PhotoCollection collectionWithTitle:@"Photos" numberOfItems:264];
     PhotoCollection *eventsCollection = [PhotoCollection collectionWithTitle:@"Events" numberOfItems:689];
     PhotoCollection *peopleCollection = [PhotoCollection collectionWithTitle:@"People" numberOfItems:135];
@@ -32,6 +38,7 @@
 
     self.sourceListItems = [[NSMutableArray alloc] init];
 
+    // Icon images we're going to use in the Source List.
     NSImage *photosImage = [NSImage imageNamed:@"photos"];
     [photosImage setTemplate:YES];
     NSImage *eventsImage = [NSImage imageNamed:@"events"];
@@ -43,6 +50,7 @@
     NSImage *albumImage = [NSImage imageNamed:@"album"];
     [albumImage setTemplate:YES];
 
+    // Set up our Source List data model used in the Source List data source methods.
     SourceListItem *libraryItem = [SourceListItem itemWithTitle:@"LIBRARY" identifier:nil];
     libraryItem.children = @[[SourceListItem itemWithRepresentedObject:photosCollection icon:photosImage],
                              [SourceListItem itemWithRepresentedObject:eventsCollection icon:eventsImage],
@@ -152,6 +160,81 @@
 
     // Only allow us to remove items in the 'albums' group.
     self.removeButton.enabled = [[self.sourceListItems[1] children] containsObject:selectedItem];
+}
+
+#pragma mark - Drag and Drop
+
+- (BOOL)sourceList:(PXSourceList*)aSourceList writeItems:(NSArray *)items toPasteboard:(NSPasteboard *)pboard
+{
+    // Only allow the items in the 'Albums' group to be moved around.
+    for (SourceListItem *item in items) {
+        if (![[self.sourceListItems[1] children] containsObject:item])
+            return NO;
+    }
+
+    // We're dragging from and to the 'Albums' group.
+    SourceListItem *parentItem = self.sourceListItems[1];
+
+    // For simplicity in this example, put the dragged indexes on the pasteboard. Since we use the representedObject
+    // on SourceListItem, we cannot reliably archive it directly.
+    NSMutableIndexSet *draggedChildIndexes = [NSMutableIndexSet indexSet];
+    for (SourceListItem *item in items)
+        [draggedChildIndexes addIndex:[[parentItem children] indexOfObject:item]];
+
+    [pboard declareTypes:@[draggingType] owner:self];
+    [pboard setData:[NSKeyedArchiver archivedDataWithRootObject:draggedChildIndexes] forType:draggingType];
+
+    return YES;
+}
+
+- (NSDragOperation)sourceList:(PXSourceList*)sourceList validateDrop:(id < NSDraggingInfo >)info proposedItem:(id)item proposedChildIndex:(NSInteger)index
+{
+    SourceListItem *albumsItem = self.sourceListItems[1];
+
+    // Only allow the items in the 'albums' group to be moved around. It can either be dropped on the group header, or inserted between other child items.
+    // It can't be made the child of another item in this group, so the only valid case is when the proposedItem is the 'Albums' group item.
+    if (![item isEqual:albumsItem])
+        return NSDragOperationNone;
+
+    return NSDragOperationMove;
+}
+
+- (BOOL)sourceList:(PXSourceList*)aSourceList acceptDrop:(id < NSDraggingInfo >)info item:(id)item childIndex:(NSInteger)index
+{
+    NSPasteboard *draggingPasteboard = info.draggingPasteboard;
+    NSMutableIndexSet *draggedChildIndexes = [NSKeyedUnarchiver unarchiveObjectWithData:[draggingPasteboard dataForType:draggingType]];
+
+    SourceListItem *parentItem = self.sourceListItems[1];
+    NSMutableArray *draggedItems = [NSMutableArray array];
+    [draggedChildIndexes enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL *stop) {
+        [draggedItems addObject:[[parentItem children] objectAtIndex:idx]];
+    }];
+
+    // An index of -1 means it's been dropped on the group header itself, so insert at the end of the group.
+    if (index == -1)
+        index = parentItem.children.count;
+
+    // Perform the Source List and model updates.
+    [aSourceList beginUpdates];
+    [aSourceList removeItemsAtIndexes:draggedChildIndexes
+                             inParent:parentItem
+                        withAnimation:NSTableViewAnimationEffectNone];
+    [parentItem removeChildItems:draggedItems];
+
+    // We have to calculate the new child index which we have to perform the drop at, since we've just removed items from the parent item which
+    // may have come before the drop index.
+    NSUInteger adjustedDropIndex = index - [draggedChildIndexes countOfIndexesInRange:NSMakeRange(0, index)];
+
+    // The insertion indexes are now simply from the adjusted drop index.
+    NSIndexSet *insertionIndexes = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(adjustedDropIndex, draggedChildIndexes.count)];
+    [parentItem insertChildItems:draggedItems atIndexes:insertionIndexes];
+
+    [aSourceList insertItemsAtIndexes:insertionIndexes
+                             inParent:parentItem
+                        withAnimation:NSTableViewAnimationEffectNone];
+    [aSourceList endUpdates];
+
+    return YES;
 }
 
 @end
