@@ -11,36 +11,94 @@
 
 @class PXSourceList;
 
+/**
+ The `PXSourceListDataSource` protocol defines methods that can be implemented by data sources of `PXSourceList` objects.
+ */
 @protocol PXSourceListDataSource <NSObject>
 
 @required
+///---------------------------------------------------------------------------------------
+/// @name Working with Items in a Source List
+///---------------------------------------------------------------------------------------
+/** 
+ @brief Returns the number of child items of a given item
+
+ @param sourceList The Source List that sent the message
+ @param item An item in the data source
+
+ @return The number of immediate child items of *item*. If *item* is `nil` then you should return the number of top-level items in the Source List item hierarchy.
+ 
+ @since Requires the Mac OS X 10.5 SDK or above.
+ 
+ @see sourceList:child:ofItem:
+ */
 - (NSUInteger)sourceList:(PXSourceList*)sourceList numberOfChildrenOfItem:(id)item;
+
+/**
+ @brief Returns the direct child of a given item at the specified index
+
+ @param aSourceList The Source List that sent the message
+ @param index The index of the child item of *item* to return
+ @param item An item in the data source
+
+ @return The immediate child of *item* at the specified *index*. If *item* is `nil`, then return the top-level item with index of *index*.
+
+ @since Requires the Mac OS X 10.5 SDK or above.
+
+ @see sourceList:numberOfChildrenOfItem:
+ */
 - (id)sourceList:(PXSourceList*)aSourceList child:(NSUInteger)index ofItem:(id)item;
+
+/**
+ @brief Returns a Boolean value indicating whether a given item in the Source List is expandable
+ @discussion An expandable item is one which contains child items, and can be expanded to display these. Additionally, if a group item is always displayed as expanded (denoted by `-sourceList:isGroupAlwaysExpanded:` from the `PXSourceListDelegate` protocol) then you must return `YES` from this method for the given group item.
+
+ @param aSourceList The Source List that sent the message
+ @param item An item in the data source
+
+ @return `YES` if *item* can be expanded, or `NO` otherwise.
+
+ @since Requires the Mac OS X 10.5 SDK or above.
+ */
 - (BOOL)sourceList:(PXSourceList*)aSourceList isItemExpandable:(id)item;
 
 @optional
 - (id)sourceList:(PXSourceList*)aSourceList objectValueForItem:(id)item;
 - (void)sourceList:(PXSourceList*)aSourceList setObjectValue:(id)object forItem:(id)item;
 
+///---------------------------------------------------------------------------------------
+/// @name Working with Badges
+///---------------------------------------------------------------------------------------
 - (BOOL)sourceList:(PXSourceList*)aSourceList itemHasBadge:(id)item;
 - (NSInteger)sourceList:(PXSourceList*)aSourceList badgeValueForItem:(id)item;
 - (NSColor*)sourceList:(PXSourceList*)aSourceList badgeTextColorForItem:(id)item;
 - (NSColor*)sourceList:(PXSourceList*)aSourceList badgeBackgroundColorForItem:(id)item;
 
+///---------------------------------------------------------------------------------------
+/// @name Working with Icons
+///---------------------------------------------------------------------------------------
 - (BOOL)sourceList:(PXSourceList*)aSourceList itemHasIcon:(id)item;
 - (NSImage*)sourceList:(PXSourceList*)aSourceList iconForItem:(id)item;
 
 //The rest of these methods are basically "wrappers" for the NSOutlineViewDataSource methods
+///---------------------------------------------------------------------------------------
+/// @name Supporting Object Persistence
+///---------------------------------------------------------------------------------------
 - (id)sourceList:(PXSourceList*)aSourceList itemForPersistentObject:(id)object;
 - (id)sourceList:(PXSourceList*)aSourceList persistentObjectForItem:(id)item;
 - (void)sourceList:(PXSourceList *)outlineView sortDescriptorsDidChange:(NSArray *)oldDescriptors;
 
+///---------------------------------------------------------------------------------------
+/// @name Supporting Drag and Drop
+///---------------------------------------------------------------------------------------
 - (BOOL)sourceList:(PXSourceList*)aSourceList writeItems:(NSArray *)items toPasteboard:(NSPasteboard *)pboard;
 - (NSDragOperation)sourceList:(PXSourceList*)sourceList validateDrop:(id < NSDraggingInfo >)info proposedItem:(id)item proposedChildIndex:(NSInteger)index;
 - (BOOL)sourceList:(PXSourceList*)aSourceList acceptDrop:(id < NSDraggingInfo >)info item:(id)item childIndex:(NSInteger)index;
 - (NSArray *)sourceList:(PXSourceList*)aSourceList namesOfPromisedFilesDroppedAtDestination:(NSURL *)dropDestination forDraggedItems:(NSArray *)items;
 
-//Drag and drop methods added for 10.7
+///---------------------------------------------------------------------------------------
+/// @name Drag and drop methods for 10.7+
+///---------------------------------------------------------------------------------------
 - (id <NSPasteboardWriting>)sourceList:(PXSourceList *)aSourceList pasteboardWriterForItem:(id)item;
 - (void)sourceList:(PXSourceList *)aSourceList draggingSession:(NSDraggingSession *)session willBeginAtPoint:(NSPoint)screenPoint forItems:(NSArray *)draggedItems;
 - (void)sourceList:(PXSourceList *)aSourceList draggingSession:(NSDraggingSession *)session endedAtPoint:(NSPoint)screenPoint operation:(NSDragOperation)operation;
