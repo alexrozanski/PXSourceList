@@ -63,7 +63,35 @@
 - (BOOL)sourceList:(PXSourceList*)aSourceList isItemExpandable:(id)item;
 
 @optional
+/**
+ @brief Returns the data object associated with a given item
+ @discussion When using the Source List in cell-based mode, returning the text to be displayed for cells representing Group items, the Source List will *not* capitalize the titles so that they display like in iTunes or iCal, such as "LIBRARY". This is to account for edge cases such as words like "iTunes" which would be capitalized as "iTUNES" and so to do this you must pass capitalised titles yourself. It is strongly recommended that text displayed for group items is capitalised, to fit the normal expected style of Source List Group items.
+
+ @param aSourceList The Source List that sent the message
+ @param item An item in the data source
+
+ @return The data object associated with `item`
+
+ @warning This is a required method when using the Source List in cell-based mode.
+
+ @see sourceList:setObjectValue:forItem:
+
+ @since Requires the Mac OS X 10.5 SDK or above.
+ */
 - (id)sourceList:(PXSourceList*)aSourceList objectValueForItem:(id)item;
+
+/**
+ @brief Sets the associated object value of a specified item
+ @discussion This method must be implemented if any items in the Source List are editable.
+
+ @param aSourceList The Source List that sent the message
+ @param object The new object value for the given item
+ @param item An item in the data source
+
+ @see sourceList:objectValueForItem:
+
+ @since Requires the Mac OS X 10.5 SDK or above.
+ */
 - (void)sourceList:(PXSourceList*)aSourceList setObjectValue:(id)object forItem:(id)item;
 
 ///---------------------------------------------------------------------------------------
