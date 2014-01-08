@@ -8,7 +8,6 @@
 //
 
 #import "AppDelegate.h"
-#import "SourceListItem.h"
 
 @interface AppDelegate ()
 
@@ -31,32 +30,32 @@
 	self.sourceListItems = [[NSMutableArray alloc] init];
 	
 	//Set up the "Library" parent item and children
-	SourceListItem *libraryItem = [SourceListItem itemWithTitle:@"LIBRARY" identifier:@"library"];
-	SourceListItem *musicItem = [SourceListItem itemWithTitle:@"Music" identifier:@"music"];
+	PXSourceListItem *libraryItem = [PXSourceListItem itemWithTitle:@"LIBRARY" identifier:@"library"];
+	PXSourceListItem *musicItem = [PXSourceListItem itemWithTitle:@"Music" identifier:@"music"];
 	[musicItem setIcon:[NSImage imageNamed:@"music.png"]];
-	SourceListItem *moviesItem = [SourceListItem itemWithTitle:@"Movies" identifier:@"movies"];
+	PXSourceListItem *moviesItem = [PXSourceListItem itemWithTitle:@"Movies" identifier:@"movies"];
 	[moviesItem setIcon:[NSImage imageNamed:@"movies.png"]];
-	SourceListItem *podcastsItem = [SourceListItem itemWithTitle:@"Podcasts" identifier:@"podcasts"];
+	PXSourceListItem *podcastsItem = [PXSourceListItem itemWithTitle:@"Podcasts" identifier:@"podcasts"];
 	[podcastsItem setIcon:[NSImage imageNamed:@"podcasts.png"]];
-	[podcastsItem setBadgeValue:10];
-	SourceListItem *audiobooksItem = [SourceListItem itemWithTitle:@"Audiobooks" identifier:@"audiobooks"];
+	[podcastsItem setBadgeValue:@10];
+	PXSourceListItem *audiobooksItem = [PXSourceListItem itemWithTitle:@"Audiobooks" identifier:@"audiobooks"];
 	[audiobooksItem setIcon:[NSImage imageNamed:@"audiobooks.png"]];
 	[libraryItem setChildren:[NSArray arrayWithObjects:musicItem, moviesItem, podcastsItem,
 							  audiobooksItem, nil]];
 	
 	//Set up the "Playlists" parent item and children
-	SourceListItem *playlistsItem = [SourceListItem itemWithTitle:@"PLAYLISTS" identifier:@"playlists"];
-	SourceListItem *playlist1Item = [SourceListItem itemWithTitle:@"Playlist1" identifier:@"playlist1"];
+	PXSourceListItem *playlistsItem = [PXSourceListItem itemWithTitle:@"PLAYLISTS" identifier:@"playlists"];
+	PXSourceListItem *playlist1Item = [PXSourceListItem itemWithTitle:@"Playlist1" identifier:@"playlist1"];
 	
 	//Create a second-level group to demonstrate
-	SourceListItem *playlist2Item = [SourceListItem itemWithTitle:@"Playlist2" identifier:@"playlist2"];
-	SourceListItem *playlist3Item = [SourceListItem itemWithTitle:@"Playlist3" identifier:@"playlist3"];
+	PXSourceListItem *playlist2Item = [PXSourceListItem itemWithTitle:@"Playlist2" identifier:@"playlist2"];
+	PXSourceListItem *playlist3Item = [PXSourceListItem itemWithTitle:@"Playlist3" identifier:@"playlist3"];
 	[playlist1Item setIcon:[NSImage imageNamed:@"playlist.png"]];
 	[playlist2Item setIcon:[NSImage imageNamed:@"playlist.png"]];
 	[playlist3Item setIcon:[NSImage imageNamed:@"playlist.png"]];
 	
-	SourceListItem *playlistGroup = [SourceListItem itemWithTitle:@"Playlist Group" identifier:@"playlistgroup"];
-	SourceListItem *playlistGroupItem = [SourceListItem itemWithTitle:@"Child Playlist" identifier:@"childplaylist"];
+	PXSourceListItem *playlistGroup = [PXSourceListItem itemWithTitle:@"Playlist Group" identifier:@"playlistgroup"];
+	PXSourceListItem *playlistGroupItem = [PXSourceListItem itemWithTitle:@"Child Playlist" identifier:@"childplaylist"];
 	[playlistGroup setIcon:[NSImage imageNamed:@"playlistFolder.png"]];
 	[playlistGroupItem setIcon:[NSImage imageNamed:@"playlist.png"]];
 	[playlistGroup setChildren:[NSArray arrayWithObject:playlistGroupItem]];
@@ -118,19 +117,19 @@
 
 - (BOOL)sourceList:(PXSourceList*)aSourceList itemHasBadge:(id)item
 {
-	return [item hasBadge];
+	return !![(PXSourceListItem *)item badgeValue];
 }
 
 
 - (NSInteger)sourceList:(PXSourceList*)aSourceList badgeValueForItem:(id)item
 {
-	return [item badgeValue];
+	return [(PXSourceListItem *)item badgeValue].integerValue;
 }
 
 
 - (BOOL)sourceList:(PXSourceList*)aSourceList itemHasIcon:(id)item
 {
-	return [item hasIcon];
+	return !![item icon];
 }
 
 
