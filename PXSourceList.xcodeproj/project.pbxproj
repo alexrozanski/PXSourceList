@@ -176,7 +176,7 @@
 				D251F6F4187317C000FED7C9 /* PXSourceListTableCellView.m */,
 				D24E1F00187DB323004DCBB0 /* PXSourceListItem.h */,
 				D24E1F01187DB323004DCBB0 /* PXSourceListItem.m */,
-				D2CD7D4A186B02690003E038 /* Private */,
+				D2CD7D4A186B02690003E038 /* Internal */,
 				D21302BA14B9B1DC00AAFF85 /* Supporting Files */,
 			);
 			name = PXSourceList;
@@ -321,7 +321,7 @@
 			name = Icons;
 			sourceTree = "<group>";
 		};
-		D2CD7D4A186B02690003E038 /* Private */ = {
+		D2CD7D4A186B02690003E038 /* Internal */ = {
 			isa = PBXGroup;
 			children = (
 				D2CD7D4B186B0FBC0003E038 /* PXSourceListPrivateConstants.h */,
@@ -330,7 +330,7 @@
 				D2CD7D50186B10FD0003E038 /* PXSourceListRuntimeAdditions.h */,
 				D2CD7D51186B10FD0003E038 /* PXSourceListRuntimeAdditions.m */,
 			);
-			name = Private;
+			name = Internal;
 			sourceTree = "<group>";
 		};
 		D2FF2950187AD30200CFEDD1 /* Model */ = {
