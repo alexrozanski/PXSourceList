@@ -17,7 +17,7 @@
  @warning While it is not mandatory to use `PXSourceListItem` objects in a `PXSourceList` data source, this
  class is generic enough that it should serve most use cases.
  
- @discussion # Basic properties
+ @discussion ### Basic properties
  
  `PXSourceListItem` has been designed to contain properties for the frequently-used information which you need
  from a Source List data source item when implementing the `PXSourceListDelegate` and `PXSourceListDataSource`
@@ -31,7 +31,7 @@
  The existence of these core properties mean that it is unlikely that you should have to create your own
  `PXSourceListItem` subclass.
  
- # Identifying objects
+ ### Identifying objects
  
  `PXSourceListItem`'s API has been designed with being able to easily identify a given from any part of your
  code in mind. This is useful when you obtain an item using one of `NSOutlineView`'s methods or are given
