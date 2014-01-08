@@ -13,16 +13,17 @@
     NSMutableArray *_children;
 }
 
-+ (instancetype)itemWithTitle:(NSString *)title
++ (instancetype)itemWithTitle:(NSString *)title identifier:(NSString *)identifier
 {
-    return [self itemWithTitle:title icon:nil];
+    return [self itemWithTitle:title identifier:identifier icon:nil];
 }
 
-+ (instancetype)itemWithTitle:(NSString *)title icon:(NSImage *)icon
++ (instancetype)itemWithTitle:(NSString *)title identifier:(NSString *)identifier icon:(NSImage *)icon
 {
     PXSourceListItem *item = [[self alloc] init];
 
     item.title = title;
+    item.identifier = identifier;
     item.icon = icon;
 
     return item;

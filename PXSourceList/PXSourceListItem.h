@@ -18,8 +18,8 @@
 @property (strong, nonatomic) NSNumber *badgeValue;
 @property (strong, nonatomic) NSArray *children;
 
-+ (instancetype)itemWithTitle:(NSString *)title;
-+ (instancetype)itemWithTitle:(NSString *)title icon:(NSImage *)icon;
++ (instancetype)itemWithTitle:(NSString *)title identifier:(NSString *)identifier;
++ (instancetype)itemWithTitle:(NSString *)title identifier:(NSString *)identifier icon:(NSImage *)icon;
 + (instancetype)itemWithRepresentedObject:(id)object icon:(NSImage *)icon;
 
 - (void)addChildItem:(PXSourceListItem *)childItem;
