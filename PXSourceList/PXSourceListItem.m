@@ -63,6 +63,11 @@
 
 #pragma mark - Child Convenience Methods
 
+- (BOOL)hasChildren
+{
+    return _children.count > 0;
+}
+
 - (void)addChildItem:(PXSourceListItem *)childItem
 {
     [_children addObject:childItem];

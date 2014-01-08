@@ -22,6 +22,8 @@
 + (instancetype)itemWithTitle:(NSString *)title identifier:(NSString *)identifier icon:(NSImage *)icon;
 + (instancetype)itemWithRepresentedObject:(id)object icon:(NSImage *)icon;
 
+- (BOOL)hasChildren;
+
 - (void)addChildItem:(PXSourceListItem *)childItem;
 - (void)insertChildItem:(PXSourceListItem *)childItem atIndex:(NSUInteger)index;
 - (void)removeChildItem:(PXSourceListItem *)childItem;
