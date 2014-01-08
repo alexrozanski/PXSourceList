@@ -8,7 +8,6 @@
 //
 
 #import "AppDelegate.h"
-#import "SourceListItem.h"
 #import "PhotoCollection.h"
 
 @interface AppDelegate ()
@@ -51,15 +50,15 @@ static NSString * const draggingType = @"SourceListExampleDraggingType";
     [albumImage setTemplate:YES];
 
     // Set up our Source List data model used in the Source List data source methods.
-    SourceListItem *libraryItem = [SourceListItem itemWithTitle:@"LIBRARY" identifier:nil];
-    libraryItem.children = @[[SourceListItem itemWithRepresentedObject:photosCollection icon:photosImage],
-                             [SourceListItem itemWithRepresentedObject:eventsCollection icon:eventsImage],
-                             [SourceListItem itemWithRepresentedObject:peopleCollection icon:peopleImage],
-                             [SourceListItem itemWithRepresentedObject:placesCollection icon:placesImage]];
+    PXSourceListItem *libraryItem = [PXSourceListItem itemWithTitle:@"LIBRARY" identifier:nil];
+    libraryItem.children = @[[PXSourceListItem itemWithRepresentedObject:photosCollection icon:photosImage],
+                             [PXSourceListItem itemWithRepresentedObject:eventsCollection icon:eventsImage],
+                             [PXSourceListItem itemWithRepresentedObject:peopleCollection icon:peopleImage],
+                             [PXSourceListItem itemWithRepresentedObject:placesCollection icon:placesImage]];
 
-    SourceListItem *albumsItem = [SourceListItem itemWithTitle:@"ALBUMS" identifier:nil];
+    PXSourceListItem *albumsItem = [PXSourceListItem itemWithTitle:@"ALBUMS" identifier:nil];
     for (PhotoCollection *collection in self.albums) {
-        [albumsItem addChildItem:[SourceListItem itemWithRepresentedObject:collection icon:albumImage]];
+        [albumsItem addChildItem:[PXSourceListItem itemWithRepresentedObject:collection icon:albumImage]];
     }
 
     [self.sourceListItems addObject:libraryItem];
@@ -75,7 +74,7 @@ static NSString * const draggingType = @"SourceListExampleDraggingType";
     NSImage *albumImage = [NSImage imageNamed:@"album"];
     [albumImage setTemplate:YES];
 
-    SourceListItem *newItem = [SourceListItem itemWithTitle:@"New Album" identifier:nil icon:albumImage];
+    PXSourceListItem *newItem = [PXSourceListItem itemWithTitle:@"New Album" identifier:nil icon:albumImage];
     [self.sourceListItems[1] addChildItem:newItem];
 
     NSUInteger childIndex = [[self.sourceListItems[1] children] indexOfObject:newItem];
@@ -88,8 +87,8 @@ static NSString * const draggingType = @"SourceListExampleDraggingType";
 
 - (IBAction)removeButtonAction:(id)sender
 {
-    SourceListItem *selectedItem = [self.sourceList itemAtRow:self.sourceList.selectedRow];
-    SourceListItem *parentItem = self.sourceListItems[1];
+    PXSourceListItem *selectedItem = [self.sourceList itemAtRow:self.sourceList.selectedRow];
+    PXSourceListItem *parentItem = self.sourceListItems[1];
 
 
     [self.sourceList removeItemsAtIndexes:[NSIndexSet indexSetWithIndex:[parentItem.children indexOfObject:selectedItem]]
@@ -137,7 +136,7 @@ static NSString * const draggingType = @"SourceListExampleDraggingType";
         cellView = [aSourceList makeViewWithIdentifier:@"HeaderCell" owner:nil];
     else
         cellView = [aSourceList makeViewWithIdentifier:@"MainCell" owner:nil];
-    SourceListItem *sourceListItem = item;
+    PXSourceListItem *sourceListItem = item;
 
     // Don't allow us to double-click to edit the title for items in the "Library" group.
     BOOL isTitleEditable = ![[self.sourceListItems[0] children] containsObject:item];
@@ -156,7 +155,7 @@ static NSString * const draggingType = @"SourceListExampleDraggingType";
 
 - (void)sourceListSelectionDidChange:(NSNotification *)notification
 {
-    SourceListItem *selectedItem = [self.sourceList itemAtRow:self.sourceList.selectedRow];
+    PXSourceListItem *selectedItem = [self.sourceList itemAtRow:self.sourceList.selectedRow];
 
     // Only allow us to remove items in the 'albums' group.
     self.removeButton.enabled = [[self.sourceListItems[1] children] containsObject:selectedItem];
@@ -167,18 +166,18 @@ static NSString * const draggingType = @"SourceListExampleDraggingType";
 - (BOOL)sourceList:(PXSourceList*)aSourceList writeItems:(NSArray *)items toPasteboard:(NSPasteboard *)pboard
 {
     // Only allow the items in the 'Albums' group to be moved around.
-    for (SourceListItem *item in items) {
+    for (PXSourceListItem *item in items) {
         if (![[self.sourceListItems[1] children] containsObject:item])
             return NO;
     }
 
     // We're dragging from and to the 'Albums' group.
-    SourceListItem *parentItem = self.sourceListItems[1];
+    PXSourceListItem *parentItem = self.sourceListItems[1];
 
     // For simplicity in this example, put the dragged indexes on the pasteboard. Since we use the representedObject
     // on SourceListItem, we cannot reliably archive it directly.
     NSMutableIndexSet *draggedChildIndexes = [NSMutableIndexSet indexSet];
-    for (SourceListItem *item in items)
+    for (PXSourceListItem *item in items)
         [draggedChildIndexes addIndex:[[parentItem children] indexOfObject:item]];
 
     [pboard declareTypes:@[draggingType] owner:self];
@@ -189,7 +188,7 @@ static NSString * const draggingType = @"SourceListExampleDraggingType";
 
 - (NSDragOperation)sourceList:(PXSourceList*)sourceList validateDrop:(id < NSDraggingInfo >)info proposedItem:(id)item proposedChildIndex:(NSInteger)index
 {
-    SourceListItem *albumsItem = self.sourceListItems[1];
+    PXSourceListItem *albumsItem = self.sourceListItems[1];
 
     // Only allow the items in the 'albums' group to be moved around. It can either be dropped on the group header, or inserted between other child items.
     // It can't be made the child of another item in this group, so the only valid case is when the proposedItem is the 'Albums' group item.
@@ -204,7 +203,7 @@ static NSString * const draggingType = @"SourceListExampleDraggingType";
     NSPasteboard *draggingPasteboard = info.draggingPasteboard;
     NSMutableIndexSet *draggedChildIndexes = [NSKeyedUnarchiver unarchiveObjectWithData:[draggingPasteboard dataForType:draggingType]];
 
-    SourceListItem *parentItem = self.sourceListItems[1];
+    PXSourceListItem *parentItem = self.sourceListItems[1];
     NSMutableArray *draggedItems = [NSMutableArray array];
     [draggedChildIndexes enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL *stop) {
         [draggedItems addObject:[[parentItem children] objectAtIndex:idx]];
