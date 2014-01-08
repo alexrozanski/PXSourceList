@@ -37,8 +37,6 @@
 		D251F6F6187317C000FED7C9 /* PXSourceListTableCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = D251F6F4187317C000FED7C9 /* PXSourceListTableCellView.m */; };
 		D251F6FA1873240E00FED7C9 /* SourceListIcons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D251F6F91873240E00FED7C9 /* SourceListIcons.xcassets */; };
 		D263123D186EF9F00036501C /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D263123C186EF9F00036501C /* Cocoa.framework */; };
-		D263126E186EFBB30036501C /* SourceListItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D263126D186EFBB30036501C /* SourceListItem.m */; };
-		D263126F186EFBB30036501C /* SourceListItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D263126D186EFBB30036501C /* SourceListItem.m */; };
 		D2631272186EFBBF0036501C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D2631271186EFBBF0036501C /* AppDelegate.m */; };
 		D2631274186EFBC50036501C /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = D2631273186EFBC50036501C /* MainMenu.xib */; };
 		D263127B186EFBD20036501C /* audiobooks.png in Resources */ = {isa = PBXBuildFile; fileRef = D2631275186EFBD20036501C /* audiobooks.png */; };
@@ -103,8 +101,6 @@
 		D263123B186EF9F00036501C /* ViewBasedSourceList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ViewBasedSourceList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D263123C186EF9F00036501C /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		D2631257186EF9F10036501C /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		D263126C186EFBB30036501C /* SourceListItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SourceListItem.h; path = Examples/SharedCode/SourceListItem.h; sourceTree = "<group>"; };
-		D263126D186EFBB30036501C /* SourceListItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SourceListItem.m; path = Examples/SharedCode/SourceListItem.m; sourceTree = "<group>"; };
 		D2631270186EFBBF0036501C /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = Examples/CellBasedSourceList/AppDelegate.h; sourceTree = "<group>"; };
 		D2631271186EFBBF0036501C /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = Examples/CellBasedSourceList/AppDelegate.m; sourceTree = "<group>"; };
 		D2631273186EFBC50036501C /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MainMenu.xib; path = Examples/CellBasedSourceList/MainMenu.xib; sourceTree = "<group>"; };
@@ -262,7 +258,6 @@
 			children = (
 				D2631236186EF9CB0036501C /* View-based Source List */,
 				D21C599D186EF84900A8ECB3 /* Cell-based Source List */,
-				D263126A186EFAFE0036501C /* Shared Code */,
 			);
 			name = "Example Projects";
 			sourceTree = "<group>";
@@ -311,15 +306,6 @@
 			);
 			name = "Supporting Files";
 			path = ViewBasedSourceList;
-			sourceTree = "<group>";
-		};
-		D263126A186EFAFE0036501C /* Shared Code */ = {
-			isa = PBXGroup;
-			children = (
-				D263126C186EFBB30036501C /* SourceListItem.h */,
-				D263126D186EFBB30036501C /* SourceListItem.m */,
-			);
-			name = "Shared Code";
 			sourceTree = "<group>";
 		};
 		D27B7D2710E0C925004D7DBC /* Icons */ = {
@@ -535,7 +521,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D263126E186EFBB30036501C /* SourceListItem.m in Sources */,
 				D2631282186EFBDC0036501C /* main.m in Sources */,
 				D2631272186EFBBF0036501C /* AppDelegate.m in Sources */,
 			);
@@ -545,7 +530,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D263126F186EFBB30036501C /* SourceListItem.m in Sources */,
 				D2631293186EFC830036501C /* main.m in Sources */,
 				D2631289186EFC4E0036501C /* AppDelegate.m in Sources */,
 				D2FF2953187AD32000CFEDD1 /* PhotoCollection.m in Sources */,
