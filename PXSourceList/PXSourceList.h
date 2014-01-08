@@ -23,6 +23,22 @@
 
  Like `NSOutlineView` and `NSTableView`, a `PXSourceList` object does not store its own data, but retrieves values from a weakly-referenced data source (see the `PXSourceListDataSource` protocol).
  A `PXSourceList` object can also have a delegate, to which it sends messages when certain events occur (see the `PXSourceListDelegate` protocol and the `NSObject(PXSourceListNotifications)` category for more information).
+ 
+ ### Cell-based vs. view-based mode
+ 
+ Like `NSTableView` and `NSOutlineView`, `PXSourceList` can operate in both cell-based and view-based mode in
+ relation to how you provide content to be displayed.
+ 
+ There are several classes provided alongside `PXSourceList` which make providing content when using
+ `PXSourceList` in view-based mode a lot easier:
+ 
+ - `PXSourceListTableCellView`: an `NSTableCellView` subclass which contains a `badgeView` outlet which can be
+   hooked up to a `PXSourceListBadgeView` instance (see below) in Interface Builder. Along with `NSTableCellView`
+   and its `textField` and `imageView` properties, `PXSourceListTableCellView` is a table cell view class which
+   allows you to display an icon, title and a badge for each item in the Source List.
+ - `PXSourceListBadgeView`: a view class for displaying badges, which can be used in your table cell views and
+   configured to display a particular number. Additionally, it can be configured to use custom text and
+   background colours, although it will use the 'regular' Source List styling by default.
 
  */
 @interface PXSourceList: NSOutlineView <NSOutlineViewDelegate, NSOutlineViewDataSource>
