@@ -60,6 +60,20 @@
  Instead, you should set up the icon for each item in `-sourceList:viewForItem:` using the `imageView` property
  of `NSTableCellView`, and the `badgeView` property if using `PXSourceListTableCellView` objects to display
  your content.
+ 
+ ### Creating a data source model with `PXSourceListItem`
+ 
+ Like `NSOutlineView`, `PXSourceList` queries its data source to build up a tree-like structure of content using
+ `-sourceList:numberOfChildrenOfItem:` and `-sourceList:child:ofItem:`. Often it is practical to store the structure
+ of your Source List content in a tree structure which can then be easily returned the the Source List using
+ these two data source methods.
+ 
+ To help with this, the generic `PXSourceListItem` class has been included with `PXSourceList` which can be
+ used to build this tree structure. It declares properties such as `title` and `icon` which are useful in
+ storing display information which can then be used in `-sourceList:viewForItem:` or `-sourceList:objectValueForItem:`,
+ as well as a `children` property with convenience methods for mutating its list of children. Take a look at the
+ `PXSourceListItem` documentation for more information, as well as the cell-based and view-based example
+ projects included for examples of how to use this class in your own projects.
 
  */
 @interface PXSourceList: NSOutlineView <NSOutlineViewDelegate, NSOutlineViewDataSource>
