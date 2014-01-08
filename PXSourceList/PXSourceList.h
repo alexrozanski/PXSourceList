@@ -35,13 +35,31 @@
  There are several classes provided alongside `PXSourceList` which make providing content when using
  `PXSourceList` in view-based mode a lot easier:
  
- - `PXSourceListTableCellView`: an `NSTableCellView` subclass which contains a `badgeView` outlet which can be
+ - `PXSourceListTableCellView`: an `NSTableCellView` subclass which exposes a `badgeView` outlet that can be
    hooked up to a `PXSourceListBadgeView` instance (see below) in Interface Builder. Along with `NSTableCellView`
-   and its `textField` and `imageView` properties, `PXSourceListTableCellView` is a table cell view class which
-   allows you to display an icon, title and a badge for each item in the Source List.
+   and its `textField` and `imageView` properties, `PXSourceListTableCellView` is an `NSTableCellView` subclass which
+   allows you to easily display an icon, title and a badge for each item in the Source List.
  - `PXSourceListBadgeView`: a view class for displaying badges, which can be used in your table cell views and
-   configured to display a particular number. Additionally, it can be configured to use custom text and
-   background colours, although it will use the 'regular' Source List styling by default.
+   configured to display a particular badge number. Additionally, it can be configured to use custom text and
+   background colours, although it will use the regular Source List styling of light text on a grey-blue background
+   by default.
+ 
+ When using `PXSourceList` in cell-based mode, it can manage drawing of icons and badges for you through custom
+ drawing. However, when using `PXSourceList` in view-based mode, it can't do this directly, because cell views
+ are configured independently in Interface Builder (or programmatically and set up) and configured in the
+ `PXSourceListDataSource` method, `-sourceList:viewForItem:`. Of particular note, the following
+ `PXSourceListDataSource` methods are not used by `PXSourceList` when operating in view-based mode.
+ 
+ - `-sourceList:itemHasBadge:`
+ - `-sourceList:badgeValueForItem:`
+ - `-sourceList:badgeTextColorForItem:`
+ - `-sourceList:badgeBackgroundColorForItem:`
+ - `-sourceList:itemHasIcon:`
+ - `-sourceList:iconForItem:`
+ 
+ Instead, you should set up the icon for each item in `-sourceList:viewForItem:` using the `imageView` property
+ of `NSTableCellView`, and the `badgeView` property if using `PXSourceListTableCellView` objects to display
+ your content.
 
  */
 @interface PXSourceList: NSOutlineView <NSOutlineViewDelegate, NSOutlineViewDataSource>
