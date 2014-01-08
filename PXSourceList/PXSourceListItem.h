@@ -53,7 +53,6 @@
 @property (weak, nonatomic) id representedObject;
 @property (strong, nonatomic) NSString *identifier;
 @property (strong, nonatomic) NSNumber *badgeValue;
-@property (strong, nonatomic) NSArray *children;
 
 ///---------------------------------------------------------------------------------------
 /// @name Convenience initialisers
@@ -104,13 +103,123 @@
 ///---------------------------------------------------------------------------------------
 /// @name Working with child items
 ///---------------------------------------------------------------------------------------
+/**
+ @brief Returns the receiver's children.
+
+ @warning This property is backed by an `NSMutableArray` since an item's children *are* mutable. The getter for
+ this property returns a copied array for safety, so this getter should not be called excessively.
+
+ @see hasChildren
+
+ @since Requires the Mac OS X 10.7 SDK or above.
+ */
+@property (strong, nonatomic) NSArray *children;
+
+/**
+ @brief Returns whether the receiver has any child items.
+ @discussion This is faster than calling `-children` on the receiver then checking the number of items in the array
+ because of how this getter is implemented. See `-children` for more information.
+
+ @see children
+
+ @since Requires the Mac OS X 10.7 SDK or above.
+ */
 - (BOOL)hasChildren;
 
+/**
+ @brief Adds an item to the receiver's array of child items.
+ @discussion Adds *item* to the end of the receiver's array of child items.
+ 
+ This is a convenience method rather than having to call `-children` on the receiver, create a mutable copy
+ and then mutate this array before setting it back on the receiver.
+ 
+ @param childItem An item
+
+ @see insertChildItem:atIndex:
+
+ @since Requires the Mac OS X 10.7 SDK or above.
+ */
 - (void)addChildItem:(PXSourceListItem *)childItem;
+
+/**
+ @brief Inserts an item to the receiver's array of child items at a given index.
+ @discussion Inserts *item* at *index* in the receiver's array of child items.
+ 
+ This is a convenience method rather than having to call `-children` on the receiver, create a mutable copy
+ and then mutate this array before setting it back on the receiver.
+ 
+ @param childItem An item
+ @param index An index
+
+ @see addChildItem:
+ @see insertChildItems:atIndexes:
+
+ @since Requires the Mac OS X 10.7 SDK or above.
+ */
 - (void)insertChildItem:(PXSourceListItem *)childItem atIndex:(NSUInteger)index;
+
+/**
+ @brief Removes an item from the receiver's array of child items.
+ @discussion Removes *item* from the receiver's array of child items.
+ 
+ This is a convenience method rather than having to call `-children` on the receiver, create a mutable copy
+ and then mutate this array before setting it back on the receiver.
+ 
+ @param childItem An item
+
+ @see removeChildItemAtIndex:
+ @see removeChildItems:
+
+ @since Requires the Mac OS X 10.7 SDK or above.
+ */
 - (void)removeChildItem:(PXSourceListItem *)childItem;
+
+/**
+ @brief Removes the item at the given index from the receiver's array of child items.
+ @discussion Removes the item at the given *index* from the receiver's array of child items.
+ 
+ This is a convenience method rather than having to call `-children` on the receiver, create a mutable copy
+ and then mutate this array before setting it back on the receiver.
+ 
+ @param index An integer representing an index in the receiver's array of children
+
+ @see removeChildItem:
+ @see removeChildItems:
+
+ @since Requires the Mac OS X 10.7 SDK or above.
+ */
 - (void)removeChildItemAtIndex:(NSUInteger)index;
+
+/**
+ @brief Removes the items in the given array from the receiver's array of child items.
+ @discussion Removes all of the items in *items* from the receiver's array of children.
+ 
+ This is a convenience method rather than having to call `-children` on the receiver, create a mutable copy
+ and then mutate this array before setting it back on the receiver.
+ 
+ @param items An array of `PXSourceListItem` objects
+
+ @see removeChildItem:
+ @see removeChildItemAtIndex:
+
+ @since Requires the Mac OS X 10.7 SDK or above.
+ */
 - (void)removeChildItems:(NSArray *)items;
+
+/**
+ @brief Inserts the given items into the receiver's array of child items at the given indexes.
+ @discussion Inserts all of the items in *items* to the receiver's array of children at the given *indexes*.
+ 
+ This is a convenience method rather than having to call `-children` on the receiver, create a mutable copy
+ and then mutate this array before setting it back on the receiver.
+ 
+ @param items An array of `PXSourceListItem` objects
+ @param indexes The indexes to insert the child items at
+
+ @see insertChildItem:atIndex:
+
+ @since Requires the Mac OS X 10.7 SDK or above.
+ */
 - (void)insertChildItems:(NSArray *)items atIndexes:(NSIndexSet *)indexes;
 
 @end
