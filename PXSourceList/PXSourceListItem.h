@@ -58,8 +58,47 @@
 ///---------------------------------------------------------------------------------------
 /// @name Convenience initialisers
 ///---------------------------------------------------------------------------------------
+/** Creates and returns an item with the given parameters.
+
+ @param title A title.
+ @param identifier An identifier.
+
+ @return An item initialised with the given parameters.
+ 
+ @see itemWithTitle:identifier:icon:
+ @see itemWithRepresentedObject:icon:
+ 
+ @since Requires the Mac OS X 10.7 SDK or above.
+ */
 + (instancetype)itemWithTitle:(NSString *)title identifier:(NSString *)identifier;
+
+/** Creates and returns an item with the given parameters.
+
+ @param title A title.
+ @param identifier An identifier.
+ @param icon An icon.
+
+ @return An item initialised with the given parameters.
+ 
+ @see itemWithTitle:identifier:
+ @see itemWithRepresentedObject:icon:
+ 
+ @since Requires the Mac OS X 10.7 SDK or above.
+ */
 + (instancetype)itemWithTitle:(NSString *)title identifier:(NSString *)identifier icon:(NSImage *)icon;
+
+/** Creates and returns an item with the given parameters.
+
+ @param object An object.
+ @param icon An icon.
+
+ @return An item initialised with the given parameters.
+ 
+ @see itemWithTitle:identifier:
+ @see itemWithTitle:identifier:icon:
+ 
+ @since Requires the Mac OS X 10.7 SDK or above.
+ */
 + (instancetype)itemWithRepresentedObject:(id)object icon:(NSImage *)icon;
 
 ///---------------------------------------------------------------------------------------
