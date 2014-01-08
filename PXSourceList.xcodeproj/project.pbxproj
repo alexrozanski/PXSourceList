@@ -31,6 +31,8 @@
 		D23A175B1836AD790027F0D0 /* PXSourceListBadgeView.m in Sources */ = {isa = PBXBuildFile; fileRef = D23A17581836AD790027F0D0 /* PXSourceListBadgeView.m */; };
 		D23A175E1836AE280027F0D0 /* PXSourceListBadgeCell.h in Headers */ = {isa = PBXBuildFile; fileRef = D23A175C1836AE280027F0D0 /* PXSourceListBadgeCell.h */; };
 		D23A17601836AE280027F0D0 /* PXSourceListBadgeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D23A175D1836AE280027F0D0 /* PXSourceListBadgeCell.m */; };
+		D24E1F02187DB323004DCBB0 /* PXSourceListItem.h in Headers */ = {isa = PBXBuildFile; fileRef = D24E1F00187DB323004DCBB0 /* PXSourceListItem.h */; };
+		D24E1F03187DB323004DCBB0 /* PXSourceListItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D24E1F01187DB323004DCBB0 /* PXSourceListItem.m */; };
 		D251F6F5187317C000FED7C9 /* PXSourceListTableCellView.h in Headers */ = {isa = PBXBuildFile; fileRef = D251F6F3187317C000FED7C9 /* PXSourceListTableCellView.h */; };
 		D251F6F6187317C000FED7C9 /* PXSourceListTableCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = D251F6F4187317C000FED7C9 /* PXSourceListTableCellView.m */; };
 		D251F6FA1873240E00FED7C9 /* SourceListIcons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D251F6F91873240E00FED7C9 /* SourceListIcons.xcassets */; };
@@ -93,6 +95,8 @@
 		D23A17581836AD790027F0D0 /* PXSourceListBadgeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PXSourceListBadgeView.m; path = PXSourceList/PXSourceListBadgeView.m; sourceTree = "<group>"; };
 		D23A175C1836AE280027F0D0 /* PXSourceListBadgeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PXSourceListBadgeCell.h; path = PXSourceList/PXSourceListBadgeCell.h; sourceTree = "<group>"; };
 		D23A175D1836AE280027F0D0 /* PXSourceListBadgeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PXSourceListBadgeCell.m; path = PXSourceList/PXSourceListBadgeCell.m; sourceTree = "<group>"; };
+		D24E1F00187DB323004DCBB0 /* PXSourceListItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PXSourceListItem.h; path = PXSourceList/PXSourceListItem.h; sourceTree = "<group>"; };
+		D24E1F01187DB323004DCBB0 /* PXSourceListItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PXSourceListItem.m; path = PXSourceList/PXSourceListItem.m; sourceTree = "<group>"; };
 		D251F6F3187317C000FED7C9 /* PXSourceListTableCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PXSourceListTableCellView.h; path = PXSourceList/PXSourceListTableCellView.h; sourceTree = "<group>"; };
 		D251F6F4187317C000FED7C9 /* PXSourceListTableCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PXSourceListTableCellView.m; path = PXSourceList/PXSourceListTableCellView.m; sourceTree = "<group>"; };
 		D251F6F91873240E00FED7C9 /* SourceListIcons.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = SourceListIcons.xcassets; path = Examples/ViewBasedSourceList/SourceListIcons.xcassets; sourceTree = "<group>"; };
@@ -174,6 +178,8 @@
 				D23A175D1836AE280027F0D0 /* PXSourceListBadgeCell.m */,
 				D251F6F3187317C000FED7C9 /* PXSourceListTableCellView.h */,
 				D251F6F4187317C000FED7C9 /* PXSourceListTableCellView.m */,
+				D24E1F00187DB323004DCBB0 /* PXSourceListItem.h */,
+				D24E1F01187DB323004DCBB0 /* PXSourceListItem.m */,
 				D2CD7D4A186B02690003E038 /* Private */,
 				D21302BA14B9B1DC00AAFF85 /* Supporting Files */,
 			);
@@ -357,6 +363,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D24E1F02187DB323004DCBB0 /* PXSourceListItem.h in Headers */,
 				D2CD7D4D186B0FBC0003E038 /* PXSourceListPrivateConstants.h in Headers */,
 				D251F6F5187317C000FED7C9 /* PXSourceListTableCellView.h in Headers */,
 				D23A175E1836AE280027F0D0 /* PXSourceListBadgeCell.h in Headers */,
@@ -516,6 +523,7 @@
 			files = (
 				D23A17601836AE280027F0D0 /* PXSourceListBadgeCell.m in Sources */,
 				D2CD7D49186B02630003E038 /* PXSourceListDelegateDataSourceProxy.m in Sources */,
+				D24E1F03187DB323004DCBB0 /* PXSourceListItem.m in Sources */,
 				D23A175B1836AD790027F0D0 /* PXSourceListBadgeView.m in Sources */,
 				D213027E14B9AFE200AAFF85 /* PXSourceList.m in Sources */,
 				D2CD7D54186B10FD0003E038 /* PXSourceListRuntimeAdditions.m in Sources */,
