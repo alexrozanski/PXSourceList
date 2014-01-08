@@ -11,6 +11,7 @@
 
 #import "PXSourceListDelegate.h"
 #import "PXSourceListDataSource.h"
+#import "PXSourceListItem.h"
 #import "PXSourceListBadgeView.h"
 #import "PXSourceListTableCellView.h"
 
