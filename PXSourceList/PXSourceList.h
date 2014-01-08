@@ -17,12 +17,15 @@
 
 /**
 
- `PXSourceList` is a subclass of `NSOutlineView` that uses 'Source List' styling similar to that used by the sidebars in applications such as iTunes, Mail and iCal.
+ `PXSourceList` is an `NSOutlineView` subclass that uses 'Source List' styling similar to that used by the
+ sidebar in applications such as iTunes and Mail.app.
 
  Unlike `NSOutlineView`, `PXSourceList` objects operate with only one column and do not display a header.
 
- Like `NSOutlineView` and `NSTableView`, a `PXSourceList` object does not store its own data, but retrieves values from a weakly-referenced data source (see the `PXSourceListDataSource` protocol).
- A `PXSourceList` object can also have a delegate, to which it sends messages when certain events occur (see the `PXSourceListDelegate` protocol and the `NSObject(PXSourceListNotifications)` category for more information).
+ Like `NSOutlineView` and `NSTableView`, a `PXSourceList` object does not store its own data, but retrieves
+ values from a weakly-referenced data source (see the `PXSourceListDataSource` protocol). A `PXSourceList`
+ object can also have a delegate, to which it sends messages when certain events occur (see the
+ `PXSourceListDelegate` protocol and the `NSObject(PXSourceListNotifications)` category for more information).
  
  ### Cell-based vs. view-based mode
  
