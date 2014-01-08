@@ -9,6 +9,11 @@
 
 #import <Cocoa/Cocoa.h>
 
+/* This is the cell which backs drawing done by PXSourceListBadgeView, and is used for drawing badges
+   when using PXSourceList in cell-based mode.
+ 
+   You shouldn't need to interact with this class directly.
+ */
 @interface PXSourceListBadgeCell : NSCell
 
 @property (strong, nonatomic) NSColor *textColor;
