@@ -570,13 +570,6 @@ NSString * const PXSLDeleteKeyPressedOnRowsNotification = @"PXSourceListDeleteKe
 	return YES;
 }
 
-- (void)outlineView:(NSOutlineView *)outlineView willDisplayCell:(id)cell forTableColumn:(NSTableColumn *)tableColumn item:(id)item
-{
-	if([self.delegateDataSourceProxy respondsToSelector:@selector(sourceList:willDisplayCell:forItem:)]) {
-		[self.delegateDataSourceProxy sourceList:self willDisplayCell:cell forItem:item];
-	}
-}
-
 - (BOOL)outlineView:(NSOutlineView *)outlineView shouldSelectItem:(id)item
 {
 	//Make sure that the item isn't a group as they can't be selected
