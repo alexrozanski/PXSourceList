@@ -578,7 +578,7 @@ NSString * const PXSLDeleteKeyPressedOnRowsNotification = @"PXSourceListDeleteKe
 }
 
 - (BOOL)outlineView:(NSOutlineView *)outlineView shouldSelectItem:(id)item
-{	
+{
 	//Make sure that the item isn't a group as they can't be selected
 	if(![self isGroupItem:item]) {		
 		if([self.delegateDataSourceProxy respondsToSelector:@selector(sourceList:shouldSelectItem:)]) {
@@ -590,26 +590,6 @@ NSString * const PXSLDeleteKeyPressedOnRowsNotification = @"PXSourceListDeleteKe
 	}
 	
 	return YES;
-}
-
-
-- (NSIndexSet *)outlineView:(NSOutlineView *)outlineView selectionIndexesForProposedSelection:(NSIndexSet *)proposedSelectionIndexes
-{	
-	//The outline view will try to select the first row if -[allowsEmptySelection:] is set to NO – if this is a group row
-	//stop it from doing so and leave it to our implementation of-[reloadData] which will select the first non-group row
-	//for us.
-	if([self numberOfSelectedRows]==0) {
-		if([self isGroupItem:[self itemAtRow:[proposedSelectionIndexes firstIndex]]]) {
-			return [NSIndexSet indexSet];
-		}
-	}
-	
-	if([self.delegateDataSourceProxy respondsToSelector:@selector(sourceList:selectionIndexesForProposedSelection:)]) {
-		return [self.delegateDataSourceProxy sourceList:self selectionIndexesForProposedSelection:proposedSelectionIndexes];
-	}
-	
-	//Since we implement this method, something must be returned to the outline view
-	return proposedSelectionIndexes;
 }
 
 - (BOOL)outlineView:(NSOutlineView *)outlineView shouldEditTableColumn:(NSTableColumn *)tableColumn item:(id)item
