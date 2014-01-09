@@ -555,47 +555,31 @@ NSString * const PXSLDeleteKeyPressedOnRowsNotification = @"PXSourceListDeleteKe
 
 - (BOOL)outlineView:(NSOutlineView *)outlineView shouldCollapseItem:(id)item
 {
-	//Make sure the item isn't displayed as always expanded
-	if([self isGroupItem:item])
-	{
-		if([self isGroupAlwaysExpanded:item]) {
-			return NO;
-		}
-	}
+	// Make sure the item isn't displayed as always expanded
+	if([self isGroupItem:item] && [self isGroupAlwaysExpanded:item])
+        return NO;
 	
-	if([self.delegateDataSourceProxy respondsToSelector:@selector(sourceList:shouldCollapseItem:)]) {
+	if([self.delegateDataSourceProxy respondsToSelector:@selector(sourceList:shouldCollapseItem:)])
 		return [self.delegateDataSourceProxy sourceList:self shouldCollapseItem:item];
-	}
 	
 	return YES;
 }
 
 - (BOOL)outlineView:(NSOutlineView *)outlineView shouldSelectItem:(id)item
 {
-	//Make sure that the item isn't a group as they can't be selected
-	if(![self isGroupItem:item]) {		
-		if([self.delegateDataSourceProxy respondsToSelector:@selector(sourceList:shouldSelectItem:)]) {
-			return [self.delegateDataSourceProxy sourceList:self shouldSelectItem:item];
-		}
-	}
-	else {
-		return NO;
-	}
-	
-	return YES;
+	// Make sure that the item isn't a group as they can't be selected
+	if(![self isGroupItem:item] && [self.delegateDataSourceProxy respondsToSelector:@selector(sourceList:shouldSelectItem:)])
+        return [self.delegateDataSourceProxy sourceList:self shouldSelectItem:item];
+
+	return ![self isGroupItem:item];
 }
 
 - (BOOL)outlineView:(NSOutlineView *)outlineView shouldEditTableColumn:(NSTableColumn *)tableColumn item:(id)item
 {
-	//Group titles can't be edited
-	if([self isGroupItem:item])
-		return NO;
-	
-	if([self.delegateDataSourceProxy respondsToSelector:@selector(sourceList:shouldEditItem:)]) {
+	if(![self isGroupItem:item] && [self.delegateDataSourceProxy respondsToSelector:@selector(sourceList:shouldEditItem:)])
 		return [self.delegateDataSourceProxy sourceList:self shouldEditItem:item];
-	}
 	
-	return YES;
+	return ![self isGroupItem:item];
 }
 
 - (BOOL)outlineView:(NSOutlineView *)outlineView isGroupItem:(id)item
