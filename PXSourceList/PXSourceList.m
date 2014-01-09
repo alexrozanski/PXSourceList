@@ -570,18 +570,6 @@ NSString * const PXSLDeleteKeyPressedOnRowsNotification = @"PXSourceListDeleteKe
 	return YES;
 }
 
-- (NSCell *)outlineView:(NSOutlineView *)outlineView dataCellForTableColumn:(NSTableColumn *)tableColumn item:(id)item
-{
-	if([self.delegateDataSourceProxy respondsToSelector:@selector(sourceList:dataCellForItem:)]) {
-		return [self.delegateDataSourceProxy sourceList:self dataCellForItem:item];
-	}
-	
-	NSInteger row = [self rowForItem:item];
-	
-	//Return the default table column
-	return [[[self tableColumns] objectAtIndex:0] dataCellForRow:row];
-}
-
 - (void)outlineView:(NSOutlineView *)outlineView willDisplayCell:(id)cell forTableColumn:(NSTableColumn *)tableColumn item:(id)item
 {
 	if([self.delegateDataSourceProxy respondsToSelector:@selector(sourceList:willDisplayCell:forItem:)]) {
