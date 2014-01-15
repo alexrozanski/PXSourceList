@@ -46,3 +46,17 @@ NSArray *px_methodNamesForProtocol(Protocol *protocol)
 
     return methodNames;
 }
+
+struct objc_method_description px_methodDescriptionForProtocolMethod(Protocol *protocol, SEL selector)
+{
+    struct objc_method_description description = {NULL, NULL};
+
+    // We have 4 permutations to check for.
+    for (NSUInteger i = 0; i < 4; ++i) {
+        description = protocol_getMethodDescription(protocol, selector, (i / 2) % 2, i % 2);
+        if (description.types != NULL && description.name != NULL)
+            break;
+    }
+
+    return description;
+}

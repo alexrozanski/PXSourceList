@@ -54,9 +54,6 @@ static NSArray * __fastPathForwardingDataSourceMethods = nil;
 
 - (id)initWithSourceList:(PXSourceList *)sourceList
 {
-    if (!(self = [super init]))
-        return nil;
-
     _sourceList = sourceList;
 
     return self;
@@ -120,9 +117,35 @@ static NSArray * __fastPathForwardingDataSourceMethods = nil;
     NSDictionary *forwardingInformation = [[self class] forwardingInformationForSelector:aSelector];
 
     if(!forwardingObject || !forwardingInformation)
-        return [super respondsToSelector:aSelector];
+        return NO;
 
     return [forwardingObject respondsToSelector:NSSelectorFromString(forwardingInformation[forwardingMapForwardingMethodNameKey])];
+}
+
+- (BOOL)conformsToProtocol:(Protocol *)protocol
+{
+    return class_conformsToProtocol(object_getClass(self), protocol);
+}
+
+- (NSMethodSignature *)methodSignatureForSelector:(SEL)aSelector
+{
+    NSString *methodName = NSStringFromSelector(aSelector);
+
+    struct objc_method_description description = {NULL, NULL};
+
+    if ([__fastPathForwardingDelegateMethods containsObject:methodName])
+        description = px_methodDescriptionForProtocolMethod(@protocol(PXSourceListDelegate), aSelector);
+    else if ([__fastPathForwardingDataSourceMethods containsObject:methodName])
+        description = px_methodDescriptionForProtocolMethod(@protocol(PXSourceListDataSource), aSelector);
+    else if ([__outlineViewDelegateMethods containsObject:methodName])
+        description = px_methodDescriptionForProtocolMethod(@protocol(NSOutlineViewDelegate), aSelector);
+    else if ([__outlineViewDataSourceMethods containsObject:methodName])
+        description = px_methodDescriptionForProtocolMethod(@protocol(NSOutlineViewDataSource), aSelector);
+
+    if (description.name == NULL && description.types == NULL)
+        return nil;
+
+    return [NSMethodSignature signatureWithObjCTypes:description.types];
 }
 
 - (void)forwardInvocation:(NSInvocation *)anInvocation
