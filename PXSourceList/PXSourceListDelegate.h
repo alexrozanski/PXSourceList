@@ -14,7 +14,7 @@
 /**
  The `PXSourceListDelegate` protocol defines methods that can be implemented by delegates of `PXSourceList` objects.
 
- Most of the methods defined by this protocol are analagous to those declared by `NSOutlineViewDelegate`, but are prefixed by `sourceList:` instead of `outlineView:`. Several methods differ to those declared on `NSOutlineViewDelegate` in that they don't have an `NSTableColumn` parameter since `PXSourceList` works implicitly with only one table column.
+ Most of the methods defined by this protocol are analagous to those declared by `NSOutlineViewDelegate`, but are prefixed by "sourceList:" instead of "outlineView:". Several methods differ to those declared on `NSOutlineViewDelegate` in that they don't have an `NSTableColumn` parameter since `PXSourceList` works implicitly with only one table column.
  */
 @protocol PXSourceListDelegate <NSObject>
 
@@ -102,13 +102,82 @@
  */
 - (void)sourceList:(PXSourceList *)aSourceList didRemoveRowView:(NSTableRowView *)rowView forRow:(NSInteger)row;
 
+/**
+ @brief Returns a Boolean value indicating whether a given item should be selected.
+ @discussion This method is analagous to `-outlineView:shouldSelectItem:` declared on `NSOutlineViewDelegate`. See the documentation for this method for more information.
+
+ @param aSourceList The Source List that sent the message
+ @param item An item in the data source
+
+ @since Requires PXSourceList 0.8 or above.
+ */
 - (BOOL)sourceList:(PXSourceList*)aSourceList shouldSelectItem:(id)item;
+
+/**
+ @brief Returns the indexes that should be selected for a user-initiated selection.
+ @discussion This method is analagous to `-outlineView:selectionIndexesForProposedSelection:` declared on `NSOutlineViewDelegate`. See the documentation for this method for more information.
+
+ @param aSourceList The Source List that sent the message
+ @param proposedSelectionIndexes The proposed indexes of rows that should be selected
+
+ @since Requires PXSourceList 0.8 or above.
+ */
 - (NSIndexSet*)sourceList:(PXSourceList*)aSourceList selectionIndexesForProposedSelection:(NSIndexSet *)proposedSelectionIndexes;
 
+/**
+ @brief Returns the tooltip string that should be displayed for a given cell.
+ @discussion This method is analagous to `-outlineView:toolTipForCell:rect:tableColumn:item:mouseLocation:` declared on `NSOutlineViewDelegate`, although it doesn't pass an `NSTableColumn` parameter as `PXSourceList` implicitly only uses one table column. See the documentation for `-outlineView:toolTipForCell:rect:tableColumn:item:mouseLocation:` for more information.
+
+ @param sourceList The Source List that sent the message.
+ @param cell The cell to return the tooltip for.
+ @param rect The proposed active area of the tooltip.
+ @param item The item in the data source to display the tooltip for.
+ @param mouseLocation The current mouse location in view coordinates.
+
+ @since Requires PXSourceList 2.0.0 or above.
+ */
 - (NSString *)sourceList:(PXSourceList *)sourceList toolTipForCell:(NSCell *)cell rect:(NSRectPointer)rect item:(id)item mouseLocation:(NSPoint)mouseLocation;
 
+/**
+ @brief Returns the string that is used for type selection for a given item.
+ @discussion This method is analagous to `-outlineView:typeSelectStringForTableColumn:item:` declared on `NSOutlineViewDelegate`, although it doesn't pass an `NSTableColumn` parameter as `PXSourceList` implicitly only uses one table column. See the documentation for `-outlineView:typeSelectStringForTableColumn:item:` for more information.
+
+ @param sourceList The Source List that sent the message.
+ @param item The item to generate the type selection string for.
+ 
+ @return The string value used for type selection of *item*.
+
+ @since Requires PXSourceList 2.0.0 or above.
+ */
 - (NSString *)sourceList:(PXSourceList *)sourceList typeSelectStringForItem:(id)item;
+
+/**
+ @brief Returns the first item that matches the given search string from within the given range.
+ @discussion This method is analagous to `-outlineView:nextTypeSelectMatchFromItem:toItem:forString:` declared on `NSOutlineViewDelegate`. See the documentation for this method for more information.
+
+ @param sourceList The Source List that sent the message.
+ @param startItem The first item to search.
+ @param endItem The item before which to stop searching.
+ @param searchString The string to search.
+ 
+ @return The first item in the *startItem*--*endItem* range which matches *searchString*, or `nil` if there is no match.
+
+ @since Requires PXSourceList 2.0.0 or above.
+ */
 - (id)sourceList:(PXSourceList *)sourceList nextTypeSelectMatchFromItem:(id)startItem toItem:(id)endItem forString:(NSString *)searchString;
+
+/**
+ @brief Returns a Boolean value which indicates whether type select should proceed for a given event and search string.
+ @discussion This method is analagous to `-outlineView:shouldTypeSelectForEvent:withCurrentSearchString:` declared on `NSOutlineViewDelegate`. See the documentation for this method for more information.
+
+ @param sourceList The Source List that sent the message.
+ @param event The event that caused this message to be sent.
+ @param searchString The search string for which searching is to proceed from.
+
+ @return `YES` if type select should proceed, or `NO` otherwise.
+
+ @since Requires PXSourceList 2.0.0 or above.
+ */
 - (BOOL)sourceList:(PXSourceList *)sourceList shouldTypeSelectForEvent:(NSEvent *)event withCurrentSearchString:(NSString *)searchString;
 - (BOOL)sourceList:(PXSourceList *)sourceList shouldShowCellExpansionForItem:(id)item;
 
