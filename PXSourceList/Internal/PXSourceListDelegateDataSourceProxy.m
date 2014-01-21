@@ -348,7 +348,7 @@ static NSArray * __fastPathForwardingDataSourceMethods = nil;
                                       toSelector:@selector(sourceList:shouldEditItem:)
                         forwardedArgumentIndexes:@[@0, @2]];
     [self addCustomMethodNameMappingFromSelector:@selector(outlineView:toolTipForCell:rect:tableColumn:item:mouseLocation:)
-                                      toSelector:@selector(sourceList:tooltipForCell:rect:item:mouseLocation:)
+                                      toSelector:@selector(sourceList:toolTipForCell:rect:item:mouseLocation:)
                         forwardedArgumentIndexes:@[@0, @1, @2, @4, @5]];
     [self addCustomMethodNameMappingFromSelector:@selector(outlineView:typeSelectStringForTableColumn:item:)
                                       toSelector:@selector(sourceList:typeSelectStringForItem:)
