@@ -13,6 +13,8 @@
 
 /**
  The `PXSourceListDelegate` protocol defines methods that can be implemented by delegates of `PXSourceList` objects.
+
+ Most of the methods defined by this protocol are analagous to those declared by `NSOutlineViewDelegate`, but are prefixed by `sourceList:` instead of `outlineView:`. Several methods differ to those declared on `NSOutlineViewDelegate` in that they don't have an `NSTableColumn` parameter since `PXSourceList` works implicitly with only one table column.
  */
 @protocol PXSourceListDelegate <NSObject>
 
