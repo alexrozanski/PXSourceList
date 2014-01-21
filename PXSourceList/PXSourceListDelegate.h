@@ -18,7 +18,31 @@
 
 @optional
 //Extra methods
+/**
+ @brief Returns a Boolean value that indicates whether a particular group item is displayed as always expanded.
+ @discussion A group that is displayed as *always expanded* displays no 'Show'/'Hide' button to the right on hover, and its direct children are always expanded.
+
+ @param aSourceList The Source List that sent the message
+ @param group A group item in the data source
+
+ @return `YES` to specify that the group should be displayed as always expanded, or `NO` if not.
+
+ @since Requires PXSourceList 2.0.0 or above.
+ */
 - (BOOL)sourceList:(PXSourceList*)aSourceList isGroupAlwaysExpanded:(id)group;
+
+/**
+ @brief Returns a context menu which is to be displayed for a given mouse-down event.
+ @discussion See `-menuForEvent:` declared on `NSView` for more information.
+
+ @param aSourceList The Source List that sent the message
+ @param theEvent A mouse event
+ @param item An item in the data source
+
+ @return An instantiated `NSMenu` object to be displayed by the Source List for *event*, or `nil` if no menu is to be shown for the given event.
+
+ @since Requires PXSourceList 0.8 or above.
+ */
 - (NSMenu*)sourceList:(PXSourceList*)aSourceList menuForEvent:(NSEvent*)theEvent item:(id)item;
 
 //Basically NSOutlineViewDelegate wrapper methods
@@ -38,8 +62,42 @@
  @since Requires PXSourceList 2.0.0 or above.
  */
 - (NSView *)sourceList:(PXSourceList *)aSourceList viewForItem:(id)item;
+
+/**
+ @brief Returns the view used to display the given row.
+ @discussion See `-outlineView:rowViewForItem:` declared on `NSOutlineViewDelegate` for more information.
+
+ @param aSourceList The Source List that sent the message
+ @param item An item in the data source
+
+ @return An `NSTableRowView` instance. As with `NSOutlineViewDelegate`, if `nil` is returned for a row, an `NSTableRowView` instance will be created by the Source List and used instead.
+
+ @since Requires PXSourceList 2.0.0 or above.
+ */
 - (NSTableRowView *)sourceList:(PXSourceList *)aSourceList rowViewForItem:(id)item;
+
+/**
+ @brief Sent when a row view has been added to the Source List.
+ @discussion See `-outlineView:didAddRowView:forRow:` declared on `NSOutlineViewDelegate` for more information.
+
+ @param aSourceList The Source List that sent the message
+ @param rowView The view that was added to the Source List
+ @param row The row index
+
+ @since Requires PXSourceList 2.0.0 or above.
+ */
 - (void)sourceList:(PXSourceList *)aSourceList didAddRowView:(NSTableRowView *)rowView forRow:(NSInteger)row;
+
+/**
+ @brief Sent when a row view has been removed to the Source List.
+ @discussion See `-outlineView:didRemoveRowView:forRow:` declared on `NSOutlineViewDelegate` for more information.
+
+ @param aSourceList The Source List that sent the message
+ @param rowView The view that was removed
+ @param row The row index
+
+ @since Requires PXSourceList 2.0.0 or above.
+ */
 - (void)sourceList:(PXSourceList *)aSourceList didRemoveRowView:(NSTableRowView *)rowView forRow:(NSInteger)row;
 
 - (BOOL)sourceList:(PXSourceList*)aSourceList shouldSelectItem:(id)item;
