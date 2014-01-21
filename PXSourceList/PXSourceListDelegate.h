@@ -35,7 +35,7 @@
  
  @warning This is a required method when using the Source List in view-based mode.
 
- @since Requires the Mac OS X 10.7 SDK or above.
+ @since Requires PXSourceList 2.0.0 or above.
  */
 - (NSView *)sourceList:(PXSourceList *)aSourceList viewForItem:(id)item;
 - (NSTableRowView *)sourceList:(PXSourceList *)aSourceList rowViewForItem:(id)item;

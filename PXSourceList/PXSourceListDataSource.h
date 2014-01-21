@@ -28,7 +28,7 @@
 
  @return The number of immediate child items of *item*. If *item* is `nil` then you should return the number of top-level items in the Source List item hierarchy.
  
- @since Requires the Mac OS X 10.5 SDK or above.
+ @since Requires PXSourceList 0.8 and above.
  
  @see sourceList:child:ofItem:
  */
@@ -43,7 +43,7 @@
 
  @return The immediate child of *item* at the specified *index*. If *item* is `nil`, then return the top-level item with index of *index*.
 
- @since Requires the Mac OS X 10.5 SDK or above.
+ @since Requires PXSourceList 0.8 or above.
 
  @see sourceList:numberOfChildrenOfItem:
  */
@@ -58,7 +58,7 @@
 
  @return `YES` if *item* can be expanded, or `NO` otherwise.
 
- @since Requires the Mac OS X 10.5 SDK or above.
+ @since Requires PXSourceList 0.8 or above.
  */
 - (BOOL)sourceList:(PXSourceList*)aSourceList isItemExpandable:(id)item;
 
@@ -76,7 +76,7 @@
 
  @see sourceList:setObjectValue:forItem:
 
- @since Requires the Mac OS X 10.5 SDK or above.
+ @since Requires PXSourceList 0.8 or above.
  */
 - (id)sourceList:(PXSourceList*)aSourceList objectValueForItem:(id)item;
 
@@ -90,7 +90,7 @@
 
  @see sourceList:objectValueForItem:
 
- @since Requires the Mac OS X 10.5 SDK or above.
+ @since Requires PXSourceList 0.8 or above.
  */
 - (void)sourceList:(PXSourceList*)aSourceList setObjectValue:(id)object forItem:(id)item;
 
@@ -115,7 +115,7 @@
  @see sourceList:badgeTextColorForItem:
  @see sourceList:badgeBackgroundColorForItem:
 
- @since Requires the Mac OS X 10.5 SDK or above.
+ @since Requires PXSourceList 0.8 or above.
  */
 - (BOOL)sourceList:(PXSourceList*)aSourceList itemHasBadge:(id)item;
 
@@ -134,7 +134,7 @@
  @see sourceList:badgeTextColorForItem:
  @see sourceList:badgeBackgroundColorForItem:
 
- @since Requires the Mac OS X 10.5 SDK or above.
+ @since Requires PXSourceList 0.8 or above.
  */
 - (NSInteger)sourceList:(PXSourceList*)aSourceList badgeValueForItem:(id)item;
 
@@ -155,7 +155,7 @@
  @see sourceList:badgeValueForItem:
  @see sourceList:badgeBackgroundColorForItem:
 
- @since Requires the Mac OS X 10.5 SDK or above.
+ @since Requires PXSourceList 0.8 or above.
  */
 - (NSColor*)sourceList:(PXSourceList*)aSourceList badgeTextColorForItem:(id)item;
 
@@ -176,7 +176,7 @@
  @see sourceList:badgeValueForItem:
  @see sourceList:badgeTextColorForItem:
 
- @since Requires the Mac OS X 10.5 SDK or above.
+ @since Requires PXSourceList 0.8 or above.
  */
 - (NSColor*)sourceList:(PXSourceList*)aSourceList badgeBackgroundColorForItem:(id)item;
 
