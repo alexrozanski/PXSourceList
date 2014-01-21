@@ -87,6 +87,8 @@
  @warning Unfortunately, due to the way that `PXSourceList` is implemented, sending `-dataSource` to the Source List
  will return a proxy object which is used internally. As such you shouldn't use this property to retrieve the data source,
  only set it.
+ 
+ @since Requires PXSourceList 0.8 or above.
  */
 
 @property (weak) id<PXSourceListDataSource> dataSource;
@@ -96,6 +98,8 @@
  @warning Unfortunately, due to the way that `PXSourceList` is implemented, sending `-delegate` to the Source List
  will return a proxy object which is used internally. As such you shouldn't use this property to retrieve the data source,
  only set it.
+ 
+ @since Requires PXSourceList 0.8 or above.
  */
 
 @property (weak) id<PXSourceListDelegate> delegate;
@@ -110,6 +114,8 @@
 
  @warning This property only applies when using `PXSourceList` in cell-based mode. If set on a Source List
  operating in view-based mode, this value is not used.
+ 
+ @since Requires PXSourceList 0.8 or above.
  */
 
 @property (nonatomic, assign) NSSize iconSize;
@@ -127,6 +133,8 @@
  @return `YES` if *item* exists in the Source List and is a group item, otherwise `NO`.
  
  @discussion "Group" items are defined as items at level 0 in the Source List tree hierarchy.
+ 
+ @since Requires PXSourceList 0.8 or above.
  */
 - (BOOL)isGroupItem:(id)item;
 
@@ -142,6 +150,8 @@
  
  This method calls the `-sourceList:isGroupAlwaysExpanded:` method on the Source List's delegate to determine
  whether the particular group item is displayed as always expanded or not.
+ 
+ @since Requires PXSourceList 0.8 or above.
  */
 - (BOOL)isGroupAlwaysExpanded:(id)group;
 
@@ -160,6 +170,8 @@
  
  @warning This method only applies when using a Source List in cell-based mode. If sent to a Source List in view-based mode, this
  method returns `NO`.
+ 
+ @since Requires PXSourceList 0.8 or above.
  */
 - (BOOL)itemHasBadge:(id)item;
 
@@ -174,6 +186,8 @@
 
  @warning This method only applies when using a Source List in cell-based mode. If sent to a Source List in view-based mode, this
  method returns `NSNotFound`.
+ 
+ @since Requires PXSourceList 0.8 or above.
  */
 - (NSInteger)badgeValueForItem:(id)item;
 
