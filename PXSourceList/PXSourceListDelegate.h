@@ -179,18 +179,107 @@
  @since Requires PXSourceList 2.0.0 or above.
  */
 - (BOOL)sourceList:(PXSourceList *)sourceList shouldTypeSelectForEvent:(NSEvent *)event withCurrentSearchString:(NSString *)searchString;
+
+/**
+ @brief Returns a Boolean value which indicates whether a cell expansion tooltip should be displayed for a given item.
+ @discussion This method is analagous to `-outlineView:shouldShowCellExpansionForItem:` declared on `NSOutlineViewDelegate`, although it doesn't pass an `NSTableColumn` parameter as `PXSourceList` implicitly only uses one table column. See the documentation for `-outlineView:shouldShowCellExpansionForItem:` for more information.
+
+ @param sourceList The Source List that sent the message.
+ @param item An item in the data source.
+
+ @return `YES` to allow an expansion tooltip to be displayed for *item*, otherwise `NO`.
+
+ @since Requires PXSourceList 0.8 or above.
+ */
 - (BOOL)sourceList:(PXSourceList *)sourceList shouldShowCellExpansionForItem:(id)item;
 
+/**
+ @brief Returns a Boolean value which indicates whether the Source List should allow editing of a given item.
+ @discussion This method is analagous to `-outlineView:shouldEditTableColumn:item:` declared on `NSOutlineViewDelegate`, although it doesn't pass an `NSTableColumn` parameter as `PXSourceList` implicitly only uses one table column. See the documentation for `-outlineView:shouldEditTableColumn:item:` for more information.
+
+ @param aSourceList The Source List that sent the message.
+ @param item An item in the data source.
+
+ @return `YES` to allow editing of *item*, or `NO` otherwise.
+
+ @since Requires PXSourceList 0.8 or above.
+ */
 - (BOOL)sourceList:(PXSourceList*)aSourceList shouldEditItem:(id)item;
 
+/**
+ @brief Returns a Boolean value that indicates whether a given cell should be tracked
+ @discussion This method is analagous to `-outlineView:shouldTrackCell:forTableColumn:item:` declared on `NSOutlineViewDelegate`, although it doesn't pass an `NSTableColumn` parameter as `PXSourceList` implicitly only uses one table column. See the documentation for `-outlineView:shouldTrackCell:forTableColumn:item:` for more information.
+
+ @param aSourceList The Source List that sent the message.
+ @param cell The cell used to display *item*
+ @param item An item in the data source
+
+ @return `YES` if the cell should be tracked for *item*, otherwise `NO`.
+
+ @since Requires PXSourceList 0.8 or above.
+ */
 - (BOOL)sourceList:(PXSourceList*)aSourceList shouldTrackCell:(NSCell *)cell forItem:(id)item;
 
+/**
+ @brief Returns a Boolean value that indicates whether a given item should be expanded.
+ @discussion This method is analagous to `-outlineView:shouldExpandItem:` declared on `NSOutlineViewDelegate`. See the documentation for this method for more information.
+
+ @param aSourceList The Source List that sent the message.
+ @param item An item in the data source
+
+ @return `YES` to allow expansion of *item*, otherwise `NO`.
+
+ @since Requires PXSourceList 0.8 or above.
+ */
 - (BOOL)sourceList:(PXSourceList*)aSourceList shouldExpandItem:(id)item;
+
+/**
+ @brief Returns a Boolean value that indicates whether a given item should be collapsed.
+ @discussion This method is analagous to `-outlineView:shouldCollapseItem:` declared on `NSOutlineViewDelegate`. See the documentation for this method for more information.
+
+ @param aSourceList The Source List that sent the message.
+ @param item An item in the data source
+
+ @return `YES` to allow *item* to be collapsed, otherwise `NO`.
+
+ @since Requires PXSourceList 0.8 or above.
+ */
 - (BOOL)sourceList:(PXSourceList*)aSourceList shouldCollapseItem:(id)item;
 
+/**
+ @brief Returns the height in points of the row for the given item.
+ @discussion This method is analagous to `-outlineView:heightOfRowByItem:` declared on `NSOutlineViewDelegate`. See the documentation for this method for more information.
+
+ @param aSourceList The Source List that sent the message.
+ @param item An item in the data source
+
+ @return The height of the row used to display *item* in points.
+
+ @since Requires PXSourceList 0.8 or above.
+ */
 - (CGFloat)sourceList:(PXSourceList*)aSourceList heightOfRowByItem:(id)item;
 
+/**
+ @brief Informs the delegate that the Source List is about to display the cell associated with the given item.
+ @discussion This method is analagous to `-outlineView:willDisplayCell:forTableColumn:item:` declared on `NSOutlineViewDelegate`, although it doesn't pass an `NSTableColumn` parameter as `PXSourceList` implicitly only uses one table column. See the documentation for `-outlineView:willDisplayCell:forTableColumn:item:` for more information.
+
+ @param aSourceList The Source List that sent the message.
+ @param cell The cell about to be displayed
+ @param item An item in the data source
+
+ @since Requires PXSourceList 0.8 or above.
+ */
 - (NSCell*)sourceList:(PXSourceList*)aSourceList willDisplayCell:(id)cell forItem:(id)item;
+
+/**
+ @brief Returns the cell for use with a given item in the Source List.
+ @discussion This method is analagous to `-outlineView:dataCellForTableColumn:item:` declared on `NSOutlineViewDelegate`, although it doesn't pass an `NSTableColumn` parameter as `PXSourceList` implicitly only uses one table column. See the documentation for `-outlineView:dataCellForTableColumn:item:` for more information.
+
+ @param aSourceList The Source List that sent the message.
+ @param item An item in the data source
+
+ @since Requires PXSourceList 0.8 or above.
+ */
 - (NSCell*)sourceList:(PXSourceList*)aSourceList dataCellForItem:(id)item;
 
 @end
