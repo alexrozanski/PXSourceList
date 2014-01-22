@@ -302,11 +302,45 @@
 @end
 
 //PXSourceList delegate notifications
+/**
+ @brief This is analagous to the `NSOutlineViewSelectionIsChangingNotification` notification. Take a look at the `NSOutlineView` documentation for more information.
+ @since Requires PXSourceList 0.8 or above.
+ */
 extern NSString * const PXSLSelectionIsChangingNotification;
-extern NSString * const PXSLSelectionDidChangeNotification;
-extern NSString * const PXSLItemWillExpandNotification;
-extern NSString * const PXSLItemDidExpandNotification;
-extern NSString * const PXSLItemWillCollapseNotification;
-extern NSString * const PXSLItemDidCollapseNotification;
-extern NSString * const PXSLDeleteKeyPressedOnRowsNotification;
 
+/**
+ @brief This is analagous to the `NSOutlineViewSelectionDidChangeNotification` notification. Take a look at the `NSOutlineView` documentation for more information.
+ @since Requires PXSourceList 0.8 or above.
+ */
+extern NSString * const PXSLSelectionDidChangeNotification;
+
+/**
+ @brief This is analagous to the `NSOutlineViewItemWillExpandNotification` notification. Take a look at the `NSOutlineView` documentation for more information.
+ @since Requires PXSourceList 0.8 or above.
+ */
+extern NSString * const PXSLItemWillExpandNotification;
+
+/**
+ @brief This is analagous to the `NSOutlineViewItemDidExpandNotification` notification. Take a look at the `NSOutlineView` documentation for more information.
+ @since Requires PXSourceList 0.8 or above.
+ */
+extern NSString * const PXSLItemDidExpandNotification;
+
+/**
+ @brief This is analagous to the `NSOutlineViewItemWillCollapseNotification` notification. Take a look at the `NSOutlineView` documentation for more information.
+ @since Requires PXSourceList 0.8 or above.
+ */
+extern NSString * const PXSLItemWillCollapseNotification;
+
+/**
+ @brief This is analagous to the `NSOutlineViewItemDidCollapseNotification` notification. Take a look at the `NSOutlineView` documentation for more information.
+ @since Requires PXSourceList 0.8 or above.
+ */
+extern NSString * const PXSLItemDidCollapseNotification;
+
+/**
+ @brief Posted whenever a "deletion key" (backspace, cmd-backspace or fn-backspace) is pressed and handled by the Source List and a row is selected.
+ @discussion The notification *object* is the `PXSourceList` object which the notification was posted by. The *userInfo* dictionary contains a `@"rows"` key which maps to an `NSIndexSet` object which contains the selected row indexes that were selected when the notification was posted.
+ @since Requires PXSourceList 0.8 or above.
+ */
+extern NSString * const PXSLDeleteKeyPressedOnRowsNotification;
