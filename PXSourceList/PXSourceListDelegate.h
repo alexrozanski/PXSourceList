@@ -282,22 +282,87 @@
  */
 - (NSCell*)sourceList:(PXSourceList*)aSourceList dataCellForItem:(id)item;
 
-@end
+/**
+ @brief Invoked when *notification* is posted (when the Source List's selection changes).
+ @discussion This method is invoked when the `PXSLSelectionIsChangingNotification` notification is posted.
+ 
+ This method is analagous to `-outlineViewSelectionIsChanging:` declared on `NSOutlineViewDelegate`. See the documentation for this method for more information.
 
-@interface NSObject (PXSourceListNotifications)
+ @param notification The posted notification.
 
-//Selection
+ @since Requires PXSourceList 0.8 or above.
+ */
 - (void)sourceListSelectionIsChanging:(NSNotification *)notification;
+
+/**
+ @brief Invoked when *notification* is posted (when the Source List's selection has finished changing).
+ @discussion This method is invoked when the `PXSLSelectionDidChangeNotification` notification is posted.
+
+ This method is analagous to `-outlineViewSelectionDidChange:` declared on `NSOutlineViewDelegate`. See the documentation for this method for more information.
+
+ @param notification The posted notification.
+
+ @since Requires PXSourceList 0.8 or above.
+ */
 - (void)sourceListSelectionDidChange:(NSNotification *)notification;
 
-//Item expanding/collapsing
+/**
+ @brief Invoked when *notification* is posted (when an item in the Source List is about to expand in response to user input).
+ @discussion This method is invoked when the `PXSLItemWillExpandNotification` notification is posted.
+
+ This method is analagous to `-outlineViewItemWillExpand:` declared on `NSOutlineViewDelegate`. See the documentation for this method for more information.
+
+ @param notification The posted notification.
+
+ @since Requires PXSourceList 0.8 or above.
+ */
 - (void)sourceListItemWillExpand:(NSNotification *)notification;
+
+/**
+ @brief Invoked when *notification* is posted (when an item in the Source List was expanded in response to user input).
+ @discussion This method is invoked when the `PXSLItemDidExpandNotification` notification is posted.
+
+ This method is analagous to `-outlineViewItemDidExpand:` declared on `NSOutlineViewDelegate`. See the documentation for this method for more information.
+
+ @param notification The posted notification.
+
+ @since Requires PXSourceList 0.8 or above.
+ */
 - (void)sourceListItemDidExpand:(NSNotification *)notification;
+
+/**
+ @brief Invoked when *notification* is posted (when an item in the Source List is about to collapse in response to user input).
+ @discussion This method is invoked when the `PXSLItemWillCollapseNotification` notification is posted.
+
+ This method is analagous to `-outlineViewItemWillCollapse:` declared on `NSOutlineViewDelegate`. See the documentation for this method for more information.
+
+ @param notification The posted notification.
+
+ @since Requires PXSourceList 0.8 or above.
+ */
 - (void)sourceListItemWillCollapse:(NSNotification *)notification;
+
+/**
+ @brief Invoked when *notification* is posted (when an item in the Source List was collapsed in response to user input).
+ @discussion This method is invoked when the `PXSLItemDidCollapseNotification` notification is posted.
+
+ This method is analagous to `-outlineViewItemDidCollapse:` declared on `NSOutlineViewDelegate`. See the documentation for this method for more information.
+
+ @param notification The posted notification.
+
+ @since Requires PXSourceList 0.8 or above.
+ */
 - (void)sourceListItemDidCollapse:(NSNotification *)notification;
 
-- (void)sourceListDeleteKeyPressedOnRows:(NSNotification *)notification;
+/**
+ @brief Invoked when *notification* is posted (when a deletion key is pressed and a row in the Source List is selected).
+ @discussion This method is invoked when the `PXSLDeleteKeyPressedOnRowsNotification` notification is posted.
 
+ @param notification The posted notification.
+
+ @since Requires PXSourceList 0.8 or above.
+ */
+- (void)sourceListDeleteKeyPressedOnRows:(NSNotification *)notification;
 
 @end
 
