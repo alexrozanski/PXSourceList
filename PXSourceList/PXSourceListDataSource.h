@@ -13,6 +13,19 @@
 
 /**
  The `PXSourceListDataSource` protocol defines methods that can be implemented by data sources of `PXSourceList` objects.
+ 
+ Despite many of these methods being optional in their implementation, several methods **must** be implemented by a data source of a `PXSourceList` object. These are:
+   - `sourceList:numberOfChildrenOfItem:`
+   - `sourceList:child:ofItem:`
+   - `sourceList:isItemExpandable:`
+ 
+ If the Source List is operating in cell-based mode, the data source needs to additionally implement:
+   - `sourceList:objectValueForItem:`
+ 
+ And if it is operating in view-based mode, the data source need to implement:
+   - `sourceList:viewForItem:`
+
+ Most of the methods defined by this protocol are analagous to those declared by `NSOutlineViewDataSource` (and are marked as such in the member's documentation), but are prefixed by "sourceList:" instead of "outlineView:". Only the most basic information about these methods is included here, and you should refer to the `NSOutlineViewDataSource` protocol documentation for more information.
  */
 @protocol PXSourceListDataSource <NSObject>
 
