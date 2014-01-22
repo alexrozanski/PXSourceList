@@ -192,7 +192,6 @@
 ///---------------------------------------------------------------------------------------
 - (id)sourceList:(PXSourceList*)aSourceList itemForPersistentObject:(id)object;
 - (id)sourceList:(PXSourceList*)aSourceList persistentObjectForItem:(id)item;
-- (void)sourceList:(PXSourceList *)outlineView sortDescriptorsDidChange:(NSArray *)oldDescriptors;
 
 ///---------------------------------------------------------------------------------------
 /// @name Supporting Drag and Drop
