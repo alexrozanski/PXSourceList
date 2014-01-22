@@ -18,48 +18,49 @@
 /**
 
  `PXSourceList` is an `NSOutlineView` subclass that uses 'Source List' styling similar to that used by the
- sidebar in applications such as iTunes and Mail.app.
+ sidebar in applications such as iTunes and Mail.app. It makes implementing Source Lists a lot easier
+ beyond the standard AppKit "Source List Styling" option and `-outlineView:isGroupItem:` delegate method on
+ `NSOutlineViewDelegate` by making several assumptions about how "conventional" Source Lists operate:
 
- Unlike `NSOutlineView`, `PXSourceList` objects operate with only one column and do not display a header.
+   - `PXSourceList` objects operate with only one column and do not display a header, something
+ which is reflected in the API and makes the control easier to use.
+   - All root-level, "group" items are displayed using `NSOutlineView`'s group styling by default and requires no additional setup.
+   - Source List items often display an *icon* and *badge* (for information such as unread counts). This is built into
+ the API to make configuring these quick and easy, and a badge `NSControl` subclass is included which can be added to
+ `NSTableCellView` objects when using `PXSourceList` in *view-based* mode to display badges (see the next section for details).
+   - `PXSourceList` implements support for showing groups as "always expanded" -- where their child items are always shown
+ and no 'Show'/'Hide' button is displayed when hovering over the group. This is often useful for listing the main
+ contexts your application can be in at any given time, which the user can select to change views. As it is paramount to
+ your application's navigation, these groups are often displayed with their child items always shown.
 
  Like `NSOutlineView` and `NSTableView`, a `PXSourceList` object does not store its own data, but retrieves
  values from a weakly-referenced data source (see the `PXSourceListDataSource` protocol). A `PXSourceList`
  object can also have a delegate, to which it sends messages when certain events occur (see the
- `PXSourceListDelegate` protocol and the `NSObject(PXSourceListNotifications)` category for more information).
+ `PXSourceListDelegate` protocol for more information).
  
  ### Cell-based vs. view-based mode
  
  Like `NSTableView` and `NSOutlineView`, `PXSourceList` can operate in both cell-based and view-based mode in
  relation to how you provide content to be displayed.
  
- There are several classes provided alongside `PXSourceList` which make providing content when using
- `PXSourceList` in view-based mode a lot easier:
+ When using `PXSourceList` in cell-based mode, it can manage drawing of icons and badges for you through custom
+ drawing and `PXSourceListDataSource` methods. However, when using `PXSourceList` in view-based mode, it can't
+ do this directly, because cell views are configured independently in Interface Builder (or programmatically)
+ and configured in the `PXSourceListDataSource` method, `-sourceList:viewForItem:`.
  
+ Instead, in view-based mode, you should set up the icon for each item in `-sourceList:viewForItem:` using the
+ `imageView` property of `NSTableCellView`, and the `badgeView` property if using `PXSourceListTableCellView`
+ objects to display your content. Additionally, there are several classes provided alongside `PXSourceList`
+ which make this set up a lot easier:
+
  - `PXSourceListTableCellView`: an `NSTableCellView` subclass which exposes a `badgeView` outlet that can be
    hooked up to a `PXSourceListBadgeView` instance (see below) in Interface Builder. Along with `NSTableCellView`
    and its `textField` and `imageView` properties, `PXSourceListTableCellView` is an `NSTableCellView` subclass which
-   allows you to easily display an icon, title and a badge for each item in the Source List.
+   allows you to easily display an icon, title and a badge for each item in the Source List without subclassing.
  - `PXSourceListBadgeView`: a view class for displaying badges, which can be used in your table cell views and
-   configured to display a particular badge number. Additionally, it can be configured to use custom text and
+   configured to display a particular badge number. Additionally, instances can be configured to use custom text and
    background colours, although it will use the regular Source List styling of light text on a grey-blue background
    by default.
- 
- When using `PXSourceList` in cell-based mode, it can manage drawing of icons and badges for you through custom
- drawing. However, when using `PXSourceList` in view-based mode, it can't do this directly, because cell views
- are configured independently in Interface Builder (or programmatically and set up) and configured in the
- `PXSourceListDataSource` method, `-sourceList:viewForItem:`. Of particular note, the following
- `PXSourceListDataSource` methods are not used by `PXSourceList` when operating in view-based mode.
- 
- - `-sourceList:itemHasBadge:`
- - `-sourceList:badgeValueForItem:`
- - `-sourceList:badgeTextColorForItem:`
- - `-sourceList:badgeBackgroundColorForItem:`
- - `-sourceList:itemHasIcon:`
- - `-sourceList:iconForItem:`
- 
- Instead, you should set up the icon for each item in `-sourceList:viewForItem:` using the `imageView` property
- of `NSTableCellView`, and the `badgeView` property if using `PXSourceListTableCellView` objects to display
- your content.
  
  ### Creating a data source model with `PXSourceListItem`
  
@@ -88,7 +89,7 @@
  will return a proxy object which is used internally. As such you shouldn't use this property to retrieve the data source,
  only set it.
  
- @since Requires PXSourceList 0.8 or above.
+ @since Requires PXSourceList 0.8 or above and the OS X v10.5 SDK.
  */
 
 @property (weak) id<PXSourceListDataSource> dataSource;
@@ -99,7 +100,7 @@
  will return a proxy object which is used internally. As such you shouldn't use this property to retrieve the data source,
  only set it.
  
- @since Requires PXSourceList 0.8 or above.
+ @since Requires PXSourceList 0.8 or above and the OS X v10.5 SDK.
  */
 
 @property (weak) id<PXSourceListDelegate> delegate;
@@ -108,14 +109,14 @@
 /// @name Setting Display Attributes
 ///---------------------------------------------------------------------------------------
 
-/** Returns the size of icons to display in items in the Source List.
+/** Returns the size of icons in points to display in items in the Source List.
  
  @discussion The default value is 16 x 16.
 
  @warning This property only applies when using `PXSourceList` in cell-based mode. If set on a Source List
  operating in view-based mode, this value is not used.
  
- @since Requires PXSourceList 0.8 or above.
+ @since Requires PXSourceList 0.8 or above and the OS X v10.5 SDK.
  */
 
 @property (nonatomic, assign) NSSize iconSize;
@@ -132,9 +133,9 @@
  
  @return `YES` if *item* exists in the Source List and is a group item, otherwise `NO`.
  
- @discussion "Group" items are defined as items at level 0 in the Source List tree hierarchy.
+ @discussion "Group" items are defined as root items in the Source List tree hierarchy.
  
- @since Requires PXSourceList 0.8 or above.
+ @since Requires PXSourceList 0.8 or above and the OS X v10.5 SDK.
  */
 - (BOOL)isGroupItem:(id)item;
 
@@ -144,14 +145,14 @@
  
  @return `YES` if *group* is a group item in the Source List which is displayed as always expanded, or `NO` otherwise.
  
- @discussion A group item that is displayed as always expanded doesn't show a 'Show'/'Hide' button on hover as
- with regular group items. It is automatically expanded when the Source List's data is reloaded and cannot be
- collapsed.
+ @discussion "Group" items are defined as root items in the Source List tree hierarchy. A group item that is displayed
+ as always expanded doesn't show a 'Show'/'Hide' button on hover as with regular group items. It is automatically expanded
+ when the Source List's data is reloaded and cannot be collapsed.
  
  This method calls the `-sourceList:isGroupAlwaysExpanded:` method on the Source List's delegate to determine
  whether the particular group item is displayed as always expanded or not.
  
- @since Requires PXSourceList 0.8 or above.
+ @since Requires PXSourceList 0.8 or above and the OS X v10.5 SDK.
  */
 - (BOOL)isGroupAlwaysExpanded:(id)group;
 
@@ -171,7 +172,7 @@
  @warning This method only applies when using a Source List in cell-based mode. If sent to a Source List in view-based mode, this
  method returns `NO`.
  
- @since Requires PXSourceList 0.8 or above.
+ @since Requires PXSourceList 0.8 or above and the OS X v10.5 SDK.
  */
 - (BOOL)itemHasBadge:(id)item;
 
@@ -187,7 +188,7 @@
  @warning This method only applies when using a Source List in cell-based mode. If sent to a Source List in view-based mode, this
  method returns `NSNotFound`.
  
- @since Requires PXSourceList 0.8 or above.
+ @since Requires PXSourceList 0.8 or above and the OS X v10.5 SDK.
  */
 - (NSInteger)badgeValueForItem:(id)item;
 
