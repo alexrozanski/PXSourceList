@@ -15,17 +15,27 @@
  The `PXSourceListDataSource` protocol defines methods that can be implemented by data sources of `PXSourceList` objects.
  
  Despite many of these methods being optional in their implementation, several methods **must** be implemented by a data source of a `PXSourceList` object. These are:
+
    - `sourceList:numberOfChildrenOfItem:`
    - `sourceList:child:ofItem:`
    - `sourceList:isItemExpandable:`
+   - `sourceList:objectValueForItem:` (although this is optional if the Source List is operating in view-based mode).
  
- If the Source List is operating in cell-based mode, the data source needs to additionally implement:
-   - `sourceList:objectValueForItem:`
+ ### PXSourceList in View-based mode
  
- And if it is operating in view-based mode, the data source need to implement:
-   - `sourceList:viewForItem:`
+ As with `NSOutlineView`, `PXSourceList` can operate in cell-based or view-based mode. Of particular note, the
+ following `PXSourceListDataSource` methods are *not* used by `PXSourceList` when operating in view-based mode.
 
- Most of the methods defined by this protocol are analagous to those declared by `NSOutlineViewDataSource` (and are marked as such in the member's documentation), but are prefixed by "sourceList:" instead of "outlineView:". Only the most basic information about these methods is included here, and you should refer to the `NSOutlineViewDataSource` protocol documentation for more information.
+   - `-sourceList:itemHasBadge:`
+   - `-sourceList:badgeValueForItem:`
+   - `-sourceList:badgeTextColorForItem:`
+   - `-sourceList:badgeBackgroundColorForItem:`
+   - `-sourceList:itemHasIcon:`
+   - `-sourceList:iconForItem:`
+ 
+ These properties can be configured in the `PXSourceListDelegate` protocol method, `-sourceList:viewForItem:`.
+
+ @warning Most of the methods defined by this protocol are analagous to those declared by `NSOutlineViewDataSource` (and are marked as such in the member's documentation), but are prefixed by "sourceList:" instead of "outlineView:". Only the most basic information about these methods is included here, and you should refer to the `NSOutlineViewDataSource` protocol documentation for more information.
  */
 @protocol PXSourceListDataSource <NSObject>
 
