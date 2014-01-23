@@ -88,7 +88,6 @@
 		D213027914B9AFE200AAFF85 /* PXSourceList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PXSourceList.m; path = PXSourceList/PXSourceList.m; sourceTree = "<group>"; };
 		D213027A14B9AFE200AAFF85 /* PXSourceListDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PXSourceListDataSource.h; path = PXSourceList/PXSourceListDataSource.h; sourceTree = "<group>"; };
 		D213027B14B9AFE200AAFF85 /* PXSourceListDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PXSourceListDelegate.h; path = PXSourceList/PXSourceListDelegate.h; sourceTree = "<group>"; };
-		D21302B814B9B17200AAFF85 /* PXSourceList-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "PXSourceList-Info.plist"; path = "PXSourceList/PXSourceList-Info.plist"; sourceTree = "<group>"; };
 		D23A17571836AD790027F0D0 /* PXSourceListBadgeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PXSourceListBadgeView.h; path = PXSourceList/PXSourceListBadgeView.h; sourceTree = "<group>"; };
 		D23A17581836AD790027F0D0 /* PXSourceListBadgeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PXSourceListBadgeView.m; path = PXSourceList/PXSourceListBadgeView.m; sourceTree = "<group>"; };
 		D23A175C1836AE280027F0D0 /* PXSourceListBadgeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PXSourceListBadgeCell.h; path = PXSourceList/PXSourceListBadgeCell.h; sourceTree = "<group>"; };
@@ -128,6 +127,7 @@
 		D2631292186EFC830036501C /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Examples/ViewBasedSourceList/main.m; sourceTree = SOURCE_ROOT; };
 		D2631294186EFC890036501C /* ViewBasedSourceList-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "ViewBasedSourceList-Prefix.pch"; path = "Examples/ViewBasedSourceList/ViewBasedSourceList-Prefix.pch"; sourceTree = SOURCE_ROOT; };
 		D2631296186EFC910036501C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = Examples/ViewBasedSourceList/en.lproj/Credits.rtf; sourceTree = SOURCE_ROOT; };
+		D2BA8D1A1891CB0500E4A15A /* PXSourceList-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PXSourceList-Info.plist"; sourceTree = "<group>"; };
 		D2FF2951187AD32000CFEDD1 /* PhotoCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PhotoCollection.h; path = Examples/ViewBasedSourceList/PhotoCollection.h; sourceTree = "<group>"; };
 		D2FF2952187AD32000CFEDD1 /* PhotoCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PhotoCollection.m; path = Examples/ViewBasedSourceList/PhotoCollection.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -265,7 +265,7 @@
 		D21302BA14B9B1DC00AAFF85 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				D21302B814B9B17200AAFF85 /* PXSourceList-Info.plist */,
+				D2BA8D1A1891CB0500E4A15A /* PXSourceList-Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
