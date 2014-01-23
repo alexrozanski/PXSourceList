@@ -40,8 +40,6 @@ NSString * const PXSLDeleteKeyPressedOnRowsNotification = @"PXSourceListDeleteKe
 #pragma mark -
 @implementation PXSourceList
 
-@dynamic dataSource;
-@dynamic delegate;
 @synthesize reusableBadgeCell = _reusableBadgeCell;
 
 #pragma mark - Setup/Teardown

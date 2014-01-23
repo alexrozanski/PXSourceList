@@ -86,24 +86,22 @@
 /** Used to set the Source List's data source.
  
  @warning Unfortunately, due to the way that `PXSourceList` is implemented, sending `-dataSource` to the Source List
- will return a proxy object which is used internally. As such you shouldn't use this property to retrieve the data source,
- only set it.
+ will return a proxy object which is used internally. As such you should only use this setter and not invoke `-dataSource`
+ to retrieve the data source object.
  
  @since Requires PXSourceList 0.8 or above and the OS X v10.5 SDK.
  */
-
-@property (weak) id<PXSourceListDataSource> dataSource;
+- (void)setDataSource:(id<PXSourceListDataSource>)dataSource;
 
 /** Used to set the Source List's delegate.
  
  @warning Unfortunately, due to the way that `PXSourceList` is implemented, sending `-delegate` to the Source List
- will return a proxy object which is used internally. As such you shouldn't use this property to retrieve the data source,
- only set it.
+ will return a proxy object which is used internally. As such you should only use this setter and not invoke `-delegate`
+ to retrieve the data source object.
  
  @since Requires PXSourceList 0.8 or above and the OS X v10.5 SDK.
  */
-
-@property (weak) id<PXSourceListDelegate> delegate;
+- (void)setDelegate:(id<PXSourceListDelegate>)delegate;
 
 ///---------------------------------------------------------------------------------------
 /// @name Setting Display Attributes
@@ -191,6 +189,15 @@
  @since Requires PXSourceList 0.8 or above and the OS X v10.5 SDK.
  */
 - (NSInteger)badgeValueForItem:(id)item;
+
+/* === Unavailable methods ===
+ 
+   As a side-effect of PXSourceList's internal implementation, these methods shouldn't be used to query the delegate or data
+   source. I am *always* looking for a way to remove this limitation. Please file an issue at https://github.com/Perspx/PXSourceList if you
+   have any ideas!
+ */
+- (id <NSOutlineViewDelegate>)delegate __attribute__((unavailable("-delegate shouldn't be called on PXSourceList. See the documentation for more information.")));
+- (id <NSOutlineViewDataSource>)dataSource __attribute__((unavailable("-dataSource shouldn't be called on PXSourceList. See the documentation for more information.")));
 
 @end
 
