@@ -29,12 +29,12 @@ Clone the repository:
 
 There are also two example projects bundled with the source to see how `PXSourceList` should be used.
 
-##How the control works
-I have tried to structure PXSourceList in a way such that it fits common Cocoa design patterns and therefore makes it easier to use.
+## Delegate and Data Source
+`PXSourceList` adopts the delegation pattern by using two protocols: `PXSourceListDataSource` and `PXSourceListDelegate`. These protocols include most `NSOutlineView` delegate and data source methods, but with the "outlineView" prefix replaced with "sourceList". Some of the `NSOutlineView` delegate and data source methods haven't been carried over or their method signature has been modified slightly because they don't make sense in the context of `PXSourceList`, since it works with only a single table column and no column headers.
 
-PXSourceList adapts the delegate and data source design patterns, and extends those of the `NSOutlineViewDelegate` and `NSOutlineViewDataSource`, much in the way that these extend the appropriate `NSTableView` protocols.
+If you want more information have a look at *[Outline View Programming Topics for Cocoa][4]* – the Source List delegate and data source implementation work in a very similar way.
 
-If you want more information have a look at the [Outline View Programming Topics for Cocoa][4] – the Source List delegate and data source implementation work in much the same way, but with methods added and removed, as detailed in the documentation.
+Note that because of the way `PXSourceList` works under the hood, `-[PXSourceList delegate]` and `-[PXSourceList dataSource]` have been marked as unavailable as they return an internal proxy object. You should therefore only use `-setDelegate:` and `-setDataSource:`.
 
 ##Documentation
 `PXSourceList` and its related classes and protocols are documented in the header files included in the repository using [appledoc](http://gentlebytes.com/appledoc/)-style documentation.
