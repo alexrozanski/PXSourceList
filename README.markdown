@@ -13,9 +13,15 @@ PXSourceList requires the OS X 10.7 SDK and above and is licensed under the New 
 
 ## Using `PXSourceList`
 
-### Getting the code
+### Installing with Cocoapods
 
-Clone the repository:
+You can install PXSourceList by adding the following line to your `Podfile`:
+
+    pod 'PXSourceList', '~> 2.0.0'
+
+### Cloning with git
+
+You can also get the source by cloning with git:
 
     $ git clone https://github.com/Perspx/PXSourceList.git
 
@@ -24,7 +30,7 @@ You can then either:
   * Copy all of the files from the `PXSourceList` directory (including those in the `Internal` subdirectory) into your project.
   * **or** add the Xcode project as a subproject to your own Xcode project, or to your workspace and link against the PXSourceList framework target.
 
-### Adding `PXSourceList` to your application
+### Using `PXSourceList` in your application
 
  1. Drag an `NSOutlineView` object into the window/view that you're displaying the Source List in.
  2. In the Identity inspector for the outline view, change the class from the default (`NSOutlineView`) to `PXSourceList`.
