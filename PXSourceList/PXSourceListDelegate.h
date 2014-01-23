@@ -31,7 +31,7 @@
 
  @return `YES` to specify that the group should be displayed as always expanded, or `NO` if not.
 
- @since Requires PXSourceList 2.0.0 or above.
+ @since Requires PXSourceList 0.8 or above.
  */
 - (BOOL)sourceList:(PXSourceList*)aSourceList isGroupAlwaysExpanded:(id)group;
 
