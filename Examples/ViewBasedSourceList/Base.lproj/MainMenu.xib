@@ -809,9 +809,28 @@
                                     <constraint firstAttribute="trailing" secondItem="Gyf-tN-jug" secondAttribute="trailing" id="ipE-wL-Vti"/>
                                 </constraints>
                             </customView>
-                            <customView fixedFrame="YES" id="V5U-wh-2o3">
+                            <customView id="V5U-wh-2o3">
                                 <rect key="frame" x="193" y="0.0" width="514" height="453"/>
                                 <autoresizingMask key="autoresizingMask"/>
+                                <subviews>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rTW-wK-rrG">
+                                        <rect key="frame" x="18" y="212" width="478" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="474" id="7gl-Dw-sAL"/>
+                                            <constraint firstAttribute="height" constant="30" id="V8l-Fv-qd6"/>
+                                        </constraints>
+                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" id="DeD-wn-D0N">
+                                            <font key="font" metaFont="system" size="25"/>
+                                            <color key="textColor" white="0.33724908759124089" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="centerY" secondItem="rTW-wK-rrG" secondAttribute="centerY" id="H9N-qr-6zT"/>
+                                    <constraint firstAttribute="centerX" secondItem="rTW-wK-rrG" secondAttribute="centerX" id="LAH-FJ-z3S"/>
+                                </constraints>
                             </customView>
                         </subviews>
                         <holdingPriorities>
@@ -831,6 +850,7 @@
         <customObject id="494" customClass="AppDelegate">
             <connections>
                 <outlet property="removeButton" destination="iQU-Dr-qPa" id="MfB-vx-DLY"/>
+                <outlet property="selectedItemLabel" destination="rTW-wK-rrG" id="GaD-A5-dDW"/>
                 <outlet property="sourceList" destination="6cp-sB-vmV" id="0Ec-MJ-aU2"/>
                 <outlet property="window" destination="371" id="532"/>
             </connections>

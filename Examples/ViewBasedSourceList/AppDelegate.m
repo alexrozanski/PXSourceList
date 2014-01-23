@@ -25,15 +25,16 @@ static NSString * const draggingType = @"SourceListExampleDraggingType";
     // Used to support drag and drop in the source list.
     [self.sourceList registerForDraggedTypes:@[draggingType]];
 
-    // Set up our data model.
-    PhotoCollection *photosCollection = [PhotoCollection collectionWithTitle:@"Photos" numberOfItems:264];
-    PhotoCollection *eventsCollection = [PhotoCollection collectionWithTitle:@"Events" numberOfItems:689];
-    PhotoCollection *peopleCollection = [PhotoCollection collectionWithTitle:@"People" numberOfItems:135];
-    PhotoCollection *placesCollection = [PhotoCollection collectionWithTitle:@"Places" numberOfItems:28];
+    // Set up our data model. We could set an identifier on the PXSourceListItem instances, but it makes more sense
+    // to put our identifying information on the underlying model object in this case.
+    PhotoCollection *photosCollection = [PhotoCollection collectionWithTitle:@"Photos" identifier:@"photos" numberOfItems:264];
+    PhotoCollection *eventsCollection = [PhotoCollection collectionWithTitle:@"Events" identifier:@"events" numberOfItems:689];
+    PhotoCollection *peopleCollection = [PhotoCollection collectionWithTitle:@"People" identifier:@"people" numberOfItems:135];
+    PhotoCollection *placesCollection = [PhotoCollection collectionWithTitle:@"Places" identifier:@"places" numberOfItems:28];
 
     self.libraryCollections = [@[photosCollection, eventsCollection, peopleCollection, placesCollection] mutableCopy];
-    self.albums = [@[[PhotoCollection collectionWithTitle:@"Holiday Snaps" numberOfItems:200],
-                     [PhotoCollection collectionWithTitle:@"Graduation" numberOfItems:1050]] mutableCopy];
+    self.albums = [@[[PhotoCollection collectionWithTitle:@"Holiday Snaps" identifier:nil numberOfItems:200],
+                     [PhotoCollection collectionWithTitle:@"Graduation" identifier: nil numberOfItems:1050]] mutableCopy];
 
     self.sourceListItems = [[NSMutableArray alloc] init];
 
@@ -156,9 +157,23 @@ static NSString * const draggingType = @"SourceListExampleDraggingType";
 - (void)sourceListSelectionDidChange:(NSNotification *)notification
 {
     PXSourceListItem *selectedItem = [self.sourceList itemAtRow:self.sourceList.selectedRow];
+    BOOL removeButtonEnabled = NO;
+    NSString *newLabel = @"";
+    if (selectedItem) {
+        // Only allow us to remove items in the 'albums' group.
+        removeButtonEnabled = [[self.sourceListItems[1] children] containsObject:selectedItem];
 
-    // Only allow us to remove items in the 'albums' group.
-    self.removeButton.enabled = [[self.sourceListItems[1] children] containsObject:selectedItem];
+        // We can use the underlying model object to do something based on the selection.
+        PhotoCollection *collection = selectedItem.representedObject;
+
+        if (collection.identifier)
+            newLabel = [NSString stringWithFormat:@"'%@' collection selected.", collection.identifier];
+        else
+            newLabel = @"User-created collection selected.";
+    }
+
+    self.selectedItemLabel.stringValue = newLabel;
+    self.removeButton.enabled = removeButtonEnabled;
 }
 
 #pragma mark - Drag and Drop

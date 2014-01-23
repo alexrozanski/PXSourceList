@@ -17,8 +17,9 @@
 @interface PhotoCollection : NSObject
 
 @property (strong, nonatomic) NSString *title;
+@property (strong, nonatomic) NSString *identifier;
 @property (assign, nonatomic) NSUInteger numberOfItems;
 
-+ (id)collectionWithTitle:(NSString *)title numberOfItems:(NSUInteger)numberOfItems;
++ (id)collectionWithTitle:(NSString *)title identifier:(NSString *)identifier numberOfItems:(NSUInteger)numberOfItems;
 
 @end
