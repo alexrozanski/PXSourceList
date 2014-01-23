@@ -4,6 +4,8 @@
 
 PXSourceList requires the OS X 10.7 SDK and above and is licensed under the New BSD License.
 
+![PXSourceList in action: The view-based example project included in the repository.](https://raw.github.com/Perspx/PXSourceList/master/Examples/Screenshots/PXSourceList-ViewBased-Example.png)
+
 ## Motivation
 [Source Lists][2] are used in a lot of OS X applications, but the support for such controls is quite primitive – at best Cocoa allows you to create an outline view with Source List-style highlighting, but none of the features common to idiomatic Source Lists such as badging, and all top-level items being displayed differently are built in by default.
 
@@ -26,9 +28,6 @@ Clone the repository:
  5. Make sure to `#import "PXSourceList.h"` for files that require it (the delegate and data source protocol files are imported in this main header), and ensure that your class(es) that are the `delegate` and/or `dataSource` for the Source List conform to the `PXSourceListDelegate` and `PXSourceListDataSource` protocols respectively.
 
 There are also two example projects bundled with the source to see how `PXSourceList` should be used.
-
-##Screenshots
-![alt text][3]
 
 ##How the control works
 I have tried to structure PXSourceList in a way such that it fits common Cocoa design patterns and therefore makes it easier to use.
