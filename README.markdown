@@ -50,7 +50,9 @@ If you notice any mistakes or feel that any areas of the documentation are lacki
 
 ##Attribution
 
-I was spurred along the way by many sources, but in particular [BWToolkit][8] by Brandon Walkin and Fraser Kuyvenhoven, which gave me the idea of how to handle the Source List delegate and data source methods.
+Thanks to all of the [wonderful people](https://github.com/Perspx/PXSourceList/graphs/contributors) who have contributed to the project, and made it better in lots of different ways.
+
+In the initial release of PXSourceList, I was spurred along the way by many sources, but in particular [BWToolkit][8] by Brandon Walkin and Fraser Kuyvenhoven, which gave me the idea of how to handle the Source List delegate and data source methods.
 
 Also Brian Dunagan's post on [Source List badging][9] and determining state for the various colours was a great help when I came to the drawing code for that.
 
@@ -62,7 +64,7 @@ The icons used in the example projects bundled with the source code are from the
 PXSourceList is licensed under the New BSD License, as detailed below (adapted from OSI http://www.opensource.org/licenses/bsd-license.php):
 
 
-Copyright &copy; 2011, Alex Rozanski.
+Copyright &copy; 2010-14, Alex Rozanski and other contributors.
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
