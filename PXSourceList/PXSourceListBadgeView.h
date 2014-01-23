@@ -13,8 +13,9 @@
  `PXSourceListBadgeView` is an `NSControl` subclass which can be used for displaying Source List badges.
  
  @discussion Instances of this class can be used by table cell views which are used to display content when
- using `PXSourceList` in view-based mode. These table cell views have to be set up to display badges manually,
- unlike when using `PXSourceList` in cell-based mode, where this is done automatically behind-the-scenes.
+ using `PXSourceList` in view-based mode. These table cell views have to be set up to display badges in the
+ `PXSourceListDataSource` method `-sourceList:viewForItem:` unlike when using `PXSourceList` in cell-based mode,
+ where this is done automatically behind-the-scenes.
  
  `PXSourceListTableCellView` has an outlet for a `PXSourceListBadgeView` instance which can be hooked up in Interface
  Builder or set in code.
