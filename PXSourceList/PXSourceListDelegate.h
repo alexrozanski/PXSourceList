@@ -31,7 +31,7 @@
 
  @return `YES` to specify that the group should be displayed as always expanded, or `NO` if not.
 
- @since Requires PXSourceList 0.8 or above.
+ @since Requires PXSourceList 0.8 or above and the OS X v10.5 SDK or above.
  */
 - (BOOL)sourceList:(PXSourceList*)aSourceList isGroupAlwaysExpanded:(id)group;
 
@@ -48,7 +48,7 @@
 
  @return An instantiated `NSMenu` object to be displayed by the Source List for *event*, or `nil` if no menu is to be shown for the given event.
 
- @since Requires PXSourceList 0.8 or above.
+ @since Requires PXSourceList 0.8 or above and the OS X v10.5 SDK or above.
  */
 - (NSMenu*)sourceList:(PXSourceList*)aSourceList menuForEvent:(NSEvent*)theEvent item:(id)item;
 
@@ -58,7 +58,7 @@
 
  @param notification The posted notification.
 
- @since Requires PXSourceList 0.8 or above.
+ @since Requires PXSourceList 0.8 or above and the OS X v10.5 SDK or above.
  */
 - (void)sourceListDeleteKeyPressedOnRows:(NSNotification *)notification;
 
@@ -80,7 +80,7 @@
  
  @warning This is a required method when using the Source List in view-based mode.
 
- @since Requires PXSourceList 2.0.0 or above.
+ @since Requires PXSourceList 2.0.0 or above and the OS X v10.7 SDK or above.
  */
 - (NSView *)sourceList:(PXSourceList *)aSourceList viewForItem:(id)item;
 
@@ -93,7 +93,7 @@
 
  @return An `NSTableRowView` instance. As with `NSOutlineViewDelegate`, if `nil` is returned for a row, an `NSTableRowView` instance will be created by the Source List and used instead.
 
- @since Requires PXSourceList 2.0.0 or above.
+ @since Requires PXSourceList 2.0.0 or above and the OS X v10.7 SDK or above.
  */
 - (NSTableRowView *)sourceList:(PXSourceList *)aSourceList rowViewForItem:(id)item;
 
@@ -105,7 +105,7 @@
  @param rowView The view that was added to the Source List
  @param row The row index
 
- @since Requires PXSourceList 2.0.0 or above.
+ @since Requires PXSourceList 2.0.0 or above and the OS X v10.7 SDK or above.
  */
 - (void)sourceList:(PXSourceList *)aSourceList didAddRowView:(NSTableRowView *)rowView forRow:(NSInteger)row;
 
@@ -117,7 +117,7 @@
  @param rowView The view that was removed
  @param row The row index
 
- @since Requires PXSourceList 2.0.0 or above.
+ @since Requires PXSourceList 2.0.0 or above and the OS X v10.7 SDK or above.
  */
 - (void)sourceList:(PXSourceList *)aSourceList didRemoveRowView:(NSTableRowView *)rowView forRow:(NSInteger)row;
 
@@ -131,7 +131,7 @@
  @param aSourceList The Source List that sent the message
  @param item An item in the data source
 
- @since Requires PXSourceList 0.8 or above.
+ @since Requires PXSourceList 0.8 or above and the OS X v10.5 SDK or above.
  */
 - (BOOL)sourceList:(PXSourceList*)aSourceList shouldSelectItem:(id)item;
 
@@ -142,7 +142,7 @@
  @param aSourceList The Source List that sent the message
  @param proposedSelectionIndexes The proposed indexes of rows that should be selected
 
- @since Requires PXSourceList 0.8 or above.
+ @since Requires PXSourceList 0.8 or above and the OS X v10.5 SDK or above.
  */
 - (NSIndexSet*)sourceList:(PXSourceList*)aSourceList selectionIndexesForProposedSelection:(NSIndexSet *)proposedSelectionIndexes;
 
@@ -156,7 +156,7 @@
  @param item The item in the data source to display the tooltip for.
  @param mouseLocation The current mouse location in view coordinates.
 
- @since Requires PXSourceList 2.0.0 or above.
+ @since Requires PXSourceList 2.0.0 or above and the OS X v10.7 SDK or above.
  */
 - (NSString *)sourceList:(PXSourceList *)sourceList toolTipForCell:(NSCell *)cell rect:(NSRectPointer)rect item:(id)item mouseLocation:(NSPoint)mouseLocation;
 
@@ -168,7 +168,7 @@
 
  @param notification The posted notification.
 
- @since Requires PXSourceList 0.8 or above.
+ @since Requires PXSourceList 0.8 or above and the OS X v10.5 SDK or above.
  */
 - (void)sourceListSelectionIsChanging:(NSNotification *)notification;
 
@@ -180,7 +180,7 @@
 
  @param notification The posted notification.
 
- @since Requires PXSourceList 0.8 or above.
+ @since Requires PXSourceList 0.8 or above and the OS X v10.5 SDK or above.
  */
 - (void)sourceListSelectionDidChange:(NSNotification *)notification;
 
@@ -196,7 +196,7 @@
 
  @return The string value used for type selection of *item*.
 
- @since Requires PXSourceList 2.0.0 or above.
+ @since Requires PXSourceList 2.0.0 or above and the OS X v10.7 SDK or above.
  */
 - (NSString *)sourceList:(PXSourceList *)sourceList typeSelectStringForItem:(id)item;
 
@@ -211,7 +211,7 @@
  
  @return The first item in the *startItem*--*endItem* range which matches *searchString*, or `nil` if there is no match.
 
- @since Requires PXSourceList 2.0.0 or above.
+ @since Requires PXSourceList 2.0.0 or above and the OS X v10.7 SDK or above.
  */
 - (id)sourceList:(PXSourceList *)sourceList nextTypeSelectMatchFromItem:(id)startItem toItem:(id)endItem forString:(NSString *)searchString;
 
@@ -225,7 +225,7 @@
 
  @return `YES` if type select should proceed, or `NO` otherwise.
 
- @since Requires PXSourceList 2.0.0 or above.
+ @since Requires PXSourceList 2.0.0 or above and the OS X v10.7 SDK or above.
  */
 - (BOOL)sourceList:(PXSourceList *)sourceList shouldTypeSelectForEvent:(NSEvent *)event withCurrentSearchString:(NSString *)searchString;
 
@@ -238,7 +238,7 @@
 
  @return `YES` to allow an expansion tooltip to be displayed for *item*, otherwise `NO`.
 
- @since Requires PXSourceList 0.8 or above.
+ @since Requires PXSourceList 0.8 or above and the OS X v10.5 SDK or above.
  */
 - (BOOL)sourceList:(PXSourceList *)sourceList shouldShowCellExpansionForItem:(id)item;
 
@@ -254,7 +254,7 @@
 
  @return `YES` to allow editing of *item*, or `NO` otherwise.
 
- @since Requires PXSourceList 0.8 or above.
+ @since Requires PXSourceList 0.8 or above and the OS X v10.5 SDK or above.
  */
 - (BOOL)sourceList:(PXSourceList*)aSourceList shouldEditItem:(id)item;
 
@@ -271,7 +271,7 @@
 
  @return `YES` if the cell should be tracked for *item*, otherwise `NO`.
 
- @since Requires PXSourceList 0.8 or above.
+ @since Requires PXSourceList 0.8 or above and the OS X v10.5 SDK or above.
  */
 - (BOOL)sourceList:(PXSourceList*)aSourceList shouldTrackCell:(NSCell *)cell forItem:(id)item;
 
@@ -287,7 +287,7 @@
 
  @return `YES` to allow expansion of *item*, otherwise `NO`.
 
- @since Requires PXSourceList 0.8 or above.
+ @since Requires PXSourceList 0.8 or above and the OS X v10.5 SDK or above.
  */
 - (BOOL)sourceList:(PXSourceList*)aSourceList shouldExpandItem:(id)item;
 
@@ -300,7 +300,7 @@
 
  @return `YES` to allow *item* to be collapsed, otherwise `NO`.
 
- @since Requires PXSourceList 0.8 or above.
+ @since Requires PXSourceList 0.8 or above and the OS X v10.5 SDK or above.
  */
 - (BOOL)sourceList:(PXSourceList*)aSourceList shouldCollapseItem:(id)item;
 
@@ -312,7 +312,7 @@
 
  @param notification The posted notification.
 
- @since Requires PXSourceList 0.8 or above.
+ @since Requires PXSourceList 0.8 or above and the OS X v10.5 SDK or above.
  */
 - (void)sourceListItemWillExpand:(NSNotification *)notification;
 
@@ -324,7 +324,7 @@
 
  @param notification The posted notification.
 
- @since Requires PXSourceList 0.8 or above.
+ @since Requires PXSourceList 0.8 or above and the OS X v10.5 SDK or above.
  */
 - (void)sourceListItemDidExpand:(NSNotification *)notification;
 
@@ -336,7 +336,7 @@
 
  @param notification The posted notification.
 
- @since Requires PXSourceList 0.8 or above.
+ @since Requires PXSourceList 0.8 or above and the OS X v10.5 SDK or above.
  */
 - (void)sourceListItemWillCollapse:(NSNotification *)notification;
 
@@ -348,7 +348,7 @@
 
  @param notification The posted notification.
 
- @since Requires PXSourceList 0.8 or above.
+ @since Requires PXSourceList 0.8 or above and the OS X v10.5 SDK or above.
  */
 - (void)sourceListItemDidCollapse:(NSNotification *)notification;
 
@@ -364,7 +364,7 @@
 
  @return The height of the row used to display *item* in points.
 
- @since Requires PXSourceList 0.8 or above.
+ @since Requires PXSourceList 0.8 or above and the OS X v10.5 SDK or above.
  */
 - (CGFloat)sourceList:(PXSourceList*)aSourceList heightOfRowByItem:(id)item;
 
@@ -380,7 +380,7 @@
  @param cell The cell about to be displayed
  @param item An item in the data source
 
- @since Requires PXSourceList 0.8 or above.
+ @since Requires PXSourceList 0.8 or above and the OS X v10.5 SDK or above.
  */
 - (NSCell*)sourceList:(PXSourceList*)aSourceList willDisplayCell:(id)cell forItem:(id)item;
 
@@ -391,7 +391,7 @@
  @param aSourceList The Source List that sent the message.
  @param item An item in the data source
 
- @since Requires PXSourceList 0.8 or above.
+ @since Requires PXSourceList 0.8 or above and the OS X v10.5 SDK or above.
  */
 - (NSCell*)sourceList:(PXSourceList*)aSourceList dataCellForItem:(id)item;
 
