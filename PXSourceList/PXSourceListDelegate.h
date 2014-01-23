@@ -89,6 +89,8 @@
  @return The view to display for the specified item, or `nil` if you don't want to display a view for the item.
  
  @warning This is a required method when using the Source List in view-based mode.
+ 
+ @see sourceList:rowViewForItem:
 
  @since Requires PXSourceList 2.0.0 or above and the OS X v10.7 SDK or above.
  */
@@ -102,6 +104,8 @@
  @param item An item in the data source.
 
  @return An `NSTableRowView` instance, or `nil` if the Source List should create one and use that instead.
+ 
+ @see sourceList:viewForItem:
 
  @since Requires PXSourceList 2.0.0 or above and the OS X v10.7 SDK or above.
  */
@@ -114,6 +118,8 @@
  @param aSourceList The Source List that sent the message.
  @param rowView The view that was added to the Source List.
  @param row The row index.
+ 
+ @see sourceList:didRemoveRowView:forRow:
 
  @since Requires PXSourceList 2.0.0 or above and the OS X v10.7 SDK or above.
  */
@@ -126,6 +132,8 @@
  @param aSourceList The Source List that sent the message.
  @param rowView The row view that was removed from the Source List.
  @param row The row index.
+ 
+ @see sourceList:didAddRowView:forRow:
 
  @since Requires PXSourceList 2.0.0 or above and the OS X v10.7 SDK or above.
  */
@@ -142,6 +150,8 @@
  @param item An item in the data source.
  
  @return `YES` to allow the Source List to select *item*, or `NO` otherwise.
+ 
+ @see sourceList:selectionIndexesForProposedSelection:
 
  @since Requires PXSourceList 0.8 or above and the OS X v10.5 SDK or above.
  */
@@ -155,6 +165,8 @@
  @param proposedSelectionIndexes The proposed indexes of rows that should be selected.
  
  @return An `NSIndexSet` object containing the rows that should be selected in the proposed selection.
+ 
+ @see sourceList:shouldSelectItem:
 
  @since Requires PXSourceList 0.8 or above and the OS X v10.5 SDK or above.
  */
@@ -167,6 +179,8 @@
  This method is analagous to `-outlineViewSelectionIsChanging:` declared on `NSOutlineViewDelegate`. See the documentation for this method for more information.
 
  @param notification The posted notification.
+ 
+ @see sourceListSelectionDidChange:
 
  @since Requires PXSourceList 0.8 or above and the OS X v10.5 SDK or above.
  */
@@ -179,6 +193,8 @@
  This method is analagous to `-outlineViewSelectionDidChange:` declared on `NSOutlineViewDelegate`. See the documentation for this method for more information.
 
  @param notification The posted notification.
+ 
+ @see sourceListSelectionIsChanging:
 
  @since Requires PXSourceList 0.8 or above and the OS X v10.5 SDK or above.
  */
@@ -195,6 +211,9 @@
  @param item The item to generate the type selection string for.
 
  @return The string value used for type selection of *item*.
+ 
+ @see sourceList:nextTypeSelectMatchFromItem:toItem:forString:
+ @see sourceList:shouldTypeSelectForEvent:withCurrentSearchString:
 
  @since Requires PXSourceList 2.0.0 or above and the OS X v10.7 SDK or above.
  */
@@ -210,6 +229,9 @@
  @param searchString The string to search.
  
  @return The first item in the *startItem*--*endItem* range which matches *searchString*, or `nil` if there is no match.
+ 
+ @see sourceList:typeSelectStringForItem:
+ @see sourceList:shouldTypeSelectForEvent:withCurrentSearchString:
 
  @since Requires PXSourceList 2.0.0 or above and the OS X v10.7 SDK or above.
  */
@@ -224,6 +246,9 @@
  @param searchString The search string for which searching is to proceed from.
 
  @return `YES` if type select should proceed, or `NO` otherwise.
+ 
+ @see sourceList:typeSelectStringForItem:
+ @see sourceList:nextTypeSelectMatchFromItem:toItem:forString:
 
  @since Requires PXSourceList 2.0.0 or above and the OS X v10.7 SDK or above.
  */
@@ -311,6 +336,10 @@
  @param item An item in the data source.
 
  @return `YES` to allow expansion of *item*, otherwise `NO`.
+ 
+ @see sourceListItemWillExpand:
+ @see sourceListItemDidExpand:
+ @see sourceList:shouldCollapseItem:
 
  @since Requires PXSourceList 0.8 or above and the OS X v10.5 SDK or above.
  */
@@ -324,6 +353,10 @@
  @param item An item in the data source.
 
  @return `YES` to allow *item* to be collapsed, otherwise `NO`.
+ 
+ @see sourceListItemWillCollapse:
+ @see sourceListItemDidCollapse:
+ @see sourceList:shouldExpandItem:
 
  @since Requires PXSourceList 0.8 or above and the OS X v10.5 SDK or above.
  */
@@ -336,6 +369,9 @@
  This method is analagous to `-outlineViewItemWillExpand:` declared on `NSOutlineViewDelegate`. See the documentation for this method for more information.
 
  @param notification The posted notification.
+ 
+ @see sourceListItemDidExpand:
+ @see sourceList:shouldExpandItem:
 
  @since Requires PXSourceList 0.8 or above and the OS X v10.5 SDK or above.
  */
@@ -348,6 +384,9 @@
  This method is analagous to `-outlineViewItemDidExpand:` declared on `NSOutlineViewDelegate`. See the documentation for this method for more information.
 
  @param notification The posted notification.
+ 
+ @see sourceListItemWillExpand:
+ @see sourceList:shouldExpandItem:
 
  @since Requires PXSourceList 0.8 or above and the OS X v10.5 SDK or above.
  */
@@ -360,6 +399,9 @@
  This method is analagous to `-outlineViewItemWillCollapse:` declared on `NSOutlineViewDelegate`. See the documentation for this method for more information.
 
  @param notification The posted notification.
+ 
+ @see sourceListItemDidCollapse:
+ @see sourceList:shouldCollapseItem:
 
  @since Requires PXSourceList 0.8 or above and the OS X v10.5 SDK or above.
  */
@@ -372,6 +414,9 @@
  This method is analagous to `-outlineViewItemDidCollapse:` declared on `NSOutlineViewDelegate`. See the documentation for this method for more information.
 
  @param notification The posted notification.
+ 
+ @see sourceListItemWillCollapse:
+ @see sourceList:shouldCollapseItem:
 
  @since Requires PXSourceList 0.8 or above and the OS X v10.5 SDK or above.
  */
@@ -406,6 +451,8 @@
  @param item An item in the data source.
  
  @warning This method is only used by the Source List when operating in cell-based mode. When the Source List is operating in view-based mode, this method is not called.
+ 
+ @see sourceList:dataCellForItem:
 
  @since Requires PXSourceList 0.8 or above and the OS X v10.5 SDK or above.
  */
@@ -421,6 +468,8 @@
  @return The cell used to display *item*.
  
  @warning This method is only used by the Source List when operating in cell-based mode. When the Source List is operating in view-based mode, this method is not called.
+ 
+ @see sourceList:willDisplayCell:forItem:
 
  @since Requires PXSourceList 0.8 or above and the OS X v10.5 SDK or above.
  */
