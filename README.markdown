@@ -61,7 +61,7 @@ The documentation was created using [Doxygen][10] and [appledoc][11], thanks of 
 The icons used in the example projects bundled with the source code are from the [Fugue icon set][12] by Yusuke Kamiyamane and the [Mimi Glyphs set][13] by Jeremy Salée.
 
 ## Licence
-PXSourceList is licensed under the New BSD License, as detailed below (adapted from OSI http://www.opensource.org/licenses/bsd-license.php):
+PXSourceList is licensed under the New BSD License, as detailed below (adapted from OSI [http://www.opensource.org/licenses/bsd-license.php](http://www.opensource.org/licenses/bsd-license.php)):
 
 
 Copyright &copy; 2010-14, Alex Rozanski and other contributors.
