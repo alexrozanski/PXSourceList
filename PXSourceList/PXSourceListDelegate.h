@@ -237,6 +237,8 @@
  @param item An item in the data source.
 
  @return `YES` to allow an expansion tooltip to be displayed for *item*, otherwise `NO`.
+ 
+ @warning This method is only used by the Source List when operating in cell-based mode. When the Source List is operating in view-based mode, this method is not called.
 
  @since Requires PXSourceList 0.8 or above and the OS X v10.5 SDK or above.
  */
@@ -291,6 +293,8 @@
  @param item An item in the data source.
 
  @return `YES` if the cell should be tracked for *item*, otherwise `NO`.
+ 
+ @warning This method is only used by the Source List when operating in cell-based mode. When the Source List is operating in view-based mode, this method is not called.
 
  @since Requires PXSourceList 0.8 or above and the OS X v10.5 SDK or above.
  */
