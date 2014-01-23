@@ -4,7 +4,7 @@
 
 PXSourceList requires the OS X 10.7 SDK and above and is licensed under the New BSD License.
 
-![PXSourceList in action: The view-based example project included in the repository.](https://raw.github.com/Perspx/PXSourceList/master/Examples/Screenshots/PXSourceList-ViewBased-Example.png)
+![PXSourceList in action: The view-based example project included in the repository.](Examples/Screenshots/PXSourceList-ViewBased-Example.png)
 
 ## Motivation
 [Source Lists][2] are used in a lot of OS X applications, but the support for such controls is quite primitive – at best Cocoa allows you to create an outline view with Source List-style highlighting, but none of the features common to idiomatic Source Lists such as badging, and all top-level items being displayed differently are built in by default.
