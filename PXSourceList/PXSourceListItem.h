@@ -20,30 +20,33 @@
  @discussion ### Basic properties
  
  `PXSourceListItem` has been designed to contain properties for the frequently-used information which you need
- from a Source List data source item when implementing the `PXSourceListDelegate` and `PXSourceListDataSource`
- methods, namely:
+ from a Source List data source item when implementing the `PXSourceListDataSource` (and possibly
+ `PXSourceListDelegate`) methods, namely:
  
- * The title displayed in the Source List for the given item.
- * The icon displayed to the left of the given item in the Source List.
- * The badge value displayed to the right of the given item in the Source List.
- * Child items of the given item.
+   * The title displayed in the Source List for the given item.
+   * The icon displayed to the left of the given item in the Source List.
+   * The badge value displayed to the right of the given item in the Source List.
+   * Child items of the given item.
  
- The existence of these core properties mean that it is unlikely that you should have to create your own
+ The existence of these core properties means that it is unlikely that you should have to create your own
  `PXSourceListItem` subclass.
  
  ### Identifying objects
  
- `PXSourceListItem`'s API has been designed with being able to easily identify a given from any part of your
- code in mind. This is useful when you obtain an item using one of `NSOutlineView`'s methods or are given
- one as part of a PXSourceListDelegate or PXSourceListDataSource method.
+ `PXSourceListItem`s are often backed by data model objects that are used in other parts of your application, and
+ the API has been designed to be able to easily identify a given model object from any part of your code
+ given an arbitrary `PXSourceListItem`. This is useful when you obtain an item using one of `PXSourceList`'s methods
+ or are given one as an argument to a `PXSourceListDelegate` or `PXSourceListDataSource` protocol method and you
+ need to find its backing data model object to be able to use in application logic.
  
- There are two (often distinct) methods of identifying a given object from a `PXSourceListItem`:
+ There are two (often distinct) patterns used to identify a given backing model object in a `PXSourceListItem`
+ object:
 
- * Using the `identifier` property. This is probably the easiest way of identifying items, and these identifiers
-   are best defined as string constants which you can reference from multiple places in your code.
- * Using the `representedObject` property. Using `representedObject` can be useful if the underlying model
-   object has identifying information about it which you can use when determining which Source List Item you're
-   working with.
+   * Using the `identifier` property. This is probably the easiest way of identifying items, and these identifiers
+     are best defined as string constants which you can reference from multiple places in your code.
+   * Using the `representedObject` property. Using `representedObject` can be useful if the underlying model
+     object has identifying information about it which you can use when determining which object you're
+     working with given a `PXSourceListItem` instance.
 
  */
 @interface PXSourceListItem : NSObject
