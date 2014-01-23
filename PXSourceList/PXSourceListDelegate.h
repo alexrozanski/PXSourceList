@@ -26,8 +26,8 @@
  @brief Returns a Boolean value that indicates whether a particular group item is displayed as always expanded.
  @discussion A group that is displayed as *always expanded* displays no 'Show'/'Hide' button to the right on hover, and its direct children are always expanded.
 
- @param aSourceList The Source List that sent the message
- @param group A group item in the data source
+ @param aSourceList The Source List that sent the message.
+ @param group A group item in the data source.
 
  @return `YES` to specify that the group should be displayed as always expanded, or `NO` if not.
 
@@ -42,9 +42,9 @@
  @brief Returns a context menu which is to be displayed for a given mouse-down event.
  @discussion See `-menuForEvent:` declared on `NSView` for more information.
 
- @param aSourceList The Source List that sent the message
- @param theEvent A mouse event
- @param item An item in the data source
+ @param aSourceList The Source List that sent the message.
+ @param theEvent A mouse event.
+ @param item An item in the data source.
 
  @return An instantiated `NSMenu` object to be displayed by the Source List for *event*, or `nil` if no menu is to be shown for the given event.
 
@@ -68,13 +68,13 @@
 /// @name View-based Source List Delegate Methods
 ///---------------------------------------------------------------------------------------
 /**
- @brief Returns the view used to display the given item
+ @brief Returns the view used to display the given item.
  @discussion This method is analagous to `-outlineView:viewForTableColumn:item:` except the `NSTableColumn` parameter is omitted from this method (PXSourceList only makes use of a single table column). Aside from that, this method works in exactly the same way.
  
  Unlike when using PXSourceList in cell-based mode where the icon and badge value for each item can be set up using the PXSourceListDataSource methods, it is in this method that you should set up the icon and badge for the view (if applicable) when using PXSourceList in view-based mode. You can make use of the PXSourceListTableCellView class which exposes an outlet for a PXSourceListBadgeView (the built in view class which displays badges), and the `textField` and `imageView` outlets (which are inherited from its superclass, `NSTableCellView`) for the item's label and icon, respectively.
 
- @param aSourceList The Source List that sent the message
- @param item An item in the data source
+ @param aSourceList The Source List that sent the message.
+ @param item An item in the data source.
 
  @return The view to display for the specified item, or `nil` if you don't want to display a view for the item.
  
@@ -88,8 +88,8 @@
  @brief Returns the view used to display the given row.
  @discussion See `-outlineView:rowViewForItem:` declared on `NSOutlineViewDelegate` for more information.
 
- @param aSourceList The Source List that sent the message
- @param item An item in the data source
+ @param aSourceList The Source List that sent the message.
+ @param item An item in the data source.
 
  @return An `NSTableRowView` instance. As with `NSOutlineViewDelegate`, if `nil` is returned for a row, an `NSTableRowView` instance will be created by the Source List and used instead.
 
@@ -101,9 +101,9 @@
  @brief Sent when a row view has been added to the Source List.
  @discussion See `-outlineView:didAddRowView:forRow:` declared on `NSOutlineViewDelegate` for more information.
 
- @param aSourceList The Source List that sent the message
- @param rowView The view that was added to the Source List
- @param row The row index
+ @param aSourceList The Source List that sent the message.
+ @param rowView The view that was added to the Source List.
+ @param row The row index.
 
  @since Requires PXSourceList 2.0.0 or above and the OS X v10.7 SDK or above.
  */
@@ -113,9 +113,9 @@
  @brief Sent when a row view has been removed to the Source List.
  @discussion See `-outlineView:didRemoveRowView:forRow:` declared on `NSOutlineViewDelegate` for more information.
 
- @param aSourceList The Source List that sent the message
- @param rowView The view that was removed
- @param row The row index
+ @param aSourceList The Source List that sent the message.
+ @param rowView The view that was removed.
+ @param row The row index.
 
  @since Requires PXSourceList 2.0.0 or above and the OS X v10.7 SDK or above.
  */
@@ -128,8 +128,8 @@
  @brief Returns a Boolean value indicating whether a given item should be selected.
  @discussion This method is analagous to `-outlineView:shouldSelectItem:` declared on `NSOutlineViewDelegate`. See the documentation for this method for more information.
 
- @param aSourceList The Source List that sent the message
- @param item An item in the data source
+ @param aSourceList The Source List that sent the message.
+ @param item An item in the data source.
 
  @since Requires PXSourceList 0.8 or above and the OS X v10.5 SDK or above.
  */
@@ -139,8 +139,8 @@
  @brief Returns the indexes that should be selected for a user-initiated selection.
  @discussion This method is analagous to `-outlineView:selectionIndexesForProposedSelection:` declared on `NSOutlineViewDelegate`. See the documentation for this method for more information.
 
- @param aSourceList The Source List that sent the message
- @param proposedSelectionIndexes The proposed indexes of rows that should be selected
+ @param aSourceList The Source List that sent the message.
+ @param proposedSelectionIndexes The proposed indexes of rows that should be selected.
 
  @since Requires PXSourceList 0.8 or above and the OS X v10.5 SDK or above.
  */
@@ -269,8 +269,8 @@
  @discussion This method is analagous to `-outlineView:shouldTrackCell:forTableColumn:item:` declared on `NSOutlineViewDelegate`, although it doesn't pass an `NSTableColumn` parameter as `PXSourceList` implicitly only uses one table column. See the documentation for `-outlineView:shouldTrackCell:forTableColumn:item:` for more information.
 
  @param aSourceList The Source List that sent the message.
- @param cell The cell used to display *item*
- @param item An item in the data source
+ @param cell The cell used to display *item*.
+ @param item An item in the data source.
 
  @return `YES` if the cell should be tracked for *item*, otherwise `NO`.
 
@@ -286,7 +286,7 @@
  @discussion This method is analagous to `-outlineView:shouldExpandItem:` declared on `NSOutlineViewDelegate`. See the documentation for this method for more information.
 
  @param aSourceList The Source List that sent the message.
- @param item An item in the data source
+ @param item An item in the data source.
 
  @return `YES` to allow expansion of *item*, otherwise `NO`.
 
@@ -299,7 +299,7 @@
  @discussion This method is analagous to `-outlineView:shouldCollapseItem:` declared on `NSOutlineViewDelegate`. See the documentation for this method for more information.
 
  @param aSourceList The Source List that sent the message.
- @param item An item in the data source
+ @param item An item in the data source.
 
  @return `YES` to allow *item* to be collapsed, otherwise `NO`.
 
@@ -363,7 +363,7 @@
  @discussion This method is analagous to `-outlineView:heightOfRowByItem:` declared on `NSOutlineViewDelegate`. See the documentation for this method for more information.
 
  @param aSourceList The Source List that sent the message.
- @param item An item in the data source
+ @param item An item in the data source.
 
  @return The height of the row used to display *item* in points.
 
@@ -380,8 +380,8 @@
  @discussion This method is analagous to `-outlineView:willDisplayCell:forTableColumn:item:` declared on `NSOutlineViewDelegate`, although it doesn't pass an `NSTableColumn` parameter as `PXSourceList` implicitly only uses one table column. See the documentation for `-outlineView:willDisplayCell:forTableColumn:item:` for more information.
 
  @param aSourceList The Source List that sent the message.
- @param cell The cell about to be displayed
- @param item An item in the data source
+ @param cell The cell about to be displayed.
+ @param item An item in the data source.
 
  @since Requires PXSourceList 0.8 or above and the OS X v10.5 SDK or above.
  */
@@ -392,7 +392,7 @@
  @discussion This method is analagous to `-outlineView:dataCellForTableColumn:item:` declared on `NSOutlineViewDelegate`, although it doesn't pass an `NSTableColumn` parameter as `PXSourceList` implicitly only uses one table column. See the documentation for `-outlineView:dataCellForTableColumn:item:` for more information.
 
  @param aSourceList The Source List that sent the message.
- @param item An item in the data source
+ @param item An item in the data source.
 
  @since Requires PXSourceList 0.8 or above and the OS X v10.5 SDK or above.
  */
