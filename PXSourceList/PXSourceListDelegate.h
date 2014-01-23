@@ -254,6 +254,8 @@
  @param rect The proposed active area of the tooltip.
  @param item The item in the data source to display the tooltip for.
  @param mouseLocation The current mouse location in view coordinates.
+ 
+ @warning This method is only used by the Source List when operating in cell-based mode. When the Source List is operating in view-based mode, this method is not called.
 
  @since Requires PXSourceList 2.0.0 or above and the OS X v10.7 SDK or above.
  */
