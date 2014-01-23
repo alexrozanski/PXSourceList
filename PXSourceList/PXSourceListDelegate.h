@@ -147,20 +147,6 @@
 - (NSIndexSet*)sourceList:(PXSourceList*)aSourceList selectionIndexesForProposedSelection:(NSIndexSet *)proposedSelectionIndexes;
 
 /**
- @brief Returns the tooltip string that should be displayed for a given cell.
- @discussion This method is analagous to `-outlineView:toolTipForCell:rect:tableColumn:item:mouseLocation:` declared on `NSOutlineViewDelegate`, although it doesn't pass an `NSTableColumn` parameter as `PXSourceList` implicitly only uses one table column. See the documentation for `-outlineView:toolTipForCell:rect:tableColumn:item:mouseLocation:` for more information.
-
- @param sourceList The Source List that sent the message.
- @param cell The cell to return the tooltip for.
- @param rect The proposed active area of the tooltip.
- @param item The item in the data source to display the tooltip for.
- @param mouseLocation The current mouse location in view coordinates.
-
- @since Requires PXSourceList 2.0.0 or above and the OS X v10.7 SDK or above.
- */
-- (NSString *)sourceList:(PXSourceList *)sourceList toolTipForCell:(NSCell *)cell rect:(NSRectPointer)rect item:(id)item mouseLocation:(NSPoint)mouseLocation;
-
-/**
  @brief Invoked when *notification* is posted (when the Source List's selection changes).
  @discussion This method is invoked when the `PXSLSelectionIsChangingNotification` notification is posted.
 
@@ -241,6 +227,23 @@
  @since Requires PXSourceList 0.8 or above and the OS X v10.5 SDK or above.
  */
 - (BOOL)sourceList:(PXSourceList *)sourceList shouldShowCellExpansionForItem:(id)item;
+
+///---------------------------------------------------------------------------------------
+/// @name Providing Tooltips
+///---------------------------------------------------------------------------------------
+/**
+ @brief Returns the tooltip string that should be displayed for a given cell.
+ @discussion This method is analagous to `-outlineView:toolTipForCell:rect:tableColumn:item:mouseLocation:` declared on `NSOutlineViewDelegate`, although it doesn't pass an `NSTableColumn` parameter as `PXSourceList` implicitly only uses one table column. See the documentation for `-outlineView:toolTipForCell:rect:tableColumn:item:mouseLocation:` for more information.
+
+ @param sourceList The Source List that sent the message.
+ @param cell The cell to return the tooltip for.
+ @param rect The proposed active area of the tooltip.
+ @param item The item in the data source to display the tooltip for.
+ @param mouseLocation The current mouse location in view coordinates.
+
+ @since Requires PXSourceList 2.0.0 or above and the OS X v10.7 SDK or above.
+ */
+- (NSString *)sourceList:(PXSourceList *)sourceList toolTipForCell:(NSCell *)cell rect:(NSRectPointer)rect item:(id)item mouseLocation:(NSPoint)mouseLocation;
 
 ///---------------------------------------------------------------------------------------
 /// @name Editing Items
