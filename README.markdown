@@ -18,6 +18,8 @@ PXSourceList requires the OS X 10.7 SDK and above and is licensed under the New 
 Clone the repository:
 
     $ git clone https://github.com/Perspx/PXSourceList.git
+    
+Copy all of the files from the `PXSourceList` directory (including those in the `Internal` subdirectory) into your project.
 
 ### Adding `PXSourceList` to your application
 
