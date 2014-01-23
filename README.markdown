@@ -1,24 +1,31 @@
 #PXSourceList
 
-A Source List control for use with the Mac OS X 10.5 SDK or above.
+`PXSourceList` is an `NSOutlineView` subclass used for easily implementing Source Lists in your applications.
 
-[Download the documentation][1]
+PXSourceList requires the OS X 10.7 SDK and above and is licensed under the New BSD License.
 
-`PXSourceList` is licensed under the New BSD License.
+## Motivation
+[Source Lists][2] are used in a lot of OS X applications, but the support for such controls is quite primitive – at best Cocoa allows you to create an outline view with Source List-style highlighting, but none of the features common to idiomatic Source Lists such as badging, and all top-level items being displayed differently are built in by default.
 
-##Intention
-[Source Lists][2] are used in a lot of Mac OS X applications, but the support for such controls is quite primitive – at best you create an Outline View with Source List highlighting, but none of the features such as badging are built in by default. `PXSourceList` is a reusable control – within the context of Source Lists – which makes creating applications with Source Lists a much easier process.
+`PXSourceList` implements lots of this idiomatic behaviour for you, which makes adding a Source List to your applications a lot easier and quicker.
 
-##Using the code
-There are only a few steps involved:
+## Using `PXSourceList`
 
- 1. Download the source, and copy `PXSourceList.h`, `PXSourceList.m`, `PXSourceListDelegate.h` and `PXSourceListDataSource.h` into your Xcode project.
- 2. To create the control in Interface Builder, drag an `NSOutlineView` object over to a window and in the Identity Inspector for the Outline View, change the class to `PXSourceList`. In the Attributes Inspector, set it to have only 1 column, uncheck "Headers" in the "Columns" section and set "Highlight" to "Source List" – there is an NIB in the example project bundled with the source.
- 3. Make sure to `#import "PXSourceList.h"` for files that require it (the delegate and data source protocol files are imported in this main header), and ensure that your class(es) that are the `delegate` and/or `dataSource` for the Source List conform to the `PXSourceListDelegate` and `PXSourceListDataSource` protocols respectively.
+### Getting the code
 
-**Note:** If you intend to use PXSourceList with the 10.5 SDK, you will need to remove some of the protocols that PXSourceList conforms to which do not exist – in `PXSourceList.h`, remove the `<NSOutlineViewDelegate, NSOutlineViewDataSource, NSMenuDelegate>` from the interface declaration.
+Clone the repository:
 
-There is also an example project bundled with the source to see how the control is used.
+    $ git clone https://github.com/Perspx/PXSourceList.git
+
+### Adding `PXSourceList` to your application
+
+ 1. Drag an `NSOutlineView` object into the window/view that you're displaying the Source List in.
+ 2. In the Identity inspector for the outline view, change the class from the default (`NSOutlineView`) to `PXSourceList`.
+ 3. With the *Source List* selected, select "Source List" for the "Highlight" attribute in the Attributes inspector under the "Table View" section.
+ 4. Control-click on the Source List and drag connectors to the object(s) that you want to be your Source List's delegate and data source, selecting "delegate" or "dataSource" respectively from the popup menu that is shown when you release the mouse button. A Source List *requires* a data source object, but having a delegate is optional.
+ 5. Make sure to `#import "PXSourceList.h"` for files that require it (the delegate and data source protocol files are imported in this main header), and ensure that your class(es) that are the `delegate` and/or `dataSource` for the Source List conform to the `PXSourceListDelegate` and `PXSourceListDataSource` protocols respectively.
+
+There are also two example projects bundled with the source to see how `PXSourceList` should be used.
 
 ##Screenshots
 ![alt text][3]
