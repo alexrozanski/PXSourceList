@@ -17,13 +17,10 @@
 
 /**
 
- `PXSourceList` is an `NSOutlineView` subclass that uses 'Source List' styling similar to that used by the
- sidebar in applications such as iTunes and Mail.app. It makes implementing Source Lists a lot easier
- beyond the standard AppKit "Source List Styling" option and `-outlineView:isGroupItem:` delegate method on
- `NSOutlineViewDelegate` by making several assumptions about how "conventional" Source Lists operate:
+ `PXSourceList` is an `NSOutlineView` subclass that makes using a source list (the sidebar
+ seen in applications such as iTunes and Mail.app) easier by providing common styling and idiomatic
+ behaviour of source lists for you through a clean and simple API. Notable features of PXSourceList include:
 
-   - `PXSourceList` objects operate with only one column and do not display a header, something
- which is reflected in the API and makes the control easier to use.
    - All root-level, "group" items are displayed using `NSOutlineView`'s group styling by default and requires no additional setup.
    - Source List items often display an *icon* and *badge* (for information such as unread counts). This is built into
  the API to make configuring these quick and easy, and a badge `NSControl` subclass is included which can be added to
@@ -32,6 +29,8 @@
  and no 'Show'/'Hide' button is displayed when hovering over the group. This is often useful for listing the main
  contexts your application can be in at any given time, which the user can select to change views. As it is paramount to
  your application's navigation, these groups are often displayed with their child items always shown.
+   - `PXSourceList` objects operate with only one column and do not display a header, something
+ which is reflected in the API and makes the control easier to use.
 
  Like `NSOutlineView` and `NSTableView`, a `PXSourceList` object does not store its own data, but retrieves
  values from a weakly-referenced data source (see the `PXSourceListDataSource` protocol). A `PXSourceList`
@@ -40,11 +39,11 @@
  
  ### Cell-based vs. view-based mode
  
- Like `NSTableView` and `NSOutlineView`, `PXSourceList` can operate in both cell-based and view-based mode in
+ Like `NSTableView` and `NSOutlineView`, PXSourceList can operate in both cell-based and view-based mode in
  relation to how you provide content to be displayed.
  
- When using `PXSourceList` in cell-based mode, it can manage drawing of icons and badges for you through custom
- drawing and `PXSourceListDataSource` methods. However, when using `PXSourceList` in view-based mode, it can't
+ When using PXSourceList in cell-based mode, it can manage drawing of icons and badges for you through custom
+ drawing and `PXSourceListDataSource` methods. However, when using PXSourceList in view-based mode, it can't
  do this directly, because cell views are configured independently in Interface Builder (or programmatically)
  and configured in the `PXSourceListDataSource` method, `-sourceList:viewForItem:`.
  
@@ -64,12 +63,12 @@
  
  ### Creating a data source model with `PXSourceListItem`
  
- Like `NSOutlineView`, `PXSourceList` queries its data source to build up a tree-like structure of content using
+ Like `NSOutlineView`, PXSourceList queries its data source to build up a tree-like structure of content using
  `-sourceList:numberOfChildrenOfItem:` and `-sourceList:child:ofItem:`. Often it is practical to store the structure
  of your Source List content in a tree structure which can then be easily returned the the Source List using
  these two data source methods.
  
- To help with this, the generic `PXSourceListItem` class has been included with `PXSourceList` which can be
+ To help with this, the generic `PXSourceListItem` class has been included with PXSourceList which can be
  used to build this tree structure. It declares properties such as `title` and `icon` which are useful in
  storing display information which can then be used in `-sourceList:viewForItem:` or `-sourceList:objectValueForItem:`,
  as well as a `children` property with convenience methods for mutating its list of children. Take a look at the
