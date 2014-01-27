@@ -1,6 +1,7 @@
 Pod::Spec.new do |s|
   s.name         = "PXSourceList"
   s.version      = "2.0.0"
+  s.license      = 'BSD'
   s.summary      = "A Source List control for OS X."
 
   s.description  = <<-DESC
@@ -15,7 +16,6 @@ Pod::Spec.new do |s|
                    DESC
 
   s.homepage     = "https://github.com/Perspx/PXSourceList"
-  s.license      = 'MIT'
 
   s.author       = { "Alex Rozanski" => "alex@rozanski.me" }
   s.social_media_url = "http://twitter.com/alexrozanski"
