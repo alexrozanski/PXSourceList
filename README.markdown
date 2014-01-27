@@ -17,7 +17,7 @@ PXSourceList requires the OS X 10.7 SDK and above and is licensed under the New 
 
 You can install PXSourceList by adding the following line to your `Podfile`:
 
-    pod 'PXSourceList', '~> 2.0.0'
+    pod 'PXSourceList', '~> 2.0'
 
 ### Cloning with git
 
