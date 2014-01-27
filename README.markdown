@@ -7,11 +7,11 @@ PXSourceList requires the OS X 10.7 SDK and above and is licensed under the New 
 ![PXSourceList in action: The view-based example project included in the repository.](Examples/Screenshots/PXSourceList-ViewBased-Example.png)
 
 ## Motivation
-[Source Lists][2] are used in a lot of OS X applications, but the support for such controls is quite primitive – at best Cocoa allows you to create an outline view with Source List-style highlighting, but none of the features common to idiomatic Source Lists such as badging, and all top-level items being displayed differently are built in by default.
+[Source lists](http://developer.apple.com/library/mac/documentation/UserExperience/Conceptual/AppleHIGuidelines/Windows/Windows.html#//apple_ref/doc/uid/20000961-CHDDIGDE) are commonly used as sidebars in OS X applications, but the support for such controls is quite primitive – at best Cocoa allows you to create an outline view with Source List-style highlighting, but setup of an idiomatic Source List including badging and section headers being displayed differently isn’t done automatically.
 
-`PXSourceList` implements lots of this idiomatic behaviour for you, which makes adding a Source List to your applications a lot easier and quicker.
+PXSourceList implements lots of this idiomatic behaviour for you, which makes adding a source list to your applications a lot easier and quicker.
 
-## Using `PXSourceList`
+## Using PXSourceList
 
 ### Installing with Cocoapods
 
@@ -27,28 +27,33 @@ You can also get the source by cloning with git:
 
 You can then either:
 
-  * Copy all of the files from the `PXSourceList` directory (including those in the `Internal` subdirectory) into your project.
-  * **or** add the Xcode project as a subproject to your own Xcode project, or to your workspace and link against the PXSourceList framework target.
+  * Copy all of the files from the `PXSourceList` directory (including those in the `Internal` subdirectory) into your project
 
-### Using `PXSourceList` in your application
+***or***
 
- 1. Drag an `NSOutlineView` object into the window/view that you're displaying the Source List in.
- 2. In the Identity inspector for the outline view, change the class from the default (`NSOutlineView`) to `PXSourceList`.
- 3. With the *Source List* selected, select "Source List" for the "Highlight" attribute in the Attributes inspector under the "Table View" section.
+  * Add the Xcode project as a subproject to your own Xcode project or to your workspace and link against the `PXSourceList` framework target.
+
+### Using PXSourceList in your application
+
+ 1. Drag an `NSOutlineView` object into the window/view that you're displaying the source list in. Often source lists are placed in the leftmost panel of an `NSSplitView`.
+ 2. In the Identity inspector for the outline view, change the class from the `NSOutlineView` placeholder to `PXSourceList`.
+ 3. With the *source list* selected (it helps to use Interface Builder’s *Document Outline* view for this), select "Source List" for the "Highlight" attribute under the "Table View" section in the Attributes inspector.
  4. Control-click on the Source List and drag connectors to the object(s) that you want to be your Source List's delegate and data source, selecting "delegate" or "dataSource" respectively from the popup menu that is shown when you release the mouse button. A Source List *requires* a data source object, but having a delegate is optional.
- 5. Make sure to `#import "PXSourceList.h"` for files that require it (the delegate and data source protocol files are imported in this main header), and ensure that your class(es) that are the `delegate` and/or `dataSource` for the Source List conform to the `PXSourceListDelegate` and `PXSourceListDataSource` protocols respectively.
+ 5. Make sure to `#import "PXSourceList.h"` for files that require it (the delegate and data source protocol files are imported in this main header), and ensure that your source list delegate and data source class(es) conform to the `PXSourceListDelegate` and `PXSourceListDataSource` protocols respectively.
 
-There are also two example projects bundled with the source to see how `PXSourceList` should be used.
+There are also two example projects included in the project to see how PXSourceList should be used.
 
-### Cell-based vs View-based mode
+### Cell-based vs. View-based mode
 As an `NSOutlineView` subclass, PXSourceList can display its contents using cells (in *cell-based* mode) or views (in *view-based* mode). Some delegate and data source methods (see below) are only applicable when PXSourceList is used in cell-based mode, and is noted as such in the documentation.
 
 ## Delegate and Data Source
-Like `NSOutlineView`, `PXSourceList` obtains its content and other information from its *dataSource* and *delegate* objects, with methods defined in the `PXSourceListDataSource` and `PXSourceListDelegate` protocols respectively.
+Like `NSOutlineView`, `PXSourceList` objects obtain their content and other information from their *data source* and *delegate* objects using methods defined in the `PXSourceListDataSource` and `PXSourceListDelegate` protocols respectively.
 
-Since `PXSourceList` subclasses `NSOutlineView`, `PXSourceListDataSource` and `PXSourceListDelegate` include most `NSOutlineView` delegate and data source methods (as well as declaring new methods) but with the "outlineView" prefix replaced with "sourceList". Some of the `NSOutlineView` delegate and data source methods are not relevant to `PXSourceList`, so they haven't been added to these two protocols. If you want more information have a look at *[Outline View Programming Topics for Cocoa][4]* – the Source List delegate and data source implementation work in a very similar way.
+As well as declaring its own delegate and data source methods, since `PXSourceList` subclasses `NSOutlineView`, `PXSourceListDataSource` and `PXSourceListDelegate` include most `NSOutlineViewDelegate` and `NSOutlineViewDataSource` methods but with the "outlineView" prefix replaced with "sourceList". For more information, take a look at *[Outline View Programming Topics for Cocoa](http://developer.apple.com/mac/library/DOCUMENTATION/Cocoa/Conceptual/OutlineView/Articles/UsingOutlineDataSource.html)* — PXSourceList’s delegate and data source implementation works in a very similar way.
 
-Note that because of the way `PXSourceList` works under the hood, `-[PXSourceList delegate]` and `-[PXSourceList dataSource]` have been marked as unavailable as they return an internal proxy object. You should therefore only use `-setDelegate:` and `-setDataSource:`.
+Note that some of the `NSOutlineView` delegate and data source methods are not relevant to PXSourceList, so they haven't been added to `PXSourceListDelegate` and `PXSourceListDataSource`.
+
+Note also that because of the way PXSourceList works under the hood, `-[PXSourceList delegate]` and `-[PXSourceList dataSource]` have been marked as unavailable (they return an internal proxy object). You should therefore only use `-setDelegate:` and `-setDataSource:`.
 
 ### Required Methods 
 A PXSourceList data source must implement the following methods:
@@ -57,34 +62,34 @@ A PXSourceList data source must implement the following methods:
     - (id)sourceList:(PXSourceList*)aSourceList child:(NSUInteger)index ofItem:(id)item;
     - (BOOL)sourceList:(PXSourceList*)aSourceList isItemExpandable:(id)item;
 
-If you are using PXSourceList in cell-based mode, you also need to implement `-sourceList:objectValueForItem:`.
+If you are using PXSourceList in cell-based mode, you also need to implement `-sourceList:objectValueForItem:`. Additionally, if you are using PXSourceList in view-based mode, you should implement  `-sourceList:viewForItem:` in your delegate.
 
-Additionally, if you are using PXSourceList in view-based mode, you should implement  `-sourceList:viewForItem:` in your delegate.
+Take a look at both the view-based and cell-based example projects in the repository for more information about implementing PXSourceList delegate and data source objects.
 
-##Documentation
+## Documentation
 `PXSourceList` and its related classes and protocols are documented in the header files included in the repository using [appledoc](http://gentlebytes.com/appledoc/)-style documentation.
 
 Documentation (in HTML and docset formats) can be generated by building the *Documentation* target from the Xcode project. The resulting documentation will be placed in `docs` in the root directory of the project. To generate documentation in this way, appledoc [must be installed](https://github.com/tomaz/appledoc#quick-install) and the script which builds the documentation expects it to be installed under `/usr/local/bin`.
 
 If you notice any mistakes or feel that any areas of the documentation are lacking or missing, please [file a GitHub issue](https://github.com/Perspx/PXSourceList/issues).
 
-##Attribution
+## Attribution
 
-Thanks to all of the [wonderful people](https://github.com/Perspx/PXSourceList/graphs/contributors) who have contributed to the project, and made it better in lots of different ways.
+Thanks first of all to the [wonderful people](https://github.com/Perspx/PXSourceList/graphs/contributors) who have contributed to the project and helped in improving the project, fixing bugs and adding new features.
 
-In the initial release of PXSourceList, I was spurred along the way by many sources, but in particular [BWToolkit][8] by Brandon Walkin and Fraser Kuyvenhoven, which gave me the idea of how to handle the Source List delegate and data source methods.
+In the initial release of PXSourceList, I was spurred along the way by many sources, but in particular [BWToolkit](http://brandonwalkin.com/bwtoolkit/) by Brandon Walkin and Fraser Kuyvenhoven, which gave me the idea of how to handle the source list delegate and data source methods.
 
-Also Brian Dunagan's post on [Source List badging][9] and determining state for the various colours was a great help when I came to the drawing code for that.
+Brian Dunagan's post on [Source List badging](http://www.bdunagan.com/2008/11/10/cocoa-tutorial-source-list-badges-part-2/) and determining state for the various colours was also a great help when I came to the drawing code for source list badges.
 
-The documentation was created using [Doxygen][10] and [appledoc][11], thanks of which go to the developers of both.
+The *Documentation* target in the Xcode project makes use of the fantastic [appledoc](http://www.gentlebytes.com/appledoc/), which has been an invaluable tool utilised since the very first version of PXSourceList.
 
-The icons used in the example projects bundled with the source code are from the [Fugue icon set][12] by Yusuke Kamiyamane and the [Mimi Glyphs set][13] by Jeremy Salée.
+The icons used in the example projects bundled with the source code are from the [Fugue icon set](http://p.yusukekamiyamane.com) by Yusuke Kamiyamane (in the cell-based example) and the [Mimi Glyphs set](http://salleedesign.com/resources/mimi-glyphs/) by Jeremy Salée (in the view-based example).
 
 ## Licence
 PXSourceList is licensed under the New BSD License, as detailed below (adapted from OSI [http://www.opensource.org/licenses/bsd-license.php](http://www.opensource.org/licenses/bsd-license.php)):
 
 
-Copyright &copy; 2010-14, Alex Rozanski and other contributors.
+Copyright &copy; 2009-14, Alex Rozanski and other contributors.
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
@@ -94,18 +99,3 @@ Redistribution and use in source and binary forms, with or without modification,
 - Neither the name of the author nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
 
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-
-
-  [1]: http://github.com/Perspx/PXSourceList/downloads
-  [2]: http://developer.apple.com/library/mac/documentation/UserExperience/Conceptual/AppleHIGuidelines/Windows/Windows.html#//apple_ref/doc/uid/20000961-CHDDIGDE
-  [3]: http://perspx.com/wp-content/uploads/2010/01/pxsourcelist.jpg
-  [4]: http://developer.apple.com/mac/library/DOCUMENTATION/Cocoa/Conceptual/OutlineView/Articles/UsingOutlineDataSource.html
-  [5]: http://github.com/Perspx/PXSourceList/downloads
-  [6]: http://perspx.com/contact
-  [7]: http://github.com/Perspx/PXSourceList/downloads
-  [8]: http://brandonwalkin.com/bwtoolkit/
-  [9]: http://www.bdunagan.com/2008/11/10/cocoa-tutorial-source-list-badges-part-2/
-  [10]: http://www.doxygen.org/
-  [11]: http://www.gentlebytes.com/freeware/appledoc/
-  [12]: http://www.pinvoke.com/
-  [13]: http://salleedesign.com/resources/mimi-glyphs/
