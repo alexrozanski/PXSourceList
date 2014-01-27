@@ -18,6 +18,11 @@
  Similar to `NSTableCellView` and its `textField` and `imageView` outlets, `PXSourceListTableCellView`
  provides a `badgeView` outlet which can be hooked up to a `PXSourceListBadgeView` in Interface Builder
  and then configured in `sourceList:viewForItem:`.
+ 
+ `PXSourceListTableCellView` positions its `badgeView` automatically (as `NSTableCellView` does for the `textField`
+ and `imageView` outlets) to be positioned centred (vertically) and rightmost (horizontally). If you want to
+ change this positioning you can do so by creating a `PXSourceListTableCellView` subclass and overriding
+ `-layout`, but note that idiomatically, source lists display badges to the right of each row.
  */
 @interface PXSourceListTableCellView : NSTableCellView
 
