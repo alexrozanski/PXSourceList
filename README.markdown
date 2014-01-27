@@ -7,11 +7,11 @@ PXSourceList requires the OS X 10.7 SDK and above and is licensed under the New 
 ![PXSourceList in action: The view-based example project included in the repository.](Examples/Screenshots/PXSourceList-ViewBased-Example.png)
 
 ## Motivation
-[Source lists](http://developer.apple.com/library/mac/documentation/UserExperience/Conceptual/AppleHIGuidelines/Windows/Windows.html#//apple_ref/doc/uid/20000961-CHDDIGDE) are commonly used as sidebars in OS X applications, but the support for such controls is quite primitive – at best Cocoa allows you to create an outline view with Source List-style highlighting, but setup of an idiomatic source list including badging and section headers being displayed differently isn’t done automatically.
+Using a [source list](http://developer.apple.com/library/mac/documentation/UserExperience/Conceptual/AppleHIGuidelines/Windows/Windows.html#//apple_ref/doc/uid/20000961-CHDDIGDE) for navigation is a common user interface paradigm in OS X applications, but requires a fair amount of manual set up and customisation of standard Cocoa controls.
 
-PXSourceList implements lots of this idiomatic behaviour for you, which makes adding a source list to your applications a lot easier and quicker.
+**PXSourceList provides much of the common styling and idiomatic behaviour of source lists for you through a clean and simple API.**
 
-Note that [in the OS X Human Interface Guidelines](https://developer.apple.com/library/mac/documentation/userexperience/conceptual/applehiguidelines/Windows/Windows.html#//apple_ref/doc/uid/20000961-CHDDIGDE), source lists are broken down into those which provide navigation for the app as a whole, and those which provide selection functionality for the window. PXSourceList implements this first style of source list; the second type doesn’t use quite as much common customisation so would not be useful in this context.
+Note that [in the OS X Human Interface Guidelines](https://developer.apple.com/library/mac/documentation/userexperience/conceptual/applehiguidelines/Windows/Windows.html#//apple_ref/doc/uid/20000961-CHDDIGDE), source lists are broken down into those which provide navigation for the app as a whole, and those which provide selection functionality for the window. PXSourceList implements this *first* style of source list; the second type doesn’t require quite as much common customisation so would not be useful as a standalone control.
 
 ## Using PXSourceList
 
