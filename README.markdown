@@ -103,7 +103,7 @@ This is a view class that draws a badge with a given numeric value. Badges are d
 ### PXSourceListTableCellView
 This is an `NSTableCellView` subclass that exposes a `badgeView` outlet that can be hooked up to a `PXSourceListBadgeView` instance in Interface Builder and can then be configured in `-sourceList:viewForItem:`. Like with `NSTableCellView`, `PXSourceListTableCellView` positions its `badgeView` automatically for you.
 
-## PXSourceListItem
+## Data Source Model Using PXSourceListItem
 The generic `PXSourceListItem` class has been added in PXSourceList 2 for creation of a data source model without having to roll your own classes.
 
 Since `PXSourceListDataSource` works by building up a tree structure of model objects (which maps to the tree-like presentation of the content), `PXSourceListItem` allows you to build up a tree structure of model objects using the `children` property and other convenience methods.
