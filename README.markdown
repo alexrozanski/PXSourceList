@@ -41,11 +41,22 @@ You can then either:
 There are also two example projects bundled with the source to see how `PXSourceList` should be used.
 
 ## Delegate and Data Source
-`PXSourceList` adopts the delegation pattern by using two protocols: `PXSourceListDataSource` and `PXSourceListDelegate`. These protocols include most `NSOutlineView` delegate and data source methods, but with the "outlineView" prefix replaced with "sourceList". Some of the `NSOutlineView` delegate and data source methods haven't been carried over or their method signature has been modified slightly because they don't make sense in the context of `PXSourceList`, since it works with only a single table column and no column headers.
+Like `NSOutlineView`, `PXSourceList` obtains its content and other information from its *dataSource* and *delegate* objects, with methods defined in the `PXSourceListDataSource` and `PXSourceListDelegate` protocols respectively.
 
-If you want more information have a look at *[Outline View Programming Topics for Cocoa][4]* – the Source List delegate and data source implementation work in a very similar way.
+Since `PXSourceList` subclasses `NSOutlineView`, `PXSourceListDataSource` and `PXSourceListDelegate` include most `NSOutlineView` delegate and data source methods (as well as declaring new methods) but with the "outlineView" prefix replaced with "sourceList". Some of the `NSOutlineView` delegate and data source methods are not relevant to `PXSourceList`, so they haven't been added to these two protocols. If you want more information have a look at *[Outline View Programming Topics for Cocoa][4]* – the Source List delegate and data source implementation work in a very similar way.
 
 Note that because of the way `PXSourceList` works under the hood, `-[PXSourceList delegate]` and `-[PXSourceList dataSource]` have been marked as unavailable as they return an internal proxy object. You should therefore only use `-setDelegate:` and `-setDataSource:`.
+
+### Required Methods 
+A PXSourceList data source must implement the following methods:
+
+    - (NSUInteger)sourceList:(PXSourceList*)sourceList numberOfChildrenOfItem:(id)item;
+    - (id)sourceList:(PXSourceList*)aSourceList child:(NSUInteger)index ofItem:(id)item;
+    - (BOOL)sourceList:(PXSourceList*)aSourceList isItemExpandable:(id)item;
+
+If you are using PXSourceList in cell-based mode, you also need to implement `-sourceList:objectValueForItem:`.
+
+Additionally, if you are using PXSourceList in view-based mode, you should implement  `-sourceList:viewForItem:` in your delegate.
 
 ##Documentation
 `PXSourceList` and its related classes and protocols are documented in the header files included in the repository using [appledoc](http://gentlebytes.com/appledoc/)-style documentation.
