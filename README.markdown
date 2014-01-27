@@ -46,6 +46,15 @@ There are also two example projects included in the project to see how PXSourceL
 ### Cell-based vs. View-based mode
 As an `NSOutlineView` subclass, PXSourceList can display its contents using cells (in *cell-based* mode) or views (in *view-based* mode). Some delegate and data source methods (see below) are only applicable when PXSourceList is used in cell-based mode, and is noted as such in the documentation.
 
+## PXSourceList 2
+PXSourceList 2 is a great improvement over PXSourceList 0.x and 1.x that adds view-based table support and many other small improvements and bugfixes.
+
+For view-based table support, new delegate and data source methods have been added to bring PXSourceList on-par with `NSOutlineView`’s API, and a generic badge view and `NSTableCellView` subclass have been implemented to allow easy setup of `NSTableCellView`s with PXSourceList.
+
+Additionally, a generic `PXSourceListItem` class has been implemented to easily build data source model data without having to roll your own. A new internal implementation fixes problems in prior versions of PXSourceList where some source list delegate and data source methods weren’t being called.
+
+Take a look at the [Release Notes](ReleaseNotes.md) for details as well as API changes in version 2.
+
 ## Delegate and Data Source
 Like `NSOutlineView`, `PXSourceList` objects obtain their content and other information from their *data source* and *delegate* objects using methods defined in the `PXSourceListDataSource` and `PXSourceListDelegate` protocols respectively.
 
@@ -73,15 +82,6 @@ If you are using PXSourceList in view-based mode, you should implement:
  in your **delegate** object class.
 
 Take a look at both the view-based and cell-based example projects in the repository for more information about implementing PXSourceList delegate and data source objects.
-
-## PXSourceList 2
-PXSourceList 2 is a great improvement over PXSourceList 0.x and 1.x that adds view-based table support and many other small improvements and bugfixes.
-
-For view-based table support, new delegate and data source methods have been added to bring PXSourceList on-par with `NSOutlineView`’s API, and a generic badge view and `NSTableCellView` subclass have been implemented to allow easy setup of `NSTableCellView`s with PXSourceList.
-
-Additionally, a generic `PXSourceListItem` class has been implemented to easily build data source model data without having to roll your own. A new internal implementation fixes problems in prior versions of PXSourceList where some source list delegate and data source methods weren’t being called.
-
-Take a look at the [Release Notes](ReleaseNotes.md) for details as well as API changes in version 2.
 
 ## Documentation
 `PXSourceList` and its related classes and protocols are documented in the header files included in the repository using [appledoc](http://gentlebytes.com/appledoc/)-style documentation.
