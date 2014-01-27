@@ -6,10 +6,18 @@ PXSourceList requires the OS X 10.7 SDK and above and is licensed under the New 
 
 ![PXSourceList in action: The view-based example project included in the repository.](Examples/Screenshots/PXSourceList-ViewBased-Example.png)
 
-## Motivation
+## Overview
 Using a [source list](http://developer.apple.com/library/mac/documentation/UserExperience/Conceptual/AppleHIGuidelines/Windows/Windows.html#//apple_ref/doc/uid/20000961-CHDDIGDE) for navigation is a common user interface paradigm in OS X applications, but requires a fair amount of manual set up and customisation of standard Cocoa controls.
 
 **PXSourceList subclasses NSOutlineView and provides much of the common styling and idiomatic behaviour of source lists for you through a clean and simple API.**
+
+PXSourceList has several key features:
+
+- Built-in support for displaying badges — blue-grey pills which display numerical values such as the number of photos in a particular album.
+- Always displaying root-level items with ‘group styling’ — the blue-grey uppercase text seen in the source lists in apps such as Mail.app. This requires no extra configuration.
+- Displaying specific groups as ‘always expanded’ through implementing a single delegate method. These groups will always show their child items and won’t show a Show/Hide button on hover.
+- Since idiomatic source lists use only a single column and don’t display column headers, PXSourceList operates with only a single table column and doesn’t display a header. This is reflected in PXSourceList’s API and makes the control easier to use.
+- The project includes a generic data model class which can be used for building a data source data model without having to roll your own.
 
 Note that [in the OS X Human Interface Guidelines](https://developer.apple.com/library/mac/documentation/userexperience/conceptual/applehiguidelines/Windows/Windows.html#//apple_ref/doc/uid/20000961-CHDDIGDE), source lists are broken down into those which provide navigation for the app as a whole (and have a blue-grey background), and those which provide selection functionality for the window (with a white background). PXSourceList implements this *first* style of source list; the second type doesn’t require quite as much common customisation so would not be useful as a standalone control.
 
@@ -67,7 +75,7 @@ Take a look at the [Release Notes](ReleaseNotes.md) for a comprehensive list of 
 ## Delegate and Data Source Objects
 Like `NSOutlineView`, `PXSourceList` objects obtain their content and other information from their *data source* and *delegate* objects using methods defined in the `PXSourceListDataSource` and `PXSourceListDelegate` protocols respectively.
 
-As well as declaring its own delegate and data source methods, since `PXSourceList` subclasses `NSOutlineView`, `PXSourceListDataSource` and `PXSourceListDelegate` include most `NSOutlineViewDelegate` and `NSOutlineViewDataSource` methods but with the "outlineView" prefix replaced with "sourceList". For more information, take a look at *[Outline View Programming Topics for Cocoa](http://developer.apple.com/mac/library/DOCUMENTATION/Cocoa/Conceptual/OutlineView/Articles/UsingOutlineDataSource.html)* — PXSourceList’s delegate and data source implementation works in a very similar way.
+As well as declaring new delegate and data source methods, since `PXSourceList` subclasses `NSOutlineView`, `PXSourceListDataSource` and `PXSourceListDelegate` include most `NSOutlineViewDelegate` and `NSOutlineViewDataSource` methods but with the "outlineView" prefix replaced with "sourceList". For more information on implementing a data source object, take a look at *[Outline View Programming Topics](https://developer.apple.com/library/mac/documentation/cocoa/conceptual/OutlineView/Articles/UsingOutlineDataSource.html)* — PXSourceList’s delegate and data source implementation works in a very similar way.
 
 Note that some of the `NSOutlineView` delegate and data source methods are not relevant to PXSourceList, so they haven't been added to `PXSourceListDelegate` and `PXSourceListDataSource`.
 
