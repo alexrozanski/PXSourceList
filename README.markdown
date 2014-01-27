@@ -40,6 +40,9 @@ You can then either:
 
 There are also two example projects bundled with the source to see how `PXSourceList` should be used.
 
+### Cell-based vs View-based mode
+As an `NSOutlineView` subclass, PXSourceList can display its contents using cells (in *cell-based* mode) or views (in *view-based* mode). Some delegate and data source methods (see below) are only applicable when PXSourceList is used in cell-based mode, and is noted as such in the documentation.
+
 ## Delegate and Data Source
 Like `NSOutlineView`, `PXSourceList` obtains its content and other information from its *dataSource* and *delegate* objects, with methods defined in the `PXSourceListDataSource` and `PXSourceListDelegate` protocols respectively.
 
