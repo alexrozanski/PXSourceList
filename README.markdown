@@ -15,7 +15,7 @@ PXSourceList has several key features:
 
 - Built-in support for displaying badges — blue-grey pills which display numerical values such as the number of photos in a particular album.
 - Always displaying root-level items with ‘group styling’ — the blue-grey uppercase text seen in the source lists in apps such as Mail.app. This requires no extra configuration.
-- Displaying specific groups as ‘always expanded’ through implementing a single delegate method. These groups will always show their child items and won’t show a Show/Hide button on hover.
+- Support for displaying specific groups as ‘always expanded’ through implementation of a single delegate method. These groups will always show their child items and won’t show a Show/Hide button on hover.
 - Since idiomatic source lists use only a single column and don’t display column headers, PXSourceList operates with only a single table column and doesn’t display a header. This is reflected in PXSourceList’s API and makes the control easier to use.
 - The project includes a generic data model class which can be used for building a data source data model without having to roll your own.
 
