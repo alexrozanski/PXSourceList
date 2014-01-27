@@ -11,7 +11,7 @@ PXSourceList requires the OS X 10.7 SDK and above and is licensed under the New 
 
 PXSourceList implements lots of this idiomatic behaviour for you, which makes adding a source list to your applications a lot easier and quicker.
 
-Note that [in the Apple Human Interface Guidelines](https://developer.apple.com/library/mac/documentation/userexperience/conceptual/applehiguidelines/Windows/Windows.html#//apple_ref/doc/uid/20000961-CHDDIGDE), source lists are broken down into those which provide navigation for the app as a whole, and those which provide selection functionality for the window. PXSourceList implements this first style of source list; the second type doesn’t use quite as much common customisation so would not be useful in this context.
+Note that [in the OS X Human Interface Guidelines](https://developer.apple.com/library/mac/documentation/userexperience/conceptual/applehiguidelines/Windows/Windows.html#//apple_ref/doc/uid/20000961-CHDDIGDE), source lists are broken down into those which provide navigation for the app as a whole, and those which provide selection functionality for the window. PXSourceList implements this first style of source list; the second type doesn’t use quite as much common customisation so would not be useful in this context.
 
 ## Using PXSourceList
 
