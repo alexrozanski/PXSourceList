@@ -8,6 +8,7 @@
 //
 
 #import "AppDelegate.h"
+#import "Photo.h"
 #import "PhotoCollection.h"
 
 @interface AppDelegate ()
@@ -25,17 +26,30 @@ static NSString * const draggingType = @"SourceListExampleDraggingType";
     // Used to support drag and drop in the source list.
     [self.sourceList registerForDraggedTypes:@[draggingType]];
 
-    // Set up our data model. We could set an identifier on the PXSourceListItem instances, but it makes more sense
-    // to put our identifying information on the underlying model object in this case.
-    PhotoCollection *photosCollection = [PhotoCollection collectionWithTitle:@"Photos" identifier:@"photos" numberOfItems:264];
-    PhotoCollection *eventsCollection = [PhotoCollection collectionWithTitle:@"Events" identifier:@"events" numberOfItems:689];
-    PhotoCollection *peopleCollection = [PhotoCollection collectionWithTitle:@"People" identifier:@"people" numberOfItems:135];
-    PhotoCollection *placesCollection = [PhotoCollection collectionWithTitle:@"Places" identifier:@"places" numberOfItems:28];
+
+    /* Set up our data model. We could set an identifier on the PXSourceListItem instances, but it makes more sense
+       to put our identifying information on the underlying model object in this case.
+
+       We add some dummy Photo objects to each collection to emulate a model class.
+     */
+    PhotoCollection *photosCollection = [PhotoCollection collectionWithTitle:@"Photos" identifier:@"photos"];
+    [self addNumberOfPhotoObjects:264 toCollection:photosCollection];
+
+    PhotoCollection *eventsCollection = [PhotoCollection collectionWithTitle:@"Events" identifier:@"events"];
+    [self addNumberOfPhotoObjects:689 toCollection:eventsCollection];
+
+    PhotoCollection *peopleCollection = [PhotoCollection collectionWithTitle:@"People" identifier:@"people"];
+    [self addNumberOfPhotoObjects:135 toCollection:peopleCollection];
+
+    PhotoCollection *placesCollection = [PhotoCollection collectionWithTitle:@"Places" identifier:@"places"];
+    [self addNumberOfPhotoObjects:28 toCollection:placesCollection];
 
     self.libraryCollections = [@[photosCollection, eventsCollection, peopleCollection, placesCollection] mutableCopy];
-    self.albums = [@[[PhotoCollection collectionWithTitle:@"Holiday Snaps" identifier:nil numberOfItems:200],
-                     [PhotoCollection collectionWithTitle:@"Graduation" identifier: nil numberOfItems:1050]] mutableCopy];
 
+    PhotoCollection *snapsCollection = [PhotoCollection collectionWithTitle:@"Holiday Snaps" identifier:nil];
+    [self addNumberOfPhotoObjects:40 toCollection:snapsCollection];
+
+    self.albums = [@[snapsCollection, [PhotoCollection collectionWithTitle:@"Graduation" identifier: nil]] mutableCopy];
     self.sourceListItems = [[NSMutableArray alloc] init];
 
     // Icon images we're going to use in the Source List.
@@ -66,6 +80,14 @@ static NSString * const draggingType = @"SourceListExampleDraggingType";
     [self.sourceListItems addObject:albumsItem];
 
     [self.sourceList reloadData];
+}
+
+- (void)addNumberOfPhotoObjects:(NSUInteger)numberOfObjects toCollection:(PhotoCollection *)collection
+{
+    NSMutableArray *photos = [[NSMutableArray alloc] init];
+    for (NSUInteger i = 0; i < numberOfObjects; ++i)
+        [photos addObject:[[Photo alloc] init]];
+    collection.photos = photos;
 }
 
 #pragma mark - Actions
@@ -148,8 +170,8 @@ static NSString * const draggingType = @"SourceListExampleDraggingType";
 
     cellView.textField.stringValue = sourceListItem.title ? sourceListItem.title : [sourceListItem.representedObject title];
     cellView.imageView.image = [item icon];
-    cellView.badgeView.hidden = !collection;
-    cellView.badgeView.badgeValue = collection.numberOfItems;
+    cellView.badgeView.hidden = collection.photos.count == 0;
+    cellView.badgeView.badgeValue = collection.photos.count;
 
     return cellView;
 }

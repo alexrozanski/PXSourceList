@@ -11,13 +11,12 @@
 
 @implementation PhotoCollection
 
-+ (id)collectionWithTitle:(NSString *)title identifier:(NSString *)identifier numberOfItems:(NSUInteger)numberOfItems
++ (id)collectionWithTitle:(NSString *)title identifier:(NSString *)identifier
 {
     PhotoCollection *collection = [[PhotoCollection alloc] init];
 
     collection.title = title;
     collection.identifier = identifier;
-    collection.numberOfItems = numberOfItems;
 
     return collection;
 }

@@ -31,6 +31,7 @@
 		D23A175B1836AD790027F0D0 /* PXSourceListBadgeView.m in Sources */ = {isa = PBXBuildFile; fileRef = D23A17581836AD790027F0D0 /* PXSourceListBadgeView.m */; };
 		D23A175E1836AE280027F0D0 /* PXSourceListBadgeCell.h in Headers */ = {isa = PBXBuildFile; fileRef = D23A175C1836AE280027F0D0 /* PXSourceListBadgeCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D23A17601836AE280027F0D0 /* PXSourceListBadgeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D23A175D1836AE280027F0D0 /* PXSourceListBadgeCell.m */; };
+		D24AE5531896A79700AC8CE0 /* Photo.m in Sources */ = {isa = PBXBuildFile; fileRef = D24AE5521896A79700AC8CE0 /* Photo.m */; };
 		D24B88F7188EC3B100841497 /* PXSourceListDelegateDataSourceProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = D24B88F2188EC3B100841497 /* PXSourceListDelegateDataSourceProxy.h */; };
 		D24B88F8188EC3B100841497 /* PXSourceListDelegateDataSourceProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = D24B88F3188EC3B100841497 /* PXSourceListDelegateDataSourceProxy.m */; };
 		D24B88F9188EC3B100841497 /* PXSourceListPrivateConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = D24B88F4188EC3B100841497 /* PXSourceListPrivateConstants.h */; };
@@ -92,6 +93,8 @@
 		D23A17581836AD790027F0D0 /* PXSourceListBadgeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PXSourceListBadgeView.m; path = PXSourceList/PXSourceListBadgeView.m; sourceTree = "<group>"; };
 		D23A175C1836AE280027F0D0 /* PXSourceListBadgeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PXSourceListBadgeCell.h; path = PXSourceList/PXSourceListBadgeCell.h; sourceTree = "<group>"; };
 		D23A175D1836AE280027F0D0 /* PXSourceListBadgeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PXSourceListBadgeCell.m; path = PXSourceList/PXSourceListBadgeCell.m; sourceTree = "<group>"; };
+		D24AE5511896A79700AC8CE0 /* Photo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Photo.h; path = Examples/ViewBasedSourceList/Photo.h; sourceTree = "<group>"; };
+		D24AE5521896A79700AC8CE0 /* Photo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Photo.m; path = Examples/ViewBasedSourceList/Photo.m; sourceTree = "<group>"; };
 		D24B88F2188EC3B100841497 /* PXSourceListDelegateDataSourceProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PXSourceListDelegateDataSourceProxy.h; path = PXSourceList/Internal/PXSourceListDelegateDataSourceProxy.h; sourceTree = "<group>"; };
 		D24B88F3188EC3B100841497 /* PXSourceListDelegateDataSourceProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PXSourceListDelegateDataSourceProxy.m; path = PXSourceList/Internal/PXSourceListDelegateDataSourceProxy.m; sourceTree = "<group>"; };
 		D24B88F4188EC3B100841497 /* PXSourceListPrivateConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PXSourceListPrivateConstants.h; path = PXSourceList/Internal/PXSourceListPrivateConstants.h; sourceTree = "<group>"; };
@@ -336,6 +339,8 @@
 		D2FF2950187AD30200CFEDD1 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				D24AE5511896A79700AC8CE0 /* Photo.h */,
+				D24AE5521896A79700AC8CE0 /* Photo.m */,
 				D2FF2951187AD32000CFEDD1 /* PhotoCollection.h */,
 				D2FF2952187AD32000CFEDD1 /* PhotoCollection.m */,
 			);
@@ -530,6 +535,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D24AE5531896A79700AC8CE0 /* Photo.m in Sources */,
 				D2631293186EFC830036501C /* main.m in Sources */,
 				D2631289186EFC4E0036501C /* AppDelegate.m in Sources */,
 				D2FF2953187AD32000CFEDD1 /* PhotoCollection.m in Sources */,
