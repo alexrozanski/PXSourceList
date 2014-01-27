@@ -12,6 +12,7 @@
 #import "PhotoCollection.h"
 
 @interface AppDelegate ()
+@property (strong, nonatomic) NSMutableArray *modelObjects;
 @property (strong, nonatomic) NSMutableArray *sourceListItems;
 @end
 
@@ -29,6 +30,8 @@ static NSString * const draggingType = @"SourceListExampleDraggingType";
 
     [self.sourceList reloadData];
 }
+
+#pragma mark - Data Model
 
 /* We could set an identifier on the PXSourceListItem instances, but it makes more sense to put our
    identifying information on the underlying model object in this case.
@@ -54,6 +57,9 @@ static NSString * const draggingType = @"SourceListExampleDraggingType";
 
     PhotoCollection *graduationCollection = [PhotoCollection collectionWithTitle:@"Graduation" identifier: nil type:PhotoCollectionTypeUserCreated];
     [self addNumberOfPhotoObjects:1050 toCollection:graduationCollection];
+
+    // Store all of the model objects in an array because each source list item only holds a weak reference to them.
+    self.modelObjects = [@[photosCollection, eventsCollection, peopleCollection, placesCollection, snapsCollection, graduationCollection] mutableCopy];
 
     // Icon images we're going to use in the Source List.
     NSImage *photosImage = [NSImage imageNamed:@"photos"];
@@ -90,6 +96,17 @@ static NSString * const draggingType = @"SourceListExampleDraggingType";
     for (NSUInteger i = 0; i < numberOfObjects; ++i)
         [photos addObject:[[Photo alloc] init]];
     collection.photos = photos;
+}
+
+// Methods to avoid hardcoding subscripts into multiple places in the code.
+- (PXSourceListItem *)libraryItem
+{
+    return self.sourceListItems[0];
+}
+
+- (PXSourceListItem *)albumsItem
+{
+    return self.sourceListItems[1];
 }
 
 #pragma mark - Actions
@@ -161,14 +178,14 @@ static NSString * const draggingType = @"SourceListExampleDraggingType";
         cellView = [aSourceList makeViewWithIdentifier:@"HeaderCell" owner:nil];
     else
         cellView = [aSourceList makeViewWithIdentifier:@"MainCell" owner:nil];
-    PXSourceListItem *sourceListItem = item;
 
-    // Don't allow us to double-click to edit the title for items in the "Library" group.
-    BOOL isTitleEditable = ![[self.sourceListItems[0] children] containsObject:item];
+    PXSourceListItem *sourceListItem = item;
+    PhotoCollection *collection = sourceListItem.representedObject;
+
+    // Only allow us to edit the user created photo collection titles.
+    BOOL isTitleEditable = [collection isKindOfClass:[PhotoCollection class]] && collection.type == PhotoCollectionTypeUserCreated;
     cellView.textField.editable = isTitleEditable;
     cellView.textField.selectable = isTitleEditable;
-
-    PhotoCollection *collection = sourceListItem.representedObject;
 
     cellView.textField.stringValue = sourceListItem.title ? sourceListItem.title : [sourceListItem.representedObject title];
     cellView.imageView.image = [item icon];
