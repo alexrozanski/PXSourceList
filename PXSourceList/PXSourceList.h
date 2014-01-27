@@ -89,6 +89,8 @@
  will return a proxy object which is used internally. As such you should only use this setter and not invoke `-dataSource`
  to retrieve the data source object.
  
+ @param dataSource An object to use for the data source.
+ 
  @since Requires PXSourceList 0.8 or above and the OS X v10.5 SDK.
  */
 - (void)setDataSource:(id<PXSourceListDataSource>)dataSource;
@@ -98,6 +100,8 @@
  @warning Unfortunately, due to the way that `PXSourceList` is implemented, sending `-delegate` to the Source List
  will return a proxy object which is used internally. As such you should only use this setter and not invoke `-delegate`
  to retrieve the data source object.
+ 
+ @param delegate An object to use for the delegate.
  
  @since Requires PXSourceList 0.8 or above and the OS X v10.5 SDK.
  */
