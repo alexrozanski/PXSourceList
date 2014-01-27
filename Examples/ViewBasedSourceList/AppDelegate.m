@@ -24,12 +24,19 @@ static NSString * const draggingType = @"SourceListExampleDraggingType";
     // Used to support drag and drop in the source list.
     [self.sourceList registerForDraggedTypes:@[draggingType]];
 
+    self.sourceListItems = [[NSMutableArray alloc] init];
+    [self setUpDataModel];
 
-    /* Set up our data model. We could set an identifier on the PXSourceListItem instances, but it makes more sense
-       to put our identifying information on the underlying model object in this case.
+    [self.sourceList reloadData];
+}
 
-       We add some dummy Photo objects to each collection to emulate a model class.
-     */
+/* We could set an identifier on the PXSourceListItem instances, but it makes more sense to put our
+   identifying information on the underlying model object in this case.
+
+   We also add some dummy Photo objects to each collection to emulate how a real model class would work.
+ */
+- (void)setUpDataModel
+{
     PhotoCollection *photosCollection = [PhotoCollection collectionWithTitle:@"Photos" identifier:@"photos" type:PhotoCollectionTypeLibrary];
     [self addNumberOfPhotoObjects:264 toCollection:photosCollection];
 
@@ -72,13 +79,11 @@ static NSString * const draggingType = @"SourceListExampleDraggingType";
         [albumsItem addChildItem:[PXSourceListItem itemWithRepresentedObject:collection icon:albumImage]];
     }
 
-    self.sourceListItems = [[NSMutableArray alloc] init];
     [self.sourceListItems addObject:libraryItem];
     [self.sourceListItems addObject:albumsItem];
-
-    [self.sourceList reloadData];
 }
 
+/* Convenience method for adding dummy Photo objects to a PhotoCollection instance. */
 - (void)addNumberOfPhotoObjects:(NSUInteger)numberOfObjects toCollection:(PhotoCollection *)collection
 {
     NSMutableArray *photos = [[NSMutableArray alloc] init];
