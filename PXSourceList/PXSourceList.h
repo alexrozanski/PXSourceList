@@ -90,7 +90,7 @@
  
  @param dataSource An object to use for the data source.
  
- @since Requires PXSourceList 0.8 or above and the OS X v10.5 SDK.
+ @since Requires PXSourceList 0.8 or above and the OS X v10.5 SDK or above.
  */
 - (void)setDataSource:(id<PXSourceListDataSource>)dataSource;
 
@@ -102,7 +102,7 @@
  
  @param delegate An object to use for the delegate.
  
- @since Requires PXSourceList 0.8 or above and the OS X v10.5 SDK.
+ @since Requires PXSourceList 0.8 or above and the OS X v10.5 SDK or above.
  */
 - (void)setDelegate:(id<PXSourceListDelegate>)delegate;
 
@@ -117,7 +117,7 @@
  @warning This property only applies when using `PXSourceList` in cell-based mode. If set on a Source List
  operating in view-based mode, this value is not used.
  
- @since Requires PXSourceList 0.8 or above and the OS X v10.5 SDK.
+ @since Requires PXSourceList 0.8 or above and the OS X v10.5 SDK or above.
  */
 
 @property (nonatomic, assign) NSSize iconSize;
@@ -136,7 +136,7 @@
  
  @discussion "Group" items are defined as root items in the Source List tree hierarchy.
  
- @since Requires PXSourceList 0.8 or above and the OS X v10.5 SDK.
+ @since Requires PXSourceList 0.8 or above and the OS X v10.5 SDK or above.
  */
 - (BOOL)isGroupItem:(id)item;
 
@@ -153,7 +153,7 @@
  This method calls the `-sourceList:isGroupAlwaysExpanded:` method on the Source List's delegate to determine
  whether the particular group item is displayed as always expanded or not.
  
- @since Requires PXSourceList 0.8 or above and the OS X v10.5 SDK.
+ @since Requires PXSourceList 0.8 or above and the OS X v10.5 SDK or above.
  */
 - (BOOL)isGroupAlwaysExpanded:(id)group;
 
@@ -173,7 +173,7 @@
  @warning This method only applies when using a Source List in cell-based mode. If sent to a Source List in view-based mode, this
  method returns `NO`.
  
- @since Requires PXSourceList 0.8 or above and the OS X v10.5 SDK.
+ @since Requires PXSourceList 0.8 or above and the OS X v10.5 SDK or above.
  */
 - (BOOL)itemHasBadge:(id)item;
 
@@ -189,7 +189,7 @@
  @warning This method only applies when using a Source List in cell-based mode. If sent to a Source List in view-based mode, this
  method returns `NSNotFound`.
  
- @since Requires PXSourceList 0.8 or above and the OS X v10.5 SDK.
+ @since Requires PXSourceList 0.8 or above and the OS X v10.5 SDK or above.
  */
 - (NSInteger)badgeValueForItem:(id)item;
 

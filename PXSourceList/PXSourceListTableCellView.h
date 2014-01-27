@@ -20,9 +20,9 @@
  and then configured in `sourceList:viewForItem:`.
  
  `PXSourceListTableCellView` positions its `badgeView` automatically (as `NSTableCellView` does for the `textField`
- and `imageView` outlets) to be positioned centred (vertically) and rightmost (horizontally). If you want to
- change this positioning you can do so by creating a `PXSourceListTableCellView` subclass and overriding
- `-layout`, but note that idiomatically, source lists display badges to the right of each row.
+ and `imageView` outlets) to be positioned centred (vertically) and rightmost (horizontally) within the table cell's
+ bounds. If you want to change this positioning you can do so by creating a `PXSourceListTableCellView` subclass and
+ overriding `-layout`, but note that idiomatically, source lists display badges to the right of each row.
  */
 @interface PXSourceListTableCellView : NSTableCellView
 
@@ -30,11 +30,13 @@
  @brief The badge view displayed by the cell.
  @discussion When a `PXSourceListTableCellView` instance is created, a `PXSourceListTableCellView` instance
  is *not* automatically created and set to this property (just like with `NSTableCellView` and its
- `textField` and `imageView` properties. This property is purely declared on this class to make creating
+ `textField` and `imageView` properties). This property is purely declared on this class to make creating
  table cell views for a `PXSourceList` in Interface Builder easier without having to declare your own
  `NSTableCellView` subclass.
  
- This property is typically configured in the `PXSourceListDataSource` method `sourceList:viewForItem:`.
+ This property is typically configured in the `PXSourceListDelegate` method `sourceList:viewForItem:`.
+ 
+ @since Requires PXSourceList 2.0.0 and above and the Mac OS X 10.7 SDK or above.
  */
 @property (weak, nonatomic) IBOutlet PXSourceListBadgeView *badgeView;
 

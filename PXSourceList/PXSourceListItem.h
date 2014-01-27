@@ -70,7 +70,7 @@
  @see itemWithTitle:identifier:icon:
  @see itemWithRepresentedObject:icon:
  
- @since Requires the Mac OS X 10.7 SDK or above.
+ @since Requires PXSourceList 2.0.0 and above and the Mac OS X 10.7 SDK or above.
  */
 + (instancetype)itemWithTitle:(NSString *)title identifier:(NSString *)identifier;
 
@@ -85,7 +85,7 @@
  @see itemWithTitle:identifier:
  @see itemWithRepresentedObject:icon:
  
- @since Requires the Mac OS X 10.7 SDK or above.
+ @since Requires PXSourceList 2.0.0 and above and the Mac OS X 10.7 SDK or above.
  */
 + (instancetype)itemWithTitle:(NSString *)title identifier:(NSString *)identifier icon:(NSImage *)icon;
 
@@ -99,7 +99,7 @@
  @see itemWithTitle:identifier:
  @see itemWithTitle:identifier:icon:
  
- @since Requires the Mac OS X 10.7 SDK or above.
+ @since Requires PXSourceList 2.0.0 and above and the Mac OS X 10.7 SDK or above.
  */
 + (instancetype)itemWithRepresentedObject:(id)object icon:(NSImage *)icon;
 
@@ -114,7 +114,7 @@
 
  @see hasChildren
 
- @since Requires the Mac OS X 10.7 SDK or above.
+ @since Requires PXSourceList 2.0.0 and above and the Mac OS X 10.7 SDK or above.
  */
 @property (strong, nonatomic) NSArray *children;
 
@@ -125,7 +125,7 @@
 
  @see children
 
- @since Requires the Mac OS X 10.7 SDK or above.
+ @since Requires PXSourceList 2.0.0 and above and the Mac OS X 10.7 SDK or above.
  */
 - (BOOL)hasChildren;
 
@@ -140,7 +140,7 @@
 
  @see insertChildItem:atIndex:
 
- @since Requires the Mac OS X 10.7 SDK or above.
+ @since Requires PXSourceList 2.0.0 and above and the Mac OS X 10.7 SDK or above.
  */
 - (void)addChildItem:(PXSourceListItem *)childItem;
 
@@ -157,7 +157,7 @@
  @see addChildItem:
  @see insertChildItems:atIndexes:
 
- @since Requires the Mac OS X 10.7 SDK or above.
+ @since Requires PXSourceList 2.0.0 and above and the Mac OS X 10.7 SDK or above.
  */
 - (void)insertChildItem:(PXSourceListItem *)childItem atIndex:(NSUInteger)index;
 
@@ -173,7 +173,7 @@
  @see removeChildItemAtIndex:
  @see removeChildItems:
 
- @since Requires the Mac OS X 10.7 SDK or above.
+ @since Requires PXSourceList 2.0.0 and above and the Mac OS X 10.7 SDK or above.
  */
 - (void)removeChildItem:(PXSourceListItem *)childItem;
 
@@ -189,7 +189,7 @@
  @see removeChildItem:
  @see removeChildItems:
 
- @since Requires the Mac OS X 10.7 SDK or above.
+ @since Requires PXSourceList 2.0.0 and above and the Mac OS X 10.7 SDK or above.
  */
 - (void)removeChildItemAtIndex:(NSUInteger)index;
 
@@ -205,7 +205,7 @@
  @see removeChildItem:
  @see removeChildItemAtIndex:
 
- @since Requires the Mac OS X 10.7 SDK or above.
+ @since Requires PXSourceList 2.0.0 and above and the Mac OS X 10.7 SDK or above.
  */
 - (void)removeChildItems:(NSArray *)items;
 
@@ -221,7 +221,7 @@
 
  @see insertChildItem:atIndex:
 
- @since Requires the Mac OS X 10.7 SDK or above.
+ @since Requires PXSourceList 2.0.0 and above and the Mac OS X 10.7 SDK or above.
  */
 - (void)insertChildItems:(NSArray *)items atIndexes:(NSIndexSet *)indexes;
 

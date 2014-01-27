@@ -47,23 +47,25 @@
 ///---------------------------------------------------------------------------------------
 /**
  @brief Returns the custom text colour used to display the receiver.
- @discussion The default value for this property is `nil`. Set this property to `nil` to use the default
- badge text colour.
+ @discussion The default value for this property is `nil`. Set this property to `nil` to use the default light badge text colour.
  
  @see backgroundColor
+ 
+ @warning Note that this property is only respected when the row displaying the badge isn't highlighted. When the row is highlighted, the badge is displayed with a blue text colour.
 
- @since Requires the Mac OS X 10.7 SDK or above.
+ @since Requires PXSourceList 2.0.0 and above and the Mac OS X 10.7 SDK or above.
  */
 @property (strong, nonatomic) NSColor *textColor;
 
 /**
  @brief Returns the custom background colour used to display the receiver.
- @discussion The default value for this property is `nil`. Set this property to `nil` to use the default
- badge background colour.
+ @discussion The default value for this property is `nil`. Set this property to `nil` to use the default grey-blue badge background colour.
  
  @see textColor
+ 
+ @warning Note that this property is only respected when the row displaying the badge isn't highlighted. When the row is highlighted, the badge is displayed with a white background colour.
 
- @since Requires the Mac OS X 10.7 SDK or above.
+ @since Requires PXSourceList 2.0.0 and above and the Mac OS X 10.7 SDK or above.
  */
 @property (strong, nonatomic) NSColor *backgroundColor;
 

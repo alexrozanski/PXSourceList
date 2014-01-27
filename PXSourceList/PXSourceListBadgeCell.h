@@ -9,8 +9,8 @@
 
 #import <Cocoa/Cocoa.h>
 
-/* This is the cell which backs drawing done by PXSourceListBadgeView, and is used for drawing badges
-   when using PXSourceList in cell-based mode.
+/* This is the cell which backs drawing done by PXSourceListBadgeView, and is used internally for
+   drawing badges when PXSourceList is used in cell-based mode.
  
    You shouldn't need to interact with this class directly.
  */
