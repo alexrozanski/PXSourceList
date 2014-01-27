@@ -103,6 +103,19 @@ This is a view class that draws a badge with a given numeric value. Badges are d
 ### PXSourceListTableCellView
 This is an `NSTableCellView` subclass that exposes a `badgeView` outlet that can be hooked up to a `PXSourceListBadgeView` instance in Interface Builder and can then be configured in `-sourceList:viewForItem:`. Like with `NSTableCellView`, `PXSourceListTableCellView` positions its `badgeView` automatically for you.
 
+## PXSourceListItem
+The generic `PXSourceListItem` class has been added in PXSourceList 2 for creation of a data source model without having to roll your own classes.
+
+Since `PXSourceListDataSource` works by building up a tree structure of model objects (which maps to the tree-like presentation of the content), `PXSourceListItem` allows you to build up a tree structure of model objects using the `children` property and other convenience methods.
+
+Each item can have associated with it:
+- **A title**. Useful for setting the `textField` property of an `NSTableCellView` in `-sourceListForItem:`.
+- **An icon image**. Useful for setting the image on the `imageView` property of an `NSTableCellView` in `-sourceListForItem:`.
+- **An identifier**. Useful for identifying a given item when given one as the return value from `PXSourceList` method or as a parameter to a `PXSourceListDelegate` or `PXSourceListDataSource` method.
+- **A badge value**. Useful to store the badge value for a particular item if it doesn’t have a backing data model object.
+
+Additionally, each item has a `representedObject` property associated with it which is useful when you don’t want to set the data on a source list item directly, but instead want to pull it from an associated model object. This means that you don’t have to keep your data model and properties on `PXSourceListItem` in sync.
+
 ## Attribution
 
 Thanks first of all to the [wonderful people](https://github.com/Perspx/PXSourceList/graphs/contributors) who have contributed to the project and helped in improving the project, fixing bugs and adding new features.
