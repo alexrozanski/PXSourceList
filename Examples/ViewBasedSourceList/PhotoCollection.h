@@ -9,6 +9,11 @@
 
 #import <Foundation/Foundation.h>
 
+typedef NS_ENUM(NSUInteger, PhotoCollectionType) {
+    PhotoCollectionTypeLibrary,
+    PhotoCollectionTypeUserCreated
+};
+
 /* A simple example of a model class which is used by this project for storing information
    about a particular collection of objects in our sample library scenario. These objects
    are used by the SourceListItems to populate the Source List's content without having to
@@ -19,7 +24,8 @@
 @property (strong, nonatomic) NSString *title;
 @property (strong, nonatomic) NSString *identifier;
 @property (copy, nonatomic) NSArray *photos;
+@property (assign, nonatomic) PhotoCollectionType type;
 
-+ (id)collectionWithTitle:(NSString *)title identifier:(NSString *)identifier;
++ (id)collectionWithTitle:(NSString *)title identifier:(NSString *)identifier type:(PhotoCollectionType)type;
 
 @end

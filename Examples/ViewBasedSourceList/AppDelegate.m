@@ -12,8 +12,6 @@
 #import "PhotoCollection.h"
 
 @interface AppDelegate ()
-@property (strong, nonatomic) NSMutableArray *libraryCollections;
-@property (strong, nonatomic) NSMutableArray *albums;
 @property (strong, nonatomic) NSMutableArray *sourceListItems;
 @end
 
@@ -32,25 +30,23 @@ static NSString * const draggingType = @"SourceListExampleDraggingType";
 
        We add some dummy Photo objects to each collection to emulate a model class.
      */
-    PhotoCollection *photosCollection = [PhotoCollection collectionWithTitle:@"Photos" identifier:@"photos"];
+    PhotoCollection *photosCollection = [PhotoCollection collectionWithTitle:@"Photos" identifier:@"photos" type:PhotoCollectionTypeLibrary];
     [self addNumberOfPhotoObjects:264 toCollection:photosCollection];
 
-    PhotoCollection *eventsCollection = [PhotoCollection collectionWithTitle:@"Events" identifier:@"events"];
+    PhotoCollection *eventsCollection = [PhotoCollection collectionWithTitle:@"Events" identifier:@"events" type:PhotoCollectionTypeLibrary];
     [self addNumberOfPhotoObjects:689 toCollection:eventsCollection];
 
-    PhotoCollection *peopleCollection = [PhotoCollection collectionWithTitle:@"People" identifier:@"people"];
+    PhotoCollection *peopleCollection = [PhotoCollection collectionWithTitle:@"People" identifier:@"people" type:PhotoCollectionTypeLibrary];
     [self addNumberOfPhotoObjects:135 toCollection:peopleCollection];
 
-    PhotoCollection *placesCollection = [PhotoCollection collectionWithTitle:@"Places" identifier:@"places"];
+    PhotoCollection *placesCollection = [PhotoCollection collectionWithTitle:@"Places" identifier:@"places" type:PhotoCollectionTypeLibrary];
     [self addNumberOfPhotoObjects:28 toCollection:placesCollection];
 
-    self.libraryCollections = [@[photosCollection, eventsCollection, peopleCollection, placesCollection] mutableCopy];
-
-    PhotoCollection *snapsCollection = [PhotoCollection collectionWithTitle:@"Holiday Snaps" identifier:nil];
+    PhotoCollection *snapsCollection = [PhotoCollection collectionWithTitle:@"Holiday Snaps" identifier:nil type:PhotoCollectionTypeUserCreated];
     [self addNumberOfPhotoObjects:40 toCollection:snapsCollection];
 
-    self.albums = [@[snapsCollection, [PhotoCollection collectionWithTitle:@"Graduation" identifier: nil]] mutableCopy];
-    self.sourceListItems = [[NSMutableArray alloc] init];
+    PhotoCollection *graduationCollection = [PhotoCollection collectionWithTitle:@"Graduation" identifier: nil type:PhotoCollectionTypeUserCreated];
+    [self addNumberOfPhotoObjects:1050 toCollection:graduationCollection];
 
     // Icon images we're going to use in the Source List.
     NSImage *photosImage = [NSImage imageNamed:@"photos"];
@@ -72,10 +68,11 @@ static NSString * const draggingType = @"SourceListExampleDraggingType";
                              [PXSourceListItem itemWithRepresentedObject:placesCollection icon:placesImage]];
 
     PXSourceListItem *albumsItem = [PXSourceListItem itemWithTitle:@"ALBUMS" identifier:nil];
-    for (PhotoCollection *collection in self.albums) {
+    for (PhotoCollection *collection in @[snapsCollection, graduationCollection]) {
         [albumsItem addChildItem:[PXSourceListItem itemWithRepresentedObject:collection icon:albumImage]];
     }
 
+    self.sourceListItems = [[NSMutableArray alloc] init];
     [self.sourceListItems addObject:libraryItem];
     [self.sourceListItems addObject:albumsItem];
 
@@ -202,9 +199,10 @@ static NSString * const draggingType = @"SourceListExampleDraggingType";
 
 - (BOOL)sourceList:(PXSourceList*)aSourceList writeItems:(NSArray *)items toPasteboard:(NSPasteboard *)pboard
 {
-    // Only allow the items in the 'Albums' group to be moved around.
+    // Only allow user-created items (not those in "Library" to be moved around).
     for (PXSourceListItem *item in items) {
-        if (![[self.sourceListItems[1] children] containsObject:item])
+        PhotoCollection *collection = item.representedObject;
+        if (![collection isKindOfClass:[PhotoCollection class]] || collection.type != PhotoCollectionTypeUserCreated)
             return NO;
     }
 
