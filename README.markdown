@@ -112,7 +112,7 @@ Each item can have associated with it:
 - **A title**. Useful for setting the `textField` property of an `NSTableCellView` in `-sourceListForItem:`.
 - **An icon image**. Useful for setting the image on the `imageView` property of an `NSTableCellView` in `-sourceListForItem:`.
 - **An identifier**. Useful for identifying a given item when given one as the return value from `PXSourceList` method or as a parameter to a `PXSourceListDelegate` or `PXSourceListDataSource` method.
-- **A badge value**. Useful to store the badge value for a particular item if it doesn’t have a backing data model object.
+- **A badge value**. Useful to store the badge value for a particular item if it doesn’t have a backing data model object that you pull this value from.
 
 Additionally, each item has a `representedObject` property associated with it which is useful when you don’t want to set the data on a source list item directly, but instead want to pull it from an associated model object. This means that you don’t have to keep your data model and properties on `PXSourceListItem` in sync.
 
