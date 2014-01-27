@@ -55,7 +55,7 @@ Additionally, a generic `PXSourceListItem` class has been implemented to easily 
 
 Take a look at the [Release Notes](ReleaseNotes.md) for details as well as API changes in version 2.
 
-## Delegate and Data Source
+## Delegate and Data Source Objects
 Like `NSOutlineView`, `PXSourceList` objects obtain their content and other information from their *data source* and *delegate* objects using methods defined in the `PXSourceListDataSource` and `PXSourceListDelegate` protocols respectively.
 
 As well as declaring its own delegate and data source methods, since `PXSourceList` subclasses `NSOutlineView`, `PXSourceListDataSource` and `PXSourceListDelegate` include most `NSOutlineViewDelegate` and `NSOutlineViewDataSource` methods but with the "outlineView" prefix replaced with "sourceList". For more information, take a look at *[Outline View Programming Topics for Cocoa](http://developer.apple.com/mac/library/DOCUMENTATION/Cocoa/Conceptual/OutlineView/Articles/UsingOutlineDataSource.html)* — PXSourceList’s delegate and data source implementation works in a very similar way.
@@ -82,6 +82,14 @@ If you are using PXSourceList in view-based mode, you should implement:
  in your **delegate** object class.
 
 Take a look at both the view-based and cell-based example projects in the repository for more information about implementing PXSourceList delegate and data source objects.
+
+## View-Based Source Lists
+As mentioned above, PXSourceList can be used in either cell-based- or view-based mode to display content using cells or views.
+
+When using PXSourceList in view-based mode, several classes have been included in the project to help with setting up views for each item in the table, which is done in the `PXSourceListDataSource` method, `-sourceList:viewForItem:`.
+
+- **`PXSourceListBadgeView`**. This is a view class that draws a badge with a given numeric value. Badges are displayed to the right of rows that show them and are displayed with a grey-blue background when the row containing them is not selected, or a white background otherwise.
+- **`PXSourceListTableCellView`**. This is an `NSTableCellView` subclass that exposes a `badgeView` outlet that can be hooked up to a `PXSourceListBadgeView instance` in Interface Builder and can then be configured in `-sourceList:viewForItem:`.
 
 ## Documentation
 `PXSourceList` and its related classes and protocols are documented in the header files included in the repository using [appledoc](http://gentlebytes.com/appledoc/)-style documentation.
