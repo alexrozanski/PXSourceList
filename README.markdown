@@ -58,11 +58,19 @@ Note also that because of the way PXSourceList works under the hood, `-[PXSource
 ### Required Methods 
 A PXSourceList data source must implement the following methods:
 
-    - (NSUInteger)sourceList:(PXSourceList*)sourceList numberOfChildrenOfItem:(id)item;
-    - (id)sourceList:(PXSourceList*)aSourceList child:(NSUInteger)index ofItem:(id)item;
-    - (BOOL)sourceList:(PXSourceList*)aSourceList isItemExpandable:(id)item;
+    - (NSUInteger)sourceList:(PXSourceList*)sourceList numberOfChildrenOfItem:(id)item
+    - (id)sourceList:(PXSourceList*)aSourceList child:(NSUInteger)index ofItem:(id)item
+    - (BOOL)sourceList:(PXSourceList*)aSourceList isItemExpandable:(id)item
 
-If you are using PXSourceList in cell-based mode, you also need to implement `-sourceList:objectValueForItem:`. Additionally, if you are using PXSourceList in view-based mode, you should implement  `-sourceList:viewForItem:` in your delegate.
+If you are using PXSourceList in cell-based mode, you also need to implement:
+
+    - (id)sourceList:(PXSourceList*)aSourceList objectValueForItem:(id)item
+
+If you are using PXSourceList in view-based mode, you should implement:
+
+    - (NSView *)sourceList:(PXSourceList *)aSourceList viewForItem:(id)item
+
+ in your **delegate** object class.
 
 Take a look at both the view-based and cell-based example projects in the repository for more information about implementing PXSourceList delegate and data source objects.
 
