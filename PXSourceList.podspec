@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = 'PXSourceList'
-  s.version      = '2.0.0'
+  s.version      = '2.0.1'
   s.author       = { 'Alex Rozanski' => 'alex@rozanski.me' }
   s.license      = 'BSD'
   s.homepage     = 'https://github.com/Perspx/PXSourceList'
@@ -23,6 +23,6 @@ Pod::Spec.new do |s|
   s.osx.deployment_target = '10.7'
 
   s.public_header_files = 'PXSourceList/*.h'
-  s.source       = { :git => 'https://github.com/Perspx/PXSourceList.git', :tag => '2.0.0' }
+  s.source       = { :git => 'https://github.com/Perspx/PXSourceList.git', :tag => '2.0.1' }
   s.source_files = 'PXSourceList/**/*.{h,m}'
 end
