@@ -1,5 +1,8 @@
 # PXSourceList Release Notes
 
+## 2.0.1
+- Add missing note to the 2.0.0 release notes about marking `-[PXSourceList delegate]` and `-[PXSourceList dataSource]` as unavailable using \_\_attribute\_\_.
+
 ## 2.0.0
 
 ### New Features
@@ -11,7 +14,7 @@
 - Added a generic `PXSourceListItem` data source model class which can be used for easily constructing data source models without having to implement your own class.
 
 ### API Changes
-- **Incompatible change.* Mark `-[PXSourceList delegate]` and -[PXSourceList dataSource]` as unavailable using the “unavailable” __attribute__. These methods shouldn’t be used because of the internal implementation of PXSourceList, and have been documented as such since version 0.8. However, adding this attribute means a compile-time error will be generated if you use either of these methods.
+- **Incompatible change.* Marked `-[PXSourceList delegate]` and -[PXSourceList dataSource]` as unavailable using the “unavailable” \_\_attribute\_\_. These methods shouldn’t be used because of the internal implementation of PXSourceList, and have been documented as such since version 0.8. However, adding this \_\_attribute\_\_ is more robust because a compile-time error will be generated if you use either of these methods.
 - Added view-based Source List delegate methods to `PXSourceListDelegate`, namely:
 	- `-sourceList:viewForItem:`
 	- `-sourceList:rowViewForItem:`
