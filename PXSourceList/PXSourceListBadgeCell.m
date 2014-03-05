@@ -9,6 +9,8 @@
 
 #import "PXSourceListBadgeCell.h"
 
+#import "PXSourceList.h"
+
 //Drawing constants
 static inline NSColor *badgeBackgroundColor() { return [NSColor colorWithCalibratedRed:(152/255.0) green:(168/255.0) blue:(202/255.0) alpha:1]; }
 static inline NSColor *badgeHiddenBackgroundColor() { return [NSColor colorWithDeviceWhite:(180/255.0) alpha:1]; }
@@ -40,11 +42,27 @@ static const CGFloat badgeLeftAndRightPadding = 5.0;
 	NSDictionary *attributes;
 	NSColor *backgroundColor;
 
-	if(self.isHighlighted) {
+	if(self.isHighlighted || self.backgroundStyle == NSBackgroundStyleDark) {
 		backgroundColor = [NSColor whiteColor];
 
         NSResponder *firstResponder = controlView.window.firstResponder;
-        BOOL isFocused = [firstResponder isKindOfClass:[NSView class]] && [(NSView *)firstResponder isDescendantOf:controlView];
+        BOOL isFocused = NO;
+
+        // Starting with the closest ancestor of the control view and the first responder (to make sure both views are in the
+        // same subtree of the view hierarchy), keep going up the view hierarchy until we hit a PXSourceList instance to tell
+        // if the source list is focused.
+        // This covers both the cell-based and view-based cases as well as if a child view of the NSTableCellView (such as
+        // a text field) is focused.
+        if ([firstResponder isKindOfClass:[NSView class]]) {
+            NSView *view = [(NSView*)firstResponder ancestorSharedWithView:controlView];
+            do {
+                if ([view isKindOfClass:[PXSourceList class]]) {
+                    isFocused = YES;
+                    break;
+                }
+            } while ((view = [view superview]));
+        }
+
         NSColor *textColor;
 
 		if (isMainWindowVisible && isFocused)
