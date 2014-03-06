@@ -1,5 +1,8 @@
 # PXSourceList Release Notes
 
+## 2.0.2
+- Fix #39: Badges not drawn correctly when Source List row is selected.
+
 ## 2.0.1
 - Add missing note to the 2.0.0 release notes about marking `-[PXSourceList delegate]` and `-[PXSourceList dataSource]` as unavailable using \_\_attribute\_\_.
 
