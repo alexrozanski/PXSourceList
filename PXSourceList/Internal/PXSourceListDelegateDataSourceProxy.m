@@ -36,7 +36,7 @@ static NSArray * __fastPathForwardingDataSourceMethods = nil;
 {
     __outlineViewDelegateMethods = px_methodNamesForProtocol(@protocol(NSOutlineViewDelegate));
     __outlineViewDataSourceMethods = px_methodNamesForProtocol(@protocol(NSOutlineViewDataSource));
-    __fastPathForwardingDelegateMethods = px_methodNamesForProtocol(@protocol(PXSourceListDelegate));
+    __fastPathForwardingDelegateMethods = [self fastPathForwardingDelegateMethods];
     __fastPathForwardingDataSourceMethods = px_methodNamesForProtocol(@protocol(PXSourceListDataSource));
 
     __requiredOutlineViewDataSourceMethods = @[NSStringFromSelector(@selector(outlineView:numberOfChildrenOfItem:)),
@@ -100,10 +100,11 @@ static NSArray * __fastPathForwardingDataSourceMethods = nil;
 
 - (BOOL)respondsToSelector:(SEL)aSelector
 {
-    if ([self.sourceList respondsToSelector:aSelector])
-        return YES;
-
     NSString *methodName = NSStringFromSelector(aSelector);
+
+    // Only let the source list override NSOutlineView delegate and data source methods.
+    if ([self.sourceList respondsToSelector:aSelector] && ([__outlineViewDataSourceMethods containsObject:methodName] || [__outlineViewDelegateMethods containsObject:methodName]))
+        return YES;
 
     if ([__requiredOutlineViewDataSourceMethods containsObject:methodName])
         return YES;
@@ -392,6 +393,18 @@ static NSArray * __fastPathForwardingDataSourceMethods = nil;
         *outSelector = NSSelectorFromString(forwardingInfo[forwardingMapForwardingMethodNameKey]);
     
     return YES;
+}
+
++ (NSArray *)fastPathForwardingDelegateMethods
+{
+    NSMutableArray *methods = [px_methodNamesForProtocol(@protocol(PXSourceListDelegate)) mutableCopy];
+
+    // Add the NSControl delegate methods manually (unfortunately these aren't part of a formal protocol).
+    [methods addObject:px_methodNameForSelector(@selector(controlTextDidEndEditing:))];
+    [methods addObject:px_methodNameForSelector(@selector(controlTextDidBeginEditing:))];
+    [methods addObject:px_methodNameForSelector(@selector(controlTextDidChange:))];
+
+    return methods;
 }
 
 #pragma mark - Notifications

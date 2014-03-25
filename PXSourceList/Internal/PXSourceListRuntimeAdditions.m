@@ -26,7 +26,7 @@ NSArray *px_allProtocolMethods(Protocol *protocol)
 
         for (unsigned int j = 0; j < numberOfMethodDescriptions; ++j) {
             struct objc_method_description methodDescription = methodDescriptions[j];
-            [methodList addObject:@{px_protocolMethodNameKey: NSStringFromSelector(methodDescription.name),
+            [methodList addObject:@{px_protocolMethodNameKey: px_methodNameForSelector(methodDescription.name),
                                     px_protocolMethodArgumentTypesKey: [NSString stringWithUTF8String:methodDescription.types],
                                     px_protocolIsRequiredMethodKey: @(isRequiredMethod)}];
         }
@@ -45,6 +45,11 @@ NSArray *px_methodNamesForProtocol(Protocol *protocol)
         [methodNames addObject:methodInfo[px_protocolMethodNameKey]];
 
     return methodNames;
+}
+
+id px_methodNameForSelector(SEL selector)
+{
+    return NSStringFromSelector(selector);
 }
 
 struct objc_method_description px_methodDescriptionForProtocolMethod(Protocol *protocol, SEL selector)
