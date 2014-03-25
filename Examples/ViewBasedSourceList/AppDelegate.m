@@ -116,7 +116,10 @@ static NSString * const draggingType = @"SourceListExampleDraggingType";
     NSImage *albumImage = [NSImage imageNamed:@"album"];
     [albumImage setTemplate:YES];
 
-    PXSourceListItem *newItem = [PXSourceListItem itemWithTitle:@"New Album" identifier:nil icon:albumImage];
+    PhotoCollection *collection = [PhotoCollection collectionWithTitle:@"New Album" identifier:nil type:PhotoCollectionTypeUserCreated];
+    [self.modelObjects addObject:collection];
+
+    PXSourceListItem *newItem = [PXSourceListItem itemWithRepresentedObject:collection icon:albumImage];
     [self.albumsItem addChildItem:newItem];
 
     NSUInteger childIndex = [[self.albumsItem children] indexOfObject:newItem];
@@ -132,10 +135,11 @@ static NSString * const draggingType = @"SourceListExampleDraggingType";
     PXSourceListItem *selectedItem = [self.sourceList itemAtRow:self.sourceList.selectedRow];
     PXSourceListItem *parentItem = self.albumsItem;
 
-
     [self.sourceList removeItemsAtIndexes:[NSIndexSet indexSetWithIndex:[parentItem.children indexOfObject:selectedItem]]
                                  inParent:parentItem
                             withAnimation:NSTableViewAnimationSlideUp];
+
+    [self.modelObjects removeObject:selectedItem.representedObject];
 
     // Only 'album' items can be deleted.
     [parentItem removeChildItem:selectedItem];
