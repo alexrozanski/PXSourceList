@@ -1,5 +1,9 @@
 # PXSourceList Release Notes
 
+## 2.0.3
+- Fix #40: Editing titles on cell based source list causes exception.
+- Fix issue in view-based source list example where items created with the add button couldn't be dragged.
+
 ## 2.0.2
 - Fix #39: Badges not drawn correctly when Source List row is selected.
 
