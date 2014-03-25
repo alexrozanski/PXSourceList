@@ -127,17 +127,14 @@ static NSArray * __fastPathForwardingDataSourceMethods = nil;
     return class_conformsToProtocol(object_getClass(self), protocol);
 }
 
+// Fast-path delegate and data source methods aren't handled here; they are taken care of in -forwardingTargetForSelector:.
 - (NSMethodSignature *)methodSignatureForSelector:(SEL)aSelector
 {
     NSString *methodName = NSStringFromSelector(aSelector);
 
     struct objc_method_description description = {NULL, NULL};
 
-    if ([__fastPathForwardingDelegateMethods containsObject:methodName])
-        description = px_methodDescriptionForProtocolMethod(@protocol(PXSourceListDelegate), aSelector);
-    else if ([__fastPathForwardingDataSourceMethods containsObject:methodName])
-        description = px_methodDescriptionForProtocolMethod(@protocol(PXSourceListDataSource), aSelector);
-    else if ([__outlineViewDelegateMethods containsObject:methodName])
+    if ([__outlineViewDelegateMethods containsObject:methodName])
         description = px_methodDescriptionForProtocolMethod(@protocol(NSOutlineViewDelegate), aSelector);
     else if ([__outlineViewDataSourceMethods containsObject:methodName])
         description = px_methodDescriptionForProtocolMethod(@protocol(NSOutlineViewDataSource), aSelector);
