@@ -15,7 +15,6 @@
 //Layout constants
 static const CGFloat minBadgeWidth = 22.0;              // The minimum badge width for each item (default 22.0).
 static const CGFloat badgeHeight = 14.0;                // The badge height for each item (default 14.0).
-static const CGFloat badgeMargin = 5.0;                 // The spacing between the badge and the cell for that row.
 static const CGFloat rowRightMargin = 5.0;              // The spacing between the right edge of the badge and the edge of the table column.
 static const CGFloat iconSpacing = 2.0;                 // The spacing between the icon and it's adjacent cell.
 static const CGFloat disclosureTriangleSpace = 18.0;    // The indentation reserved for disclosure triangles for non-group items.
