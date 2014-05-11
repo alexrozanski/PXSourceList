@@ -1,5 +1,9 @@
 # PXSourceList Release Notes
 
+## 2.0.4
+- PR #41: fix a Zeroing Weak References problem. This fixes an issue where using an `NSWindow`, `NSWindowController` or `NSViewController` as a PXSourceList delegate or dataSource would cause problems on 10.7 because prior to 10.8, these classes could not be referenced by zeroing weak references.
+- Remove unused `badgeMargin` constant from PXSourceList.m.
+
 ## 2.0.3
 - Fix #40: Editing titles on cell based source list causes exception.
 - Fix issue in view-based source list example where items created with the add button couldn't be dragged.
