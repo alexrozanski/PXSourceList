@@ -1,5 +1,5 @@
 //
-//  PXSourceList.h
+//  PXSourceListTableRowView.h
 //  PXSourceList
 //
 //  Created by Thanos Siopoudis on 07/06/2014.
