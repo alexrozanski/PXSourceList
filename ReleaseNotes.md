@@ -1,5 +1,8 @@
 # PXSourceList Release Notes
 
+## 2.0.5
+- Fix #43: sourceListDeleteKeyPressedOnRows: called twice. This was caused by an issue where PXSourceList was incorrectly removing the old delegate as an observer of PXSourceList notifications in -setDelegate:.
+
 ## 2.0.4
 - PR #41: fix a Zeroing Weak References problem. This fixes an issue where using an `NSWindow`, `NSWindowController` or `NSViewController` as a PXSourceList delegate or dataSource would cause problems on 10.7 because prior to 10.8, these classes could not be referenced by zeroing weak references.
 - Remove unused `badgeMargin` constant from PXSourceList.m.
