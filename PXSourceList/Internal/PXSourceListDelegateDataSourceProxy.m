@@ -70,7 +70,7 @@ static NSArray * __fastPathForwardingDataSourceMethods = nil;
 - (void)setDelegate:(id<PXSourceListDelegate>)delegate
 {
     if (self.delegate)
-        [[NSNotificationCenter defaultCenter] removeObserver:self.delegate name:nil object:self];
+        [[NSNotificationCenter defaultCenter] removeObserver:self.delegate name:nil object:self.sourceList];
 
     _delegate = delegate;
 
