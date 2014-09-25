@@ -1,5 +1,10 @@
 #PXSourceList
 
+
+[![Pod Version](http://img.shields.io/cocoapods/v/PXSourceList.svg)](http://cocoadocs.org/docsets/PXSourceList/2.0.5/)
+[![Platform](http://img.shields.io/cocoapods/p/PXSourceList.svg)](http://cocoadocs.org/docsets/PXSourceList/2.0.5/)
+[![Licence](http://img.shields.io/cocoapods/l/PXSourceList.svg)](https://github.com/Perspx/PXSourceList/blob/master/LICENSE)
+
 `PXSourceList` is an `NSOutlineView` subclass used for easily implementing source lists in your applications.
 
 PXSourceList requires the OS X 10.7 SDK and above and is licensed under the New BSD License.
