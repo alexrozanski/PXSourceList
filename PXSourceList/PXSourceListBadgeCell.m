@@ -111,4 +111,12 @@ static const CGFloat badgeLeftAndRightPadding = 5.0;
                                            attributes:@{NSFontAttributeName: badgeFont()}];
 }
 
+- (id)accessibilityAttributeValue:(NSString *)attribute
+{
+    if ([attribute isEqualToString:NSAccessibilityValueAttribute])
+        return @(_badgeValue).description;
+    else
+        return [super accessibilityAttributeValue:attribute];
+}
+
 @end
