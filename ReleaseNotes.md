@@ -1,5 +1,8 @@
 # PXSourceList Release Notes
 
+## 2.0.6
+- Merge PR #49: Fix PXSourceListBadgeCell accessibility. Adds accessibility for PXSourceListBadgeCell when using PXSourceList in view-based mode.
+
 ## 2.0.5
 - Fix #43: sourceListDeleteKeyPressedOnRows: called twice. This was caused by an issue where PXSourceList was incorrectly removing the old delegate as an observer of PXSourceList notifications in -setDelegate:.
 
