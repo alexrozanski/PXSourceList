@@ -1,5 +1,9 @@
 # PXSourceList Release Notes
 
+## 2.0.7
+- Remove -setFlipped: call which was causing a deprecation warning on OS X 10.10.
+- Fix whitespace in PXSourceList.m.
+
 ## 2.0.6
 - Merge PR #49: Fix PXSourceListBadgeCell accessibility. Adds accessibility for PXSourceListBadgeCell when using PXSourceList in view-based mode.
 
