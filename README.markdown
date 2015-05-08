@@ -28,7 +28,7 @@ Note that [in the OS X Human Interface Guidelines](https://developer.apple.com/l
 
 ## Using PXSourceList
 
-### Installing with Cocoapods
+### Installing with CocoaPods
 
 You can install PXSourceList by adding the following line to your `Podfile`:
 
