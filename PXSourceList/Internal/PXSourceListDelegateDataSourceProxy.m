@@ -146,6 +146,11 @@ static NSArray * __fastPathForwardingDataSourceMethods = nil;
     return [NSMethodSignature signatureWithObjCTypes:description.types];
 }
 
+- (BOOL) isKindOfClass:(Class)aClass
+{
+    return NO;
+}
+
 - (void)forwardInvocation:(NSInvocation *)anInvocation
 {
     SEL sourceSelector = anInvocation.selector;
