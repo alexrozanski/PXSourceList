@@ -22,6 +22,10 @@
 
 /* Begin PBXBuildFile section */
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
+		B1A5664C1943A05F002307AD /* PXSourceListTableRowView.h in Headers */ = {isa = PBXBuildFile; fileRef = B1A5664A1943A05F002307AD /* PXSourceListTableRowView.h */; };
+		B1A5664D1943A05F002307AD /* PXSourceListTableRowView.m in Sources */ = {isa = PBXBuildFile; fileRef = B1A5664B1943A05F002307AD /* PXSourceListTableRowView.m */; };
+		B1A5664E1943A05F002307AD /* PXSourceListTableRowView.m in Sources */ = {isa = PBXBuildFile; fileRef = B1A5664B1943A05F002307AD /* PXSourceListTableRowView.m */; };
+		B1A5664F1943A05F002307AD /* PXSourceListTableRowView.m in Sources */ = {isa = PBXBuildFile; fileRef = B1A5664B1943A05F002307AD /* PXSourceListTableRowView.m */; };
 		D213027C14B9AFE200AAFF85 /* PXSourceList.h in Headers */ = {isa = PBXBuildFile; fileRef = D213027814B9AFE200AAFF85 /* PXSourceList.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D213027E14B9AFE200AAFF85 /* PXSourceList.m in Sources */ = {isa = PBXBuildFile; fileRef = D213027914B9AFE200AAFF85 /* PXSourceList.m */; };
 		D213027F14B9AFE200AAFF85 /* PXSourceListDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = D213027A14B9AFE200AAFF85 /* PXSourceListDataSource.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -84,6 +88,8 @@
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		4CC5EA2A12DC81ED001F282E /* PXSourceList.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PXSourceList.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D1107320486CEB800E47090 /* PXSourceList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PXSourceList.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B1A5664A1943A05F002307AD /* PXSourceListTableRowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PXSourceListTableRowView.h; path = PXSourceList/PXSourceListTableRowView.h; sourceTree = "<group>"; };
+		B1A5664B1943A05F002307AD /* PXSourceListTableRowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PXSourceListTableRowView.m; path = PXSourceList/PXSourceListTableRowView.m; sourceTree = "<group>"; };
 		D205EDDD10F7A1EE004C6545 /* README.markdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.markdown; sourceTree = "<group>"; };
 		D213027814B9AFE200AAFF85 /* PXSourceList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PXSourceList.h; path = PXSourceList/PXSourceList.h; sourceTree = "<group>"; };
 		D213027914B9AFE200AAFF85 /* PXSourceList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PXSourceList.m; path = PXSourceList/PXSourceList.m; sourceTree = "<group>"; };
@@ -177,6 +183,8 @@
 				D23A175D1836AE280027F0D0 /* PXSourceListBadgeCell.m */,
 				D251F6F3187317C000FED7C9 /* PXSourceListTableCellView.h */,
 				D251F6F4187317C000FED7C9 /* PXSourceListTableCellView.m */,
+				B1A5664A1943A05F002307AD /* PXSourceListTableRowView.h */,
+				B1A5664B1943A05F002307AD /* PXSourceListTableRowView.m */,
 				D24E1F00187DB323004DCBB0 /* PXSourceListItem.h */,
 				D24E1F01187DB323004DCBB0 /* PXSourceListItem.m */,
 				D2CD7D4A186B02690003E038 /* Internal */,
@@ -355,6 +363,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D24B88F7188EC3B100841497 /* PXSourceListDelegateDataSourceProxy.h in Headers */,
+				B1A5664C1943A05F002307AD /* PXSourceListTableRowView.h in Headers */,
 				D24E1F02187DB323004DCBB0 /* PXSourceListItem.h in Headers */,
 				D23A175E1836AE280027F0D0 /* PXSourceListBadgeCell.h in Headers */,
 				D24B88FA188EC3B100841497 /* PXSourceListRuntimeAdditions.h in Headers */,
@@ -517,6 +526,7 @@
 				D24B88FB188EC3B100841497 /* PXSourceListRuntimeAdditions.m in Sources */,
 				D23A175B1836AD790027F0D0 /* PXSourceListBadgeView.m in Sources */,
 				D213027E14B9AFE200AAFF85 /* PXSourceList.m in Sources */,
+				B1A5664F1943A05F002307AD /* PXSourceListTableRowView.m in Sources */,
 				D251F6F6187317C000FED7C9 /* PXSourceListTableCellView.m in Sources */,
 				D24B88F8188EC3B100841497 /* PXSourceListDelegateDataSourceProxy.m in Sources */,
 			);
@@ -526,6 +536,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B1A5664D1943A05F002307AD /* PXSourceListTableRowView.m in Sources */,
 				D2631282186EFBDC0036501C /* main.m in Sources */,
 				D2631272186EFBBF0036501C /* AppDelegate.m in Sources */,
 			);
@@ -538,6 +549,7 @@
 				D24AE5531896A79700AC8CE0 /* Photo.m in Sources */,
 				D2631293186EFC830036501C /* main.m in Sources */,
 				D2631289186EFC4E0036501C /* AppDelegate.m in Sources */,
+				B1A5664E1943A05F002307AD /* PXSourceListTableRowView.m in Sources */,
 				D2FF2953187AD32000CFEDD1 /* PhotoCollection.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

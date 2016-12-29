@@ -575,4 +575,8 @@ NSString * const PXSLDeleteKeyPressedOnRowsNotification = @"PXSourceListDeleteKe
     return [self isGroupItem:item];
 }
 
+- (NSTableRowView *)outlineView:(NSOutlineView *)outlineView rowViewForItem:(id)item {
+    return [[PXSourceListTableRowView alloc] init];
+}
+
 @end
